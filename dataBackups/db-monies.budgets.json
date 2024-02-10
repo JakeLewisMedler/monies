@@ -1,0 +1,1064 @@
+[{
+  "_id": {
+    "$oid": "65c759ff5d96ef03008b4c44"
+  },
+  "name": "Bowwalk",
+  "recurring": true,
+  "recurringType": "weekly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-12T00:00:00.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:11:59.021Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:11:59.021Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75a0c5d96ef03008b508a"
+  },
+  "name": "02",
+  "recurring": false,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-10-23T15:01:51.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:12:12.379Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:12:12.379Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75a0e5d96ef03008b51f5"
+  },
+  "name": "ATM",
+  "recurring": false,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-04T12:40:49.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:12:14.626Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:12:14.626Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75a135d96ef03008b535e"
+  },
+  "name": "Admiral",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-13T03:15:51.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:12:19.133Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:12:19.133Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75a185d96ef03008b54c5"
+  },
+  "name": "Amazon",
+  "recurring": false,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-10-22T07:25:31.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:12:24.676Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:12:24.676Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75af85d96ef03008b59a8"
+  },
+  "name": "Amazon",
+  "recurring": false,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-10-27T03:34:29.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:16:09.002Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:16:09.002Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75afa5d96ef03008b5bb7"
+  },
+  "name": "Amazon",
+  "recurring": false,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-02T14:57:35.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:16:10.385Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:16:10.385Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75afb5d96ef03008b5dc3"
+  },
+  "name": "Amazon",
+  "recurring": false,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-14T16:09:51.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:16:11.657Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:16:11.657Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75afd5d96ef03008b5fcc"
+  },
+  "name": "Amazon",
+  "recurring": false,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-14T22:01:07.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:16:13.166Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:16:13.166Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75aff5d96ef03008b61d2"
+  },
+  "name": "Amazon",
+  "recurring": false,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-12-01T11:32:26.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:16:15.805Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:16:15.805Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75b045d96ef03008b63d5"
+  },
+  "name": "Amazon Prime",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-09T14:52:43.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:16:20.523Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:16:20.523Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75b085d96ef03008b65d5"
+  },
+  "name": "Anglian Water",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-01T03:14:56.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:16:24.326Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:16:24.326Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75b1b5d96ef03008b69c8"
+  },
+  "name": "AM - Income",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-10-31T06:03:37.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:16:43.024Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:16:43.024Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75b325d96ef03008b793a"
+  },
+  "name": "Hairdressers",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 2,
+  "date": {
+    "$date": "2023-11-01T00:00:00.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:17:06.971Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:17:06.971Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75b3d5d96ef03008b7b19"
+  },
+  "name": "Apple iCloud",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-05T16:16:15.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:17:17.091Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:17:17.091Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "name": "Grocery Shopping",
+  "recurring": true,
+  "recurringType": "weekly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-10-01T00:00:00.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:17:53.486Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:17:53.486Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75b825d96ef03008b9275"
+  },
+  "name": "AM Company Christmas",
+  "recurring": false,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-10-22T11:18:39.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:18:26.270Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:18:26.270Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75b8b5d96ef03008b942a"
+  },
+  "name": "BrandAlley",
+  "recurring": false,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-24T22:05:13.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:18:35.569Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:18:35.569Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75b8d5d96ef03008b95dc"
+  },
+  "name": "BrandAlley",
+  "recurring": false,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-24T22:11:44.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:18:37.147Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:18:37.147Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75b925d96ef03008b978b"
+  },
+  "name": "Council Tax",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-06T03:10:57.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:18:42.766Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:18:42.766Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "name": "Disney Paris 2023",
+  "recurring": false,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-11T09:48:43.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:19:45.725Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:19:45.725Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75d055d96ef03008bbb6a"
+  },
+  "name": "Dart Charge",
+  "recurring": false,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-07T01:14:17.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:24:53.549Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:24:53.549Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75d115d96ef03008bbd41"
+  },
+  "name": "Eating Out",
+  "recurring": false,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-12T14:19:35.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:25:05.030Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:43:42.846Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75d355d96ef03008bbe2a"
+  },
+  "name": "Ebay - Sold Keyboard",
+  "recurring": false,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-10-26T02:24:19.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:25:41.645Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:25:41.645Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75d625d96ef03008bbf11"
+  },
+  "name": "Etsy Purchases",
+  "recurring": false,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-27T18:42:42.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:26:26.798Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:26:26.798Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75d985d96ef03008bc1b6"
+  },
+  "name": "Google Drive Storage",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-10-31T08:48:53.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:27:20.923Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:27:20.923Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75dac5d96ef03008bc370"
+  },
+  "name": "Greater Anglia - Delay Repay",
+  "recurring": false,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-27T02:51:16.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:27:40.876Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:27:40.876Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75dcb5d96ef03008bc44b"
+  },
+  "name": "Google Workspace - jake@jakemedler.co.uk",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-01T12:32:30.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:28:11.863Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:28:11.863Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75de05d96ef03008bc524"
+  },
+  "name": "Clothes Shopping",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 2,
+  "date": {
+    "$date": "2023-11-01T00:00:00.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:28:32.845Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:28:32.845Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75de95d96ef03008bc5fb"
+  },
+  "name": "Mortgage",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-01T03:23:22.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:28:41.761Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:28:41.761Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75df15d96ef03008bc7a2"
+  },
+  "name": "Help To Buy",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-01T04:35:43.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:28:49.120Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:28:49.120Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75e045d96ef03008bc93f"
+  },
+  "name": "Il Makiage",
+  "recurring": false,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-26T20:47:23.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:29:08.833Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:29:08.833Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75e175d96ef03008bcad5"
+  },
+  "name": "Tesla - Innovate Live",
+  "recurring": false,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-29T08:47:01.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:29:27.255Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:29:27.255Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75e235d96ef03008bcb9e"
+  },
+  "name": "JM - Income",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-10-31T00:00:00.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:29:39.642Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:29:39.642Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75e485d96ef03008bcf68"
+  },
+  "name": "L&G - Life Insurance",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-01T03:33:55.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:30:16.304Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:30:16.304Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75e825d96ef03008bd9a3"
+  },
+  "name": "Pet Toys",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 2,
+  "date": {
+    "$date": "2023-10-01T00:00:00.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:31:14.596Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:31:14.596Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75e925d96ef03008bda42"
+  },
+  "name": "JM - Work Travel",
+  "recurring": false,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-24T16:36:47.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:31:30.046Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:31:30.046Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75eb75d96ef03008bdadf"
+  },
+  "name": "NatWest Debt Payment - 3492",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-10-30T03:17:09.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:32:07.873Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:32:07.873Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75ec25d96ef03008bdc12"
+  },
+  "name": "Netflix",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-18T02:34:03.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:32:18.579Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:32:18.579Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75ee45d96ef03008bddce"
+  },
+  "name": "Sofa Repayments",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-10T03:02:25.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:32:52.191Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:32:52.191Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75eec5d96ef03008bde5f"
+  },
+  "name": "Octopus Energy",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-03T03:07:40.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:33:00.683Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:33:00.683Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75efb5d96ef03008bdf79"
+  },
+  "name": "Park Farm Gym",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-10-31T03:06:51.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:33:15.943Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:33:15.943Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75f0e5d96ef03008be08c"
+  },
+  "name": "Home Insurance",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-01T03:12:14.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:33:34.489Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:33:34.489Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75f155d96ef03008be197"
+  },
+  "name": "Petplan Insurance",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-01T03:56:38.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:33:41.224Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:33:41.224Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75f225d96ef03008be394"
+  },
+  "name": "Plusnet - Internet",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-10-24T01:00:59.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:33:54.236Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:33:54.236Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75f405d96ef03008be487"
+  },
+  "name": "Car Charging - Away",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-01T00:00:00.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:34:24.017Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:34:24.017Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c75f5f5d96ef03008be72b"
+  },
+  "name": "Ring Doorbell",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-10-23T23:06:59.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:34:55.272Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:34:55.272Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c760405d96ef03008bec08"
+  },
+  "name": "Savings Pot",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-10-01T00:00:00.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:38:40.939Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:38:40.939Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c760bd5d96ef03008beead"
+  },
+  "name": "JM Santander - Debt Payments",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-10T03:10:12.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:40:45.585Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:40:45.585Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c760d05d96ef03008beeec"
+  },
+  "name": "AM Santander - Debt Payments",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-06T03:23:18.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:41:04.547Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:41:04.547Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c760e65d96ef03008bef2a"
+  },
+  "name": "AM Car PCP",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-13T03:14:44.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:41:26.754Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:41:26.754Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c760f45d96ef03008bef9c"
+  },
+  "name": "Smol ",
+  "recurring": false,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-12T01:26:43.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:41:40.850Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:41:40.850Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c760fe5d96ef03008befd3"
+  },
+  "name": "Spotify",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-10-21T06:46:39.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:41:50.603Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:41:50.603Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c7612d5d96ef03008bf067"
+  },
+  "name": "Tails.com",
+  "recurring": false,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-13T13:53:16.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:42:37.932Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:42:37.932Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c7613d5d96ef03008bf189"
+  },
+  "name": "Tesla - Connectivity",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-03T20:17:34.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:42:53.264Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:42:53.264Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c7619a5d96ef03008bf292"
+  },
+  "name": "Vodafone - JM & AM",
+  "recurring": true,
+  "recurringType": "monthly",
+  "recurringFrequency": 1,
+  "date": {
+    "$date": "2023-11-15T03:10:51.000Z"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T11:44:26.509Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T11:44:26.509Z"
+  },
+  "__v": 0
+}]

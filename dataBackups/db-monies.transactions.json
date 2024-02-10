@@ -1,0 +1,4524 @@
+[{
+  "_id": {
+    "$oid": "65c75628a23d4b7925950fcc"
+  },
+  "monzoId": "tx_0000AavFkeEbfbaZNTtL2v",
+  "__v": 0,
+  "amount": -89.56,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.361Z"
+  },
+  "date": {
+    "$date": "2023-10-19T07:33:27.000Z"
+  },
+  "description": "TESCO STORES 3301      THETFORD      GBR",
+  "name": "Tesco",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:42:41.936Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925950fce"
+  },
+  "monzoId": "tx_0000AazKbMvztnkoeEHVmD",
+  "__v": 0,
+  "amount": -17.99,
+  "archived": false,
+  "budget": {
+    "$oid": "65c760fe5d96ef03008befd3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.375Z"
+  },
+  "date": {
+    "$date": "2023-10-21T06:46:39.000Z"
+  },
+  "description": "Spotify                London        GBR",
+  "name": "Spotify",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:41:50.606Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925950fd0"
+  },
+  "monzoId": "tx_0000Ab024V0tEjdh0RB05p",
+  "__v": 0,
+  "amount": -39.26,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.381Z"
+  },
+  "date": {
+    "$date": "2023-10-21T14:53:44.000Z"
+  },
+  "description": "SAINSBURYS             ATTELEBOROUGH GBR",
+  "name": "Sainsbury’s",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:35:00.111Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925950fd2"
+  },
+  "monzoId": "tx_0000Ab02g1lmPeFLZscdzH",
+  "__v": 0,
+  "amount": -8.99,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75e825d96ef03008bd9a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.385Z"
+  },
+  "date": {
+    "$date": "2023-10-21T15:00:31.000Z"
+  },
+  "description": "MYHILLS PET & GARDEN   ATTLEBOROUGH  GBR",
+  "name": "Myhills Pet & Garden",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:31:14.601Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925950fd4"
+  },
+  "monzoId": "tx_0000Ab1SaJ8JjbD3VEZNIY",
+  "__v": 0,
+  "amount": -7.25,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75a185d96ef03008b54c5"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.387Z"
+  },
+  "date": {
+    "$date": "2023-10-22T07:25:31.000Z"
+  },
+  "description": "",
+  "name": "Amazon",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:12:24.681Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925950fd6"
+  },
+  "monzoId": "tx_0000Ab1kcIlHsunuZeCxzF",
+  "__v": 0,
+  "amount": -11.29,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75a185d96ef03008b54c5"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.390Z"
+  },
+  "date": {
+    "$date": "2023-10-22T10:47:34.000Z"
+  },
+  "description": "AMZNMktplace           amazon.co.uk  GBR",
+  "name": "Amazon",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:12:25.980Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925950fd8"
+  },
+  "monzoId": "tx_0000Ab1nOIQmcLMDPjGgrM",
+  "__v": 0,
+  "amount": -25,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b825d96ef03008b9275"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.393Z"
+  },
+  "date": {
+    "$date": "2023-10-22T11:18:39.000Z"
+  },
+  "description": "Medler xmas",
+  "name": "Back in Motion (Franchising) Limited",
+  "type": "Faster payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:18:26.273Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925950fda"
+  },
+  "monzoId": "tx_0000Ab27Aex05iwhlBAHpa",
+  "__v": 0,
+  "amount": 200,
+  "archived": false,
+  "budget": {
+    "$oid": "65c760405d96ef03008bec08"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.398Z"
+  },
+  "date": {
+    "$date": "2023-10-22T15:00:17.000Z"
+  },
+  "description": "",
+  "name": "Savings Pot",
+  "type": "Pot transfer",
+  "updatedAt": {
+    "$date": "2024-02-10T11:38:40.950Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925950fdc"
+  },
+  "monzoId": "tx_0000Ab3ZxbPZ1yPPvZD3tx",
+  "__v": 0,
+  "amount": -10.65,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.400Z"
+  },
+  "date": {
+    "$date": "2023-10-23T07:57:35.000Z"
+  },
+  "description": "TESCO STORES 2639      HARLOW E-WAY  GBR",
+  "name": "Tesco",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:42:42.473Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925950fde"
+  },
+  "monzoId": "tx_0000Ab4Bp9s5Ku7w51Z46d",
+  "__v": 0,
+  "amount": 2.1,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75a0c5d96ef03008b508a"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.407Z"
+  },
+  "date": {
+    "$date": "2023-10-23T15:01:51.000Z"
+  },
+  "description": "3490972         -4",
+  "name": "02",
+  "type": "Bacs (Direct Credit)",
+  "updatedAt": {
+    "$date": "2024-02-10T11:12:12.383Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925950fe0"
+  },
+  "monzoId": "tx_0000Ab4akiqwLW6bowCZLV",
+  "__v": 0,
+  "amount": -6.65,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.415Z"
+  },
+  "date": {
+    "$date": "2023-10-23T19:41:11.000Z"
+  },
+  "description": "CO-OP GROUP FOOD       NORWICH       GBR",
+  "name": "Co-op",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:24:35.492Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925950fe2"
+  },
+  "monzoId": "tx_0000Ab4t7VQcDsfq5eYIgz",
+  "__v": 0,
+  "amount": -8,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75f5f5d96ef03008be72b"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.418Z"
+  },
+  "date": {
+    "$date": "2023-10-23T23:06:59.000Z"
+  },
+  "description": "RING UNLIMITED MONTHLY +441727263045 GBR",
+  "name": "Ring",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:34:55.276Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925950fe4"
+  },
+  "monzoId": "tx_0000Ab53IEh1meJCuhz4uP",
+  "__v": 0,
+  "amount": -34.99,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75f225d96ef03008be394"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.419Z"
+  },
+  "date": {
+    "$date": "2023-10-24T01:00:59.000Z"
+  },
+  "description": "PNET5268308-1",
+  "name": "Plusnet",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:33:54.244Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925950fe6"
+  },
+  "monzoId": "tx_0000Ab53TRXUMWpU1CMg5q",
+  "__v": 0,
+  "amount": -0.09,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75d355d96ef03008bbe2a"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.421Z"
+  },
+  "date": {
+    "$date": "2023-10-24T01:03:00.000Z"
+  },
+  "description": "MRN24791040091",
+  "name": "eBay",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:44:41.304Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925950fe8"
+  },
+  "monzoId": "tx_0000Ab5VFF0EyMD5irKa6D",
+  "__v": 0,
+  "amount": 50,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.426Z"
+  },
+  "date": {
+    "$date": "2023-10-24T06:14:10.000Z"
+  },
+  "description": "MICKEY + MINNIE XX",
+  "name": "MEDLER TC",
+  "type": "Faster payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:30:39.077Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925950fea"
+  },
+  "monzoId": "tx_0000Ab8pdDHva32rubByFt",
+  "__v": 0,
+  "amount": 0,
+  "archived": true,
+  "budget": null,
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.427Z"
+  },
+  "date": {
+    "$date": "2023-10-25T20:46:44.000Z"
+  },
+  "description": "ASDA GROCERIES ONLINE  INTERNET      GBR",
+  "name": "Asda",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:01:17.509Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925950fec"
+  },
+  "monzoId": "tx_0000Ab8qPl1LT0ZlzIbBDO",
+  "__v": 0,
+  "amount": -76.6,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.429Z"
+  },
+  "date": {
+    "$date": "2023-10-25T20:55:31.000Z"
+  },
+  "description": "ASDA GROCERIES ONLINE  INTERNET      GBR",
+  "name": "Asda",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:17:53.493Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925950fee"
+  },
+  "monzoId": "tx_0000Ab9Jl5zNbEtEDQBuAD",
+  "__v": 0,
+  "amount": 304.9,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75d355d96ef03008bbe2a"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.431Z"
+  },
+  "date": {
+    "$date": "2023-10-26T02:24:19.000Z"
+  },
+  "description": "P*6089759641",
+  "name": "EBAY Commerce UK Ltd",
+  "type": "Faster payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:25:41.648Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925950ff0"
+  },
+  "monzoId": "tx_0000Ab9aSKTPDnSyHMYRxR",
+  "__v": 0,
+  "amount": -304.9,
+  "archived": false,
+  "budget": {
+    "$oid": "65c760405d96ef03008bec08"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.434Z"
+  },
+  "date": {
+    "$date": "2023-10-26T05:31:25.000Z"
+  },
+  "description": "",
+  "name": "Savings Pot",
+  "type": "Pot transfer",
+  "updatedAt": {
+    "$date": "2024-02-10T11:39:53.691Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925950ff2"
+  },
+  "monzoId": "tx_0000AbBRUa2hnOUcM6ADrd",
+  "__v": 0,
+  "amount": 1.3,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.437Z"
+  },
+  "date": {
+    "$date": "2023-10-27T03:00:24.000Z"
+  },
+  "description": "ASDA GROCERIES ONLINE\\ASDA HOUSE SOUTHBANK\\INTERNET\\LS11 5AD  GBRGBR",
+  "name": "Asda",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:17:55.714Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925950ff4"
+  },
+  "monzoId": "tx_0000AbBRUj8hyRD8fIBEAr",
+  "__v": 0,
+  "amount": 2.08,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.440Z"
+  },
+  "date": {
+    "$date": "2023-10-27T03:00:25.000Z"
+  },
+  "description": "ASDA GROCERIES ONLINE\\ASDA HOUSE SOUTHBANK\\INTERNET\\LS11 5AD  GBRGBR",
+  "name": "Asda",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:17:56.560Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925950ff6"
+  },
+  "monzoId": "tx_0000AbBUXAFOSTOPBEA26L",
+  "__v": 0,
+  "amount": -20.88,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75af85d96ef03008b59a8"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.442Z"
+  },
+  "date": {
+    "$date": "2023-10-27T03:34:29.000Z"
+  },
+  "description": "AMZNMktplace           amazon.co.uk  GBR",
+  "name": "Amazon",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:16:09.009Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925950ff8"
+  },
+  "monzoId": "tx_0000AbGBsJ9Lcwlcca9ek5",
+  "__v": 0,
+  "amount": -88.23,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.444Z"
+  },
+  "date": {
+    "$date": "2023-10-29T10:58:58.000Z"
+  },
+  "description": "Regatta                Manchester M4 GBR",
+  "name": "Regatta",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:34:48.502Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925950ffa"
+  },
+  "monzoId": "tx_0000AbHbAsjAmSJLNxx4Xx",
+  "__v": 0,
+  "amount": -84.41,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75eb75d96ef03008bdadf"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.446Z"
+  },
+  "date": {
+    "$date": "2023-10-30T03:17:09.000Z"
+  },
+  "description": "************3492",
+  "name": "NatWest",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:32:07.877Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925950ffc"
+  },
+  "monzoId": "tx_0000AbHqVVeRGuQiUpxLGr",
+  "__v": 0,
+  "amount": 3650,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75e235d96ef03008bcb9e"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.447Z"
+  },
+  "date": {
+    "$date": "2023-10-30T06:08:57.000Z"
+  },
+  "description": "",
+  "name": "Jake Medler",
+  "type": "Monzo-to-Monzo",
+  "updatedAt": {
+    "$date": "2024-02-10T11:29:39.648Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925950ffe"
+  },
+  "monzoId": "tx_0000AbJ3Q0SvHju0uh7dj7",
+  "__v": 0,
+  "amount": 0,
+  "archived": true,
+  "budget": null,
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.448Z"
+  },
+  "date": {
+    "$date": "2023-10-30T20:08:20.000Z"
+  },
+  "description": "ASDA GROCERIES ONLINE  INTERNET      GBR",
+  "name": "Asda",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:08:48.741Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951000"
+  },
+  "monzoId": "tx_0000AbJ4uIvpICr3CM0b9W",
+  "__v": 0,
+  "amount": -79.64,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.450Z"
+  },
+  "date": {
+    "$date": "2023-10-30T20:25:01.000Z"
+  },
+  "description": "ASDA GROCERIES ONLINE  INTERNET      GBR",
+  "name": "Asda",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:17:57.444Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951002"
+  },
+  "monzoId": "tx_0000AbJeljc4JsU9IVjnVq",
+  "__v": 0,
+  "amount": -104,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75efb5d96ef03008bdf79"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.451Z"
+  },
+  "date": {
+    "$date": "2023-10-31T03:06:51.000Z"
+  },
+  "description": "PL00093183.11929",
+  "name": "Park Farm Leisure",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:33:15.947Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951004"
+  },
+  "monzoId": "tx_0000AbJuXoa0efD5HWCZTl",
+  "__v": 0,
+  "amount": 907,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b1b5d96ef03008b69c8"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.453Z"
+  },
+  "date": {
+    "$date": "2023-10-31T06:03:37.000Z"
+  },
+  "description": "",
+  "name": "Ann-Marie Medler",
+  "type": "Monzo-to-Monzo",
+  "updatedAt": {
+    "$date": "2024-02-10T11:16:43.027Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951006"
+  },
+  "monzoId": "tx_0000AbK9IGFRW1reWOuLpK",
+  "__v": 0,
+  "amount": -1.59,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75d985d96ef03008bc1b6"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.454Z"
+  },
+  "date": {
+    "$date": "2023-10-31T08:48:53.000Z"
+  },
+  "description": "GOOGLE *Google Storage 650-253-0000  GBR",
+  "name": "Google",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:27:20.928Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951008"
+  },
+  "monzoId": "tx_0000AbL56gpEff4tdZiCLB",
+  "__v": 0,
+  "amount": -11.77,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75d115d96ef03008bbd41"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.455Z"
+  },
+  "date": {
+    "$date": "2023-10-31T19:36:41.000Z"
+  },
+  "description": "KFC - HARLOW EDINBURGH HARLOW        GBR",
+  "name": "KFC",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:29:55.085Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595100a"
+  },
+  "monzoId": "tx_0000AbLjlM2GrreOJfLPbX",
+  "__v": 0,
+  "amount": -44.19,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75f0e5d96ef03008be08c"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.457Z"
+  },
+  "date": {
+    "$date": "2023-11-01T03:12:14.000Z"
+  },
+  "description": "BPNL31953808",
+  "name": "Paymentshield",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:33:34.494Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595100c"
+  },
+  "monzoId": "tx_0000AbLk0NWFdNk4ZZmUwk",
+  "__v": 0,
+  "amount": -17,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b085d96ef03008b65d5"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.458Z"
+  },
+  "date": {
+    "$date": "2023-11-01T03:14:56.000Z"
+  },
+  "description": "163896699",
+  "name": "Anglian Water",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:16:24.329Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595100e"
+  },
+  "monzoId": "tx_0000AbLkl1PVeTFI7yAZWb",
+  "__v": 0,
+  "amount": -901.64,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75de95d96ef03008bc5fb"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.459Z"
+  },
+  "date": {
+    "$date": "2023-11-01T03:23:22.000Z"
+  },
+  "description": "1055244030100000",
+  "name": "Halifax",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:28:41.769Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951010"
+  },
+  "monzoId": "tx_0000AbLlhMav31fJPwY2cN",
+  "__v": 0,
+  "amount": -31.47,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75e485d96ef03008bcf68"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.461Z"
+  },
+  "date": {
+    "$date": "2023-11-01T03:33:55.000Z"
+  },
+  "description": "0245040555-231101",
+  "name": "Legal & General",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:30:16.308Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951012"
+  },
+  "monzoId": "tx_0000AbLlpHIobhheBF2LuT",
+  "__v": 0,
+  "amount": -5.99,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75e485d96ef03008bcf68"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.462Z"
+  },
+  "date": {
+    "$date": "2023-11-01T03:35:21.000Z"
+  },
+  "description": "0245040530-231101",
+  "name": "Legal & General",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:30:17.576Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951014"
+  },
+  "monzoId": "tx_0000AbLlu4tcA52h8s8u9J",
+  "__v": 0,
+  "amount": -11.33,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75e485d96ef03008bcf68"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.463Z"
+  },
+  "date": {
+    "$date": "2023-11-01T03:36:13.000Z"
+  },
+  "description": "0245040548-231101",
+  "name": "Legal & General",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:30:18.193Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951016"
+  },
+  "monzoId": "tx_0000AbLnj3JftVknUrdu6L",
+  "__v": 0,
+  "amount": -34.68,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75f155d96ef03008be197"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.464Z"
+  },
+  "date": {
+    "$date": "2023-11-01T03:56:38.000Z"
+  },
+  "description": "571276356   /33136",
+  "name": "Petplan",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:33:41.227Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951018"
+  },
+  "monzoId": "tx_0000AbLrDGnybjoqfSQehd",
+  "__v": 0,
+  "amount": -1,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75df15d96ef03008bc7a2"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.465Z"
+  },
+  "date": {
+    "$date": "2023-11-01T04:35:43.000Z"
+  },
+  "description": "1023207",
+  "name": "Help To Buy",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:28:49.125Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595101a"
+  },
+  "monzoId": "tx_0000AbM7pkmzAtG0TBCj2X",
+  "__v": 0,
+  "amount": -800,
+  "archived": false,
+  "budget": {
+    "$oid": "65c760405d96ef03008bec08"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.466Z"
+  },
+  "date": {
+    "$date": "2023-11-01T07:41:57.000Z"
+  },
+  "description": "",
+  "name": "Savings Pot",
+  "type": "Pot transfer",
+  "updatedAt": {
+    "$date": "2024-02-10T11:39:54.307Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595101c"
+  },
+  "monzoId": "tx_0000AbMQzDRHvEbZ389TUn",
+  "__v": 0,
+  "amount": -26,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b1b5d96ef03008b69c8"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.467Z"
+  },
+  "date": {
+    "$date": "2023-11-01T11:16:33.000Z"
+  },
+  "description": "",
+  "name": "Ann-Marie Medler",
+  "type": "Monzo-to-Monzo",
+  "updatedAt": {
+    "$date": "2024-02-10T11:16:44.845Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595101e"
+  },
+  "monzoId": "tx_0000AbMVzVBWRYvdfZvBU9",
+  "__v": 0,
+  "amount": 7.05,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.469Z"
+  },
+  "date": {
+    "$date": "2023-11-01T12:12:38.000Z"
+  },
+  "description": "ASDA GROCERIES ONLINE\\ASDA HOUSE SOUTHBANK\\INTERNET\\LS11 5AD  GBRGBR",
+  "name": "Asda",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:17:58.423Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951020"
+  },
+  "monzoId": "tx_0000AbMXlQYt2FnsqdLBpq",
+  "__v": 0,
+  "amount": -6,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75dcb5d96ef03008bc44b"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.470Z"
+  },
+  "date": {
+    "$date": "2023-11-01T12:32:30.000Z"
+  },
+  "description": "GOOGLE*GSUITE JAKEMEDL CC GOOGLE.COM IRL",
+  "name": "Gsuite Jakemedl",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:28:11.869Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951022"
+  },
+  "monzoId": "tx_0000AbMf8vnrkH5A6gDWvy",
+  "__v": 0,
+  "amount": -5.2,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.471Z"
+  },
+  "date": {
+    "$date": "2023-11-01T13:55:11.000Z"
+  },
+  "description": "TESCO STORES 2639      HARLOW E-WAY  GBR",
+  "name": "Tesco",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:42:42.885Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951024"
+  },
+  "monzoId": "tx_0000AbNnrc5QtKio7X0Xz8",
+  "__v": 0,
+  "amount": -23.45,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75f155d96ef03008be197"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.472Z"
+  },
+  "date": {
+    "$date": "2023-11-02T03:07:36.000Z"
+  },
+  "description": "525633772   /33147",
+  "name": "Petplan",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:33:42.281Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951026"
+  },
+  "monzoId": "tx_0000AbOEec2eRdBRxbIkRV",
+  "__v": 0,
+  "amount": -50,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b1b5d96ef03008b69c8"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.474Z"
+  },
+  "date": {
+    "$date": "2023-11-02T08:07:47.000Z"
+  },
+  "description": "",
+  "name": "Ann-Marie Medler",
+  "type": "Monzo-to-Monzo",
+  "updatedAt": {
+    "$date": "2024-02-10T11:16:45.913Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951028"
+  },
+  "monzoId": "tx_0000AbOEqoxsDu1omQaheb",
+  "__v": 0,
+  "amount": -50,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75e235d96ef03008bcb9e"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.475Z"
+  },
+  "date": {
+    "$date": "2023-11-02T08:10:00.000Z"
+  },
+  "description": "",
+  "name": "Jake Medler",
+  "type": "Monzo-to-Monzo",
+  "updatedAt": {
+    "$date": "2024-02-10T11:29:46.723Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595102a"
+  },
+  "monzoId": "tx_0000AbOb7Iw8kmxcLYUhus",
+  "__v": 0,
+  "amount": -40,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b325d96ef03008b793a"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.477Z"
+  },
+  "date": {
+    "$date": "2023-11-02T12:19:29.000Z"
+  },
+  "description": "SumUp  *Anna Louise ha Norwich       GBR",
+  "name": "Anna Louise Ha",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:17:06.973Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595102c"
+  },
+  "monzoId": "tx_0000AbOpE6bwNU4bVKBQYL",
+  "__v": 0,
+  "amount": -55,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75afa5d96ef03008b5bb7"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.478Z"
+  },
+  "date": {
+    "$date": "2023-11-02T14:57:35.000Z"
+  },
+  "description": "AMZNMktplace           amazon.co.uk  GBR",
+  "name": "Amazon",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:16:10.390Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595102e"
+  },
+  "monzoId": "tx_0000AbPsNsK0qyAWVQsFuc",
+  "__v": 0,
+  "amount": -300,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75eec5d96ef03008bde5f"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.479Z"
+  },
+  "date": {
+    "$date": "2023-11-03T03:07:40.000Z"
+  },
+  "description": "A-A53A54E6-001",
+  "name": "Octopus Energy",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:33:00.687Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951030"
+  },
+  "monzoId": "tx_0000AbQLI2CS6yEQbJdtgY",
+  "__v": 0,
+  "amount": -6.15,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.480Z"
+  },
+  "date": {
+    "$date": "2023-11-03T08:31:34.000Z"
+  },
+  "description": "TESCO STORES 2639      HARLOW E-WAY  GBR",
+  "name": "Tesco",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:42:43.242Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951032"
+  },
+  "monzoId": "tx_0000AbRKLNuRwjuwBm4dMH",
+  "__v": 0,
+  "amount": -37.61,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.481Z"
+  },
+  "date": {
+    "$date": "2023-11-03T19:55:41.000Z"
+  },
+  "description": "SAINSBURYS             ATTELEBOROUGH GBR",
+  "name": "Sainsbury’s",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:35:01.010Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951034"
+  },
+  "monzoId": "tx_0000AbRMIX91M1ckyCaoEr",
+  "__v": 0,
+  "amount": -9.99,
+  "archived": false,
+  "budget": {
+    "$oid": "65c7613d5d96ef03008bf189"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.482Z"
+  },
+  "date": {
+    "$date": "2023-11-03T20:17:34.000Z"
+  },
+  "description": "Tesla                  West Drayton  GBR",
+  "name": "Tesla",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:42:53.268Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951036"
+  },
+  "monzoId": "tx_0000AbSm35orSTBs1XMzmj",
+  "__v": 0,
+  "amount": -20,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75a0e5d96ef03008b51f5"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.483Z"
+  },
+  "date": {
+    "$date": "2023-11-04T12:40:49.000Z"
+  },
+  "description": "HIGH STREET Sainsburys ATTLEBOROUGH  GBR",
+  "name": "ATM",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:12:14.629Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951038"
+  },
+  "monzoId": "tx_0000AbTFB0uaUBh8y7bcjx",
+  "__v": 0,
+  "amount": -78,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75de05d96ef03008bc524"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.485Z"
+  },
+  "date": {
+    "$date": "2023-11-04T18:07:12.000Z"
+  },
+  "description": "NEXT DIRECTORY         ONLINE        GBR",
+  "name": "Next",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:32:25.363Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595103a"
+  },
+  "monzoId": "tx_0000AbUwtaKceAPP4bRe6r",
+  "__v": 0,
+  "amount": -32.3,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.486Z"
+  },
+  "date": {
+    "$date": "2023-11-05T13:51:47.000Z"
+  },
+  "description": "SAINSBURYS - LONGWATER NORWICH       GBR",
+  "name": "Sainsbury’s",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:35:01.458Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595103c"
+  },
+  "monzoId": "tx_0000AbV9mwFw26ejU42b34",
+  "__v": 0,
+  "amount": -2.99,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b3d5d96ef03008b7b19"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.487Z"
+  },
+  "date": {
+    "$date": "2023-11-05T16:16:15.000Z"
+  },
+  "description": "APPLE.COM/BILL         APPLE.COM/BIL IRL",
+  "name": "Apple",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:17:17.094Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595103e"
+  },
+  "monzoId": "tx_0000AbVMHGa4EI9o8EwpXe",
+  "__v": 0,
+  "amount": -27.5,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75d115d96ef03008bbd41"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.488Z"
+  },
+  "date": {
+    "$date": "2023-11-05T18:36:11.000Z"
+  },
+  "description": "SHAPLA TANDOORI        ATTLEBOROUGH  GBR",
+  "name": "Shapla Tandoori",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:41:30.886Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951040"
+  },
+  "monzoId": "tx_0000AbW0uaLweArGuglT7q",
+  "__v": 0,
+  "amount": 0,
+  "archived": true,
+  "budget": null,
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.490Z"
+  },
+  "date": {
+    "$date": "2023-11-06T02:11:30.000Z"
+  },
+  "description": "APPLE.COM/BILL         APPLE.COM/BIL IRL",
+  "name": "Apple",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:08:43.224Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951042"
+  },
+  "monzoId": "tx_0000AbW6DXvEPOKgq3sUKo",
+  "__v": 0,
+  "amount": -202,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b925d96ef03008b978b"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.491Z"
+  },
+  "date": {
+    "$date": "2023-11-06T03:10:57.000Z"
+  },
+  "description": "0000053686354CC",
+  "name": "Breckland Council",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:18:42.773Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951044"
+  },
+  "monzoId": "tx_0000AbW7JuPvmj2EIWpqZF",
+  "__v": 0,
+  "amount": -49.52,
+  "archived": false,
+  "budget": {
+    "$oid": "65c760d05d96ef03008beeec"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.493Z"
+  },
+  "date": {
+    "$date": "2023-11-06T03:23:18.000Z"
+  },
+  "description": "001577825002010528",
+  "name": "Santander",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:41:04.554Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951046"
+  },
+  "monzoId": "tx_0000AbXJU99zDfto5HiXMP",
+  "__v": 0,
+  "amount": -2.79,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.495Z"
+  },
+  "date": {
+    "$date": "2023-11-06T17:14:20.000Z"
+  },
+  "description": "WH Smith Eurotunnel    Folkestone    GBR",
+  "name": "WHSmith",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:44:30.838Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951048"
+  },
+  "monzoId": "tx_0000AbXJuZC536K1O7HRYn",
+  "__v": 0,
+  "amount": -23.76,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.496Z"
+  },
+  "date": {
+    "$date": "2023-11-06T17:19:06.000Z"
+  },
+  "description": "HMSHost Eurotunnel     Folkestone    GBR",
+  "name": "Eurotunnel",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:26:36.892Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595104a"
+  },
+  "monzoId": "tx_0000AbXOoLUjZJoDQBpaDq",
+  "__v": 0,
+  "amount": -9,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.497Z"
+  },
+  "date": {
+    "$date": "2023-11-06T18:14:00.000Z"
+  },
+  "description": "EUROTUNNEL UK WDF      ASHFORD ROAD  GBR",
+  "name": "Eurotunnel UK Wdf",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:26:45.697Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595104c"
+  },
+  "monzoId": "tx_0000AbXQDefBXOa0Wi8cSY",
+  "__v": 0,
+  "amount": -21.15,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75f405d96ef03008be487"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.499Z"
+  },
+  "date": {
+    "$date": "2023-11-06T18:29:47.000Z"
+  },
+  "description": "Tesla Inc.             West Drayton  GBR",
+  "name": "Tesla",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:43:07.388Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595104e"
+  },
+  "monzoId": "tx_0000AbY0Jq7ZRmaTQ7Jw16",
+  "__v": 0,
+  "amount": -2.5,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75d055d96ef03008bbb6a"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.500Z"
+  },
+  "date": {
+    "$date": "2023-11-07T01:14:17.000Z"
+  },
+  "description": "",
+  "name": "Dart Charge Auto Top",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:24:53.557Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951050"
+  },
+  "monzoId": "tx_0000AbYcDsBGfmdi0yZ8yp",
+  "__v": 0,
+  "amount": -17.01,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.501Z"
+  },
+  "date": {
+    "$date": "2023-11-07T08:18:59.000Z"
+  },
+  "description": "SANEF                  SENLIS        FRA",
+  "name": "Sanef Autoroute",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:35:06.285Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951052"
+  },
+  "monzoId": "tx_0000AbYdIdCRtoODGh17GT",
+  "__v": 0,
+  "amount": -3.77,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75f405d96ef03008be487"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.502Z"
+  },
+  "date": {
+    "$date": "2023-11-07T08:31:03.000Z"
+  },
+  "description": "Tesla Inc.             Chambourcy    FRA",
+  "name": "Tesla",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:43:11.352Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951054"
+  },
+  "monzoId": "tx_0000AbYdTPAmOKDF1BUDOT",
+  "__v": 0,
+  "amount": -1.82,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.504Z"
+  },
+  "date": {
+    "$date": "2023-11-07T08:33:00.000Z"
+  },
+  "description": "SANEF                  SENLIS        FRA",
+  "name": "Sanef Autoroute",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:35:06.922Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951056"
+  },
+  "monzoId": "tx_0000AbYtPep1rfR67QAkFu",
+  "__v": 0,
+  "amount": -26.9,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.505Z"
+  },
+  "date": {
+    "$date": "2023-11-07T11:31:36.000Z"
+  },
+  "description": "EURO DISNEY ASSOCIES   CHESSY        FRA",
+  "name": "Disneyland Paris",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:21:22.395Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951058"
+  },
+  "monzoId": "tx_0000AbYwMtPJTpgE9OHib4",
+  "__v": 0,
+  "amount": -5.47,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.506Z"
+  },
+  "date": {
+    "$date": "2023-11-07T12:04:43.000Z"
+  },
+  "description": "EURO DISNEY ASSOCIES   CHESSY        FRA",
+  "name": "Disneyland Paris",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:21:53.884Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595105a"
+  },
+  "monzoId": "tx_0000AbZIUedqSauJGbzfwf",
+  "__v": 0,
+  "amount": -16.32,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.507Z"
+  },
+  "date": {
+    "$date": "2023-11-07T16:12:38.000Z"
+  },
+  "description": "EURO DISNEY ASSOCIES   CHESSY        FRA",
+  "name": "Disneyland Paris",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:21:54.673Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595105c"
+  },
+  "monzoId": "tx_0000AbZfUxAhrdb7osHJBp",
+  "__v": 0,
+  "amount": -75.21,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.509Z"
+  },
+  "date": {
+    "$date": "2023-11-07T20:30:24.000Z"
+  },
+  "description": "RAINFOREST CAFE        CHESSY        FRA",
+  "name": "Rainforest Cafe",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:34:42.274Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595105e"
+  },
+  "monzoId": "tx_0000AbZixKK9g2htDKjwNF",
+  "__v": 0,
+  "amount": -24.78,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.510Z"
+  },
+  "date": {
+    "$date": "2023-11-07T21:09:09.000Z"
+  },
+  "description": "EURO DISNEY ASSOCIES   CHESSY        FRA",
+  "name": "Disneyland Paris",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:21:55.299Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951060"
+  },
+  "monzoId": "tx_0000AbayiLiA1wvfpYnBFx",
+  "__v": 0,
+  "amount": -26.52,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.511Z"
+  },
+  "date": {
+    "$date": "2023-11-08T11:40:26.000Z"
+  },
+  "description": "EURO DISNEY ASSOCIES   CHESSY        FRA",
+  "name": "Disneyland Paris",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:21:55.780Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951062"
+  },
+  "monzoId": "tx_0000Abb3c3cCti8SLWe7mb",
+  "__v": 0,
+  "amount": -6.96,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.512Z"
+  },
+  "date": {
+    "$date": "2023-11-08T12:35:19.000Z"
+  },
+  "description": "EURO DISNEY ASSOCIES   CHESSY        FRA",
+  "name": "Disneyland Paris",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:21:56.298Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951064"
+  },
+  "monzoId": "tx_0000Abb4RHTr6dtKtvY73C",
+  "__v": 0,
+  "amount": -2.99,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b3d5d96ef03008b7b19"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.513Z"
+  },
+  "date": {
+    "$date": "2023-11-08T12:44:35.000Z"
+  },
+  "description": "APPLE.COM/BILL         08001076285   IRL",
+  "name": "Apple",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:17:18.272Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951066"
+  },
+  "monzoId": "tx_0000Abb6I7iEFpzSPm6PtR",
+  "__v": 0,
+  "amount": -4.35,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.515Z"
+  },
+  "date": {
+    "$date": "2023-11-08T13:05:20.000Z"
+  },
+  "description": "EURO DISNEY ASSOCIES   CHESSY        FRA",
+  "name": "Disneyland Paris",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:21:56.820Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951068"
+  },
+  "monzoId": "tx_0000AbbBlmUuC9yJsT5K8Q",
+  "__v": 0,
+  "amount": -19.13,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.516Z"
+  },
+  "date": {
+    "$date": "2023-11-08T14:06:43.000Z"
+  },
+  "description": "EURO DISNEY ASSOCIES   CHESSY        FRA",
+  "name": "Disneyland Paris",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:21:57.250Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595106a"
+  },
+  "monzoId": "tx_0000AbbCNJ0YHihJhfOutV",
+  "__v": 0,
+  "amount": -34.78,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.517Z"
+  },
+  "date": {
+    "$date": "2023-11-08T14:13:30.000Z"
+  },
+  "description": "EURO DISNEY ASSOCIES   CHESSY        FRA",
+  "name": "Disneyland Paris",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:21:57.677Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595106c"
+  },
+  "monzoId": "tx_0000AbblFjpYAk8fgND1vf",
+  "__v": 0,
+  "amount": -10.46,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.518Z"
+  },
+  "date": {
+    "$date": "2023-11-08T20:44:18.000Z"
+  },
+  "description": "EURO DISNEY ASSOCIES   CHESSY        FRA",
+  "name": "Disneyland Paris",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:21:58.404Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595106e"
+  },
+  "monzoId": "tx_0000Abbm1LeHNmYJ987vPd",
+  "__v": 0,
+  "amount": -22.66,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.519Z"
+  },
+  "date": {
+    "$date": "2023-11-08T20:52:55.000Z"
+  },
+  "description": "EURO DISNEY ASSOCIES   CHESSY        FRA",
+  "name": "Disneyland Paris",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:21:59.029Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951070"
+  },
+  "monzoId": "tx_0000Abcts3EvS1RQisFNPl",
+  "__v": 0,
+  "amount": -4.36,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.520Z"
+  },
+  "date": {
+    "$date": "2023-11-09T09:55:35.000Z"
+  },
+  "description": "EURO DISNEY ASSOCIES   CHESSY        FRA",
+  "name": "Disneyland Paris",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:21:59.756Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951072"
+  },
+  "monzoId": "tx_0000AbdCWBRQAwPLD8iEdN",
+  "__v": 0,
+  "amount": -29.64,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.521Z"
+  },
+  "date": {
+    "$date": "2023-11-09T13:24:32.000Z"
+  },
+  "description": "EURO DISNEY ASSOCIES   CHESSY        FRA",
+  "name": "Disneyland Paris",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:22:00.237Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951074"
+  },
+  "monzoId": "tx_0000AbdKOBBG3mL6JcqymH",
+  "__v": 0,
+  "amount": -8.99,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b045d96ef03008b63d5"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.522Z"
+  },
+  "date": {
+    "$date": "2023-11-09T14:52:43.000Z"
+  },
+  "description": "Amazon Prime           amzn.co.uk/pm GBR",
+  "name": "Amazon Prime",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:16:20.527Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951076"
+  },
+  "monzoId": "tx_0000AbdOfeujAHerioAWf4",
+  "__v": 0,
+  "amount": -16.56,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.524Z"
+  },
+  "date": {
+    "$date": "2023-11-09T15:40:42.000Z"
+  },
+  "description": "EURO DISNEY ASSOCIES   CHESSY        FRA",
+  "name": "Disneyland Paris",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:22:00.693Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951078"
+  },
+  "monzoId": "tx_0000AbdQyPSl2GzLYSeS2N",
+  "__v": 0,
+  "amount": -27.89,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.525Z"
+  },
+  "date": {
+    "$date": "2023-11-09T16:06:30.000Z"
+  },
+  "description": "EURO DISNEY ASSOCIES   CHESSY        FRA",
+  "name": "Disneyland Paris",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:22:01.170Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595107a"
+  },
+  "monzoId": "tx_0000AbdpFVMClvMz0CRyj5",
+  "__v": 0,
+  "amount": -119.59,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.527Z"
+  },
+  "date": {
+    "$date": "2023-11-09T20:38:30.000Z"
+  },
+  "description": "RAINFOREST CAFE        CHESSY        FRA",
+  "name": "Rainforest Cafe",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:34:43.513Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595107c"
+  },
+  "monzoId": "tx_0000AbeNVjHg9kZ0VdutBj",
+  "__v": 0,
+  "amount": -57.47,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75ee45d96ef03008bddce"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.528Z"
+  },
+  "date": {
+    "$date": "2023-11-10T03:02:25.000Z"
+  },
+  "description": "031220917/27",
+  "name": "Novuna Personal Finance",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:32:52.195Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595107e"
+  },
+  "monzoId": "tx_0000AbeOCn7jkwnYlVxVLu",
+  "__v": 0,
+  "amount": -76.42,
+  "archived": false,
+  "budget": {
+    "$oid": "65c760bd5d96ef03008beead"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.529Z"
+  },
+  "date": {
+    "$date": "2023-11-10T03:10:12.000Z"
+  },
+  "description": "001577825002049614",
+  "name": "Santander",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:40:45.592Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951080"
+  },
+  "monzoId": "tx_0000Abf7fIJ9u58tZ3GZYg",
+  "__v": 0,
+  "amount": -3.49,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.531Z"
+  },
+  "date": {
+    "$date": "2023-11-10T11:39:34.000Z"
+  },
+  "description": "EURO DISNEY ASSOCIES   CHESSY        FRA",
+  "name": "Disneyland Paris",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:22:01.578Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951082"
+  },
+  "monzoId": "tx_0000AbfBkLym54lk3Auzli",
+  "__v": 0,
+  "amount": -25.31,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.532Z"
+  },
+  "date": {
+    "$date": "2023-11-10T12:25:18.000Z"
+  },
+  "description": "EURO DISNEY ASSOCIES   CHESSY        FRA",
+  "name": "Disneyland Paris",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:22:02.018Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951084"
+  },
+  "monzoId": "tx_0000AbfT80EYHR3Yswer2H",
+  "__v": 0,
+  "amount": -28.63,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.533Z"
+  },
+  "date": {
+    "$date": "2023-11-10T15:40:04.000Z"
+  },
+  "description": "EURO DISNEY ASSOCIES   CHESSY        FRA",
+  "name": "Disneyland Paris",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:22:02.470Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951086"
+  },
+  "monzoId": "tx_0000Abfu2DSYtIkIrzTpcv",
+  "__v": 0,
+  "amount": -28.03,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.534Z"
+  },
+  "date": {
+    "$date": "2023-11-10T20:41:33.000Z"
+  },
+  "description": "EURO DISNEY ASSOCIES   CHESSY        FRA",
+  "name": "Disneyland Paris",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:22:03.118Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951088"
+  },
+  "monzoId": "tx_0000Abfvs2Td4NkHotFpY5",
+  "__v": 0,
+  "amount": -34.16,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.536Z"
+  },
+  "date": {
+    "$date": "2023-11-10T21:02:07.000Z"
+  },
+  "description": "EURO DISNEY ASSOCIES   CHESSY        FRA",
+  "name": "Disneyland Paris",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:22:03.698Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595108a"
+  },
+  "monzoId": "tx_0000AbfzKuaflnLBZehso8",
+  "__v": 0,
+  "amount": -47.98,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75d115d96ef03008bbd41"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.537Z"
+  },
+  "date": {
+    "$date": "2023-11-10T21:40:57.000Z"
+  },
+  "description": "UBER   * EATS PENDING  Amsterdam     NLD",
+  "name": "Uber Eats",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:43:53.749Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595108c"
+  },
+  "monzoId": "tx_0000Abgv4jcwYg7t8bUOrh",
+  "__v": 0,
+  "amount": 700,
+  "archived": false,
+  "budget": {
+    "$oid": "65c760405d96ef03008bec08"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.539Z"
+  },
+  "date": {
+    "$date": "2023-11-11T08:27:56.000Z"
+  },
+  "description": "",
+  "name": "Savings Pot",
+  "type": "Pot transfer",
+  "updatedAt": {
+    "$date": "2024-02-10T11:39:54.749Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595108e"
+  },
+  "monzoId": "tx_0000Abh1dplqJAoNt5oYSH",
+  "__v": 0,
+  "amount": -22.68,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.541Z"
+  },
+  "date": {
+    "$date": "2023-11-11T09:41:30.000Z"
+  },
+  "description": "MOULIN DE CHESSY       CHESSY        FRA",
+  "name": "Moulin De Chessy",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:30:49.350Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951090"
+  },
+  "monzoId": "tx_0000Abh2HmWDonRhPJ3237",
+  "__v": 0,
+  "amount": -3.26,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.542Z"
+  },
+  "date": {
+    "$date": "2023-11-11T09:48:43.000Z"
+  },
+  "description": "CARREFOUR CITY         CHESSY        FRA",
+  "name": "Carrefour",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:19:45.728Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951092"
+  },
+  "monzoId": "tx_0000Abh8npMTNro8fHMwmv",
+  "__v": 0,
+  "amount": -13.46,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75f405d96ef03008be487"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.543Z"
+  },
+  "date": {
+    "$date": "2023-11-11T11:01:44.000Z"
+  },
+  "description": "Tesla Inc.             Chambourcy    FRA",
+  "name": "Tesla",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:43:14.799Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951094"
+  },
+  "monzoId": "tx_0000AbhHfc2XvZjVJTSF88",
+  "__v": 0,
+  "amount": -15.85,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.545Z"
+  },
+  "date": {
+    "$date": "2023-11-11T12:41:06.000Z"
+  },
+  "description": "SANEF                  SENLIS        FRA",
+  "name": "Sanef Autoroute",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:35:07.427Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951096"
+  },
+  "monzoId": "tx_0000AbhL0uMnHidIjE4JZR",
+  "__v": 0,
+  "amount": -8.13,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75f405d96ef03008be487"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.546Z"
+  },
+  "date": {
+    "$date": "2023-11-11T13:18:34.000Z"
+  },
+  "description": "Tesla Inc.             Chambourcy    FRA",
+  "name": "Tesla",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:43:19.105Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951098"
+  },
+  "monzoId": "tx_0000AbhTx3gZatVpQYGJGt",
+  "__v": 0,
+  "amount": -48.17,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.547Z"
+  },
+  "date": {
+    "$date": "2023-11-11T14:58:43.000Z"
+  },
+  "description": "LA HOUBLONNIERE        LILLE         FRA",
+  "name": "La Houblonniere",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:30:00.491Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595109a"
+  },
+  "monzoId": "tx_0000AbhVMEGvTIIFJNMmH3",
+  "__v": 0,
+  "amount": -4.29,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.548Z"
+  },
+  "date": {
+    "$date": "2023-11-11T15:14:28.000Z"
+  },
+  "description": "INDIGO 590028          LILLE         FRA",
+  "name": "Indigo 590028",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:29:15.046Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595109c"
+  },
+  "monzoId": "tx_0000AbhdYSom0zaaJBJ2DS",
+  "__v": 0,
+  "amount": -0.68,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75f405d96ef03008be487"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.549Z"
+  },
+  "date": {
+    "$date": "2023-11-11T16:46:19.000Z"
+  },
+  "description": "Tesla Inc.             Chambourcy    FRA",
+  "name": "Tesla",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:43:21.721Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595109e"
+  },
+  "monzoId": "tx_0000AbhpK20S6OJlutM8G1",
+  "__v": 0,
+  "amount": -9,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75bd15d96ef03008b9937"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.550Z"
+  },
+  "date": {
+    "$date": "2023-11-11T18:58:10.000Z"
+  },
+  "description": "ORIDA HOTELS MAIDSTONE MAIDSTONE     GBR",
+  "name": "Orida Hotels Maidstone",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:33:04.290Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510a0"
+  },
+  "monzoId": "tx_0000AbhrP9BD3gkpMAzuQT",
+  "__v": 0,
+  "amount": -13.44,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75f405d96ef03008be487"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.552Z"
+  },
+  "date": {
+    "$date": "2023-11-11T19:21:30.000Z"
+  },
+  "description": "Tesla Inc.             West Drayton  GBR",
+  "name": "Tesla",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:43:24.487Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510a2"
+  },
+  "monzoId": "tx_0000Abi1r88pVnNP7dGLOD",
+  "__v": 0,
+  "amount": -23.8,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75d115d96ef03008bbd41"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.553Z"
+  },
+  "date": {
+    "$date": "2023-11-11T21:18:37.000Z"
+  },
+  "description": "POINT HOUSE            ATTLEBOROUGH  GBR",
+  "name": "Point House",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:34:38.698Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510a4"
+  },
+  "monzoId": "tx_0000AbiNGQMezghhC5R9qE",
+  "__v": 0,
+  "amount": -2.5,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75d055d96ef03008bbb6a"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.555Z"
+  },
+  "date": {
+    "$date": "2023-11-12T01:18:29.000Z"
+  },
+  "description": "",
+  "name": "Dart Charge Auto Top",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:24:55.043Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510a6"
+  },
+  "monzoId": "tx_0000AbiNzum0mUhKXPrqzZ",
+  "__v": 0,
+  "amount": -12.1,
+  "archived": false,
+  "budget": {
+    "$oid": "65c760f45d96ef03008bef9c"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.556Z"
+  },
+  "date": {
+    "$date": "2023-11-12T01:26:43.000Z"
+  },
+  "description": "SMOL LIMITED           +441252942440 GBR",
+  "name": "Smol ",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:41:40.854Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510a8"
+  },
+  "monzoId": "tx_0000Abj3Bg7VBTcyAIfDHP",
+  "__v": 0,
+  "amount": -5.2,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75d115d96ef03008bbd41"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.557Z"
+  },
+  "date": {
+    "$date": "2023-11-12T09:08:15.000Z"
+  },
+  "description": "NORWICH SNETTERTON DT  NORWICH       GBR",
+  "name": "Starbucks",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:41:58.912Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510aa"
+  },
+  "monzoId": "tx_0000Abj3PRgPenyZ76S7ZB",
+  "__v": 0,
+  "amount": -11.78,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75d115d96ef03008bbd41"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.558Z"
+  },
+  "date": {
+    "$date": "2023-11-12T09:10:44.000Z"
+  },
+  "description": "MCDONALDS 1562         SNETTERTON    GBR",
+  "name": "McDonald’s",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:30:42.268Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510ac"
+  },
+  "monzoId": "tx_0000Abj7v3hYkqxft8g5vH",
+  "__v": 0,
+  "amount": -9.49,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b3d5d96ef03008b7b19"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.559Z"
+  },
+  "date": {
+    "$date": "2023-11-12T10:01:16.000Z"
+  },
+  "description": "APPLE.COM/BILL         APPLE.COM/BIL IRL",
+  "name": "Apple",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:17:19.077Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510ae"
+  },
+  "monzoId": "tx_0000AbjUyMxBvjFonOuFLF",
+  "__v": 0,
+  "amount": -30.48,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75d115d96ef03008bbd41"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.561Z"
+  },
+  "date": {
+    "$date": "2023-11-12T14:19:35.000Z"
+  },
+  "description": "DOMINOS PIZZA UK & IRE MILTON KEYNES GBR",
+  "name": "Domino’s",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:25:05.039Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510b0"
+  },
+  "monzoId": "tx_0000Abk5bPFOvt5pYMKyDh",
+  "__v": 0,
+  "amount": -23.69,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.562Z"
+  },
+  "date": {
+    "$date": "2023-11-12T21:10:01.000Z"
+  },
+  "description": "CO-OP GROUP FOOD       NORWICH       GBR",
+  "name": "Co-op",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:24:36.561Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510b2"
+  },
+  "monzoId": "tx_0000Abk5k567DbDYHZlH0d",
+  "__v": 0,
+  "amount": -3,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.563Z"
+  },
+  "date": {
+    "$date": "2023-11-12T21:11:35.000Z"
+  },
+  "description": "CO-OP GROUP FOOD       NORWICH       GBR",
+  "name": "Co-op",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:24:37.661Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510b4"
+  },
+  "monzoId": "tx_0000Abkc9UdMbpIDWQi69y",
+  "__v": 0,
+  "amount": -405.81,
+  "archived": false,
+  "budget": {
+    "$oid": "65c760e65d96ef03008bef2a"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.564Z"
+  },
+  "date": {
+    "$date": "2023-11-13T03:14:44.000Z"
+  },
+  "description": "10022028643372",
+  "name": "Santander",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:41:26.759Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510b6"
+  },
+  "monzoId": "tx_0000AbkcFhRdtKHxVYgHdR",
+  "__v": 0,
+  "amount": -71.2,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75a135d96ef03008b535e"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.566Z"
+  },
+  "date": {
+    "$date": "2023-11-13T03:15:51.000Z"
+  },
+  "description": "P70648082010000018",
+  "name": "Admiral",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:12:19.141Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510b8"
+  },
+  "monzoId": "tx_0000AblX8eB7KgQmjgqdOs",
+  "__v": 0,
+  "amount": -42.5,
+  "archived": false,
+  "budget": {
+    "$oid": "65c7612d5d96ef03008bf067"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.567Z"
+  },
+  "date": {
+    "$date": "2023-11-13T13:53:16.000Z"
+  },
+  "description": "TAILS.COM              +442033224448 GBR",
+  "name": "Tails.com",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:42:37.939Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510ba"
+  },
+  "monzoId": "tx_0000AbleAMwf4jhxXwr2zS",
+  "__v": 0,
+  "amount": -14,
+  "archived": false,
+  "budget": {
+    "$oid": "65c759ff5d96ef03008b4c44"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.568Z"
+  },
+  "date": {
+    "$date": "2023-11-13T15:12:01.000Z"
+  },
+  "description": "1753",
+  "name": "Bowwalk",
+  "type": "Faster payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:11:59.031Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510bc"
+  },
+  "monzoId": "tx_0000AbleEzabL5WAAxie3N",
+  "__v": 0,
+  "amount": -16,
+  "archived": false,
+  "budget": {
+    "$oid": "65c759ff5d96ef03008b4c44"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.569Z"
+  },
+  "date": {
+    "$date": "2023-11-13T15:12:51.000Z"
+  },
+  "description": "1783",
+  "name": "Bowwalk",
+  "type": "Faster payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:12:05.973Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510be"
+  },
+  "monzoId": "tx_0000AbleKf1Kj6PmgAQDa5",
+  "__v": 0,
+  "amount": -38,
+  "archived": false,
+  "budget": {
+    "$oid": "65c759ff5d96ef03008b4c44"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.572Z"
+  },
+  "date": {
+    "$date": "2023-11-13T15:13:52.000Z"
+  },
+  "description": "1793",
+  "name": "Bowwalk",
+  "type": "Faster payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:12:06.964Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510c0"
+  },
+  "monzoId": "tx_0000AblwMvPKZLW2hKNb3B",
+  "__v": 0,
+  "amount": -28.4,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75d115d96ef03008bbd41"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.573Z"
+  },
+  "date": {
+    "$date": "2023-11-13T18:35:58.000Z"
+  },
+  "description": "MUTLU CATERING LTD t/a ATTLEBOROUGH  GBR",
+  "name": "Mutlu Catering LTD T/A",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:30:54.647Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510c2"
+  },
+  "monzoId": "tx_0000Abnmu2ETbYkSMnxKXx",
+  "__v": 0,
+  "amount": 0,
+  "archived": true,
+  "budget": null,
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.574Z"
+  },
+  "date": {
+    "$date": "2023-11-14T15:59:20.000Z"
+  },
+  "description": "ASDA GROCERIES ONLINE  INTERNET      GBR",
+  "name": "Asda",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:00:52.580Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510c4"
+  },
+  "monzoId": "tx_0000AbnnZkmas9SCoAvCwk",
+  "__v": 0,
+  "amount": -95.49,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.575Z"
+  },
+  "date": {
+    "$date": "2023-11-14T16:06:52.000Z"
+  },
+  "description": "ASDA GROCERIES ONLINE  INTERNET      GBR",
+  "name": "Asda",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:17:59.199Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510c6"
+  },
+  "monzoId": "tx_0000AbnnqHXSr2Xc3Ssw9x",
+  "__v": 0,
+  "amount": -8,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75afb5d96ef03008b5dc3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.576Z"
+  },
+  "date": {
+    "$date": "2023-11-14T16:09:51.000Z"
+  },
+  "description": "AMZNMktplace           amazon.co.uk  GBR",
+  "name": "Amazon",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:16:11.662Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510c8"
+  },
+  "monzoId": "tx_0000AboJBqbUm9suAC2B5l",
+  "__v": 0,
+  "amount": 8,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75afd5d96ef03008b5fcc"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.577Z"
+  },
+  "date": {
+    "$date": "2023-11-14T22:01:07.000Z"
+  },
+  "description": "AMAZON MARKETPLACE     AMAZON.CO.UK  GBR",
+  "name": "Amazon",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:16:13.172Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510ca"
+  },
+  "monzoId": "tx_0000AboOKHovy52txxfA8Y",
+  "__v": 0,
+  "amount": 0,
+  "archived": true,
+  "budget": null,
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.578Z"
+  },
+  "date": {
+    "$date": "2023-11-14T22:58:40.000Z"
+  },
+  "description": "ASDA GROCERIES ONLINE  INTERNET      GBR",
+  "name": "Asda",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:08:49.679Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510cc"
+  },
+  "monzoId": "tx_0000AboQOuTkNZElcpaNEo",
+  "__v": 0,
+  "amount": -22.64,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.579Z"
+  },
+  "date": {
+    "$date": "2023-11-14T23:21:54.000Z"
+  },
+  "description": "ASDA GROCERIES ONLINE  INTERNET      GBR",
+  "name": "Asda",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:18:00.052Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510ce"
+  },
+  "monzoId": "tx_0000AbokpgWWN2T5vcE5M9",
+  "__v": 0,
+  "amount": -8,
+  "archived": false,
+  "budget": {
+    "$oid": "65c7619a5d96ef03008bf292"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.581Z"
+  },
+  "date": {
+    "$date": "2023-11-15T03:10:51.000Z"
+  },
+  "description": "7081643407-1001",
+  "name": "Vodafone",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:44:26.514Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510d0"
+  },
+  "monzoId": "tx_0000AbokuF2rxfjdZ7tYG1",
+  "__v": 0,
+  "amount": -8,
+  "archived": false,
+  "budget": {
+    "$oid": "65c7619a5d96ef03008bf292"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.582Z"
+  },
+  "date": {
+    "$date": "2023-11-15T03:11:40.000Z"
+  },
+  "description": "7081667944-1001",
+  "name": "Vodafone",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:44:27.634Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510d2"
+  },
+  "monzoId": "tx_0000AbqyxLbDpyTcR5G4Qt",
+  "__v": 0,
+  "amount": 2,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.583Z"
+  },
+  "date": {
+    "$date": "2023-11-16T04:58:31.000Z"
+  },
+  "description": "ASDA GROCERIES ONLINE\\ASDA HOUSE SOUTHBANK\\INTERNET\\LS11 5AD  GBRGBR",
+  "name": "Asda",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:18:01.246Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510d4"
+  },
+  "monzoId": "tx_0000AbqyxRit4OAnQatHDG",
+  "__v": 0,
+  "amount": 1.25,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.584Z"
+  },
+  "date": {
+    "$date": "2023-11-16T04:58:33.000Z"
+  },
+  "description": "ASDA GROCERIES ONLINE\\ASDA HOUSE SOUTHBANK\\INTERNET\\LS11 5AD  GBRGBR",
+  "name": "Asda",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:18:02.045Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510d6"
+  },
+  "monzoId": "tx_0000AbqyxTWYNE5Ts8e3uc",
+  "__v": 0,
+  "amount": 1.5,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.585Z"
+  },
+  "date": {
+    "$date": "2023-11-16T04:58:33.000Z"
+  },
+  "description": "ASDA GROCERIES ONLINE\\ASDA HOUSE SOUTHBANK\\INTERNET\\LS11 5AD  GBRGBR",
+  "name": "Asda",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:18:03.153Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510d8"
+  },
+  "monzoId": "tx_0000AbtEyDTnUze7KJiTZ4",
+  "__v": 0,
+  "amount": -100,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b1b5d96ef03008b69c8"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.586Z"
+  },
+  "date": {
+    "$date": "2023-11-17T07:07:23.000Z"
+  },
+  "description": "",
+  "name": "Ann-Marie Medler",
+  "type": "Monzo-to-Monzo",
+  "updatedAt": {
+    "$date": "2024-02-10T11:16:46.904Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510da"
+  },
+  "monzoId": "tx_0000AbuKmkyzu1qYx5tL3x",
+  "__v": 0,
+  "amount": -37.15,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.588Z"
+  },
+  "date": {
+    "$date": "2023-11-17T19:47:15.000Z"
+  },
+  "description": "SAINSBURYS             ATTELEBOROUGH GBR",
+  "name": "Sainsbury’s",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:35:01.941Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510dc"
+  },
+  "monzoId": "tx_0000AbuadnTUro7w8nS9Zp",
+  "__v": 0,
+  "amount": 0,
+  "archived": true,
+  "budget": null,
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.589Z"
+  },
+  "date": {
+    "$date": "2023-11-17T22:44:55.000Z"
+  },
+  "description": "APPLE.COM/BILL         APPLE.COM/BIL IRL",
+  "name": "Apple",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:08:46.156Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510de"
+  },
+  "monzoId": "tx_0000AbuoVfEwzvXX8HJOYj",
+  "__v": 0,
+  "amount": 21,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75de05d96ef03008bc524"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.590Z"
+  },
+  "date": {
+    "$date": "2023-11-18T01:20:19.000Z"
+  },
+  "description": "",
+  "name": "H&M",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:28:32.848Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510e0"
+  },
+  "monzoId": "tx_0000Abuv5fED7RZ8oGAThs",
+  "__v": 0,
+  "amount": -15.99,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75ec25d96ef03008bdc12"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.591Z"
+  },
+  "date": {
+    "$date": "2023-11-18T02:34:03.000Z"
+  },
+  "description": "NETFLIX.COM            18665797172   GBR",
+  "name": "Netflix",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:32:18.583Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510e2"
+  },
+  "monzoId": "tx_0000AbxzztVoBL068TDgcz",
+  "__v": 0,
+  "amount": -13.78,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75d115d96ef03008bbd41"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.592Z"
+  },
+  "date": {
+    "$date": "2023-11-19T14:13:10.000Z"
+  },
+  "description": "MCDONALDS              NORWICH       GBR",
+  "name": "McDonald’s",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:30:44.279Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510e4"
+  },
+  "monzoId": "tx_0000Ac0IjxlStEjRqegp5G",
+  "__v": 0,
+  "amount": -12.5,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75d115d96ef03008bbd41"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.593Z"
+  },
+  "date": {
+    "$date": "2023-11-20T16:52:36.000Z"
+  },
+  "description": "WOODY'S FISH BSR       ATTLEBOROUGH  GBR",
+  "name": "Woody's Fish Bsr",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:44:34.089Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510e6"
+  },
+  "monzoId": "tx_0000Ac1aXO1zudcfEeWNJC",
+  "__v": 0,
+  "amount": -17.99,
+  "archived": false,
+  "budget": {
+    "$oid": "65c760fe5d96ef03008befd3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.594Z"
+  },
+  "date": {
+    "$date": "2023-11-21T07:46:44.000Z"
+  },
+  "description": "Spotify                London        GBR",
+  "name": "Spotify",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:41:52.176Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510e8"
+  },
+  "monzoId": "tx_0000Ac1ekC3AAYRrT5hYkz",
+  "__v": 0,
+  "amount": -6.15,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.595Z"
+  },
+  "date": {
+    "$date": "2023-11-21T08:33:52.000Z"
+  },
+  "description": "TESCO STORES 2639      HARLOW E-WAY  GBR",
+  "name": "Tesco",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:42:43.630Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510ea"
+  },
+  "monzoId": "tx_0000Ac2dtbdMVrGRDoea5y",
+  "__v": 0,
+  "amount": -19.02,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.596Z"
+  },
+  "date": {
+    "$date": "2023-11-21T19:59:05.000Z"
+  },
+  "description": "LIDL GB ATTLEBOROUGH   ATTLEBOROUGH  GBR",
+  "name": "Lidl",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:30:29.290Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510ec"
+  },
+  "monzoId": "tx_0000Ac4m63AX9Th3nKfARu",
+  "__v": 0,
+  "amount": -15.58,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.597Z"
+  },
+  "date": {
+    "$date": "2023-11-22T20:40:23.000Z"
+  },
+  "description": "LIDL GB ATTLEBOROUGH   ATTLEBOROUGH  GBR",
+  "name": "Lidl",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:30:30.059Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510ee"
+  },
+  "monzoId": "tx_0000Ac5b5hiE1RztOYiEmf",
+  "__v": 0,
+  "amount": -97.36,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.597Z"
+  },
+  "date": {
+    "$date": "2023-11-23T06:11:47.000Z"
+  },
+  "description": "SAINSBURYS             LONDON        GBR",
+  "name": "Sainsbury’s",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:35:02.375Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510f0"
+  },
+  "monzoId": "tx_0000Ac6irR3IA4mkJERCuP",
+  "__v": 0,
+  "amount": 100,
+  "archived": false,
+  "budget": {
+    "$oid": "65c760405d96ef03008bec08"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.598Z"
+  },
+  "date": {
+    "$date": "2023-11-23T19:13:33.000Z"
+  },
+  "description": "",
+  "name": "Savings Pot",
+  "type": "Pot transfer",
+  "updatedAt": {
+    "$date": "2024-02-10T11:39:55.184Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510f2"
+  },
+  "monzoId": "tx_0000Ac78cscrxSa712NUlV",
+  "__v": 0,
+  "amount": -8,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75f5f5d96ef03008be72b"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.599Z"
+  },
+  "date": {
+    "$date": "2023-11-24T00:02:15.000Z"
+  },
+  "description": "RING UNLIMITED MONTHLY +441727263045 GBR",
+  "name": "Ring",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:34:56.284Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510f4"
+  },
+  "monzoId": "tx_0000Ac7P1Ked012Piy94a2",
+  "__v": 0,
+  "amount": -34.99,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75f225d96ef03008be394"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.600Z"
+  },
+  "date": {
+    "$date": "2023-11-24T03:05:57.000Z"
+  },
+  "description": "PNET5268308-1",
+  "name": "Plusnet",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:33:56.091Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510f6"
+  },
+  "monzoId": "tx_0000Ac8ZNnXbTOZ0hbPhRb",
+  "__v": 0,
+  "amount": -6,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75e925d96ef03008bda42"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.601Z"
+  },
+  "date": {
+    "$date": "2023-11-24T16:36:47.000Z"
+  },
+  "description": "NCP LIMITED            IPSWICH       GBR",
+  "name": "NCP",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:31:30.048Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510f8"
+  },
+  "monzoId": "tx_0000Ac8q1GayyvqKmH0G2r",
+  "__v": 0,
+  "amount": -31.5,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.601Z"
+  },
+  "date": {
+    "$date": "2023-11-24T19:43:11.000Z"
+  },
+  "description": "SAINSBURYS             ATTELEBOROUGH GBR",
+  "name": "Sainsbury’s",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:35:03.021Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510fa"
+  },
+  "monzoId": "tx_0000Ac92gB7BShtFXGdRRZ",
+  "__v": 0,
+  "amount": 40,
+  "archived": false,
+  "budget": {
+    "$oid": "65c760405d96ef03008bec08"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.602Z"
+  },
+  "date": {
+    "$date": "2023-11-24T22:05:03.000Z"
+  },
+  "description": "",
+  "name": "Savings Pot",
+  "type": "Pot transfer",
+  "updatedAt": {
+    "$date": "2024-02-10T11:39:55.589Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510fc"
+  },
+  "monzoId": "tx_0000Ac92h9s3Za2jXAjOsr",
+  "__v": 0,
+  "amount": -32.99,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b8b5d96ef03008b942a"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.603Z"
+  },
+  "date": {
+    "$date": "2023-11-24T22:05:13.000Z"
+  },
+  "description": "WWW.BRANDALLEY.CO.UK   +441234230103 GBR",
+  "name": "BrandAlley",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:18:35.575Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b79259510fe"
+  },
+  "monzoId": "tx_0000Ac93HCZuz4CW9L90L3",
+  "__v": 0,
+  "amount": -32.99,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b8d5d96ef03008b95dc"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.604Z"
+  },
+  "date": {
+    "$date": "2023-11-24T22:11:44.000Z"
+  },
+  "description": "WWW.BRANDALLEY.CO.UK   +441234230103 GBR",
+  "name": "BrandAlley",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:18:37.148Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951100"
+  },
+  "monzoId": "tx_0000AcBpQqA0N9I2a5imQ6",
+  "__v": 0,
+  "amount": 150,
+  "archived": false,
+  "budget": {
+    "$oid": "65c760405d96ef03008bec08"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.604Z"
+  },
+  "date": {
+    "$date": "2023-11-26T06:20:44.000Z"
+  },
+  "description": "",
+  "name": "Savings Pot",
+  "type": "Pot transfer",
+  "updatedAt": {
+    "$date": "2024-02-10T11:39:55.977Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951102"
+  },
+  "monzoId": "tx_0000AcBpT7Gbk2stkjeuR7",
+  "__v": 0,
+  "amount": -18,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b1b5d96ef03008b69c8"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.605Z"
+  },
+  "date": {
+    "$date": "2023-11-26T06:21:09.000Z"
+  },
+  "description": "",
+  "name": "Ann-Marie Medler",
+  "type": "Monzo-to-Monzo",
+  "updatedAt": {
+    "$date": "2024-02-10T11:16:47.808Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951104"
+  },
+  "monzoId": "tx_0000AcCvfMz5vLMHnQZCoD",
+  "__v": 0,
+  "amount": 46,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b1b5d96ef03008b69c8"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.606Z"
+  },
+  "date": {
+    "$date": "2023-11-26T19:05:18.000Z"
+  },
+  "description": "",
+  "name": "Ann-Marie Medler",
+  "type": "Monzo-to-Monzo",
+  "updatedAt": {
+    "$date": "2024-02-10T11:16:48.947Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951106"
+  },
+  "monzoId": "tx_0000AcD48lANtTmNzmQBMo",
+  "__v": 0,
+  "amount": -23.75,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75e825d96ef03008bd9a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.606Z"
+  },
+  "date": {
+    "$date": "2023-11-26T20:40:16.000Z"
+  },
+  "description": "WWW.PETSATHOME.COM     WILMSLOW      GBR",
+  "name": "Pets at Home",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:33:47.704Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951108"
+  },
+  "monzoId": "tx_0000AcD4m8NZWUkpi0XNA1",
+  "__v": 0,
+  "amount": -15.95,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75e045d96ef03008bc93f"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.607Z"
+  },
+  "date": {
+    "$date": "2023-11-26T20:47:23.000Z"
+  },
+  "description": "IL MAKIAGE             NEW YORK      USA",
+  "name": "Il Makiage",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:29:08.836Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595110a"
+  },
+  "monzoId": "tx_0000AcDbFakuISCIZndywD",
+  "__v": 0,
+  "amount": 19.4,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75dac5d96ef03008bc370"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.608Z"
+  },
+  "date": {
+    "$date": "2023-11-27T02:51:16.000Z"
+  },
+  "description": "Gtr Anglia Delay Repay\\1 Ely Place\\London\\EC1N 6RY  GBRGBR",
+  "name": "Greater Anglia",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:27:40.883Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595110c"
+  },
+  "monzoId": "tx_0000AcEyAMAbae9g3mhyBV",
+  "__v": 0,
+  "amount": -12.9,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75d625d96ef03008bbf11"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.609Z"
+  },
+  "date": {
+    "$date": "2023-11-27T18:42:42.000Z"
+  },
+  "description": "Etsy.com*ThePerfectPre London        GBR",
+  "name": "Etsy",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:26:26.801Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595110e"
+  },
+  "monzoId": "tx_0000AcF6ow22TWNeT8A9uz",
+  "__v": 0,
+  "amount": -65,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75de05d96ef03008bc524"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.610Z"
+  },
+  "date": {
+    "$date": "2023-11-27T20:19:43.000Z"
+  },
+  "description": "NEXT DIRECTORY         ONLINE        GBR",
+  "name": "Next",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:32:26.539Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951110"
+  },
+  "monzoId": "tx_0000AcFhxJqhVJ75ZJn6KA",
+  "__v": 0,
+  "amount": -83.57,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75eb75d96ef03008bdadf"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.610Z"
+  },
+  "date": {
+    "$date": "2023-11-28T03:15:49.000Z"
+  },
+  "description": "************3492",
+  "name": "NatWest",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:32:13.589Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951112"
+  },
+  "monzoId": "tx_0000AcGcapkMRCE45nFHur",
+  "__v": 0,
+  "amount": 100,
+  "archived": false,
+  "budget": {
+    "$oid": "65c760405d96ef03008bec08"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.611Z"
+  },
+  "date": {
+    "$date": "2023-11-28T13:50:26.000Z"
+  },
+  "description": "",
+  "name": "Savings Pot",
+  "type": "Pot transfer",
+  "updatedAt": {
+    "$date": "2024-02-10T11:39:56.294Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951114"
+  },
+  "monzoId": "tx_0000AcGfj6avyszcJXdc3t",
+  "__v": 0,
+  "amount": -6.75,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.612Z"
+  },
+  "date": {
+    "$date": "2023-11-28T14:25:33.000Z"
+  },
+  "description": "TESCO STORES 5210      DISS          GBR",
+  "name": "Tesco",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:42:44.181Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951116"
+  },
+  "monzoId": "tx_0000AcGjTZX31aMJACawSn",
+  "__v": 0,
+  "amount": -10.11,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.613Z"
+  },
+  "date": {
+    "$date": "2023-11-28T15:07:34.000Z"
+  },
+  "description": "LIDL GB ATTLEBOROUGH   ATTLEBOROUGH  GBR",
+  "name": "Lidl",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:30:30.529Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951118"
+  },
+  "monzoId": "tx_0000AcHX68ruzIpULXG8zi",
+  "__v": 0,
+  "amount": -30,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75f405d96ef03008be487"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.614Z"
+  },
+  "date": {
+    "$date": "2023-11-29T00:23:35.000Z"
+  },
+  "description": "POD POINT              +442072474114 GBR",
+  "name": "Pod Point",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:34:24.022Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595111a"
+  },
+  "monzoId": "tx_0000AcHZNElKWnT5SNSPFi",
+  "__v": 0,
+  "amount": 28.5,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75f405d96ef03008be487"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.615Z"
+  },
+  "date": {
+    "$date": "2023-11-29T00:49:05.000Z"
+  },
+  "description": "POD POINT              +442072474114 GBR",
+  "name": "Pod Point",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:34:34.616Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595111c"
+  },
+  "monzoId": "tx_0000AcIB1RHR6R7POGAa8H",
+  "__v": 0,
+  "amount": 3500,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75e235d96ef03008bcb9e"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.616Z"
+  },
+  "date": {
+    "$date": "2023-11-29T07:50:56.000Z"
+  },
+  "description": "",
+  "name": "Jake Medler",
+  "type": "Monzo-to-Monzo",
+  "updatedAt": {
+    "$date": "2024-02-10T11:29:47.738Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595111e"
+  },
+  "monzoId": "tx_0000AcIG1qleqBMAX8tpnm",
+  "__v": 0,
+  "amount": -779,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75e175d96ef03008bcad5"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.617Z"
+  },
+  "date": {
+    "$date": "2023-11-29T08:47:01.000Z"
+  },
+  "description": "Jake Car",
+  "name": "Innovate Live Ltd",
+  "type": "Faster payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:29:27.259Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951120"
+  },
+  "monzoId": "tx_0000AcIG5nodl22Tu7obYH",
+  "__v": 0,
+  "amount": 779,
+  "archived": false,
+  "budget": {
+    "$oid": "65c760405d96ef03008bec08"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.618Z"
+  },
+  "date": {
+    "$date": "2023-11-29T08:47:45.000Z"
+  },
+  "description": "",
+  "name": "Savings Pot",
+  "type": "Pot transfer",
+  "updatedAt": {
+    "$date": "2024-02-10T11:39:56.752Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951122"
+  },
+  "monzoId": "tx_0000AcIJbYerwrXOKZrdSN",
+  "__v": 0,
+  "amount": -46,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b1b5d96ef03008b69c8"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.619Z"
+  },
+  "date": {
+    "$date": "2023-11-29T09:27:06.000Z"
+  },
+  "description": "",
+  "name": "Ann-Marie Medler",
+  "type": "Monzo-to-Monzo",
+  "updatedAt": {
+    "$date": "2024-02-10T11:16:49.741Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951124"
+  },
+  "monzoId": "tx_0000AcJHgTCLfdP0r0zUyA",
+  "__v": 0,
+  "amount": -25.02,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.620Z"
+  },
+  "date": {
+    "$date": "2023-11-29T20:40:17.000Z"
+  },
+  "description": "LIDL GB ATTLEBOROUGH   ATTLEBOROUGH  GBR",
+  "name": "Lidl",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:30:31.299Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951126"
+  },
+  "monzoId": "tx_0000AcJq8lmRZZc30FKLdh",
+  "__v": 0,
+  "amount": -104,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75efb5d96ef03008bdf79"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.621Z"
+  },
+  "date": {
+    "$date": "2023-11-30T03:06:22.000Z"
+  },
+  "description": "PL00093183.11945",
+  "name": "Park Farm Leisure",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:33:17.185Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951128"
+  },
+  "monzoId": "tx_0000AcKDogtKRCpxann0JV",
+  "__v": 0,
+  "amount": 1191.01,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b1b5d96ef03008b69c8"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.622Z"
+  },
+  "date": {
+    "$date": "2023-11-30T07:31:40.000Z"
+  },
+  "description": "",
+  "name": "Ann-Marie Medler",
+  "type": "Monzo-to-Monzo",
+  "updatedAt": {
+    "$date": "2024-02-10T11:16:50.573Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595112a"
+  },
+  "monzoId": "tx_0000AcKKhyf8fN15cGxcHa",
+  "__v": 0,
+  "amount": -1.59,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75d985d96ef03008bc1b6"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.623Z"
+  },
+  "date": {
+    "$date": "2023-11-30T08:48:53.000Z"
+  },
+  "description": "GOOGLE *Google Play Ap 650-253-0000  GBR",
+  "name": "Google Play",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:27:25.497Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595112c"
+  },
+  "monzoId": "tx_0000AcL6X2UQtLOm6Jnq9R",
+  "__v": 0,
+  "amount": -10.89,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.624Z"
+  },
+  "date": {
+    "$date": "2023-11-30T17:44:45.000Z"
+  },
+  "description": "SAINSBURYS             ATTELEBOROUGH GBR",
+  "name": "Sainsbury’s",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:35:03.798Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595112e"
+  },
+  "monzoId": "tx_0000AcLuI36PKNMheAeiPa",
+  "__v": 0,
+  "amount": -17,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b085d96ef03008b65d5"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.625Z"
+  },
+  "date": {
+    "$date": "2023-12-01T03:02:17.000Z"
+  },
+  "description": "163896699",
+  "name": "Anglian Water",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:16:25.999Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951130"
+  },
+  "monzoId": "tx_0000AcLwF3bfCFjD2Go9nG",
+  "__v": 0,
+  "amount": -44.19,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75f0e5d96ef03008be08c"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.626Z"
+  },
+  "date": {
+    "$date": "2023-12-01T03:24:10.000Z"
+  },
+  "description": "BPNL31953808",
+  "name": "Paymentshield",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:33:35.646Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951132"
+  },
+  "monzoId": "tx_0000AcLwKua7fCWXiwWLcP",
+  "__v": 0,
+  "amount": -901.64,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75de95d96ef03008bc5fb"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.627Z"
+  },
+  "date": {
+    "$date": "2023-12-01T03:25:13.000Z"
+  },
+  "description": "1055244030100000",
+  "name": "Halifax",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:28:43.825Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951134"
+  },
+  "monzoId": "tx_0000AcLyaDAD3fOOrNxXdJ",
+  "__v": 0,
+  "amount": -11.33,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75e485d96ef03008bcf68"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.628Z"
+  },
+  "date": {
+    "$date": "2023-12-01T03:50:23.000Z"
+  },
+  "description": "0245040548-231201",
+  "name": "Legal & General",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:30:18.792Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951136"
+  },
+  "monzoId": "tx_0000AcLyac2yXhfr3T9q5J",
+  "__v": 0,
+  "amount": -5.99,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75e485d96ef03008bcf68"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.629Z"
+  },
+  "date": {
+    "$date": "2023-12-01T03:50:28.000Z"
+  },
+  "description": "0245040530-231201",
+  "name": "Legal & General",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:30:19.359Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951138"
+  },
+  "monzoId": "tx_0000AcLycorhr73xOBwH2Y",
+  "__v": 0,
+  "amount": -31.47,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75e485d96ef03008bcf68"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.630Z"
+  },
+  "date": {
+    "$date": "2023-12-01T03:50:52.000Z"
+  },
+  "description": "0245040555-231201",
+  "name": "Legal & General",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:30:20.126Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595113a"
+  },
+  "monzoId": "tx_0000AcM0pcKJz5SmdZRjO5",
+  "__v": 0,
+  "amount": -34.68,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75f155d96ef03008be197"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.631Z"
+  },
+  "date": {
+    "$date": "2023-12-01T04:15:35.000Z"
+  },
+  "description": "571276356   /33465",
+  "name": "Petplan",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:33:42.940Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595113c"
+  },
+  "monzoId": "tx_0000AcM2ipDrq5eRs127n7",
+  "__v": 0,
+  "amount": -1,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75df15d96ef03008bc7a2"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.632Z"
+  },
+  "date": {
+    "$date": "2023-12-01T04:36:46.000Z"
+  },
+  "description": "1023207",
+  "name": "Help To Buy",
+  "type": "Direct Debit",
+  "updatedAt": {
+    "$date": "2024-02-10T11:28:50.141Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b792595113e"
+  },
+  "monzoId": "tx_0000AcM7TLtj5N4PkOdQJt",
+  "__v": 0,
+  "amount": -800,
+  "archived": false,
+  "budget": {
+    "$oid": "65c760405d96ef03008bec08"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.633Z"
+  },
+  "date": {
+    "$date": "2023-12-01T05:30:00.000Z"
+  },
+  "description": "",
+  "name": "Savings Pot",
+  "type": "Pot transfer",
+  "updatedAt": {
+    "$date": "2024-02-10T11:39:57.684Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951140"
+  },
+  "monzoId": "tx_0000AcMdooaknIvJzIfcva",
+  "__v": 0,
+  "amount": -14.99,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75aff5d96ef03008b61d2"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.634Z"
+  },
+  "date": {
+    "$date": "2023-12-01T11:32:26.000Z"
+  },
+  "description": "AMZNMktplace           amazon.co.uk  GBR",
+  "name": "Amazon",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:16:15.813Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951142"
+  },
+  "monzoId": "tx_0000AcMeE6BoVFpTcQXfBR",
+  "__v": 0,
+  "amount": -15.86,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75b615d96ef03008b80a3"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.635Z"
+  },
+  "date": {
+    "$date": "2023-12-01T11:37:00.000Z"
+  },
+  "description": "ValueAccess            London        GBR",
+  "name": "Valueaccess",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:44:05.388Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c75628a23d4b7925951144"
+  },
+  "monzoId": "tx_0000AcNUgcb8nX6g1qlCi2",
+  "__v": 0,
+  "amount": -94.62,
+  "archived": false,
+  "budget": {
+    "$oid": "65c75d115d96ef03008bbd41"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T10:55:36.636Z"
+  },
+  "date": {
+    "$date": "2023-12-01T21:24:49.000Z"
+  },
+  "description": "The Weeping Willow     Bury St. Edmu GBR",
+  "name": "The Weeping Willow",
+  "type": "Card payment",
+  "updatedAt": {
+    "$date": "2024-02-10T11:43:30.298Z"
+  }
+}]

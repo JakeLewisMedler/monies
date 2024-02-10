@@ -1,8 +1,8 @@
-const Transaction = require("./models/Transaction");
-const Budget = require("./models/Budget");
-const { parse, differenceInDays } = require("date-fns");
+const Transaction = require("../models/Transaction");
+const Budget = require("../models/Budget");
+const { parse } = require("date-fns");
 
-const createTransaction = async (data) => {
+const createUpdateTransaction = async (data) => {
   let {
     "Transaction ID": id,
     Date: date,
@@ -25,12 +25,7 @@ const findMatchingBudget = async (transaction) => {
   let { name } = transaction;
   let budget = await Budget.findOne({ name, recurring: true }); //Find matching budget
   if (!budget) {
-    let recurringBudgets = await Budget.find({ recurring: true });
-    let matchingTransaction = await Transaction.findOne({
-      name,
-      budget: { $in: recurringBudgets.map((b) => b._id) },
-      archived: false
-    }); //Find matching transaction
+    let matchingTransaction = await Transaction.findOne({ name, archived: false }); //Find matching transaction
     if (matchingTransaction && !!matchingTransaction.budget) {
       budget = await Budget.findById(matchingTransaction.budget);
     }
@@ -43,7 +38,7 @@ const upload_csv = async (req, res) => {
     let entries = req.body;
     if (!entries) throw "No entries";
     for (let entry of entries) {
-      await createTransaction(entry);
+      await createUpdateTransaction(entry);
     }
     res.send();
   } catch (error) {
@@ -54,7 +49,7 @@ const upload_csv = async (req, res) => {
 
 const list_transactions = async (req, res) => {
   let query = {};
-  let { filter, budget, archived } = req.query;
+  let { filter, sortBy, sortDesc, budget, archived } = req.query;
   if (filter)
     isNaN(filter)
       ? (query.$or = [{ $text: { $search: `\"${filter}\"` } }])
@@ -62,7 +57,11 @@ const list_transactions = async (req, res) => {
 
   if (budget) query.budget = budget;
   if (!!archived) query.archived = archived == "true" ? true : false;
-  let transactions = await Transaction.find(query).sort({ name: 1 });
+
+  let sort = { name: 1 };
+  if (sortBy) sort = { [sortBy]: sortDesc == "true" ? -1 : 1 };
+
+  let transactions = await Transaction.find(query).sort(sort);
   return res.send(transactions);
 };
 
@@ -76,9 +75,8 @@ const list_unallocated_transactions = async (req, res) => {
 
   if (!!archived) query.archived = archived == "true" ? true : false;
 
-  let sort = {};
-  if (sortBy) sort[sortBy] = sortDesc == "true" ? -1 : 1;
-  console.log(JSON.stringify(query));
+  let sort = { name: 1 };
+  if (sortBy) sort = { [sortBy]: sortDesc == "true" ? -1 : 1 };
   let transactions = await Transaction.find(query).sort(sort);
 
   let transactionsWithBudget = [];
@@ -100,58 +98,13 @@ const list_unallocated_transactions = async (req, res) => {
 
 const update_transaction = async (req, res) => {
   let { _id } = req.params;
+  console.log("update transaction", _id, req.body);
   let transaction = await Transaction.findByIdAndUpdate(_id, req.body);
   return res.send(transaction);
 };
 
-const list_budgets = async (req, res) => {
-  let query = {};
-  let { filter, recurring, sortBy, sortDesc } = req.query;
-  if (filter) query.$text = { $search: `\"${filter}\"` };
-  let sort = {};
-  if (sortBy) sort[sortBy] = sortDesc == "true" ? -1 : 1;
-  if (recurring == "true") query.recurring = true;
-  let budgets = await Budget.find(query).sort(sort);
-  return res.send(budgets);
-};
-
-const create_budget = async (req, res) => {
-  let { budget, transaction } = req.body;
-  budget = await Budget.create(budget);
-  await Transaction.findByIdAndUpdate(transaction._id, {
-    budget: budget._id
-  });
-
-  return res.send();
-};
-
-const update_budget = async (req, res) => {
-  let budget = req.body;
-  let { _id } = req.params;
-
-  budget = await Budget.findByIdAndUpdate(_id, budget);
-  return res.send(budget);
-};
-
-const create_budget_temp = async (req, res) => {
-  let { transaction } = req.body;
-  let tempBudget = {
-    name: transaction.name,
-    recurring: false,
-    recurringType: "monthly",
-    recurringFrequency: 1,
-    date: transaction.date
-  };
-  return res.send(tempBudget);
-};
-
 const delete_transactions = async (req, res) => {
   await Transaction.deleteMany({});
-  return res.send();
-};
-
-const delete_budgets = async (req, res) => {
-  await Budget.deleteMany({});
   return res.send();
 };
 
@@ -160,10 +113,5 @@ module.exports = {
   list_transactions,
   list_unallocated_transactions,
   update_transaction,
-  list_budgets,
-  create_budget,
-  update_budget,
-  create_budget_temp,
-  delete_transactions,
-  delete_budgets
+  delete_transactions
 };

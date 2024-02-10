@@ -116,10 +116,8 @@ export default {
       }
     },
     async createBudget(budget, transaction) {
-      await this.$axios.post("/budgets", {
-        budget,
-        transaction
-      });
+      let { data } = await this.$axios.post("/budgets", budget);
+      if (transaction) await this.$axios.put(`/transactions/${transaction._id}`, { budget: data._id });
       this.$refs.unallocatedTransactionsTable.refresh();
       await this.getBudgets();
     },
@@ -127,7 +125,7 @@ export default {
       let { data: budget } = await this.$axios.post("/budgets/create-temp", {
         transaction
       });
-      this.$refs.budgetModal.show("Create Budget", budget, transaction);
+      this.$refs.budgetModal.show({ title: "Create Budget", budget, transaction });
     },
     formatDate(date) {
       return `${new Date(date).toLocaleDateString()} ${new Date(date).toLocaleTimeString()}`;

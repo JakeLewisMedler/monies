@@ -41,7 +41,8 @@ export default {
       budget: null,
       recurringTypeOptions: ["weekly", "monthly", "annually", "custom"],
       frequencyStrings: ["Weeks", "Months", "Years", "Days"],
-      showing: false
+      showing: false,
+      transaction: null
     };
   },
   mounted() {
@@ -58,10 +59,10 @@ export default {
       if (this.budget?._id) this.$emit("edited", this.budget);
       else this.$emit("created", this.budget, this.transaction);
     },
-    show(title, budget, transaction) {
+    show({ title, budget, transaction }) {
       this.title = title;
-      this.budget = { ...budget };
-      this.transaction = transaction;
+      if (budget) this.budget = { ...budget };
+      if (transaction) this.transaction = transaction;
       this.$refs.modal.show();
       this.showing = true;
     },

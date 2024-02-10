@@ -1,16 +1,21 @@
 <template>
-  <div class="index">
+  <div class="budget__categories">
     <b-container class="mt-3">
       <b-col>
-        <h1>Transactions ({{ transactions.length }})</h1>
-        <b-form-input v-model="transactionsFilter" placeholder="Search" debounce="500"></b-form-input>
+        <b-col>
+          <b-row align-h="between">
+            <h1>Budget Categories ({{ budgetCategories.length }})</h1>
+            <b-button variant="primary">Add +</b-button>
+          </b-row></b-col
+        >
+        <b-form-input v-model="budgetCategoriesFilter" placeholder="Search" debounce="500" class="mt-3"></b-form-input>
 
         <b-card>
           <b-table
-            ref="transactionsTable"
-            :items="transactionsProvider"
-            :fields="transactionFields"
-            :filter="transactionsFilter"
+            ref="budgetCategoriesTable"
+            :items="budgetCategoriesProvider"
+            :fields="budgetCategoryFields"
+            :filter="budgetCategoriesFilter"
             responsive
           >
             <template #cell(date)="row">
@@ -23,9 +28,6 @@
                   currency: "GBP"
                 }).format(row.item.amount)
               }}
-            </template>
-            <template #cell(actions)="row">
-              <b-button @click="unlinkBudget(row.item)" variant="danger">Unlink Budget</b-button>
             </template></b-table
           ></b-card
         ></b-col
@@ -38,7 +40,7 @@
 export default {
   data() {
     return {
-      transactionFields: [
+      budgetCategoryFields: [
         { key: "date", sortable: true },
         { key: "name", sortable: true },
         { key: "amount", sortable: true },
@@ -47,34 +49,18 @@ export default {
         { key: "archived", sortable: true },
         { key: "actions", sortable: true }
       ],
-      transactionsFilter: "",
-      transactions: []
+      budgetCategoriesFilter: "",
+      budgetCategories: []
     };
   },
   methods: {
     formatDate(date) {
       return `${new Date(date).toLocaleDateString()} ${new Date(date).toLocaleTimeString()}`;
     },
-    async unlinkBudget(transaction) {
-      let result = await this.$swal.fire({
-        title: "Unlink Budget?",
-        text: "Are you sure?",
-        icon: "warning",
-        showCancelButton: true
-      });
-      if (!result.isConfirmed) return;
-      await this.$axios.put(`/transactions/${transaction._id}`, { budget: null });
-      this.$refs.transactionsTable.refresh();
-      this.$swal.fire({
-        title: "Budget Unlinked",
-        icon: "info"
-      });
-    },
-
-    async transactionsProvider(ctx, callback) {
+    async budgetCategoriesProvider(ctx, callback) {
       let query = `?filter=${ctx.filter}&sortBy=${ctx.sortBy}&sortDesc=${ctx.sortDesc}`;
-      let { data } = await this.$axios.get("/transactions" + query);
-      this.transactions = data;
+      let { data } = await this.$axios.get("/budgetCategories" + query);
+      this.budgetCategories = data;
       return data;
     }
   }
@@ -82,6 +68,6 @@ export default {
 </script>
 
 <style lang="scss">
-.transactions {
+.budgetCategories {
 }
 </style>

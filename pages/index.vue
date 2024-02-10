@@ -2,9 +2,13 @@
   <div class="index">
     <b-container class="mt-3">
       <b-col>
-        <h1>Budgets ({{ budgets.length }})</h1>
-
-        <b-form-input v-model="budgetsFilter" placeholder="Search" debounce="500"></b-form-input>
+        <b-col>
+          <b-row align-h="between">
+            <h1>Budgets ({{ budgets.length }})</h1>
+            <b-button variant="primary" @click="addBudget">Add +</b-button>
+          </b-row></b-col
+        >
+        <b-form-input v-model="budgetsFilter" placeholder="Search" debounce="500" class="mt-3"></b-form-input>
 
         <b-card>
           <b-table
@@ -27,12 +31,21 @@
                 {{ row.detailsShowing ? "Hide" : "Show" }} Transactions
               </b-button>
               <b-button @click="editBudgetModal(row.item)" variant="success">Edit</b-button>
+              <b-button @click="deleteBudget(row.item)" variant="danger">Delete</b-button>
             </template>
             <template #row-details="row">
               <b-card>
                 <b-table :items="budgetTransactions(row.item)" :fields="transactionFields">
                   <template #cell(date)="row">
                     {{ formatDate(row.item.date) }}
+                  </template>
+                  <template #cell(amount)="row">
+                    {{
+                      new Intl.NumberFormat("en-GB", {
+                        style: "currency",
+                        currency: "GBP"
+                      }).format(row.item.amount)
+                    }}
                   </template></b-table
                 >
               </b-card>
@@ -41,7 +54,7 @@
         ></b-col
       ></b-container
     >
-    <BudgetModal ref="budgetModal" @edited="editBudget" />
+    <BudgetModal ref="budgetModal" @created="createBudget" @edited="editBudget" />
   </div>
 </template>
 
@@ -50,7 +63,6 @@ export default {
   data() {
     return {
       budgetFields: [
-        { key: "date", sortable: true },
         { key: "name", sortable: true },
         { key: "recurring", sortable: true },
         { key: "recurringType", sortable: true },
@@ -70,13 +82,37 @@ export default {
     };
   },
   methods: {
+    addBudget() {
+      this.$refs.budgetModal.show("Create Budget");
+    },
     editBudgetModal(budget) {
-      this.$refs.budgetModal.show("Edit Budget", budget);
+      this.$refs.budgetModal.show({ title: "Edit Budget", budget });
+    },
+    async createBudget(budget) {
+      await this.$axios.post("/budgets", budget);
+      this.$refs.budgetsTable.refresh();
     },
     async editBudget(budget) {
       await this.$axios.put(`/budgets/${budget._id}`, budget);
       this.$refs.budgetsTable.refresh();
     },
+    async deleteBudget(budget) {
+      let result = await this.$swal.fire({
+        title: "Delete Budget?",
+        text: "Are you sure?",
+        icon: "warning",
+        showCancelButton: true
+      });
+      if (!result.isConfirmed) return;
+
+      await this.$axios.delete(`/budgets/${budget._id}`);
+      this.$refs.budgetsTable.refresh();
+      this.$swal.fire({
+        title: "Budget Deleted",
+        icon: "info"
+      });
+    },
+
     formatDate(date) {
       return `${new Date(date).toLocaleDateString()} ${new Date(date).toLocaleTimeString()}`;
     },
