@@ -6,7 +6,7 @@
         <b-card>
           <b-col>
             <h2>Unallocated Transactions ({{ unallocatedTransactions.length }})</h2>
-            <b-form-input v-model="unallocatedTransactionsFilter" placeholder="Search" debounce="500"></b-form-input>
+            <b-form-input v-model="unallocatedTransactionsFilter" placeholder="Search" debounce="200"></b-form-input>
             <b-table
               ref="unallocatedTransactionsTable"
               :items="transactionsProvider"

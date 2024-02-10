@@ -50,7 +50,11 @@ const upload_csv = async (req, res) => {
 const list_transactions = async (req, res) => {
   let query = {};
   let { filter, budget, archived } = req.query;
-  if (filter) query.$or = [{ $text: { $search: `\"${filter}\"` } }, { amount: filter }];
+  if (filter)
+    isNaN(filter)
+      ? (query.$or = [{ $text: { $search: `\"${filter}\"` } }])
+      : (query.$or = [{ $text: { $search: `\"${filter}\"` } }, { amount: filter }]);
+
   if (budget) query.budget = budget;
   if (!!archived) query.archived = archived == "true" ? true : false;
   let transactions = await Transaction.find(query).sort({ name: 1 });
@@ -60,7 +64,11 @@ const list_transactions = async (req, res) => {
 const list_unallocated_transactions = async (req, res) => {
   let query = { budget: null };
   let { filter, sortBy, sortDesc, archived } = req.query;
-  if (filter) query.$or = [{ $text: { $search: `\"${filter}\"` } }, { amount: filter }];
+  if (filter)
+    isNaN(filter)
+      ? (query.$or = [{ $text: { $search: `\"${filter}\"` } }])
+      : (query.$or = [{ $text: { $search: `\"${filter}\"` } }, { amount: filter }]);
+
   if (!!archived) query.archived = archived == "true" ? true : false;
 
   let sort = {};
