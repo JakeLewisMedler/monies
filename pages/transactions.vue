@@ -5,7 +5,7 @@
         <h1>Transactions ({{ transactions.length }})</h1>
         <b-form-input v-model="transactionsFilter" placeholder="Search" debounce="500"></b-form-input>
 
-        <b-card no-body>
+        <b-card>
           <b-table
             ref="transactionsTable"
             :items="transactionsProvider"
@@ -27,7 +27,15 @@
 export default {
   data() {
     return {
-      transactionFields: ["date", "name", "description"],
+      transactionFields: [
+        { key: "date", sortable: true },
+        { key: "name", sortable: true },
+        { key: "amount", sortable: true },
+        { key: "description", sortable: true },
+        { key: "budget", sortable: true },
+        { key: "archived", sortable: true },
+        { key: "actions", sortable: true }
+      ],
       transactionsFilter: "",
       transactions: []
     };

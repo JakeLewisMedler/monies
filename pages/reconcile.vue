@@ -1,70 +1,49 @@
 <template>
-  <div class="upload">
+  <div class="reconcile">
     <b-container class="mt-3">
       <b-col>
         <h1>Reconcile</h1>
-        <b-card no-body>
+        <b-card>
           <b-col>
-            <!-- <h2>Auto Allocated Budgets</h2>
+            <h2>Unallocated Transactions ({{ unallocatedTransactions.length }})</h2>
+            <b-form-input v-model="unallocatedTransactionsFilter" placeholder="Search" debounce="500"></b-form-input>
             <b-table
-              :items="relevantBudgets"
-              :fields="budgetFields"
-              :filter="budgetsFilter"
-              responsive
-            >
-              <template #cell(date)="row">
-                {{ formatDate(row.item.date) }}
-              </template></b-table
-            > -->
-            <h2>
-              Unallocated Transactions ({{ unallocatedTransactions.length }})
-            </h2>
-            <b-form-input
               ref="unallocatedTransactionsTable"
-              v-model="unallocatedTransactionsFilter"
-              placeholder="Search"
-              debounce="500"
-            ></b-form-input>
-            <b-table
               :items="transactionsProvider"
               :fields="transactionFields"
               :filter="unallocatedTransactionsFilter"
+              :sort-by="'name'"
+              :sort-desc="false"
               responsive
             >
               <template #cell(date)="row">
                 {{ formatDate(row.item.date) }}
               </template>
+
+              <template #cell(amount)="row">
+                {{
+                  new Intl.NumberFormat("en-GB", {
+                    style: "currency",
+                    currency: "GBP"
+                  }).format(row.item.amount)
+                }}
+              </template>
+
               <template #cell(budget)="row">
-                <b-form-select
-                  v-model="row.item.budget"
-                  value-field="_id"
-                  text-field="name"
-                  :options="budgets"
-                >
-                  <b-form-select-option :value="null"
-                    >Create New</b-form-select-option
-                  >
+                <b-form-select v-model="row.item.budget" value-field="_id" text-field="name" :options="budgets">
+                  <b-form-select-option :value="null">Create New</b-form-select-option>
                 </b-form-select>
               </template>
               <template #cell(actions)="row">
-                <b-button variant="primary" @click="reconcile(row.item)"
-                  >√</b-button
-                >
-              </template></b-table
-            >
+                <b-button variant="primary" @click="reconcile(row.item)">√</b-button>
+                <b-button variant="danger" @click="archiveTransaction(row.item)"
+                  ><img class="icon" src="~/assets/icons/bin.svg" alt=""
+                /></b-button> </template
+            ></b-table>
           </b-col>
-        </b-card>
-      </b-col></b-container
-    >
-    <b-modal
-      ref="createBudgetModal"
-      title="Create Budget"
-      size="lg"
-      ok-title="Submit"
-      @ok="submitBudget"
-    >
-      <EditBudget />
-    </b-modal>
+        </b-card> </b-col
+    ></b-container>
+    <BudgetModal ref="budgetModal" @created="createBudget" />
   </div>
 </template>
 
@@ -72,74 +51,95 @@
 export default {
   computed: {
     relevantBudgets() {
-      return this.budgets.filter((b) =>
-        this.unallocatedTransactions.find((t) => t.budget == b._id)
-      );
-    },
+      return this.budgets.filter((b) => this.unallocatedTransactions.find((t) => t.budget == b._id));
+    }
   },
   data() {
     return {
       budgets: [],
       unallocatedTransactions: [],
-      budgetFields: ["date", "name", "recurring", "recurringType"],
+      budgetFields: [
+        { key: "date", sortable: true },
+        { key: "name", sortable: true },
+        { key: "recurring", sortable: true },
+        { key: "recurringType", sortable: true }
+      ],
       budgetsFilter: "",
-      transactionFields: ["date", "name", "description", "budget", "actions"],
-      unallocatedTransactionsFilter: "",
-      modal: {
-        budget: null,
-        transaction: null,
-      },
-      recurringTypeOptions: ["weekly", "monthly", "annually", "custom"],
+      transactionFields: [
+        { key: "date", sortable: true },
+        { key: "name", sortable: true },
+        { key: "amount", sortable: true },
+        { key: "description", sortable: true },
+        { key: "budget", sortable: false, thStyle: "min-width:200px;" },
+        { key: "actions", sortable: true, thStyle: "min-width:150px;" }
+      ],
+      unallocatedTransactionsFilter: ""
     };
   },
   mounted() {
     this.getBudgets();
   },
   methods: {
+    async archiveTransaction(transaction) {
+      let result = await this.$swal.fire({
+        title: "Archive Transaction?",
+        text: "Are you sure?",
+        icon: "warning",
+        showCancelButton: true
+      });
+      if (!result.isConfirmed) return;
+      await this.$axios.put(`/transactions/${transaction._id}`, { archived: true });
+      this.$refs.unallocatedTransactionsTable.refresh();
+      this.$swal.fire({
+        title: "Transaction Archived",
+        icon: "info"
+      });
+    },
     async getBudgets() {
-      let { data: budgets } = await this.$axios.get("/budgets");
+      let { data: budgets } = await this.$axios.get("/budgets?recurring=true");
       this.budgets = budgets;
     },
     async transactionsProvider(ctx, callback) {
-      let query = `?filter=${ctx.filter}`;
-      let { data } = await this.$axios.get("/transactions/unallocated" + query);
-      this.unallocatedTransactions = data;
-      return data;
+      let query = `?archived=false&filter=${ctx.filter}&sortBy=${ctx.sortBy}&sortDesc=${ctx.sortDesc}`;
+      let { data: transactions } = await this.$axios.get("/transactions/unallocated" + query);
+      this.unallocatedTransactions = transactions;
+      return transactions;
     },
     async reconcile(transaction) {
       let { budget } = transaction;
       if (budget) {
         await this.$axios.put(`/transactions/${transaction._id}`, { budget });
         this.$refs.unallocatedTransactionsTable.refresh();
+        await this.getBudgets();
       } else {
         await this.createBudgetModal(transaction);
       }
     },
-    async submitBudget() {
+    async createBudget(budget, transaction) {
       await this.$axios.post("/budgets", {
-        budget: this.modal.budget,
-        transaction: this.modal.transaction,
+        budget,
+        transaction
       });
       this.$refs.unallocatedTransactionsTable.refresh();
+      await this.getBudgets();
     },
     async createBudgetModal(transaction) {
       let { data: budget } = await this.$axios.post("/budgets/create-temp", {
-        transaction,
+        transaction
       });
-      this.modal.budget = budget;
-      this.modal.transaction = transaction;
-      this.$refs.createBudgetModal.show();
+      this.$refs.budgetModal.show("Create Budget", budget, transaction);
     },
     formatDate(date) {
-      return `${new Date(date).toLocaleDateString()} ${new Date(
-        date
-      ).toLocaleTimeString()}`;
-    },
-  },
+      return `${new Date(date).toLocaleDateString()} ${new Date(date).toLocaleTimeString()}`;
+    }
+  }
 };
 </script>
 
 <style lang="scss">
 .reconcile {
+  .icon {
+    width: 24px;
+  }
 }
 </style>

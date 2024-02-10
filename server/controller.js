@@ -10,7 +10,7 @@ const createTransaction = async (data) => {
     Type: type,
     Name: name,
     Amount: amount,
-    Description: description,
+    Description: description
   } = data;
   let dateTime = parse(`${date} ${time}`, "dd/MM/yyyy HH:mm:ss", new Date());
   let transaction = await Transaction.findOneAndUpdate(
@@ -23,7 +23,13 @@ const createTransaction = async (data) => {
 
 const findMatchingBudget = async (transaction) => {
   let { name } = transaction;
-  let budget = await Budget.findOne({ name }); //Find matching budget
+  let budget = await Budget.findOne({ name, recurring: true }); //Find matching budget
+  if (!budget) {
+    let matchingTransaction = await Transaction.findOne({ name, archived: false }); //Find matching transaction
+    if (matchingTransaction && !!matchingTransaction.budget) {
+      budget = await Budget.findById(matchingTransaction.budget);
+    }
+  }
   return budget;
 };
 
@@ -43,35 +49,56 @@ const upload_csv = async (req, res) => {
 
 const list_transactions = async (req, res) => {
   let query = {};
-  let { filter, budget } = req.query;
-  if (filter) query.$text = { $search: `\"${filter}\"` };
+  let { filter, budget, archived } = req.query;
+  if (filter) query.$or = [{ $text: { $search: `\"${filter}\"` } }, { amount: filter }];
   if (budget) query.budget = budget;
+  if (!!archived) query.archived = archived == "true" ? true : false;
   let transactions = await Transaction.find(query).sort({ name: 1 });
   return res.send(transactions);
 };
 
 const list_unallocated_transactions = async (req, res) => {
   let query = { budget: null };
-  let { filter } = req.query;
-  if (filter) query.$text = { $search: `\"${filter}\"` };
-  let transactions = await Transaction.find(query).sort({ name: 1 });
+  let { filter, sortBy, sortDesc, archived } = req.query;
+  if (filter) query.$or = [{ $text: { $search: `\"${filter}\"` } }, { amount: filter }];
+  if (!!archived) query.archived = archived == "true" ? true : false;
+
+  let sort = {};
+  if (sortBy) sort[sortBy] = sortDesc == "true" ? -1 : 1;
+  console.log(JSON.stringify(query));
+  let transactions = await Transaction.find(query).sort(sort);
+
+  let transactionsWithBudget = [];
+  let transactionsWithoutBudget = [];
+
   for (let transaction of transactions) {
     let budget = await findMatchingBudget(transaction);
-    transaction.budget = (budget && budget._id) || null;
+    if (budget) {
+      transaction.budget = budget.id;
+      transactionsWithBudget.push(transaction);
+    } else {
+      transactionsWithoutBudget.push(transaction);
+    }
   }
-  return res.send(transactions);
+
+  let allTransactions = [...transactionsWithBudget, ...transactionsWithoutBudget];
+  return res.send(allTransactions);
 };
 
-const update_transactions = async (req, res) => {
+const update_transaction = async (req, res) => {
   let { _id } = req.params;
   let transaction = await Transaction.findByIdAndUpdate(_id, req.body);
   return res.send(transaction);
 };
+
 const list_budgets = async (req, res) => {
   let query = {};
-  let { filter } = req.query;
+  let { filter, recurring, sortBy, sortDesc } = req.query;
   if (filter) query.$text = { $search: `\"${filter}\"` };
-  let budgets = await Budget.find(query).sort({ name: 1 });
+  let sort = {};
+  if (sortBy) sort[sortBy] = sortDesc == "true" ? -1 : 1;
+  if (recurring == "true") query.recurring = true;
+  let budgets = await Budget.find(query).sort(sort);
   return res.send(budgets);
 };
 
@@ -79,10 +106,18 @@ const create_budget = async (req, res) => {
   let { budget, transaction } = req.body;
   budget = await Budget.create(budget);
   await Transaction.findByIdAndUpdate(transaction._id, {
-    budget: budget._id,
+    budget: budget._id
   });
 
   return res.send();
+};
+
+const update_budget = async (req, res) => {
+  let budget = req.body;
+  let { _id } = req.params;
+
+  budget = await Budget.findByIdAndUpdate(_id, budget);
+  return res.send(budget);
 };
 
 const create_budget_temp = async (req, res) => {
@@ -90,7 +125,9 @@ const create_budget_temp = async (req, res) => {
   let tempBudget = {
     name: transaction.name,
     recurring: false,
-    date: transaction.date,
+    recurringType: "monthly",
+    recurringFrequency: 1,
+    date: transaction.date
   };
   return res.send(tempBudget);
 };
@@ -109,10 +146,11 @@ module.exports = {
   upload_csv,
   list_transactions,
   list_unallocated_transactions,
-  update_transactions,
+  update_transaction,
   list_budgets,
   create_budget,
+  update_budget,
   create_budget_temp,
   delete_transactions,
-  delete_budgets,
+  delete_budgets
 };

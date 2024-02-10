@@ -3,7 +3,7 @@
     <b-container class="mt-3">
       <b-col>
         <h1>Upload Transactions</h1>
-        <b-card no-body>
+        <b-card>
           <b-form-file
             v-model="file"
             :state="Boolean(file)"

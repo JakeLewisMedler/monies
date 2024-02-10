@@ -12,12 +12,15 @@ const TransactionSchema = new mongoose.Schema(
     budget: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Budget",
-      default: null,
+      default: null
     },
+    archived: { type: Boolean, default: false }
   },
   {
-    timestamps: true,
+    timestamps: true
   }
 );
 TransactionSchema.index({ "$**": "text" });
+TransactionSchema.index({ amount: 1 });
+
 module.exports = mongoose.model("Transaction", TransactionSchema);
