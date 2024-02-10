@@ -96,7 +96,7 @@ export default {
       });
     },
     async getBudgets() {
-      let { data: budgets } = await this.$axios.get("/budgets?recurring=true");
+      let { data: budgets } = await this.$axios.get("/budgets");
       this.budgets = budgets;
     },
     async transactionsProvider(ctx, callback) {

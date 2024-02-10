@@ -25,7 +25,12 @@ const findMatchingBudget = async (transaction) => {
   let { name } = transaction;
   let budget = await Budget.findOne({ name, recurring: true }); //Find matching budget
   if (!budget) {
-    let matchingTransaction = await Transaction.findOne({ name, archived: false }); //Find matching transaction
+    let recurringBudgets = await Budget.find({ recurring: true });
+    let matchingTransaction = await Transaction.findOne({
+      name,
+      budget: { $in: recurringBudgets.map((b) => b._id) },
+      archived: false
+    }); //Find matching transaction
     if (matchingTransaction && !!matchingTransaction.budget) {
       budget = await Budget.findById(matchingTransaction.budget);
     }
