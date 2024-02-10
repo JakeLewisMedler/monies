@@ -28,9 +28,16 @@ const delete_budget_categories = async (req, res) => {
   return res.send();
 };
 
+const delete_budget_category = async (req, res) => {
+  let { _id } = req.params;
+  let budgetCategory = await BudgetCategory.findByIdAndDelete(_id);
+  return res.send(budgetCategory);
+};
+
 module.exports = {
   list_budget_categories,
   create_budget_category,
   update_budget_category,
-  delete_budget_categories
+  delete_budget_categories,
+  delete_budget_category
 };

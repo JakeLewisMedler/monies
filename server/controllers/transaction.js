@@ -49,7 +49,7 @@ const upload_csv = async (req, res) => {
 
 const list_transactions = async (req, res) => {
   let query = {};
-  let { filter, sortBy, sortDesc, budget, archived } = req.query;
+  let { filter, sortBy, sortDesc, budget, archived, populate } = req.query;
   if (filter)
     isNaN(filter)
       ? (query.$or = [{ $text: { $search: `\"${filter}\"` } }])
@@ -61,7 +61,7 @@ const list_transactions = async (req, res) => {
   let sort = { name: 1 };
   if (sortBy) sort = { [sortBy]: sortDesc == "true" ? -1 : 1 };
 
-  let transactions = await Transaction.find(query).sort(sort);
+  let transactions = await Transaction.find(query).sort(sort).populate(populate);
   return res.send(transactions);
 };
 

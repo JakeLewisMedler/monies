@@ -5,7 +5,7 @@
         <b-col>
           <b-row align-h="between">
             <h1>Budget Categories ({{ budgetCategories.length }})</h1>
-            <b-button variant="primary">Add +</b-button>
+            <b-button variant="primary" @click="addBudgetCategory">Add +</b-button>
           </b-row></b-col
         >
         <b-form-input v-model="budgetCategoriesFilter" placeholder="Search" debounce="500" class="mt-3"></b-form-input>
@@ -16,6 +16,8 @@
             :items="budgetCategoriesProvider"
             :fields="budgetCategoryFields"
             :filter="budgetCategoriesFilter"
+            :sort-by="'name'"
+            :sort-desc="false"
             responsive
           >
             <template #cell(date)="row">
@@ -33,6 +35,7 @@
         ></b-col
       >
     </b-container>
+    <BudgetCategoryModal ref="budgetCategoryModal" @created="createBudgetCategory" @edited="editBudgetCategory" />
   </div>
 </template>
 
@@ -40,34 +43,37 @@
 export default {
   data() {
     return {
-      budgetCategoryFields: [
-        { key: "date", sortable: true },
-        { key: "name", sortable: true },
-        { key: "amount", sortable: true },
-        { key: "description", sortable: true },
-        { key: "budget", sortable: true },
-        { key: "archived", sortable: true },
-        { key: "actions", sortable: true }
-      ],
+      budgetCategoryFields: [{ key: "name", sortable: true }],
       budgetCategoriesFilter: "",
       budgetCategories: []
     };
   },
   methods: {
+    addBudgetCategory() {
+      this.$refs.budgetCategoryModal.show({ title: "Create Budget Category" });
+    },
     formatDate(date) {
       return `${new Date(date).toLocaleDateString()} ${new Date(date).toLocaleTimeString()}`;
     },
     async budgetCategoriesProvider(ctx, callback) {
       let query = `?filter=${ctx.filter}&sortBy=${ctx.sortBy}&sortDesc=${ctx.sortDesc}`;
-      let { data } = await this.$axios.get("/budgetCategories" + query);
+      let { data } = await this.$axios.get("/budget-categories" + query);
       this.budgetCategories = data;
       return data;
+    },
+    async createBudgetCategory(budgetCategory) {
+      await this.$axios.post("/budget-categories", budgetCategory);
+      this.$refs.budgetCategoriesTable.refresh();
+    },
+    async editBudgetCategory(budgetCategory) {
+      await this.$axios.put(`/budgets-categories/${budgetCategory._id}`, budgetCategory);
+      this.$refs.budgetCategoriesTable.refresh();
     }
   }
 };
 </script>
 
 <style lang="scss">
-.budgetCategories {
+.budget__categories {
 }
 </style>

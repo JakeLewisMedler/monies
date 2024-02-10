@@ -83,7 +83,7 @@ export default {
   },
   methods: {
     addBudget() {
-      this.$refs.budgetModal.show("Create Budget");
+      this.$refs.budgetModal.show({ title: "Create Budget" });
     },
     editBudgetModal(budget) {
       this.$refs.budgetModal.show({ title: "Edit Budget", budget });

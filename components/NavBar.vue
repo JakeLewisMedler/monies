@@ -15,6 +15,7 @@ export default {
         { label: "Reconcile", link: "/reconcile" },
         { label: "Upload", link: "/upload" },
         { label: "Budget Categories", link: "/budget-categories" },
+        { label: "Budget Sub Categories", link: "/budget-sub-categories" },
         { label: "Testing", link: "/testing" }
       ]
     };
@@ -33,7 +34,7 @@ export default {
   background: #40c9db;
   display: flex;
   align-items: center;
-  gap: 100px;
+  justify-content: space-between;
 
   .item {
     cursor: pointer;

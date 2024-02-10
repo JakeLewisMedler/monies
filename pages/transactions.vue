@@ -24,6 +24,9 @@
                 }).format(row.item.amount)
               }}
             </template>
+            <template #cell(budget)="row">
+              {{ row.item.budget?.name }}
+            </template>
             <template #cell(actions)="row">
               <b-button @click="unlinkBudget(row.item)" variant="danger">Unlink Budget</b-button>
             </template></b-table
@@ -72,7 +75,7 @@ export default {
     },
 
     async transactionsProvider(ctx, callback) {
-      let query = `?filter=${ctx.filter}&sortBy=${ctx.sortBy}&sortDesc=${ctx.sortDesc}`;
+      let query = `?populate=budget&filter=${ctx.filter}&sortBy=${ctx.sortBy}&sortDesc=${ctx.sortDesc}`;
       let { data } = await this.$axios.get("/transactions" + query);
       this.transactions = data;
       return data;
