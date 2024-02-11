@@ -27,7 +27,7 @@
               {{ row.item.recurring ? row.item.recurringType : null }}
             </template>
             <template #cell(actions)="row">
-              <b-button @click="showBudgetTransactions(row)" class="mr-2" variant="primary">
+              <b-button @click="showBudgetTransactions(row.item, row)" class="mr-2" variant="primary">
                 {{ row.detailsShowing ? "Hide" : "Show" }} Transactions
               </b-button>
               <b-button @click="editBudgetModal(row.item)" variant="success">Edit</b-button>
@@ -36,16 +36,19 @@
             <template #row-details="row">
               <b-card>
                 <b-table :items="budgetTransactions(row.item)" :fields="transactionFields">
-                  <template #cell(date)="row">
-                    {{ formatDate(row.item.date) }}
+                  <template #cell(date)="subRow">
+                    {{ formatDate(subRow.item.date) }}
                   </template>
-                  <template #cell(amount)="row">
+                  <template #cell(amount)="subRow">
                     {{
                       new Intl.NumberFormat("en-GB", {
                         style: "currency",
                         currency: "GBP"
-                      }).format(row.item.amount)
+                      }).format(subRow.item.amount)
                     }}
+                  </template>
+                  <template #cell(actions)="subRow">
+                    <b-button @click="unlinkBudget(subRow.item, row.item)" variant="danger">Unlink Budget</b-button>
                   </template></b-table
                 >
               </b-card>
@@ -96,6 +99,21 @@ export default {
       await this.$axios.put(`/budgets/${budget._id}`, budget);
       this.$refs.budgetsTable.refresh();
     },
+    async unlinkBudget(transaction, budget) {
+      let result = await this.$swal.fire({
+        title: "Unlink Budget?",
+        text: "Are you sure?",
+        icon: "warning",
+        showCancelButton: true
+      });
+      if (!result.isConfirmed) return;
+      await this.$axios.put(`/transactions/${transaction._id}`, { budget: null });
+      this.$set(transaction, "budget", null);
+      this.$swal.fire({
+        title: "Budget Unlinked",
+        icon: "info"
+      });
+    },
     async deleteBudget(budget) {
       let result = await this.$swal.fire({
         title: "Delete Budget?",
@@ -119,14 +137,13 @@ export default {
     budgetTransactions(budget) {
       return this.transactions.filter((t) => t.budget == budget._id);
     },
-    async showBudgetTransactions(row) {
-      let budget = row.item;
+    async showBudgetTransactions(budget, row) {
       let query = `?budget=${budget._id}`;
       let { data: transactions } = await this.$axios.get("/transactions" + query);
       for (let transaction of transactions) {
         if (!this.transactions.find((t) => t._id == transaction._id)) this.transactions.push(transaction);
       }
-      row.toggleDetails();
+      if (row) row.toggleDetails();
     },
 
     async budgetsProvider(ctx, callback) {

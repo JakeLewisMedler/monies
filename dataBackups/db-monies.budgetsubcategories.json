@@ -1,0 +1,224 @@
+[{
+  "_id": {
+    "$oid": "65c788064b25898cae71831e"
+  },
+  "name": "Salaries",
+  "category": {
+    "$oid": "65c786514b25898cae71830f"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T14:28:22.161Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T14:28:22.161Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c78a570db47c2f170270c2"
+  },
+  "name": "Adhoc Earnings",
+  "category": {
+    "$oid": "65c786514b25898cae71830f"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T14:38:15.298Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T14:38:15.298Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c78a5f0db47c2f170270c7"
+  },
+  "name": "General Bills",
+  "category": {
+    "$oid": "65c78a250db47c2f170270af"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T14:38:23.452Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T14:38:23.452Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c78a670db47c2f170270cc"
+  },
+  "name": "Entertainment",
+  "category": {
+    "$oid": "65c78a250db47c2f170270af"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T14:38:31.006Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T14:38:31.006Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c78a6e0db47c2f170270d1"
+  },
+  "name": "Shopping Monthlies",
+  "category": {
+    "$oid": "65c78a250db47c2f170270af"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T14:38:38.985Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T14:38:38.985Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c78a740db47c2f170270d6"
+  },
+  "name": "IT",
+  "category": {
+    "$oid": "65c78a250db47c2f170270af"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T14:38:44.862Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T14:38:44.862Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c78a7e0db47c2f170270db"
+  },
+  "name": "Phones",
+  "category": {
+    "$oid": "65c78a250db47c2f170270af"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T14:38:54.743Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T14:38:54.743Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c78a820db47c2f170270e0"
+  },
+  "name": "Cars",
+  "category": {
+    "$oid": "65c78a250db47c2f170270af"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T14:38:58.954Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T14:38:58.954Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c78a8f0db47c2f170270e5"
+  },
+  "name": "Groceries",
+  "category": {
+    "$oid": "65c78a200db47c2f170270ab"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T14:39:11.087Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T14:39:11.087Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c78a940db47c2f170270ea"
+  },
+  "name": "House",
+  "category": {
+    "$oid": "65c78a200db47c2f170270ab"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T14:39:16.047Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T14:39:16.047Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c78a9d0db47c2f170270f4"
+  },
+  "name": "Travel",
+  "category": {
+    "$oid": "65c78a200db47c2f170270ab"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T14:39:25.649Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T14:39:25.649Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c78aa20db47c2f170270f9"
+  },
+  "name": "Pets",
+  "category": {
+    "$oid": "65c78a200db47c2f170270ab"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T14:39:30.149Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T14:39:30.149Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c78aa60db47c2f170270fe"
+  },
+  "name": "Personal Health",
+  "category": {
+    "$oid": "65c78a200db47c2f170270ab"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T14:39:34.829Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T14:39:34.829Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c791a25e48b0d5b9decfc5"
+  },
+  "name": "Clothing",
+  "category": {
+    "$oid": "65c78a200db47c2f170270ab"
+  },
+  "createdAt": {
+    "$date": "2024-02-10T15:09:22.280Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-10T15:09:22.280Z"
+  },
+  "__v": 0
+}]
