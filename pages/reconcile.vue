@@ -29,8 +29,8 @@
                 }}
               </template>
 
-              <template #cell(budget)="row">
-                <b-form-select v-model="row.item.budget" value-field="_id" text-field="name" :options="budgets">
+              <template #cell(flow)="row">
+                <b-form-select v-model="row.item.flow" value-field="_id" text-field="name" :options="flows">
                   <b-form-select-option :value="null">Create New</b-form-select-option>
                 </b-form-select>
               </template>
@@ -43,41 +43,34 @@
           </b-col>
         </b-card> </b-col
     ></b-container>
-    <BudgetModal ref="budgetModal" @created="createBudget" />
+    <FlowModal ref="flowModal" @created="createFlow" />
   </div>
 </template>
 
 <script>
 export default {
   computed: {
-    relevantBudgets() {
-      return this.budgets.filter((b) => this.unallocatedTransactions.find((t) => t.budget == b._id));
+    relevantFlows() {
+      return this.flows.filter((b) => this.unallocatedTransactions.find((t) => t.flow == b._id));
     }
   },
   data() {
     return {
-      budgets: [],
+      flows: [],
       unallocatedTransactions: [],
-      budgetFields: [
-        { key: "date", sortable: true },
-        { key: "name", sortable: true },
-        { key: "recurring", sortable: true },
-        { key: "recurringType", sortable: true }
-      ],
-      budgetsFilter: "",
       transactionFields: [
         { key: "date", sortable: true },
         { key: "name", sortable: true },
         { key: "amount", sortable: true },
         { key: "description", sortable: true },
-        { key: "budget", sortable: false, thStyle: "min-width:200px;" },
+        { key: "flow", sortable: false, thStyle: "min-width:200px;" },
         { key: "actions", sortable: true, thStyle: "min-width:150px;" }
       ],
       unallocatedTransactionsFilter: ""
     };
   },
   mounted() {
-    this.getBudgets();
+    this.getFlows();
   },
   methods: {
     async archiveTransaction(transaction) {
@@ -95,9 +88,9 @@ export default {
         icon: "info"
       });
     },
-    async getBudgets() {
-      let { data: budgets } = await this.$axios.get("/budgets");
-      this.budgets = budgets;
+    async getFlows() {
+      let { data: flows } = await this.$axios.get("/flows");
+      this.flows = flows;
     },
     async transactionsProvider(ctx, callback) {
       let query = `?archived=false&filter=${ctx.filter}&sortBy=${ctx.sortBy}&sortDesc=${ctx.sortDesc}`;
@@ -106,26 +99,26 @@ export default {
       return transactions;
     },
     async reconcile(transaction) {
-      let { budget } = transaction;
-      if (budget) {
-        await this.$axios.put(`/transactions/${transaction._id}`, { budget });
+      let { flow } = transaction;
+      if (flow) {
+        await this.$axios.put(`/transactions/${transaction._id}`, { flow });
         this.$refs.unallocatedTransactionsTable.refresh();
-        await this.getBudgets();
+        await this.getFlows();
       } else {
-        await this.createBudgetModal(transaction);
+        await this.createFlowModal(transaction);
       }
     },
-    async createBudget(budget, transaction) {
-      let { data } = await this.$axios.post("/budgets", budget);
-      if (transaction) await this.$axios.put(`/transactions/${transaction._id}`, { budget: data._id });
+    async createFlow(flow, transaction) {
+      let { data } = await this.$axios.post("/flows", flow);
+      if (transaction) await this.$axios.put(`/transactions/${transaction._id}`, { flow: data._id });
       this.$refs.unallocatedTransactionsTable.refresh();
-      await this.getBudgets();
+      await this.getFlows();
     },
-    async createBudgetModal(transaction) {
-      let { data: budget } = await this.$axios.post("/budgets/create-temp", {
+    async createFlowModal(transaction) {
+      let { data: flow } = await this.$axios.post("/flows/create-temp", {
         transaction
       });
-      this.$refs.budgetModal.show({ title: "Create Budget", budget, transaction });
+      this.$refs.flowModal.show({ title: "Create Flow", flow, transaction });
     },
     formatDate(date) {
       return `${new Date(date).toLocaleDateString()} ${new Date(date).toLocaleTimeString()}`;

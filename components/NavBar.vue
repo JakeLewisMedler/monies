@@ -10,12 +10,13 @@ export default {
   data() {
     return {
       items: [
-        { label: "Index", link: "/" },
+        { label: "Cashflow", link: "/" },
+        { label: "Flows", link: "/flows" },
         { label: "Transactions", link: "/transactions" },
         { label: "Reconcile", link: "/reconcile" },
         { label: "Upload", link: "/upload" },
         { label: "Budget Categories", link: "/budget-categories" },
-        { label: "Budget Sub Categories", link: "/budget-sub-categories" },
+        { label: "Budgets", link: "/budgets" },
         { label: "Testing", link: "/testing" }
       ]
     };

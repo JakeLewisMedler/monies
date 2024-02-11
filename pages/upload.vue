@@ -31,7 +31,7 @@ export default {
       reader.onload = async (e) => {
         const text = e.target.result;
         let entries = await this.handleCSV(text);
-        await this.$axios.post("/upload-csv", entries);
+        await this.$axios.post("/transactions/upload-csv", entries);
         this.$router.push("/reconcile");
       };
       reader.readAsText(input);

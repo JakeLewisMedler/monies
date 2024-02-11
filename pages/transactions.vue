@@ -24,11 +24,11 @@
                 }).format(row.item.amount)
               }}
             </template>
-            <template #cell(budget)="row">
-              {{ row.item.budget?.name }}
+            <template #cell(flow)="row">
+              {{ row.item.flow?.name }}
             </template>
             <template #cell(actions)="row">
-              <b-button @click="unlinkBudget(row.item)" variant="danger">Unlink Budget</b-button>
+              <b-button @click="unlinkFlow(row.item)" variant="danger">Unlink Flow</b-button>
             </template></b-table
           ></b-card
         ></b-col
@@ -46,7 +46,7 @@ export default {
         { key: "name", sortable: true },
         { key: "amount", sortable: true },
         { key: "description", sortable: true },
-        { key: "budget", sortable: true },
+        { key: "flow", sortable: true },
         { key: "archived", sortable: true },
         { key: "actions", sortable: true }
       ],
@@ -58,24 +58,24 @@ export default {
     formatDate(date) {
       return `${new Date(date).toLocaleDateString()} ${new Date(date).toLocaleTimeString()}`;
     },
-    async unlinkBudget(transaction) {
+    async unlinkFlow(transaction) {
       let result = await this.$swal.fire({
-        title: "Unlink Budget?",
+        title: "Unlink Flow?",
         text: "Are you sure?",
         icon: "warning",
         showCancelButton: true
       });
       if (!result.isConfirmed) return;
-      await this.$axios.put(`/transactions/${transaction._id}`, { budget: null });
+      await this.$axios.put(`/transactions/${transaction._id}`, { flow: null });
       this.$refs.transactionsTable.refresh();
       this.$swal.fire({
-        title: "Budget Unlinked",
+        title: "Flow Unlinked",
         icon: "info"
       });
     },
 
     async transactionsProvider(ctx, callback) {
-      let query = `?populate=budget&filter=${ctx.filter}&sortBy=${ctx.sortBy}&sortDesc=${ctx.sortDesc}`;
+      let query = `?populate=flow&filter=${ctx.filter}&sortBy=${ctx.sortBy}&sortDesc=${ctx.sortDesc}`;
       let { data } = await this.$axios.get("/transactions" + query);
       this.transactions = data;
       return data;

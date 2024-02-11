@@ -1,5 +1,5 @@
 const Transaction = require("../models/Transaction");
-const Budget = require("../models/Budget");
+const Flow = require("../models/Flow");
 const { parse } = require("date-fns");
 
 const createUpdateTransaction = async (data) => {
@@ -21,16 +21,16 @@ const createUpdateTransaction = async (data) => {
   return transaction;
 };
 
-const findMatchingBudget = async (transaction) => {
+const findMatchingFlow = async (transaction) => {
   let { name } = transaction;
-  let budget = await Budget.findOne({ name, recurring: true }); //Find matching budget
-  if (!budget) {
+  let flow = await Flow.findOne({ name }); //Find matching flow
+  if (!flow) {
     let matchingTransaction = await Transaction.findOne({ name, archived: false }); //Find matching transaction
-    if (matchingTransaction && !!matchingTransaction.budget) {
-      budget = await Budget.findById(matchingTransaction.budget);
+    if (matchingTransaction && !!matchingTransaction.flow) {
+      flow = await Flow.findById(matchingTransaction.flow);
     }
   }
-  return budget;
+  return flow;
 };
 
 const upload_csv = async (req, res) => {
@@ -49,13 +49,13 @@ const upload_csv = async (req, res) => {
 
 const list_transactions = async (req, res) => {
   let query = {};
-  let { filter, sortBy, sortDesc, budget, archived, populate } = req.query;
+  let { filter, sortBy, sortDesc, flow, archived, populate } = req.query;
   if (filter)
     isNaN(filter)
       ? (query.$or = [{ $text: { $search: `\"${filter}\"` } }])
       : (query.$or = [{ $text: { $search: `\"${filter}\"` } }, { amount: filter }]);
 
-  if (budget) query.budget = budget;
+  if (flow) query.flow = flow;
   if (!!archived) query.archived = archived == "true" ? true : false;
 
   let sort = { name: 1 };
@@ -66,7 +66,7 @@ const list_transactions = async (req, res) => {
 };
 
 const list_unallocated_transactions = async (req, res) => {
-  let query = { budget: null };
+  let query = { flow: null };
   let { filter, sortBy, sortDesc, archived } = req.query;
   if (filter)
     isNaN(filter)
@@ -79,26 +79,26 @@ const list_unallocated_transactions = async (req, res) => {
   if (sortBy) sort = { [sortBy]: sortDesc == "true" ? -1 : 1 };
   let transactions = await Transaction.find(query).sort(sort);
 
-  let transactionsWithBudget = [];
-  let transactionsWithoutBudget = [];
+  let transactionsWithFlow = [];
+  let transactionsWithoutFlow = [];
 
   for (let transaction of transactions) {
-    let budget = await findMatchingBudget(transaction);
-    if (budget) {
-      transaction.budget = budget.id;
-      transactionsWithBudget.push(transaction);
+    let flow = await findMatchingFlow(transaction);
+    console.log(flow);
+    if (flow) {
+      transaction.flow = flow.id;
+      transactionsWithFlow.push(transaction);
     } else {
-      transactionsWithoutBudget.push(transaction);
+      transactionsWithoutFlow.push(transaction);
     }
   }
 
-  let allTransactions = [...transactionsWithBudget, ...transactionsWithoutBudget];
+  let allTransactions = [...transactionsWithFlow, ...transactionsWithoutFlow];
   return res.send(allTransactions);
 };
 
 const update_transaction = async (req, res) => {
   let { _id } = req.params;
-  console.log("update transaction", _id, req.body);
   let transaction = await Transaction.findByIdAndUpdate(_id, req.body);
   return res.send(transaction);
 };

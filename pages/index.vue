@@ -2,155 +2,67 @@
   <div class="index">
     <b-container class="mt-3">
       <b-col>
-        <b-col>
-          <b-row align-h="between">
-            <h1>Budgets ({{ budgets.length }})</h1>
-            <b-button variant="primary" @click="addBudget">Add +</b-button>
-          </b-row></b-col
+        <b-row align-h="between"> <h1>Cashflow</h1></b-row>
+        <b-table
+          :sticky-header="true"
+          :no-border-collapse="true"
+          striped
+          small
+          responsive
+          :items="items"
+          :fields="fields"
         >
-        <b-form-input v-model="budgetsFilter" placeholder="Search" debounce="500" class="mt-3"></b-form-input>
-
-        <b-card>
-          <b-table
-            ref="budgetsTable"
-            :items="budgetsProvider"
-            :fields="budgetFields"
-            :filter="budgetsFilter"
-            :sort-by="'recurring'"
-            :sort-desc="true"
-            responsive
-          >
-            <template #cell(date)="row">
-              {{ formatDate(row.item.date) }}
-            </template>
-            <template #cell(recurringType)="row">
-              {{ row.item.recurring ? row.item.recurringType : null }}
-            </template>
-            <template #cell(actions)="row">
-              <b-button @click="showBudgetTransactions(row.item, row)" class="mr-2" variant="primary">
-                {{ row.detailsShowing ? "Hide" : "Show" }} Transactions
-              </b-button>
-              <b-button @click="editBudgetModal(row.item)" variant="success">Edit</b-button>
-              <b-button @click="deleteBudget(row.item)" variant="danger">Delete</b-button>
-            </template>
-            <template #row-details="row">
-              <b-card>
-                <b-table :items="budgetTransactions(row.item)" :fields="transactionFields">
-                  <template #cell(date)="subRow">
-                    {{ formatDate(subRow.item.date) }}
-                  </template>
-                  <template #cell(amount)="subRow">
-                    {{
-                      new Intl.NumberFormat("en-GB", {
-                        style: "currency",
-                        currency: "GBP"
-                      }).format(subRow.item.amount)
-                    }}
-                  </template>
-                  <template #cell(actions)="subRow">
-                    <b-button @click="unlinkBudget(subRow.item, row.item)" variant="danger">Unlink Budget</b-button>
-                  </template></b-table
-                >
-              </b-card>
-            </template>
-          </b-table></b-card
-        ></b-col
-      ></b-container
-    >
-    <BudgetModal ref="budgetModal" @created="createBudget" @edited="editBudget" />
+          <template #head()="scope">
+            <div class="text-nowrap">{{ scope.label }}</div>
+          </template>
+        </b-table>
+      </b-col>
+    </b-container>
   </div>
 </template>
 
 <script>
 export default {
+  computed: {
+    fields() {
+      let fields = [{ key: "Budget", stickyColumn: true, isRowHeader: true, variant: "primary" }];
+      fields.push(...this.dates);
+      return fields;
+    },
+    items() {
+      let rows = [];
+      for (let budgetCategory of this.budgetCategories) {
+        let row = { Budget: budgetCategory.name };
+        rows.push(row);
+        for (let budget of this.budgets.filter((b) => b.category == budgetCategory._id)) {
+          row = { Budget: budget.name };
+          rows.push(row);
+        }
+      }
+      return rows;
+    },
+    dates() {
+      let { startOfMonth, eachMonthOfInterval, addMonths, format } = this.$dateFns;
+      let monthStart = startOfMonth(new Date());
+      return eachMonthOfInterval({
+        start: monthStart,
+        end: addMonths(monthStart, this.numberOfPeriods - 1)
+      }).map((d) => format(d, "MMM yy"));
+    }
+  },
+
+  mounted() {
+    this.getData();
+  },
   data() {
-    return {
-      budgetFields: [
-        { key: "name", sortable: true },
-        { key: "recurring", sortable: true },
-        { key: "recurringType", sortable: true },
-        { key: "actions", sortable: false }
-      ],
-      transactionFields: [
-        { key: "date", sortable: true },
-        { key: "name", sortable: true },
-        { key: "amount", sortable: true },
-        { key: "description", sortable: true },
-        { key: "budget", sortable: true },
-        { key: "actions", sortable: false }
-      ],
-      budgetsFilter: "",
-      budgets: [],
-      transactions: []
-    };
+    return { view: "monthly", numberOfPeriods: 52, budgetCategories: [], budgets: [] };
   },
   methods: {
-    addBudget() {
-      this.$refs.budgetModal.show({ title: "Create Budget" });
-    },
-    editBudgetModal(budget) {
-      this.$refs.budgetModal.show({ title: "Edit Budget", budget });
-    },
-    async createBudget(budget) {
-      await this.$axios.post("/budgets", budget);
-      this.$refs.budgetsTable.refresh();
-    },
-    async editBudget(budget) {
-      await this.$axios.put(`/budgets/${budget._id}`, budget);
-      this.$refs.budgetsTable.refresh();
-    },
-    async unlinkBudget(transaction, budget) {
-      let result = await this.$swal.fire({
-        title: "Unlink Budget?",
-        text: "Are you sure?",
-        icon: "warning",
-        showCancelButton: true
-      });
-      if (!result.isConfirmed) return;
-      await this.$axios.put(`/transactions/${transaction._id}`, { budget: null });
-      this.$set(transaction, "budget", null);
-      this.$swal.fire({
-        title: "Budget Unlinked",
-        icon: "info"
-      });
-    },
-    async deleteBudget(budget) {
-      let result = await this.$swal.fire({
-        title: "Delete Budget?",
-        text: "Are you sure?",
-        icon: "warning",
-        showCancelButton: true
-      });
-      if (!result.isConfirmed) return;
-
-      await this.$axios.delete(`/budgets/${budget._id}`);
-      this.$refs.budgetsTable.refresh();
-      this.$swal.fire({
-        title: "Budget Deleted",
-        icon: "info"
-      });
-    },
-
-    formatDate(date) {
-      return `${new Date(date).toLocaleDateString()} ${new Date(date).toLocaleTimeString()}`;
-    },
-    budgetTransactions(budget) {
-      return this.transactions.filter((t) => t.budget == budget._id);
-    },
-    async showBudgetTransactions(budget, row) {
-      let query = `?budget=${budget._id}`;
-      let { data: transactions } = await this.$axios.get("/transactions" + query);
-      for (let transaction of transactions) {
-        if (!this.transactions.find((t) => t._id == transaction._id)) this.transactions.push(transaction);
-      }
-      if (row) row.toggleDetails();
-    },
-
-    async budgetsProvider(ctx, callback) {
-      let query = `?filter=${ctx.filter}&sortBy=${ctx.sortBy}&sortDesc=${ctx.sortDesc}`;
-      let { data: budgets } = await this.$axios.get("/budgets" + query);
+    async getData() {
+      let { data: budgetCategories } = await this.$axios.get("/budget-categories");
+      this.budgetCategories = budgetCategories;
+      let { data: budgets } = await this.$axios.get("/budgets");
       this.budgets = budgets;
-      return budgets;
     }
   }
 };

@@ -9,9 +9,9 @@ const TransactionSchema = new mongoose.Schema(
     amount: Number,
     notes: String,
     description: String,
-    budget: {
+    flow: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Budget",
+      ref: "Flow",
       default: null
     },
     archived: { type: Boolean, default: false }

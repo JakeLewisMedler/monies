@@ -3,7 +3,7 @@
     <b-container class="mt-3">
       <b-col>
         <b-button @click="clearTransactions" variant="danger">Clear Transactions</b-button>
-        <b-button @click="clearBudgets" variant="danger">Clear Budgets</b-button></b-col
+        <b-button @click="clearFlows" variant="danger">Clear Flows</b-button></b-col
       >
     </b-container>
   </div>
@@ -29,17 +29,17 @@ export default {
         icon: "info"
       });
     },
-    async clearBudgets() {
+    async clearFlows() {
       let result = await this.$swal.fire({
-        title: "Clear Budgets?",
+        title: "Clear Flows?",
         text: "Are you sure?",
         icon: "warning",
         showCancelButton: true
       });
       if (!result.isConfirmed) return;
-      await this.$axios.delete("/budgets");
+      await this.$axios.delete("/flows");
       this.$swal.fire({
-        title: "Budgets Cleared",
+        title: "Flows Cleared",
         icon: "info"
       });
     }

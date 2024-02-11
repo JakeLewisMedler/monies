@@ -1,5 +1,5 @@
 <template>
-  <div class="budget__categories">
+  <div class="flow__categories">
     <b-container class="mt-3">
       <b-col>
         <b-col>
@@ -66,7 +66,7 @@ export default {
       this.$refs.budgetCategoriesTable.refresh();
     },
     async editBudgetCategory(budgetCategory) {
-      await this.$axios.put(`/budgets-categories/${budgetCategory._id}`, budgetCategory);
+      await this.$axios.put(`/flows-categories/${budgetCategory._id}`, budgetCategory);
       this.$refs.budgetCategoriesTable.refresh();
     }
   }
@@ -74,6 +74,6 @@ export default {
 </script>
 
 <style lang="scss">
-.budget__categories {
+.flow__categories {
 }
 </style>
