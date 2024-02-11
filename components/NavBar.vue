@@ -31,6 +31,7 @@ export default {
 <style lang="scss">
 .nav {
   height: 50px;
+  min-height: 50px;
   padding: 0 100px;
   background: #40c9db;
   display: flex;

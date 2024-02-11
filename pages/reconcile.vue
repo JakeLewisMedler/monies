@@ -3,7 +3,7 @@
     <b-container class="mt-3">
       <b-col>
         <h1>Reconcile</h1>
-        <b-card>
+        <b-card class="mt-3">
           <b-col>
             <h2>Unallocated Transactions ({{ unallocatedTransactions.length }})</h2>
             <b-form-input v-model="unallocatedTransactionsFilter" placeholder="Search" debounce="200"></b-form-input>

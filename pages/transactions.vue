@@ -3,7 +3,7 @@
     <b-container class="mt-3">
       <b-col>
         <h1>Transactions ({{ transactions.length }})</h1>
-        <b-form-input v-model="transactionsFilter" placeholder="Search" debounce="500"></b-form-input>
+        <b-form-input v-model="transactionsFilter" placeholder="Search" debounce="500" class="mt-3"></b-form-input>
 
         <b-card>
           <b-table
