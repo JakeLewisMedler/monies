@@ -21,8 +21,8 @@ const generate_cashflow = async (req, res) => {
       let budgetCategoryEstimatedTotal = 0;
       let budgetCategoryActualTotal = 0;
       for (let budget of budgets.filter((b) => String(b.category) == String(budgetCategory._id))) {
-        let estimated = Math.round(Math.random() * 10000) / 100;
-        let actual = Math.round(Math.random() * 10000) / 100;
+        let estimated = 0;
+        let actual = 0;
         budgetCategoryEstimatedTotal += estimated;
         budgetCategoryActualTotal += actual;
         period.budgets.push({ name: budget.name, _id: budget._id, estimatedTotal: estimated, actualTotal: actual });
@@ -34,7 +34,7 @@ const generate_cashflow = async (req, res) => {
         actualTotal: budgetCategoryActualTotal
       });
     }
-    let openingBalance = Math.round(Math.random() * 10000) / 100;
+    let openingBalance = 0;
     let diffEstimated = Math.round(period.budgets.reduce((prev, curr) => prev + curr.estimatedTotal, 0) * 100) / 100;
     let diffActual = Math.round(period.budgets.reduce((prev, curr) => prev + curr.actualTotal, 0) * 100) / 100;
     let closingEstimated = Math.round((openingBalance + diffEstimated) * 100) / 100;

@@ -7,7 +7,7 @@ const TransactionSchema = new mongoose.Schema(
     type: String,
     name: String,
     amount: Number,
-    notes: String,
+    notes: { type: String, default: "" },
     description: String,
     flow: {
       type: mongoose.Schema.Types.ObjectId,

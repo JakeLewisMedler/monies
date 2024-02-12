@@ -3,12 +3,7 @@ const mongoose = require("mongoose");
 const FlowSchema = new mongoose.Schema(
   {
     name: String,
-    recurring: { type: Boolean, default: false },
-    recurringType: {
-      type: String,
-      enum: ["weekly", "monthly", "annually", "custom"]
-    },
-    recurringFrequency: Number,
+    estimate: Boolean,
     date: Date,
     category: {
       type: mongoose.Schema.Types.ObjectId,

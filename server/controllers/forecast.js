@@ -14,8 +14,8 @@ const generate_forecast = async (req, res) => {
     let budgets = await Budget.find({ category: budgetCategory._id });
     let flows = await Flow.find({ budget: { $in: budgets.map((b) => b._id) } });
 
-    let monthStart = subMonths(startOfMonth(new Date()), 1);
-    let numberOfPeriods = 13;
+    let monthStart = subMonths(startOfMonth(new Date()), 3);
+    let numberOfPeriods = 15;
     let dates = eachMonthOfInterval({
       start: monthStart,
       end: addMonths(monthStart, numberOfPeriods - 1)

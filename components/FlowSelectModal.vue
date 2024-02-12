@@ -46,10 +46,18 @@ export default {
       title: "",
       selectedFlow: null,
       searchFilter: "",
-      transaction: null
+      transaction: null,
+      showing: false
     };
   },
-  async mounted() {},
+  async mounted() {
+    document.addEventListener("keyup", (e) => {
+      if (e.code == "Enter" && this.showing) {
+        this.submitFlow();
+        this.hide();
+      }
+    });
+  },
   methods: {
     flowSelected() {
       let flowSelect = this.$refs.flowSelect;
@@ -57,12 +65,17 @@ export default {
       flowSelect.scrollTop = 0;
     },
     submitFlow() {
-      this.$emit("selected", { flowId: this.selectedFlow, transaction: this.transaction });
+      this.$emit("selected", {
+        flowId: this.selectedFlow,
+        transaction: this.transaction,
+        searchField: this.searchFilter
+      });
     },
     async show({ title, transaction }) {
       this.title = title;
       this.transaction = transaction;
       this.selectedFlow = null;
+      this.searchFilter = "";
       this.$refs.modal.show();
       this.showing = true;
       if (transaction?.flow) {

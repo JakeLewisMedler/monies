@@ -44,9 +44,10 @@ const upload_csv = async (req, res) => {
 
     let entries = [];
     await new Promise((r) => {
-      fs.createReadStream(uploadPath)
+      fs.createReadStream(tempPath)
         .pipe(csv())
         .on("data", (data) => {
+          console.log(data.Date);
           entries.push(data);
         })
         .on("end", () => {
@@ -125,6 +126,7 @@ const list_unallocated_transactions = async (req, res) => {
 
 const update_transaction = async (req, res) => {
   let { _id } = req.params;
+  console.log("update", req.body);
   let transaction = await Transaction.findByIdAndUpdate(_id, req.body);
   return res.send(transaction);
 };

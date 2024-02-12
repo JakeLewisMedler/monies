@@ -31,7 +31,9 @@
                 }).format(row.item.amount)
               }}
             </template>
-
+            <template #cell(notes)="row">
+              <b-form-textarea v-model="row.item.notes" @change="updateNotes(row.item)"></b-form-textarea>
+            </template>
             <template #cell(flow)="row">
               <b-button :variant="getFlowButtonData(row.item).variant" @click="flowButtonClicked(row.item)">{{
                 getFlowButtonData(row.item).label
@@ -76,6 +78,7 @@ export default {
         { key: "name", sortable: true },
         { key: "amount", sortable: true },
         { key: "description", sortable: true },
+        { key: "notes", sortable: true },
         { key: "flow", sortable: false, thStyle: "min-width:400px;" },
         { key: "actions", sortable: true, thStyle: "min-width:150px;" }
       ],
@@ -88,8 +91,8 @@ export default {
     await this.getFlows();
   },
   methods: {
-    flowSelected({ flowId, transaction }) {
-      if (!flowId) this.createFlowModal(transaction);
+    flowSelected({ flowId, transaction, searchField }) {
+      if (!flowId) this.createFlowModal({ transaction, name: searchField });
       else transaction.flow = flowId;
     },
     flowButtonClicked(transaction) {
@@ -100,10 +103,10 @@ export default {
       if (transaction.flow) {
         let flow = this.flows.find((f) => f._id == transaction.flow);
         label = flow?.name;
-        variant = "secondary";
+        variant = "primary";
       } else {
         label = "Search";
-        variant = "primary";
+        variant = "secondary";
       }
       return { variant, label };
     },
@@ -144,6 +147,10 @@ export default {
       this.unallocatedTransactions = transactions;
       return transactions;
     },
+    async updateNotes(transaction) {
+      let { notes } = transaction;
+      await this.$axios.put(`/transactions/${transaction._id}`, { notes });
+    },
     async reconcile(transaction) {
       let { flow } = transaction;
       if (!flow) return;
@@ -157,11 +164,11 @@ export default {
       await this.getFlows();
       transaction.flow = data._id;
     },
-    async createFlowModal(transaction) {
+    async createFlowModal({ transaction, name }) {
       let { data: flow } = await this.$axios.post("/flows/create-temp", {
         transaction
       });
-      this.$refs.flowModal.show({ title: "Create Flow", flow, transaction });
+      this.$refs.flowModal.show({ title: "Create Flow", flow, transaction, name });
     },
     formatDate(date) {
       return `${new Date(date).toLocaleDateString()} ${new Date(date).toLocaleTimeString()}`;

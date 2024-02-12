@@ -10,7 +10,7 @@
   >
     <template v-if="flow">
       <label for="name">Name:</label>
-      <b-form-input id="name" v-model="flow.name" placeholder="Flow name" class="mb-3"></b-form-input>
+      <b-form-input id="name" v-model="flow.name" autofocus placeholder="Flow name" class="mb-3"></b-form-input>
       <b-row>
         <b-col cols="2">
           <label for="name">Recurring:</label>
@@ -104,7 +104,7 @@ export default {
       if (this.flow?._id) this.$emit("edited", this.flow);
       else this.$emit("created", this.flow, this.transaction);
     },
-    show({ title, flow, transaction }) {
+    show({ title, flow, transaction, name }) {
       this.title = title;
       this.flow = {
         name: "",
@@ -116,6 +116,7 @@ export default {
         budget: null
       };
       if (flow) Object.assign(this.flow, flow);
+      if (name) this.flow.name = name;
       if (transaction) this.transaction = transaction;
       this.$refs.modal.show();
       this.showing = true;

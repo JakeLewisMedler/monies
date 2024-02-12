@@ -1,42 +1,43 @@
 <template>
   <div class="transactions">
-    <b-container class="mt-3">
-      <b-col>
-        <h1>Transactions ({{ transactions.length }})</h1>
-        <b-form-input v-model="transactionsFilter" placeholder="Search" debounce="500" class="mt-3"></b-form-input>
+    <b-col class="px-5 mt-3">
+      <h1>Transactions ({{ transactions.length }})</h1>
+      <b-form-input v-model="transactionsFilter" placeholder="Search" debounce="500" class="mt-3"></b-form-input>
 
-        <b-card>
-          <b-table
-            ref="transactionsTable"
-            :items="transactionsProvider"
-            :fields="transactionFields"
-            :filter="transactionsFilter"
-            responsive
-          >
-            <template #cell(date)="row">
-              {{ formatDate(row.item.date) }}
-            </template>
-            <template #cell(amount)="row">
-              {{
-                new Intl.NumberFormat("en-GB", {
-                  style: "currency",
-                  currency: "GBP"
-                }).format(row.item.amount)
-              }}
-            </template>
-            <template #cell(flow)="row">
-              {{ row.item.flow?.name }}
-            </template>
-            <template #cell(actions)="row">
-              <b-button @click="unlinkFlow(row.item)" variant="danger">Unlink Flow</b-button
-              ><b-button variant="danger" @click="archiveTransactionToggle(row.item)"
-                >{{ row.item.archived ? "Unarchive" : "Archive" }}
-              </b-button>
-            </template></b-table
-          ></b-card
-        ></b-col
-      >
-    </b-container>
+      <b-card>
+        <b-table
+          ref="transactionsTable"
+          :items="transactionsProvider"
+          :fields="transactionFields"
+          :filter="transactionsFilter"
+          responsive
+        >
+          <template #cell(date)="row">
+            {{ formatDate(row.item.date) }}
+          </template>
+          <template #cell(amount)="row">
+            {{
+              new Intl.NumberFormat("en-GB", {
+                style: "currency",
+                currency: "GBP"
+              }).format(row.item.amount)
+            }}
+          </template>
+          <template #cell(notes)="row">
+            <b-form-textarea v-model="row.item.notes" @change="updateNotes(row.item)"></b-form-textarea>
+          </template>
+          <template #cell(flow)="row">
+            {{ row.item.flow?.name }}
+          </template>
+          <template #cell(actions)="row">
+            <b-button @click="unlinkFlow(row.item)" variant="danger">Unlink Flow</b-button
+            ><b-button variant="danger" @click="archiveTransactionToggle(row.item)"
+              >{{ row.item.archived ? "Unarchive" : "Archive" }}
+            </b-button>
+          </template></b-table
+        ></b-card
+      ></b-col
+    >
   </div>
 </template>
 
@@ -49,6 +50,7 @@ export default {
         { key: "name", sortable: true },
         { key: "amount", sortable: true },
         { key: "description", sortable: true },
+        { key: "notes", sortable: true },
         { key: "flow", sortable: true },
         { key: "archived", sortable: true },
         { key: "actions", sortable: true }
@@ -64,6 +66,10 @@ export default {
     async archiveTransactionToggle(transaction) {
       await this.$axios.put(`/transactions/${transaction._id}`, { archived: !transaction.archived });
       this.$refs.transactionsTable.refresh();
+    },
+    async updateNotes(transaction) {
+      let { notes } = transaction;
+      await this.$axios.put(`/transactions/${transaction._id}`, { notes });
     },
     async unlinkFlow(transaction) {
       let result = await this.$swal.fire({
