@@ -5,7 +5,6 @@ let TransactionsController = require("./controllers/transaction");
 let FlowController = require("./controllers/flow");
 let BudgetCategoryController = require("./controllers/budgetCategory");
 let BudgetController = require("./controllers/budget");
-let CashflowController = require("./controllers/cashflow");
 let ForecastController = require("./controllers/forecast");
 
 router.get("/transactions", TransactionsController.list_transactions);
