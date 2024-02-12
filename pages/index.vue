@@ -51,6 +51,9 @@
                 >
               </tr>
             </tbody>
+            <tr class="break">
+              <td v-for="i in cashflow?.periods.length * 2 + 1" :key="i">&nbsp;</td>
+            </tr>
           </table>
         </b-row></b-col
       >
