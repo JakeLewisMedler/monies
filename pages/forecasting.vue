@@ -13,7 +13,7 @@
                 v-for="budgetCategory in budgetCategories"
                 :key="budgetCategory._id"
                 :active="selectedBudgetCategory == budgetCategory._id"
-                @click="selectBudgetCategory(budgetCategory)"
+                @click="selectBudgetCategory(budgetCategory._id)"
                 >{{ budgetCategory.name }}</b-nav-item
               >
             </b-nav>
@@ -42,16 +42,27 @@
                     <tr class="budget">
                       <td class="budget__name sticky">{{ budget.name }}</td>
                       <template v-for="period in forecast?.periods">
-                        <td class="budget__value">{{ getPeriodBudgetTotals(period, budget).estimatedTotal }}</td>
+                        <td v-if="!getPeriodBudget(period, budget).estimate" class="budget__value">
+                          {{ formatCurrency(getPeriodBudget(period, budget).estimatedTotal) }}
+                        </td>
+                        <td v-else class="budget__value">
+                          <b-input-group size="sm" prepend="£">
+                            <b-form-input
+                              type="number"
+                              v-model="getPeriodBudget(period, budget).estimatedTotal"
+                              @change="setBudgetEstimate($event, budget)"
+                            ></b-form-input>
+                          </b-input-group>
+                        </td>
                         <td
                           class="budget__value"
                           :class="{
                             warning:
-                              getPeriodBudgetTotals(period, budget).actualTotal >
-                              getPeriodBudgetTotals(period, budget).estimatedTotal
+                              getPeriodBudget(period, budget).actualTotal >
+                              getPeriodBudget(period, budget).estimatedTotal
                           }"
                         >
-                          {{ getPeriodBudgetTotals(period, budget).actualTotal }}
+                          {{ formatCurrency(getPeriodBudget(period, budget).actualTotal) }}
                         </td></template
                       >
                     </tr>
@@ -61,16 +72,25 @@
                         {{ flow.name }}
                       </td>
                       <template v-for="period in forecast?.periods">
-                        <td class="flow__value">{{ getPeriodFlowTotals(period, flow).estimatedTotal }}</td>
+                        <td v-if="!getPeriodFlow(period, flow).estimate" class="flow__value"></td>
+                        <td v-else class="flow__value">
+                          <b-input-group size="sm" prepend="£">
+                            <b-form-input
+                              type="number"
+                              v-model="getPeriodFlow(period, flow).estimatedTotal"
+                              @change="setFlowEstimate($event, flow)"
+                            ></b-form-input>
+                          </b-input-group>
+                        </td>
+
                         <td
                           class="flow__value"
                           :class="{
                             warning:
-                              getPeriodFlowTotals(period, flow).actualTotal >
-                              getPeriodFlowTotals(period, flow).estimatedTotal
+                              getPeriodFlow(period, flow).actualTotal > getPeriodFlow(period, flow).estimatedTotal
                           }"
                         >
-                          {{ getPeriodFlowTotals(period, flow).actualTotal }}
+                          {{ getPeriodFlow(period, flow).actualTotal }}
                         </td></template
                       >
                     </tr>
@@ -92,40 +112,47 @@
 export default {
   async mounted() {
     await this.getData();
-    if (this.budgetCategories.length > 0) await this.selectBudgetCategory(this.budgetCategories[0]);
+    if (this.$route.query.budgetCategory) await this.selectBudgetCategory(this.$route.query.budgetCategory);
+    else if (this.budgetCategories.length > 0) await this.selectBudgetCategory(this.budgetCategories[0]._id);
   },
   data() {
     return { budgetCategories: [], budgets: [], flows: [], forecast: null, selectedBudgetCategory: null };
   },
   methods: {
-    async selectBudgetCategory(budgetCategory) {
+    async selectBudgetCategory(budgetCategoryId) {
+      this.$router.push({ query: { budgetCategory: String(budgetCategoryId) } });
       this.forecast = null;
-      this.selectedBudgetCategory = budgetCategory._id;
-      let { data: budgets } = await this.$axios.get(`/budgets?budgetCategory=${budgetCategory._id}`);
+      this.selectedBudgetCategory = budgetCategoryId;
+      let { data: budgets } = await this.$axios.get(`/budgets?budgetCategory=${budgetCategoryId}`);
       this.budgets = budgets;
-      let { data: flows } = await this.$axios.get(`/flows?budgetCategory=${budgetCategory._id}`);
+      let { data: flows } = await this.$axios.get(`/flows?budgetCategory=${budgetCategoryId}`);
       this.flows = flows;
-
-      let { data: forecast } = await this.$axios.get(`/forecast?budgetCategory=${budgetCategory._id}`);
+      await this.getForecast();
+    },
+    async getForecast() {
+      let { data: forecast } = await this.$axios.get(`/forecast?budgetCategory=${this.selectedBudgetCategory}`);
       this.forecast = forecast;
     },
     formatCurrency(amount) {
+      if (amount === undefined) return null;
       return new Intl.NumberFormat("en-GB", {
         style: "currency",
         currency: "GBP"
       }).format(amount);
     },
-    getPeriodBudgetTotals(period, budget) {
-      let periodBudget = period.budgets.find((b) => b._id == budget._id);
-      let estimatedTotal = this.formatCurrency(periodBudget.estimatedTotal);
-      let actualTotal = this.formatCurrency(periodBudget.actualTotal);
-      return { estimatedTotal, actualTotal };
+    async setBudgetEstimate(amount, budget) {
+      await this.$axios.put(`/budgets/${budget._id}`, { estimateAmount: amount });
+      await this.getForecast();
     },
-    getPeriodFlowTotals(period, flow) {
-      let periodFlow = period.flows.find((b) => b._id == flow._id);
-      let estimatedTotal = this.formatCurrency(periodFlow.estimatedTotal);
-      let actualTotal = this.formatCurrency(periodFlow.actualTotal);
-      return { estimatedTotal, actualTotal };
+    async setFlowEstimate(amount, flow) {
+      await this.$axios.put(`/flows/${flow._id}`, { estimateAmount: amount });
+      await this.getForecast();
+    },
+    getPeriodBudget(period, budget) {
+      return period.budgets.find((b) => b._id == budget._id);
+    },
+    getPeriodFlow(period, flow) {
+      return period.flows.find((b) => b._id == flow._id);
     },
 
     async getData() {
@@ -157,6 +184,8 @@ export default {
         z-index: 1;
       }
       .header {
+        position: relative;
+        z-index: 2;
         th {
           position: sticky;
           top: 0;
@@ -164,6 +193,9 @@ export default {
         }
       }
       .subheader {
+        position: relative;
+        z-index: 2;
+
         th {
           position: sticky;
           top: 26px;

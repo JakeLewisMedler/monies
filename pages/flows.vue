@@ -66,8 +66,6 @@ export default {
     return {
       flowFields: [
         { key: "name", sortable: true },
-        { key: "estimate", sortable: true },
-
         { key: "budget", sortable: true },
         { key: "actions", sortable: false }
       ],

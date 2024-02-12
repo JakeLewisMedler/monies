@@ -11,8 +11,6 @@
     <template v-if="flow">
       <label for="name">Name:</label>
       <b-form-input id="name" v-model="flow.name" autofocus placeholder="Flow name" class="mb-3"></b-form-input>
-      <label for="name">Estimate:</label>
-      <b-form-checkbox v-model="flow.estimate" name="estimate" switch class="mb-3"> </b-form-checkbox>
       <b-form-group label="Category:">
         <b-form-select
           v-model="flow.category"
@@ -85,7 +83,6 @@ export default {
       this.title = title;
       this.flow = {
         name: "",
-        estimate: false,
         date: new Date(),
         category: null,
         budget: null

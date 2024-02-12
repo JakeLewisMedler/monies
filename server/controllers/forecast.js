@@ -26,10 +26,9 @@ const generate_forecast = async (req, res) => {
         let period = { date, budgets: [], flows: [] };
 
         for (let budget of budgets) {
-          let budgetEstimatedTotal = 0;
-          let budgetActualTotal = 0;
+          let flowEstimateSum = 0;
+          let flowActualSum = 0;
           for (let flow of flows.filter((f) => String(f.budget) == String(budget._id))) {
-            let estimated = 0;
             let transactions = await Transaction.find({
               flow: flow._id,
               date: {
@@ -37,19 +36,38 @@ const generate_forecast = async (req, res) => {
                 $lt: new Date(endOfMonth(date))
               }
             });
-
             let sum = transactions.reduce((prev, curr) => prev + curr.amount, 0);
             let actual = Math.round(sum * 100) / 100;
-            budgetEstimatedTotal += estimated;
-            budgetActualTotal += actual;
-            period.flows.push({ name: flow.name, _id: flow._id, estimatedTotal: estimated, actualTotal: actual });
+
+            let periodFlow = {
+              name: flow.name,
+              _id: flow._id,
+              actualTotal: actual,
+              estimate: false,
+              estimatedTotal: 0
+            };
+            if (!budget.estimate) {
+              periodFlow.estimate = true;
+              periodFlow.estimatedTotal = flow.estimateAmount;
+            }
+
+            flowEstimateSum += periodFlow.estimatedTotal;
+            flowActualSum += actual;
+            period.flows.push(periodFlow);
           }
-          period.budgets.push({
+          let periodBudget = {
             name: budget.name,
             _id: budget._id,
-            estimatedTotal: budgetEstimatedTotal,
-            actualTotal: budgetActualTotal
-          });
+            actualTotal: flowActualSum,
+            estimate: false,
+            estimatedTotal: flowEstimateSum
+          };
+          if (budget.estimate) {
+            periodBudget.estimate = true;
+            periodBudget.estimatedTotal = budget.estimateAmount;
+          }
+
+          period.budgets.push(periodBudget);
         }
         return period;
       })
