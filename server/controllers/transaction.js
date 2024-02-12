@@ -1,8 +1,11 @@
 const Transaction = require("../models/Transaction");
 const Flow = require("../models/Flow");
 const { parse } = require("date-fns");
+const fs = require("fs");
+const csv = require("csv-parser");
+const path = require("path");
 
-const createUpdateTransaction = async (data) => {
+const createTransaction = async (data) => {
   let {
     "Transaction ID": id,
     Date: date,
@@ -13,11 +16,7 @@ const createUpdateTransaction = async (data) => {
     Description: description
   } = data;
   let dateTime = parse(`${date} ${time}`, "dd/MM/yyyy HH:mm:ss", new Date());
-  let transaction = await Transaction.findOneAndUpdate(
-    { monzoId: id },
-    { monzoId: id, date: dateTime, type, name, amount, description },
-    { upsert: true, new: true }
-  );
+  let transaction = await Transaction.create({ monzoId: id, date: dateTime, type, name, amount, description });
   return transaction;
 };
 
@@ -35,12 +34,40 @@ const findMatchingFlow = async (transaction) => {
 
 const upload_csv = async (req, res) => {
   try {
-    let entries = req.body;
-    if (!entries) throw "No entries";
-    for (let entry of entries) {
-      await createUpdateTransaction(entry);
+    if (!req.files || Object.keys(req.files).length === 0) {
+      return res.status(400).send("No files were uploaded.");
     }
-    res.send();
+    let uploadedFile = req.files.csv;
+    let fileName = String(Date.now()) + ".csv";
+    tempPath = path.resolve(__dirname, "../uploads/" + fileName);
+    await uploadedFile.mv(tempPath);
+
+    let entries = [];
+    await new Promise((r) => {
+      fs.createReadStream(uploadPath)
+        .pipe(csv())
+        .on("data", (data) => {
+          entries.push(data);
+        })
+        .on("end", () => {
+          r();
+        });
+    });
+
+    let createdCount = 0;
+    let skippedCount = 0;
+    for (let entry of entries) {
+      let transaction = await Transaction.findOne({ monzoId: entry["Transaction ID"] });
+      if (!transaction) {
+        await createTransaction(entry);
+        createdCount++;
+      } else {
+        console.log(`Skipping transaction ${entry["Transaction ID"]}`);
+        skippedCount++;
+      }
+    }
+
+    return res.send({ createdCount, skippedCount });
   } catch (error) {
     console.error(error);
     res.status(500).send(error);

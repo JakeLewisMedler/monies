@@ -26,33 +26,20 @@ export default {
   },
   methods: {
     async upload() {
-      const input = this.file;
-      const reader = new FileReader();
-      reader.onload = async (e) => {
-        const text = e.target.result;
-        let entries = await this.handleCSV(text);
-        await this.$axios.post("/transactions/upload-csv", entries);
-        this.$router.push("/reconcile");
-      };
-      reader.readAsText(input);
-    },
-    async handleCSV(data) {
-      let entries = [];
-      let headers = data.split("\n")[0].split(",");
-      let lines = data
-        .split("\n")
-        .slice(1)
-        .filter((l) => l.length > 0);
-
-      for (let line of lines) {
-        let entry = {};
-        let cells = line.split(",");
-        for (let cellId in cells) {
-          entry[headers[cellId]] = cells[cellId];
+      var formData = new FormData();
+      formData.append("csv", this.file);
+      let { data } = await this.$axios.post("/transactions/upload-csv", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data"
         }
-        entries.push(entry);
-      }
-      return entries;
+      });
+      let { createdCount, skippedCount } = data;
+      await this.$swal.fire({
+        title: "CSV Uploaded",
+        icon: "info",
+        html: `${createdCount} Transactions Created<br>${skippedCount} Transactions Skipped`
+      });
+      this.$router.push("/reconcile");
     }
   }
 };

@@ -91,3 +91,4 @@ sw.*
 yarn.lock
 
 /dataBackups/*
+server/uploads/*

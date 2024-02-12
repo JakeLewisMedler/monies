@@ -29,7 +29,7 @@
                 <td v-for="i in cashflow?.periods.length * 2 + 1" :key="i">&nbsp;</td>
               </tr>
               <tr class="budget__category">
-                <td class="budget_category__name sticky">{{ budgetCategory.name }}</td>
+                <td class="budget__category__name sticky">{{ budgetCategory.name }}</td>
                 <template v-for="period in cashflow?.periods">
                   <td class="budget__category__value">
                     {{ getPeriodBudgetCategoryTotals(period, budgetCategory).estimatedTotal }}
@@ -163,7 +163,7 @@ export default {
   flex-direction: column;
   flex-grow: 1;
   .table__container {
-    max-height: 800px;
+    max-height: calc(100vh - 300px);
     overflow: scroll;
     box-shadow: inset 0 0 2px #000;
 

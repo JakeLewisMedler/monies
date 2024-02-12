@@ -1,48 +1,47 @@
 <template>
   <div class="reconcile">
-    <b-container class="mt-3">
-      <b-col>
-        <h1>Reconcile</h1>
-        <b-card class="mt-3">
-          <b-col>
-            <h2>Unallocated Transactions ({{ unallocatedTransactions.length }})</h2>
-            <b-form-input v-model="unallocatedTransactionsFilter" placeholder="Search" debounce="200"></b-form-input>
-            <b-table
-              ref="unallocatedTransactionsTable"
-              :items="transactionsProvider"
-              :fields="transactionFields"
-              :filter="unallocatedTransactionsFilter"
-              :sort-by="'name'"
-              :sort-desc="false"
-              responsive
-            >
-              <template #cell(date)="row">
-                {{ formatDate(row.item.date) }}
-              </template>
+    <b-col class="px-5 mt-3">
+      <h1>Reconcile</h1>
+      <b-card class="mt-3">
+        <b-col>
+          <h2>Unallocated Transactions ({{ unallocatedTransactions.length }})</h2>
+          <b-form-input v-model="unallocatedTransactionsFilter" placeholder="Search" debounce="200"></b-form-input>
+          <b-table
+            ref="unallocatedTransactionsTable"
+            :items="transactionsProvider"
+            :fields="transactionFields"
+            :filter="unallocatedTransactionsFilter"
+            :sort-by="'name'"
+            :sort-desc="false"
+            responsive
+          >
+            <template #cell(date)="row">
+              {{ formatDate(row.item.date) }}
+            </template>
 
-              <template #cell(amount)="row">
-                {{
-                  new Intl.NumberFormat("en-GB", {
-                    style: "currency",
-                    currency: "GBP"
-                  }).format(row.item.amount)
-                }}
-              </template>
+            <template #cell(amount)="row">
+              {{
+                new Intl.NumberFormat("en-GB", {
+                  style: "currency",
+                  currency: "GBP"
+                }).format(row.item.amount)
+              }}
+            </template>
 
-              <template #cell(flow)="row">
-                <b-form-select v-model="row.item.flow" value-field="_id" text-field="name" :options="flows">
-                  <b-form-select-option :value="null">Create New</b-form-select-option>
-                </b-form-select>
-              </template>
-              <template #cell(actions)="row">
-                <b-button variant="primary" @click="reconcile(row.item)">√</b-button>
-                <b-button variant="danger" @click="archiveTransaction(row.item)"
-                  ><img class="icon" src="~/assets/icons/bin.svg" alt=""
-                /></b-button> </template
-            ></b-table>
-          </b-col>
-        </b-card> </b-col
-    ></b-container>
+            <template #cell(flow)="row">
+              <b-form-select v-model="row.item.flow" value-field="_id" text-field="name" :options="renamedFlows">
+                <b-form-select-option :value="null">Create New</b-form-select-option>
+              </b-form-select>
+            </template>
+            <template #cell(actions)="row">
+              <b-button variant="primary" @click="reconcile(row.item)">√</b-button>
+              <b-button variant="danger" @click="archiveTransaction(row.item)"
+                ><img class="icon" src="~/assets/icons/bin.svg" alt=""
+              /></b-button> </template
+          ></b-table>
+        </b-col>
+      </b-card>
+    </b-col>
     <FlowModal ref="flowModal" @created="createFlow" />
   </div>
 </template>
@@ -52,25 +51,39 @@ export default {
   computed: {
     relevantFlows() {
       return this.flows.filter((b) => this.unallocatedTransactions.find((t) => t.flow == b._id));
+    },
+    renamedFlows() {
+      let flows = this.flows;
+      for (let flow of flows) {
+        let budget = this.budgets.find((b) => b._id == flow.budget);
+        let budgetCategory = this.budgetCategories.find((b) => b._id == flow.category);
+        if (budget && budgetCategory) {
+          flow.name += ` (${budgetCategory.name} - ${budget.name})`;
+        }
+      }
+      return this.flows;
     }
   },
   data() {
     return {
       flows: [],
+      budgetCategories: [],
+      budgets: [],
       unallocatedTransactions: [],
       transactionFields: [
         { key: "date", sortable: true },
         { key: "name", sortable: true },
         { key: "amount", sortable: true },
         { key: "description", sortable: true },
-        { key: "flow", sortable: false, thStyle: "min-width:200px;" },
+        { key: "flow", sortable: false, thStyle: "min-width:300px;" },
         { key: "actions", sortable: true, thStyle: "min-width:150px;" }
       ],
       unallocatedTransactionsFilter: ""
     };
   },
-  mounted() {
-    this.getFlows();
+  async mounted() {
+    await this.getBudgets();
+    await this.getFlows();
   },
   methods: {
     async archiveTransaction(transaction) {
@@ -87,6 +100,12 @@ export default {
         title: "Transaction Archived",
         icon: "info"
       });
+    },
+    async getBudgets() {
+      let { data: budgetCategories } = await this.$axios.get("/budget-categories");
+      this.budgetCategories = budgetCategories;
+      let { data: budgets } = await this.$axios.get("/budgets");
+      this.budgets = budgets;
     },
     async getFlows() {
       let { data: flows } = await this.$axios.get("/flows");

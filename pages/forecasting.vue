@@ -141,8 +141,9 @@ export default {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+
   .table__container {
-    max-height: 800px;
+    max-height: calc(100vh - 300px);
     overflow: scroll;
     box-shadow: inset 0 0 2px #000;
 

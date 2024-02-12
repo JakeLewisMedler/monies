@@ -1,11 +1,11 @@
 const Budget = require("../models/Budget");
 const BudgetCategory = require("../models/BudgetCategory");
 
-const { startOfMonth, eachMonthOfInterval, addMonths, format, subMinutes } = require("date-fns");
+const { startOfMonth, eachMonthOfInterval, addMonths, subMonths, subMinutes } = require("date-fns");
 
 const generate_cashflow = async (req, res) => {
-  let monthStart = startOfMonth(new Date());
-  let numberOfPeriods = 12;
+  let monthStart = subMonths(startOfMonth(new Date()), 1);
+  let numberOfPeriods = 13;
   let budgets = await Budget.find({});
   let budgetCategories = await BudgetCategory.find({});
 

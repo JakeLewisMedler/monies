@@ -1,8 +1,8 @@
 <template>
   <div class="default">
-    <b-card title="Card Title" no-body>
+    <b-card no-body class="flex-grow-1">
       <b-card-header header-tag="nav"> <NavBar /></b-card-header>
-      <b-card-body> <Nuxt /></b-card-body>
+      <b-card-body class="flex-grow-1"> <Nuxt /></b-card-body>
     </b-card>
   </div>
 </template>
