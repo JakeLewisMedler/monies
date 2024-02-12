@@ -1,5 +1,5 @@
 <template>
-  <div class="index">
+  <div class="transactions">
     <b-container class="mt-3">
       <b-col>
         <h1>Transactions ({{ transactions.length }})</h1>
