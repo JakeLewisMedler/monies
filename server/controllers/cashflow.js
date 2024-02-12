@@ -15,7 +15,7 @@ const generate_cashflow = async (req, res) => {
   }).map((d) => subMinutes(d, d.getTimezoneOffset()));
 
   let periods = dates.map((date) => {
-    let period = { date, budgets: [], budgetCategories: [], totals: [] };
+    let period = { date, budgets: [], budgetCategories: [], totals: {} };
 
     for (let budgetCategory of budgetCategories) {
       let budgetCategoryEstimatedTotal = 0;
@@ -34,7 +34,13 @@ const generate_cashflow = async (req, res) => {
         actualTotal: budgetCategoryActualTotal
       });
     }
+    let openingBalance = Math.round(Math.random() * 10000) / 100;
+    let diffEstimated = Math.round(period.budgets.reduce((prev, curr) => prev + curr.estimatedTotal, 0) * 100) / 100;
+    let diffActual = Math.round(period.budgets.reduce((prev, curr) => prev + curr.actualTotal, 0) * 100) / 100;
+    let closingEstimated = Math.round((openingBalance + diffEstimated) * 100) / 100;
+    let closingActual = Math.round((openingBalance + diffActual) * 100) / 100;
 
+    period.totals = { openingBalance, diffEstimated, diffActual, closingEstimated, closingActual };
     return period;
   });
   return res.send({ periods });

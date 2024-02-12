@@ -99,7 +99,6 @@ export default {
       this.budgetCategories = budgetCategories;
       let { data: budgets } = await this.$axios.get("/budgets");
       this.budgets = budgets;
-      console.log(this.budgets, this.budgetCategories);
     },
     submitFlow() {
       if (this.flow?._id) this.$emit("edited", this.flow);

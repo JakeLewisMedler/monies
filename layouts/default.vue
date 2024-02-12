@@ -1,7 +1,9 @@
 <template>
   <div class="default">
-    <NavBar />
-    <Nuxt />
+    <b-card title="Card Title" no-body>
+      <b-card-header header-tag="nav"> <NavBar /></b-card-header>
+      <b-card-body> <Nuxt /></b-card-body>
+    </b-card>
   </div>
 </template>
 <style lang="scss">

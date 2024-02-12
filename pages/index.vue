@@ -2,7 +2,13 @@
   <div class="index">
     <b-col>
       <b-col class="px-5 mt-3">
-        <b-row align-h="between"> <h1>Cashflow</h1></b-row>
+        <b-row align-h="between">
+          <h1>Cashflow Overview</h1>
+          <b-button variant="primary" @click="collapseExpandBudgets">{{
+            collapseBudgets ? "Expand" : "Collapse"
+          }}</b-button>
+        </b-row>
+
         <b-row class="table__container mt-3">
           <table v-if="cashflow">
             <tr class="header">
@@ -23,17 +29,25 @@
                 <td v-for="i in cashflow?.periods.length * 2 + 1" :key="i">&nbsp;</td>
               </tr>
               <tr class="budget__category">
-                <td class="budget__name sticky">{{ budgetCategory.name }}</td>
+                <td class="budget_category__name sticky">{{ budgetCategory.name }}</td>
                 <template v-for="period in cashflow?.periods">
-                  <td class="budget__value">
+                  <td class="budget__category__value">
                     {{ getPeriodBudgetCategoryTotals(period, budgetCategory).estimatedTotal }}
                   </td>
-                  <td class="budget__value">
+                  <td
+                    class="budget__category__value"
+                    :class="{
+                      warning:
+                        getPeriodBudgetCategoryTotals(period, budgetCategory).actualTotal >
+                        getPeriodBudgetCategoryTotals(period, budgetCategory).estimatedTotal
+                    }"
+                  >
                     {{ getPeriodBudgetCategoryTotals(period, budgetCategory).actualTotal }}
                   </td></template
                 >
               </tr>
               <tr
+                v-if="!collapseBudgets"
                 v-for="budget in budgets.filter((b) => b.category == budgetCategory._id)"
                 :key="budget._id"
                 class="budget"
@@ -45,8 +59,48 @@
                   <td class="budget__value">
                     {{ getPeriodBudgetTotals(period, budget).estimatedTotal }}
                   </td>
-                  <td class="budget__value">
+                  <td
+                    class="budget__value"
+                    :class="{
+                      warning:
+                        getPeriodBudgetTotals(period, budget).actualTotal >
+                        getPeriodBudgetTotals(period, budget).estimatedTotal
+                    }"
+                  >
                     {{ getPeriodBudgetTotals(period, budget).actualTotal }}
+                  </td></template
+                >
+              </tr>
+            </tbody>
+            <tbody class="totals">
+              <tr class="break">
+                <td v-for="i in cashflow?.periods.length * 2 + 1" :key="i">&nbsp;</td>
+              </tr>
+              <tr class="total">
+                <td class="total__name sticky">Opening Balance</td>
+                <template v-for="period in cashflow?.periods">
+                  <td class="total__value">{{ formatCurrency(period.totals.openingBalance) }}</td>
+                  <td class="total__value">{{ formatCurrency(period.totals.openingBalance) }}</td></template
+                >
+              </tr>
+              <tr class="total">
+                <td class="total__name sticky">Net cash in/out</td>
+                <template v-for="period in cashflow?.periods">
+                  <td class="total__value">{{ formatCurrency(period.totals.diffEstimated) }}</td>
+                  <td class="total__value" :class="{ warning: period.totals.diffActual > period.totals.diffEstimated }">
+                    {{ formatCurrency(period.totals.diffActual) }}
+                  </td></template
+                >
+              </tr>
+              <tr class="total">
+                <td class="total__name sticky">Closing Balance</td>
+                <template v-for="period in cashflow?.periods">
+                  <td class="total__value">{{ formatCurrency(period.totals.closingEstimated) }}</td>
+                  <td
+                    class="total__value"
+                    :class="{ warning: period.totals.closingActual > period.totals.closingEstimated }"
+                  >
+                    {{ formatCurrency(period.totals.closingActual) }}
                   </td></template
                 >
               </tr>
@@ -67,47 +121,35 @@ export default {
     this.getData();
   },
   data() {
-    return { budgetCategories: [], budgets: [], cashflow: null };
+    return { budgetCategories: [], budgets: [], cashflow: null, collapseBudgets: true };
   },
   methods: {
+    collapseExpandBudgets() {
+      this.collapseBudgets = !this.collapseBudgets;
+    },
     getPeriodBudgetTotals(period, budget) {
-      console.log(period, budget);
       let periodBudget = period.budgets.find((b) => b._id == budget._id);
-      let estimatedTotal = new Intl.NumberFormat("en-GB", {
-        style: "currency",
-        currency: "GBP"
-      }).format(periodBudget.estimatedTotal);
-      let actualTotal = new Intl.NumberFormat("en-GB", {
-        style: "currency",
-        currency: "GBP"
-      }).format(periodBudget.actualTotal);
-
+      let estimatedTotal = this.formatCurrency(periodBudget.estimatedTotal);
+      let actualTotal = this.formatCurrency(periodBudget.actualTotal);
       return { estimatedTotal, actualTotal };
+    },
+    formatCurrency(amount) {
+      return new Intl.NumberFormat("en-GB", {
+        style: "currency",
+        currency: "GBP"
+      }).format(amount);
     },
     getPeriodBudgetCategoryTotals(period, budgetCategory) {
       let periodBudgetCategory = period.budgetCategories.find((b) => b._id == budgetCategory._id);
-      let estimatedTotal = new Intl.NumberFormat("en-GB", {
-        style: "currency",
-        currency: "GBP"
-      }).format(periodBudgetCategory.estimatedTotal);
-      let actualTotal = new Intl.NumberFormat("en-GB", {
-        style: "currency",
-        currency: "GBP"
-      }).format(periodBudgetCategory.actualTotal);
-
+      let estimatedTotal = this.formatCurrency(periodBudgetCategory.estimatedTotal);
+      let actualTotal = this.formatCurrency(periodBudgetCategory.actualTotal);
       return { estimatedTotal, actualTotal };
-    },
-    rowClass(item, type) {
-      if (!item || type !== "row") return;
-      else if (item.type === "budgetCategory") return "header table-secondary";
-      else if (item.type === "break") return "table-info";
     },
     async getData() {
       let { data: budgetCategories } = await this.$axios.get("/budget-categories");
       this.budgetCategories = budgetCategories;
       let { data: budgets } = await this.$axios.get("/budgets");
       this.budgets = budgets;
-
       let { data: cashflow } = await this.$axios.get("/cashflow");
       this.cashflow = cashflow;
     }
@@ -131,7 +173,7 @@ export default {
         position: sticky;
         left: 0;
         background-color: #ddd;
-        border-right: 1px solid black;
+        border-right: 1px solid #aaa;
         z-index: 1;
       }
       .header {
@@ -146,13 +188,13 @@ export default {
           position: sticky;
           top: 26px;
           background-color: #f9f8f8;
-          border-bottom: 1px solid #000;
+          border-bottom: 1px solid #aaa;
         }
       }
       th {
         font-weight: bold;
         min-width: 200px;
-        border: 1px solid black;
+        border: 1px solid #aaa;
         text-align: center;
       }
       .break {
@@ -160,15 +202,18 @@ export default {
       }
 
       .budget__category {
-        .budget__name {
+        .budget__category__name {
           padding-left: 20px;
-          border: 1px solid black;
+          border: 1px solid #aaa;
         }
         font-weight: bold;
 
-        .budget__value {
+        .budget__category__value {
           text-align: center;
-          border: 1px solid black;
+          border: 1px solid #aaa;
+          &.warning {
+            color: #f00;
+          }
         }
       }
       .budget {
@@ -177,7 +222,28 @@ export default {
         }
         .budget__value {
           text-align: center;
-          border: 1px solid black;
+          border: 1px solid #aaa;
+          &.warning {
+            color: #f00;
+          }
+        }
+      }
+      .totals {
+        .break {
+          border-bottom: 3px solid #000;
+        }
+        .total {
+          .total__name {
+            padding-left: 20px;
+            font-weight: bold;
+          }
+          .total__value {
+            text-align: center;
+            border: 1px solid black;
+            &.warning {
+              color: #f00;
+            }
+          }
         }
       }
     }

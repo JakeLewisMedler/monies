@@ -2,8 +2,10 @@ const Budget = require("../models/Budget");
 
 const list_budgets = async (req, res) => {
   let query = {};
-  let { filter, sortBy, sortDesc, populate } = req.query;
+  let { filter, sortBy, sortDesc, populate, budgetCategory } = req.query;
   if (filter) query.$text = { $search: `\"${filter}\"` };
+  if (budgetCategory) query.category = budgetCategory;
+
   let sort = { name: 1 };
   if (sortBy) sort = { [sortBy]: sortDesc == "true" ? -1 : 1 };
 

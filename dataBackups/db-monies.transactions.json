@@ -6,7 +6,9 @@
   "__v": 0,
   "amount": -89.56,
   "archived": false,
-  "budget": null,
+  "flow": {
+    "$oid": "65ca134c98653867fd97027d"
+  },
   "createdAt": {
     "$date": "2024-02-10T10:55:36.361Z"
   },
@@ -17,7 +19,7 @@
   "name": "Tesco",
   "type": "Card payment",
   "updatedAt": {
-    "$date": "2024-02-10T15:57:20.850Z"
+    "$date": "2024-02-12T12:47:08.411Z"
   }
 },
 {
@@ -28,7 +30,7 @@
   "__v": 0,
   "amount": -17.99,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c760fe5d96ef03008befd3"
   },
   "createdAt": {
@@ -52,7 +54,9 @@
   "__v": 0,
   "amount": -39.26,
   "archived": false,
-  "budget": null,
+  "flow": {
+    "$oid": "65ca134498653867fd9701ef"
+  },
   "createdAt": {
     "$date": "2024-02-10T10:55:36.381Z"
   },
@@ -63,7 +67,7 @@
   "name": "Sainsbury’s",
   "type": "Card payment",
   "updatedAt": {
-    "$date": "2024-02-10T15:57:15.544Z"
+    "$date": "2024-02-12T12:47:00.372Z"
   }
 },
 {
@@ -74,7 +78,7 @@
   "__v": 0,
   "amount": -8.99,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75e825d96ef03008bd9a3"
   },
   "createdAt": {
@@ -98,7 +102,7 @@
   "__v": 0,
   "amount": -7.25,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75a185d96ef03008b54c5"
   },
   "createdAt": {
@@ -122,7 +126,7 @@
   "__v": 0,
   "amount": -11.29,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75a185d96ef03008b54c5"
   },
   "createdAt": {
@@ -146,7 +150,7 @@
   "__v": 0,
   "amount": -25,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75b825d96ef03008b9275"
   },
   "createdAt": {
@@ -170,7 +174,7 @@
   "__v": 0,
   "amount": 200,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c760405d96ef03008bec08"
   },
   "createdAt": {
@@ -194,7 +198,9 @@
   "__v": 0,
   "amount": -10.65,
   "archived": false,
-  "budget": null,
+  "flow": {
+    "$oid": "65ca134c98653867fd97027d"
+  },
   "createdAt": {
     "$date": "2024-02-10T10:55:36.400Z"
   },
@@ -205,7 +211,7 @@
   "name": "Tesco",
   "type": "Card payment",
   "updatedAt": {
-    "$date": "2024-02-10T15:57:21.400Z"
+    "$date": "2024-02-12T12:47:09.391Z"
   }
 },
 {
@@ -216,7 +222,7 @@
   "__v": 0,
   "amount": 2.1,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75a0c5d96ef03008b508a"
   },
   "createdAt": {
@@ -240,7 +246,7 @@
   "__v": 0,
   "amount": -6.65,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c79d5d5e48b0d5b9ded175"
   },
   "createdAt": {
@@ -264,7 +270,7 @@
   "__v": 0,
   "amount": -8,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75f5f5d96ef03008be72b"
   },
   "createdAt": {
@@ -288,7 +294,7 @@
   "__v": 0,
   "amount": -34.99,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75f225d96ef03008be394"
   },
   "createdAt": {
@@ -312,7 +318,7 @@
   "__v": 0,
   "amount": -0.09,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75d355d96ef03008bbe2a"
   },
   "createdAt": {
@@ -336,7 +342,7 @@
   "__v": 0,
   "amount": 50,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -360,7 +366,7 @@
   "__v": 0,
   "amount": 0,
   "archived": true,
-  "budget": null,
+  "flow": null,
   "createdAt": {
     "$date": "2024-02-10T10:55:36.427Z"
   },
@@ -382,7 +388,7 @@
   "__v": 0,
   "amount": -76.6,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75b615d96ef03008b80a3"
   },
   "createdAt": {
@@ -406,7 +412,7 @@
   "__v": 0,
   "amount": 304.9,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75d355d96ef03008bbe2a"
   },
   "createdAt": {
@@ -430,7 +436,7 @@
   "__v": 0,
   "amount": -304.9,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c760405d96ef03008bec08"
   },
   "createdAt": {
@@ -454,7 +460,7 @@
   "__v": 0,
   "amount": 1.3,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75b615d96ef03008b80a3"
   },
   "createdAt": {
@@ -478,7 +484,7 @@
   "__v": 0,
   "amount": 2.08,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75b615d96ef03008b80a3"
   },
   "createdAt": {
@@ -502,8 +508,8 @@
   "__v": 0,
   "amount": -20.88,
   "archived": false,
-  "budget": {
-    "$oid": "65c75af85d96ef03008b59a8"
+  "flow": {
+    "$oid": "65c75a185d96ef03008b54c5"
   },
   "createdAt": {
     "$date": "2024-02-10T10:55:36.442Z"
@@ -515,7 +521,7 @@
   "name": "Amazon",
   "type": "Card payment",
   "updatedAt": {
-    "$date": "2024-02-10T11:16:09.009Z"
+    "$date": "2024-02-12T12:46:24.585Z"
   }
 },
 {
@@ -526,7 +532,7 @@
   "__v": 0,
   "amount": -88.23,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -550,7 +556,7 @@
   "__v": 0,
   "amount": -84.41,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75eb75d96ef03008bdadf"
   },
   "createdAt": {
@@ -574,7 +580,7 @@
   "__v": 0,
   "amount": 3650,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75e235d96ef03008bcb9e"
   },
   "createdAt": {
@@ -598,7 +604,7 @@
   "__v": 0,
   "amount": 0,
   "archived": true,
-  "budget": null,
+  "flow": null,
   "createdAt": {
     "$date": "2024-02-10T10:55:36.448Z"
   },
@@ -620,7 +626,7 @@
   "__v": 0,
   "amount": -79.64,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75b615d96ef03008b80a3"
   },
   "createdAt": {
@@ -644,7 +650,7 @@
   "__v": 0,
   "amount": -104,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75efb5d96ef03008bdf79"
   },
   "createdAt": {
@@ -668,7 +674,7 @@
   "__v": 0,
   "amount": 907,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75b1b5d96ef03008b69c8"
   },
   "createdAt": {
@@ -692,7 +698,7 @@
   "__v": 0,
   "amount": -1.59,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75d985d96ef03008bc1b6"
   },
   "createdAt": {
@@ -716,7 +722,7 @@
   "__v": 0,
   "amount": -11.77,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75d115d96ef03008bbd41"
   },
   "createdAt": {
@@ -740,7 +746,7 @@
   "__v": 0,
   "amount": -44.19,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75f0e5d96ef03008be08c"
   },
   "createdAt": {
@@ -764,7 +770,7 @@
   "__v": 0,
   "amount": -17,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75b085d96ef03008b65d5"
   },
   "createdAt": {
@@ -788,7 +794,7 @@
   "__v": 0,
   "amount": -901.64,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75de95d96ef03008bc5fb"
   },
   "createdAt": {
@@ -812,7 +818,7 @@
   "__v": 0,
   "amount": -31.47,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75e485d96ef03008bcf68"
   },
   "createdAt": {
@@ -836,7 +842,7 @@
   "__v": 0,
   "amount": -5.99,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75e485d96ef03008bcf68"
   },
   "createdAt": {
@@ -860,7 +866,7 @@
   "__v": 0,
   "amount": -11.33,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75e485d96ef03008bcf68"
   },
   "createdAt": {
@@ -884,7 +890,7 @@
   "__v": 0,
   "amount": -34.68,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75f155d96ef03008be197"
   },
   "createdAt": {
@@ -908,7 +914,7 @@
   "__v": 0,
   "amount": -1,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75df15d96ef03008bc7a2"
   },
   "createdAt": {
@@ -932,7 +938,7 @@
   "__v": 0,
   "amount": -800,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c760405d96ef03008bec08"
   },
   "createdAt": {
@@ -956,7 +962,7 @@
   "__v": 0,
   "amount": -26,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75b1b5d96ef03008b69c8"
   },
   "createdAt": {
@@ -980,7 +986,7 @@
   "__v": 0,
   "amount": 7.05,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75b615d96ef03008b80a3"
   },
   "createdAt": {
@@ -1004,7 +1010,7 @@
   "__v": 0,
   "amount": -6,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75dcb5d96ef03008bc44b"
   },
   "createdAt": {
@@ -1028,7 +1034,9 @@
   "__v": 0,
   "amount": -5.2,
   "archived": false,
-  "budget": null,
+  "flow": {
+    "$oid": "65ca134c98653867fd97027d"
+  },
   "createdAt": {
     "$date": "2024-02-10T10:55:36.471Z"
   },
@@ -1039,7 +1047,7 @@
   "name": "Tesco",
   "type": "Card payment",
   "updatedAt": {
-    "$date": "2024-02-10T15:57:21.867Z"
+    "$date": "2024-02-12T12:47:09.767Z"
   }
 },
 {
@@ -1050,7 +1058,7 @@
   "__v": 0,
   "amount": -23.45,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75f155d96ef03008be197"
   },
   "createdAt": {
@@ -1074,7 +1082,7 @@
   "__v": 0,
   "amount": -50,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75b1b5d96ef03008b69c8"
   },
   "createdAt": {
@@ -1098,7 +1106,7 @@
   "__v": 0,
   "amount": -50,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75e235d96ef03008bcb9e"
   },
   "createdAt": {
@@ -1122,7 +1130,7 @@
   "__v": 0,
   "amount": -40,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75b325d96ef03008b793a"
   },
   "createdAt": {
@@ -1146,8 +1154,8 @@
   "__v": 0,
   "amount": -55,
   "archived": false,
-  "budget": {
-    "$oid": "65c75afa5d96ef03008b5bb7"
+  "flow": {
+    "$oid": "65c75a185d96ef03008b54c5"
   },
   "createdAt": {
     "$date": "2024-02-10T10:55:36.478Z"
@@ -1159,7 +1167,7 @@
   "name": "Amazon",
   "type": "Card payment",
   "updatedAt": {
-    "$date": "2024-02-10T11:16:10.390Z"
+    "$date": "2024-02-12T12:46:27.142Z"
   }
 },
 {
@@ -1170,7 +1178,7 @@
   "__v": 0,
   "amount": -300,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75eec5d96ef03008bde5f"
   },
   "createdAt": {
@@ -1194,7 +1202,9 @@
   "__v": 0,
   "amount": -6.15,
   "archived": false,
-  "budget": null,
+  "flow": {
+    "$oid": "65ca134c98653867fd97027d"
+  },
   "createdAt": {
     "$date": "2024-02-10T10:55:36.480Z"
   },
@@ -1205,7 +1215,7 @@
   "name": "Tesco",
   "type": "Card payment",
   "updatedAt": {
-    "$date": "2024-02-10T15:57:22.310Z"
+    "$date": "2024-02-12T12:47:09.993Z"
   }
 },
 {
@@ -1216,7 +1226,9 @@
   "__v": 0,
   "amount": -37.61,
   "archived": false,
-  "budget": null,
+  "flow": {
+    "$oid": "65ca134498653867fd9701ef"
+  },
   "createdAt": {
     "$date": "2024-02-10T10:55:36.481Z"
   },
@@ -1227,7 +1239,7 @@
   "name": "Sainsbury’s",
   "type": "Card payment",
   "updatedAt": {
-    "$date": "2024-02-10T15:57:16.952Z"
+    "$date": "2024-02-12T12:47:01.178Z"
   }
 },
 {
@@ -1238,7 +1250,7 @@
   "__v": 0,
   "amount": -9.99,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c7613d5d96ef03008bf189"
   },
   "createdAt": {
@@ -1262,7 +1274,7 @@
   "__v": 0,
   "amount": -20,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75a0e5d96ef03008b51f5"
   },
   "createdAt": {
@@ -1286,7 +1298,7 @@
   "__v": 0,
   "amount": -78,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75de05d96ef03008bc524"
   },
   "createdAt": {
@@ -1310,7 +1322,9 @@
   "__v": 0,
   "amount": -32.3,
   "archived": false,
-  "budget": null,
+  "flow": {
+    "$oid": "65ca134498653867fd9701ef"
+  },
   "createdAt": {
     "$date": "2024-02-10T10:55:36.486Z"
   },
@@ -1321,7 +1335,7 @@
   "name": "Sainsbury’s",
   "type": "Card payment",
   "updatedAt": {
-    "$date": "2024-02-10T15:57:17.625Z"
+    "$date": "2024-02-12T12:47:01.670Z"
   }
 },
 {
@@ -1332,7 +1346,7 @@
   "__v": 0,
   "amount": -2.99,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75b3d5d96ef03008b7b19"
   },
   "createdAt": {
@@ -1356,7 +1370,7 @@
   "__v": 0,
   "amount": -27.5,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75d115d96ef03008bbd41"
   },
   "createdAt": {
@@ -1380,7 +1394,7 @@
   "__v": 0,
   "amount": 0,
   "archived": true,
-  "budget": null,
+  "flow": null,
   "createdAt": {
     "$date": "2024-02-10T10:55:36.490Z"
   },
@@ -1402,7 +1416,7 @@
   "__v": 0,
   "amount": -202,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75b925d96ef03008b978b"
   },
   "createdAt": {
@@ -1426,7 +1440,7 @@
   "__v": 0,
   "amount": -49.52,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c760d05d96ef03008beeec"
   },
   "createdAt": {
@@ -1450,7 +1464,7 @@
   "__v": 0,
   "amount": -2.79,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -1474,7 +1488,7 @@
   "__v": 0,
   "amount": -23.76,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -1498,7 +1512,7 @@
   "__v": 0,
   "amount": -9,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -1522,7 +1536,7 @@
   "__v": 0,
   "amount": -21.15,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75f405d96ef03008be487"
   },
   "createdAt": {
@@ -1546,7 +1560,7 @@
   "__v": 0,
   "amount": -2.5,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75d055d96ef03008bbb6a"
   },
   "createdAt": {
@@ -1570,7 +1584,7 @@
   "__v": 0,
   "amount": -17.01,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -1594,7 +1608,7 @@
   "__v": 0,
   "amount": -3.77,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75f405d96ef03008be487"
   },
   "createdAt": {
@@ -1618,7 +1632,7 @@
   "__v": 0,
   "amount": -1.82,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -1642,7 +1656,7 @@
   "__v": 0,
   "amount": -26.9,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -1666,7 +1680,7 @@
   "__v": 0,
   "amount": -5.47,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -1690,7 +1704,7 @@
   "__v": 0,
   "amount": -16.32,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -1714,7 +1728,7 @@
   "__v": 0,
   "amount": -75.21,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -1738,7 +1752,7 @@
   "__v": 0,
   "amount": -24.78,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -1762,7 +1776,7 @@
   "__v": 0,
   "amount": -26.52,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -1786,7 +1800,7 @@
   "__v": 0,
   "amount": -6.96,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -1810,7 +1824,7 @@
   "__v": 0,
   "amount": -2.99,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75b3d5d96ef03008b7b19"
   },
   "createdAt": {
@@ -1834,7 +1848,7 @@
   "__v": 0,
   "amount": -4.35,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -1858,7 +1872,7 @@
   "__v": 0,
   "amount": -19.13,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -1882,7 +1896,7 @@
   "__v": 0,
   "amount": -34.78,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -1906,7 +1920,7 @@
   "__v": 0,
   "amount": -10.46,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -1930,7 +1944,7 @@
   "__v": 0,
   "amount": -22.66,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -1954,7 +1968,7 @@
   "__v": 0,
   "amount": -4.36,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -1978,7 +1992,7 @@
   "__v": 0,
   "amount": -29.64,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -2002,7 +2016,7 @@
   "__v": 0,
   "amount": -8.99,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c77eba4b25898cae71825e"
   },
   "createdAt": {
@@ -2026,7 +2040,7 @@
   "__v": 0,
   "amount": -16.56,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -2050,7 +2064,7 @@
   "__v": 0,
   "amount": -27.89,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -2074,7 +2088,7 @@
   "__v": 0,
   "amount": -119.59,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -2098,7 +2112,7 @@
   "__v": 0,
   "amount": -57.47,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75ee45d96ef03008bddce"
   },
   "createdAt": {
@@ -2122,7 +2136,7 @@
   "__v": 0,
   "amount": -76.42,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c760bd5d96ef03008beead"
   },
   "createdAt": {
@@ -2146,7 +2160,7 @@
   "__v": 0,
   "amount": -3.49,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -2170,7 +2184,7 @@
   "__v": 0,
   "amount": -25.31,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -2194,7 +2208,7 @@
   "__v": 0,
   "amount": -28.63,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -2218,7 +2232,7 @@
   "__v": 0,
   "amount": -28.03,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -2242,7 +2256,7 @@
   "__v": 0,
   "amount": -34.16,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -2266,7 +2280,7 @@
   "__v": 0,
   "amount": -47.98,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75d115d96ef03008bbd41"
   },
   "createdAt": {
@@ -2290,7 +2304,7 @@
   "__v": 0,
   "amount": 700,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c760405d96ef03008bec08"
   },
   "createdAt": {
@@ -2314,7 +2328,7 @@
   "__v": 0,
   "amount": -22.68,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -2338,7 +2352,7 @@
   "__v": 0,
   "amount": -3.26,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -2362,7 +2376,7 @@
   "__v": 0,
   "amount": -13.46,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75f405d96ef03008be487"
   },
   "createdAt": {
@@ -2386,7 +2400,7 @@
   "__v": 0,
   "amount": -15.85,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -2410,7 +2424,7 @@
   "__v": 0,
   "amount": -8.13,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75f405d96ef03008be487"
   },
   "createdAt": {
@@ -2434,7 +2448,7 @@
   "__v": 0,
   "amount": -48.17,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -2458,7 +2472,7 @@
   "__v": 0,
   "amount": -4.29,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -2482,7 +2496,7 @@
   "__v": 0,
   "amount": -0.68,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75f405d96ef03008be487"
   },
   "createdAt": {
@@ -2506,7 +2520,7 @@
   "__v": 0,
   "amount": -9,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75bd15d96ef03008b9937"
   },
   "createdAt": {
@@ -2530,7 +2544,7 @@
   "__v": 0,
   "amount": -13.44,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75f405d96ef03008be487"
   },
   "createdAt": {
@@ -2554,7 +2568,7 @@
   "__v": 0,
   "amount": -23.8,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75d115d96ef03008bbd41"
   },
   "createdAt": {
@@ -2578,7 +2592,7 @@
   "__v": 0,
   "amount": -2.5,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75d055d96ef03008bbb6a"
   },
   "createdAt": {
@@ -2602,7 +2616,7 @@
   "__v": 0,
   "amount": -12.1,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c760f45d96ef03008bef9c"
   },
   "createdAt": {
@@ -2626,7 +2640,7 @@
   "__v": 0,
   "amount": -5.2,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75d115d96ef03008bbd41"
   },
   "createdAt": {
@@ -2650,7 +2664,7 @@
   "__v": 0,
   "amount": -11.78,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75d115d96ef03008bbd41"
   },
   "createdAt": {
@@ -2674,7 +2688,7 @@
   "__v": 0,
   "amount": -9.49,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75b3d5d96ef03008b7b19"
   },
   "createdAt": {
@@ -2698,7 +2712,7 @@
   "__v": 0,
   "amount": -30.48,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75d115d96ef03008bbd41"
   },
   "createdAt": {
@@ -2722,7 +2736,7 @@
   "__v": 0,
   "amount": -23.69,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c79d5d5e48b0d5b9ded175"
   },
   "createdAt": {
@@ -2746,7 +2760,7 @@
   "__v": 0,
   "amount": -3,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c79d5d5e48b0d5b9ded175"
   },
   "createdAt": {
@@ -2770,7 +2784,7 @@
   "__v": 0,
   "amount": -405.81,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c760e65d96ef03008bef2a"
   },
   "createdAt": {
@@ -2794,7 +2808,7 @@
   "__v": 0,
   "amount": -71.2,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c77eb04b25898cae718251"
   },
   "createdAt": {
@@ -2818,7 +2832,7 @@
   "__v": 0,
   "amount": -42.5,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c7612d5d96ef03008bf067"
   },
   "createdAt": {
@@ -2842,7 +2856,7 @@
   "__v": 0,
   "amount": -14,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c77ebf4b25898cae718269"
   },
   "createdAt": {
@@ -2866,7 +2880,7 @@
   "__v": 0,
   "amount": -16,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c77ebf4b25898cae718269"
   },
   "createdAt": {
@@ -2890,7 +2904,7 @@
   "__v": 0,
   "amount": -38,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c77ebf4b25898cae718269"
   },
   "createdAt": {
@@ -2914,7 +2928,7 @@
   "__v": 0,
   "amount": -28.4,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75d115d96ef03008bbd41"
   },
   "createdAt": {
@@ -2938,7 +2952,7 @@
   "__v": 0,
   "amount": 0,
   "archived": true,
-  "budget": null,
+  "flow": null,
   "createdAt": {
     "$date": "2024-02-10T10:55:36.574Z"
   },
@@ -2960,7 +2974,7 @@
   "__v": 0,
   "amount": -95.49,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75b615d96ef03008b80a3"
   },
   "createdAt": {
@@ -2984,8 +2998,8 @@
   "__v": 0,
   "amount": -8,
   "archived": false,
-  "budget": {
-    "$oid": "65c75afb5d96ef03008b5dc3"
+  "flow": {
+    "$oid": "65c75a185d96ef03008b54c5"
   },
   "createdAt": {
     "$date": "2024-02-10T10:55:36.576Z"
@@ -2997,7 +3011,7 @@
   "name": "Amazon",
   "type": "Card payment",
   "updatedAt": {
-    "$date": "2024-02-10T11:16:11.662Z"
+    "$date": "2024-02-12T12:46:27.922Z"
   }
 },
 {
@@ -3008,8 +3022,8 @@
   "__v": 0,
   "amount": 8,
   "archived": false,
-  "budget": {
-    "$oid": "65c75afd5d96ef03008b5fcc"
+  "flow": {
+    "$oid": "65c75a185d96ef03008b54c5"
   },
   "createdAt": {
     "$date": "2024-02-10T10:55:36.577Z"
@@ -3021,7 +3035,7 @@
   "name": "Amazon",
   "type": "Card payment",
   "updatedAt": {
-    "$date": "2024-02-10T11:16:13.172Z"
+    "$date": "2024-02-12T12:46:28.968Z"
   }
 },
 {
@@ -3032,7 +3046,7 @@
   "__v": 0,
   "amount": 0,
   "archived": true,
-  "budget": null,
+  "flow": null,
   "createdAt": {
     "$date": "2024-02-10T10:55:36.578Z"
   },
@@ -3054,7 +3068,7 @@
   "__v": 0,
   "amount": -22.64,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75b615d96ef03008b80a3"
   },
   "createdAt": {
@@ -3078,7 +3092,7 @@
   "__v": 0,
   "amount": -8,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c7619a5d96ef03008bf292"
   },
   "createdAt": {
@@ -3102,7 +3116,7 @@
   "__v": 0,
   "amount": -8,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c7619a5d96ef03008bf292"
   },
   "createdAt": {
@@ -3126,7 +3140,7 @@
   "__v": 0,
   "amount": 2,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75b615d96ef03008b80a3"
   },
   "createdAt": {
@@ -3150,7 +3164,7 @@
   "__v": 0,
   "amount": 1.25,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75b615d96ef03008b80a3"
   },
   "createdAt": {
@@ -3174,7 +3188,7 @@
   "__v": 0,
   "amount": 1.5,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75b615d96ef03008b80a3"
   },
   "createdAt": {
@@ -3198,7 +3212,7 @@
   "__v": 0,
   "amount": -100,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75b1b5d96ef03008b69c8"
   },
   "createdAt": {
@@ -3222,7 +3236,9 @@
   "__v": 0,
   "amount": -37.15,
   "archived": false,
-  "budget": null,
+  "flow": {
+    "$oid": "65ca134498653867fd9701ef"
+  },
   "createdAt": {
     "$date": "2024-02-10T10:55:36.588Z"
   },
@@ -3233,7 +3249,7 @@
   "name": "Sainsbury’s",
   "type": "Card payment",
   "updatedAt": {
-    "$date": "2024-02-10T15:57:18.318Z"
+    "$date": "2024-02-12T12:47:01.934Z"
   }
 },
 {
@@ -3244,7 +3260,7 @@
   "__v": 0,
   "amount": 0,
   "archived": true,
-  "budget": null,
+  "flow": null,
   "createdAt": {
     "$date": "2024-02-10T10:55:36.589Z"
   },
@@ -3266,7 +3282,7 @@
   "__v": 0,
   "amount": 21,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75de05d96ef03008bc524"
   },
   "createdAt": {
@@ -3290,7 +3306,7 @@
   "__v": 0,
   "amount": -15.99,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75ec25d96ef03008bdc12"
   },
   "createdAt": {
@@ -3314,7 +3330,7 @@
   "__v": 0,
   "amount": -13.78,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75d115d96ef03008bbd41"
   },
   "createdAt": {
@@ -3338,7 +3354,7 @@
   "__v": 0,
   "amount": -12.5,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75d115d96ef03008bbd41"
   },
   "createdAt": {
@@ -3362,7 +3378,7 @@
   "__v": 0,
   "amount": -17.99,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c760fe5d96ef03008befd3"
   },
   "createdAt": {
@@ -3386,7 +3402,9 @@
   "__v": 0,
   "amount": -6.15,
   "archived": false,
-  "budget": null,
+  "flow": {
+    "$oid": "65ca134c98653867fd97027d"
+  },
   "createdAt": {
     "$date": "2024-02-10T10:55:36.595Z"
   },
@@ -3397,7 +3415,7 @@
   "name": "Tesco",
   "type": "Card payment",
   "updatedAt": {
-    "$date": "2024-02-10T15:57:22.776Z"
+    "$date": "2024-02-12T12:47:10.501Z"
   }
 },
 {
@@ -3408,7 +3426,9 @@
   "__v": 0,
   "amount": -19.02,
   "archived": false,
-  "budget": null,
+  "flow": {
+    "$oid": "65ca133c98653867fd97016b"
+  },
   "createdAt": {
     "$date": "2024-02-10T10:55:36.596Z"
   },
@@ -3419,7 +3439,7 @@
   "name": "Lidl",
   "type": "Card payment",
   "updatedAt": {
-    "$date": "2024-02-10T15:49:59.318Z"
+    "$date": "2024-02-12T12:46:52.498Z"
   }
 },
 {
@@ -3430,7 +3450,9 @@
   "__v": 0,
   "amount": -15.58,
   "archived": false,
-  "budget": null,
+  "flow": {
+    "$oid": "65ca133c98653867fd97016b"
+  },
   "createdAt": {
     "$date": "2024-02-10T10:55:36.597Z"
   },
@@ -3441,7 +3463,7 @@
   "name": "Lidl",
   "type": "Card payment",
   "updatedAt": {
-    "$date": "2024-02-10T15:55:19.042Z"
+    "$date": "2024-02-12T12:46:53.524Z"
   }
 },
 {
@@ -3452,7 +3474,9 @@
   "__v": 0,
   "amount": -97.36,
   "archived": false,
-  "budget": null,
+  "flow": {
+    "$oid": "65ca134498653867fd9701ef"
+  },
   "createdAt": {
     "$date": "2024-02-10T10:55:36.597Z"
   },
@@ -3463,7 +3487,7 @@
   "name": "Sainsbury’s",
   "type": "Card payment",
   "updatedAt": {
-    "$date": "2024-02-10T15:57:18.842Z"
+    "$date": "2024-02-12T12:47:02.109Z"
   }
 },
 {
@@ -3474,7 +3498,7 @@
   "__v": 0,
   "amount": 100,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c760405d96ef03008bec08"
   },
   "createdAt": {
@@ -3498,7 +3522,7 @@
   "__v": 0,
   "amount": -8,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75f5f5d96ef03008be72b"
   },
   "createdAt": {
@@ -3522,7 +3546,7 @@
   "__v": 0,
   "amount": -34.99,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75f225d96ef03008be394"
   },
   "createdAt": {
@@ -3546,7 +3570,7 @@
   "__v": 0,
   "amount": -6,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75e925d96ef03008bda42"
   },
   "createdAt": {
@@ -3570,7 +3594,9 @@
   "__v": 0,
   "amount": -31.5,
   "archived": false,
-  "budget": null,
+  "flow": {
+    "$oid": "65ca134498653867fd9701ef"
+  },
   "createdAt": {
     "$date": "2024-02-10T10:55:36.601Z"
   },
@@ -3581,7 +3607,7 @@
   "name": "Sainsbury’s",
   "type": "Card payment",
   "updatedAt": {
-    "$date": "2024-02-10T15:57:19.417Z"
+    "$date": "2024-02-12T12:47:02.377Z"
   }
 },
 {
@@ -3592,7 +3618,7 @@
   "__v": 0,
   "amount": 40,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c760405d96ef03008bec08"
   },
   "createdAt": {
@@ -3616,7 +3642,7 @@
   "__v": 0,
   "amount": -32.99,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75b8b5d96ef03008b942a"
   },
   "createdAt": {
@@ -3640,8 +3666,8 @@
   "__v": 0,
   "amount": -32.99,
   "archived": false,
-  "budget": {
-    "$oid": "65c75b8d5d96ef03008b95dc"
+  "flow": {
+    "$oid": "65c75b8b5d96ef03008b942a"
   },
   "createdAt": {
     "$date": "2024-02-10T10:55:36.604Z"
@@ -3653,7 +3679,7 @@
   "name": "BrandAlley",
   "type": "Card payment",
   "updatedAt": {
-    "$date": "2024-02-10T11:18:37.148Z"
+    "$date": "2024-02-12T12:46:33.740Z"
   }
 },
 {
@@ -3664,7 +3690,7 @@
   "__v": 0,
   "amount": 150,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c760405d96ef03008bec08"
   },
   "createdAt": {
@@ -3688,7 +3714,7 @@
   "__v": 0,
   "amount": -18,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75b1b5d96ef03008b69c8"
   },
   "createdAt": {
@@ -3712,7 +3738,7 @@
   "__v": 0,
   "amount": 46,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75b1b5d96ef03008b69c8"
   },
   "createdAt": {
@@ -3736,7 +3762,7 @@
   "__v": 0,
   "amount": -23.75,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75e825d96ef03008bd9a3"
   },
   "createdAt": {
@@ -3760,7 +3786,7 @@
   "__v": 0,
   "amount": -15.95,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75e045d96ef03008bc93f"
   },
   "createdAt": {
@@ -3784,7 +3810,7 @@
   "__v": 0,
   "amount": 19.4,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75dac5d96ef03008bc370"
   },
   "createdAt": {
@@ -3808,7 +3834,7 @@
   "__v": 0,
   "amount": -12.9,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75d625d96ef03008bbf11"
   },
   "createdAt": {
@@ -3832,7 +3858,7 @@
   "__v": 0,
   "amount": -65,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75de05d96ef03008bc524"
   },
   "createdAt": {
@@ -3856,7 +3882,7 @@
   "__v": 0,
   "amount": -83.57,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75eb75d96ef03008bdadf"
   },
   "createdAt": {
@@ -3880,7 +3906,7 @@
   "__v": 0,
   "amount": 100,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c760405d96ef03008bec08"
   },
   "createdAt": {
@@ -3904,7 +3930,9 @@
   "__v": 0,
   "amount": -6.75,
   "archived": false,
-  "budget": null,
+  "flow": {
+    "$oid": "65ca134c98653867fd97027d"
+  },
   "createdAt": {
     "$date": "2024-02-10T10:55:36.612Z"
   },
@@ -3915,7 +3943,7 @@
   "name": "Tesco",
   "type": "Card payment",
   "updatedAt": {
-    "$date": "2024-02-10T15:57:23.620Z"
+    "$date": "2024-02-12T12:47:11.361Z"
   }
 },
 {
@@ -3926,7 +3954,9 @@
   "__v": 0,
   "amount": -10.11,
   "archived": false,
-  "budget": null,
+  "flow": {
+    "$oid": "65ca133c98653867fd97016b"
+  },
   "createdAt": {
     "$date": "2024-02-10T10:55:36.613Z"
   },
@@ -3937,7 +3967,7 @@
   "name": "Lidl",
   "type": "Card payment",
   "updatedAt": {
-    "$date": "2024-02-10T15:55:21.688Z"
+    "$date": "2024-02-12T12:46:54.061Z"
   }
 },
 {
@@ -3948,7 +3978,7 @@
   "__v": 0,
   "amount": -30,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75f405d96ef03008be487"
   },
   "createdAt": {
@@ -3972,7 +4002,7 @@
   "__v": 0,
   "amount": 28.5,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75f405d96ef03008be487"
   },
   "createdAt": {
@@ -3996,7 +4026,7 @@
   "__v": 0,
   "amount": 3500,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75e235d96ef03008bcb9e"
   },
   "createdAt": {
@@ -4020,7 +4050,7 @@
   "__v": 0,
   "amount": -779,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75e175d96ef03008bcad5"
   },
   "createdAt": {
@@ -4044,7 +4074,7 @@
   "__v": 0,
   "amount": 779,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c760405d96ef03008bec08"
   },
   "createdAt": {
@@ -4068,7 +4098,7 @@
   "__v": 0,
   "amount": -46,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75b1b5d96ef03008b69c8"
   },
   "createdAt": {
@@ -4092,7 +4122,9 @@
   "__v": 0,
   "amount": -25.02,
   "archived": false,
-  "budget": null,
+  "flow": {
+    "$oid": "65ca133c98653867fd97016b"
+  },
   "createdAt": {
     "$date": "2024-02-10T10:55:36.620Z"
   },
@@ -4103,7 +4135,7 @@
   "name": "Lidl",
   "type": "Card payment",
   "updatedAt": {
-    "$date": "2024-02-10T15:57:12.954Z"
+    "$date": "2024-02-12T12:46:54.535Z"
   }
 },
 {
@@ -4114,7 +4146,7 @@
   "__v": 0,
   "amount": -104,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75efb5d96ef03008bdf79"
   },
   "createdAt": {
@@ -4138,7 +4170,7 @@
   "__v": 0,
   "amount": 1191.01,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75b1b5d96ef03008b69c8"
   },
   "createdAt": {
@@ -4162,7 +4194,7 @@
   "__v": 0,
   "amount": -1.59,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75d985d96ef03008bc1b6"
   },
   "createdAt": {
@@ -4186,7 +4218,9 @@
   "__v": 0,
   "amount": -10.89,
   "archived": false,
-  "budget": null,
+  "flow": {
+    "$oid": "65ca134498653867fd9701ef"
+  },
   "createdAt": {
     "$date": "2024-02-10T10:55:36.624Z"
   },
@@ -4197,7 +4231,7 @@
   "name": "Sainsbury’s",
   "type": "Card payment",
   "updatedAt": {
-    "$date": "2024-02-10T15:57:20.131Z"
+    "$date": "2024-02-12T12:47:03.290Z"
   }
 },
 {
@@ -4208,7 +4242,7 @@
   "__v": 0,
   "amount": -17,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75b085d96ef03008b65d5"
   },
   "createdAt": {
@@ -4232,7 +4266,7 @@
   "__v": 0,
   "amount": -44.19,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75f0e5d96ef03008be08c"
   },
   "createdAt": {
@@ -4256,7 +4290,7 @@
   "__v": 0,
   "amount": -901.64,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75de95d96ef03008bc5fb"
   },
   "createdAt": {
@@ -4280,7 +4314,7 @@
   "__v": 0,
   "amount": -11.33,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75e485d96ef03008bcf68"
   },
   "createdAt": {
@@ -4304,7 +4338,7 @@
   "__v": 0,
   "amount": -5.99,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75e485d96ef03008bcf68"
   },
   "createdAt": {
@@ -4328,7 +4362,7 @@
   "__v": 0,
   "amount": -31.47,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75e485d96ef03008bcf68"
   },
   "createdAt": {
@@ -4352,7 +4386,7 @@
   "__v": 0,
   "amount": -34.68,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75f155d96ef03008be197"
   },
   "createdAt": {
@@ -4376,7 +4410,7 @@
   "__v": 0,
   "amount": -1,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75df15d96ef03008bc7a2"
   },
   "createdAt": {
@@ -4400,7 +4434,7 @@
   "__v": 0,
   "amount": -800,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c760405d96ef03008bec08"
   },
   "createdAt": {
@@ -4424,8 +4458,8 @@
   "__v": 0,
   "amount": -14.99,
   "archived": false,
-  "budget": {
-    "$oid": "65c75aff5d96ef03008b61d2"
+  "flow": {
+    "$oid": "65c75a185d96ef03008b54c5"
   },
   "createdAt": {
     "$date": "2024-02-10T10:55:36.634Z"
@@ -4437,7 +4471,7 @@
   "name": "Amazon",
   "type": "Card payment",
   "updatedAt": {
-    "$date": "2024-02-10T11:16:15.813Z"
+    "$date": "2024-02-12T12:46:31.656Z"
   }
 },
 {
@@ -4448,7 +4482,9 @@
   "__v": 0,
   "amount": -15.86,
   "archived": false,
-  "budget": null,
+  "flow": {
+    "$oid": "65ca135498653867fd9702ac"
+  },
   "createdAt": {
     "$date": "2024-02-10T10:55:36.635Z"
   },
@@ -4459,7 +4495,7 @@
   "name": "Valueaccess",
   "type": "Card payment",
   "updatedAt": {
-    "$date": "2024-02-10T15:57:24.901Z"
+    "$date": "2024-02-12T12:47:16.302Z"
   }
 },
 {
@@ -4470,7 +4506,7 @@
   "__v": 0,
   "amount": -94.62,
   "archived": false,
-  "budget": {
+  "flow": {
     "$oid": "65c75d115d96ef03008bbd41"
   },
   "createdAt": {

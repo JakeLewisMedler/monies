@@ -6,6 +6,7 @@ let FlowController = require("./controllers/flow");
 let BudgetCategoryController = require("./controllers/budgetCategory");
 let BudgetController = require("./controllers/budget");
 let CashflowController = require("./controllers/cashflow");
+let ForecastController = require("./controllers/forecast");
 
 router.get("/transactions", TransactionsController.list_transactions);
 router.get("/transactions/unallocated", TransactionsController.list_unallocated_transactions);
@@ -33,5 +34,6 @@ router.delete("/budget-categories", BudgetCategoryController.delete_budget_categ
 router.delete("/budget-categories/:_id", BudgetCategoryController.delete_budget_category);
 
 router.get("/cashflow", CashflowController.generate_cashflow);
+router.get("/forecast", ForecastController.generate_forecast);
 
 module.exports = router;

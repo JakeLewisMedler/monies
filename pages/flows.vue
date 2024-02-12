@@ -71,6 +71,7 @@ export default {
         { key: "name", sortable: true },
         { key: "recurring", sortable: true },
         { key: "recurringType", sortable: true },
+        { key: "budget", sortable: true },
         { key: "actions", sortable: false }
       ],
       transactionFields: [

@@ -84,7 +84,6 @@ const list_unallocated_transactions = async (req, res) => {
 
   for (let transaction of transactions) {
     let flow = await findMatchingFlow(transaction);
-    console.log(flow);
     if (flow) {
       transaction.flow = flow.id;
       transactionsWithFlow.push(transaction);

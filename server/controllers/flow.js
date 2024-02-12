@@ -1,13 +1,20 @@
 const Transaction = require("../models/Transaction");
 const Flow = require("../models/Flow");
+const Budget = require("../models/Budget");
 
 const list_flows = async (req, res) => {
   let query = {};
-  let { filter, recurring, sortBy, sortDesc } = req.query;
+  let { filter, recurring, sortBy, sortDesc, budgetCategory } = req.query;
   if (filter) query.$text = { $search: `\"${filter}\"` };
   let sort = { name: 1 };
   if (sortBy) sort = { [sortBy]: sortDesc == "true" ? -1 : 1 };
   if (recurring == "true") query.recurring = true;
+
+  if (budgetCategory) {
+    let budgets = await Budget.find({ category: budgetCategory });
+    query.budget = { $in: budgets.map((b) => b._id) };
+  }
+
   let flows = await Flow.find(query).sort(sort);
   return res.send(flows);
 };
