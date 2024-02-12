@@ -11,28 +11,9 @@
     <template v-if="flow">
       <label for="name">Name:</label>
       <b-form-input id="name" v-model="flow.name" autofocus placeholder="Flow name" class="mb-3"></b-form-input>
-      <b-row>
-        <b-col cols="2">
-          <label for="name">Recurring:</label>
-          <b-form-checkbox v-model="flow.recurring" name="recurring" switch class="mb-3"> </b-form-checkbox
-        ></b-col>
-        <b-col v-if="flow.recurring" cols="7">
-          <b-form-group label="Recurring Type:">
-            <b-form-radio-group v-model="flow.recurringType" :options="recurringTypeOptions"></b-form-radio-group>
-          </b-form-group>
-        </b-col>
-        <b-col v-if="flow.recurring" cols="3">
-          <label for="name">Frequency ({{ frequencyString }}):</label>
-          <b-form-input v-model="flow.recurringFrequency"></b-form-input>
-        </b-col>
-      </b-row>
-
-      <b-row v-if="flow.recurring">
-        <b-col>
-          <label for="date">Date:</label>
-          <b-form-datepicker id="date" :start-weekday="1" v-model="flow.date"></b-form-datepicker></b-col
-      ></b-row>
-      <b-form-group label="Category:" class="mt-3">
+      <label for="name">Estimate:</label>
+      <b-form-checkbox v-model="flow.estimate" name="estimate" switch class="mb-3"> </b-form-checkbox>
+      <b-form-group label="Category:">
         <b-form-select
           v-model="flow.category"
           value-field="_id"
@@ -60,9 +41,6 @@
 <script>
 export default {
   computed: {
-    frequencyString() {
-      return this.flow && this.frequencyStrings[this.recurringTypeOptions.indexOf(this.flow.recurringType)];
-    },
     budgetsFiltered() {
       return this.flow && this.budgets.filter((c) => c.category == this.flow.category);
     },
@@ -75,7 +53,6 @@ export default {
       _id: null,
       title: "",
       flow: null,
-      recurringTypeOptions: ["weekly", "monthly", "annually", "custom"],
       frequencyStrings: ["Weeks", "Months", "Years", "Days"],
       showing: false,
       transaction: null,
@@ -108,9 +85,7 @@ export default {
       this.title = title;
       this.flow = {
         name: "",
-        recurring: false,
-        recurringType: "monthly",
-        recurringFrequency: 0,
+        estimate: false,
         date: new Date(),
         category: null,
         budget: null

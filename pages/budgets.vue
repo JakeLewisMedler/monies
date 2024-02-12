@@ -23,6 +23,11 @@
             <template #cell(category)="row">
               {{ row.item.category.name }}
             </template>
+            <template #cell(estimate)="row">
+              <div v-if="row.item.estimate" class="tick__container">
+                <div class="tick">√</div>
+              </div>
+            </template>
             <template #cell(actions)="row">
               <b-button @click="editBudgetModal(row.item)" variant="success">Edit</b-button>
               <b-button @click="deleteBudget(row.item)" variant="danger">Delete</b-button>
@@ -41,6 +46,7 @@ export default {
     return {
       budgetFields: [
         { key: "name", sortable: true },
+        { key: "estimate", sortable: false },
         { key: "category", sortable: false },
         { key: "actions", sortable: false }
       ],
@@ -98,5 +104,20 @@ export default {
 
 <style lang="scss">
 .budgets {
+  .tick__container {
+    width: 36px;
+    height: 36px;
+    background: #5c9b5c;
+    text-align: center;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .tick {
+      font-size: 14px;
+      font-weight: bold;
+      color: #fff;
+    }
+  }
 }
 </style>

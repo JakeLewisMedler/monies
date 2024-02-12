@@ -1,4 +1,5 @@
 const Budget = require("../models/Budget");
+const Flow = require("../models/Flow");
 
 const list_budgets = async (req, res) => {
   let query = {};
@@ -34,6 +35,7 @@ const delete_budgets = async (req, res) => {
 const delete_budget = async (req, res) => {
   let { _id } = req.params;
   let budget = await Budget.findByIdAndDelete(_id);
+  await Flow.updateMany({ budget: _id }, { budget: null });
   return res.send(budget);
 };
 

@@ -2,8 +2,11 @@
   <b-modal ref="modal" :title="title" size="lg" ok-title="Submit" @ok="submitBudget" @hide="hide">
     <template v-if="budget">
       <label for="name">Name:</label>
-      <b-form-input id="name" v-model="budget.name" placeholder="Budget name" class="mb-3"></b-form-input
-      ><b-form-group label="Category:">
+      <b-form-input id="name" v-model="budget.name" placeholder="Budget name" class="mb-3"></b-form-input>
+      <label for="name">Estimate:</label>
+      <b-form-checkbox v-model="budget.estimate" name="estimate" switch class="mb-3"> </b-form-checkbox>
+
+      <b-form-group label="Category:">
         <b-form-select v-model="budget.category" value-field="_id" text-field="name" :options="budgetCategories">
           <b-form-select-option :value="null">Select a Category</b-form-select-option>
         </b-form-select>
@@ -47,6 +50,7 @@ export default {
       this.budget = {
         _id: null,
         name: "",
+        estimate: false,
         category: null
       };
       if (budget) Object.assign(this.budget, budget);

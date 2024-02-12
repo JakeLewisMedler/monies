@@ -16,15 +16,12 @@
             :items="flowsProvider"
             :fields="flowFields"
             :filter="flowsFilter"
-            :sort-by="'recurring'"
-            :sort-desc="true"
+            :sort-by="'name'"
+            :sort-desc="false"
             responsive
           >
             <template #cell(date)="row">
               {{ formatDate(row.item.date) }}
-            </template>
-            <template #cell(recurringType)="row">
-              {{ row.item.recurring ? row.item.recurringType : null }}
             </template>
             <template #cell(actions)="row">
               <b-button @click="showFlowTransactions(row.item, row)" class="mr-2" variant="primary">
@@ -69,8 +66,8 @@ export default {
     return {
       flowFields: [
         { key: "name", sortable: true },
-        { key: "recurring", sortable: true },
-        { key: "recurringType", sortable: true },
+        { key: "estimate", sortable: true },
+
         { key: "budget", sortable: true },
         { key: "actions", sortable: false }
       ],

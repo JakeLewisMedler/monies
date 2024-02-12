@@ -4,7 +4,6 @@ const FlowSchema = new mongoose.Schema(
   {
     name: String,
     estimate: Boolean,
-    date: Date,
     category: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "BudgetCategory"

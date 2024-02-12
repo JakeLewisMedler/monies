@@ -4,11 +4,10 @@ const Budget = require("../models/Budget");
 
 const list_flows = async (req, res) => {
   let query = {};
-  let { filter, recurring, sortBy, sortDesc, budgetCategory } = req.query;
+  let { filter, sortBy, sortDesc, budgetCategory } = req.query;
   if (filter) query.$text = { $search: `\"${filter}\"` };
   let sort = { name: 1 };
   if (sortBy) sort = { [sortBy]: sortDesc == "true" ? -1 : 1 };
-  if (recurring == "true") query.recurring = true;
 
   if (budgetCategory) {
     let budgets = await Budget.find({ category: budgetCategory });
@@ -37,9 +36,7 @@ const create_flow_temp = async (req, res) => {
   let { transaction } = req.body;
   let tempFlow = {
     name: transaction.name,
-    recurring: false,
-    recurringType: "monthly",
-    recurringFrequency: 1,
+    estimate: false,
     date: transaction.date
   };
   return res.send(tempFlow);
