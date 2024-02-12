@@ -55,10 +55,17 @@
                           </b-input-group>
                         </td>
                         <td
+                          v-if="getPeriodBudget(period, budget).actualTransactionIds.length == 0"
+                          class="budget__value"
+                        >
+                          -
+                        </td>
+                        <td
+                          v-else
                           class="budget__value"
                           :class="{
                             warning:
-                              getPeriodBudget(period, budget).actualTotal >
+                              getPeriodBudget(period, budget).actualTotal <
                               getPeriodBudget(period, budget).estimatedTotal
                           }"
                         >
@@ -82,15 +89,18 @@
                             ></b-form-input>
                           </b-input-group>
                         </td>
-
+                        <td v-if="getPeriodFlow(period, flow).actualTransactionIds.length == 0" class="flow__value">
+                          -
+                        </td>
                         <td
+                          v-else
                           class="flow__value"
                           :class="{
                             warning:
-                              getPeriodFlow(period, flow).actualTotal > getPeriodFlow(period, flow).estimatedTotal
+                              getPeriodFlow(period, flow).actualTotal < getPeriodFlow(period, flow).estimatedTotal
                           }"
                         >
-                          {{ getPeriodFlow(period, flow).actualTotal }}
+                          {{ formatCurrency(getPeriodFlow(period, flow).actualTotal) }}
                         </td></template
                       >
                     </tr>
@@ -130,7 +140,9 @@ export default {
       await this.getForecast();
     },
     async getForecast() {
-      let { data: forecast } = await this.$axios.get(`/forecast?budgetCategory=${this.selectedBudgetCategory}`);
+      let { data: forecast } = await this.$axios.get(
+        `/forecast/budget-category?budgetCategory=${this.selectedBudgetCategory}`
+      );
       this.forecast = forecast;
     },
     formatCurrency(amount) {

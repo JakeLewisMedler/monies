@@ -33,7 +33,7 @@ router.put("/budget-categories/:_id", BudgetCategoryController.update_budget_cat
 router.delete("/budget-categories", BudgetCategoryController.delete_budget_categories);
 router.delete("/budget-categories/:_id", BudgetCategoryController.delete_budget_category);
 
-router.get("/cashflow", CashflowController.generate_cashflow);
 router.get("/forecast", ForecastController.generate_forecast);
+router.get("/forecast/budget-category", ForecastController.generate_budget_category_forecast);
 
 module.exports = router;

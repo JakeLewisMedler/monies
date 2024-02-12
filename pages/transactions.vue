@@ -30,10 +30,12 @@
             {{ row.item.flow?.name }}
           </template>
           <template #cell(actions)="row">
-            <b-button @click="unlinkFlow(row.item)" variant="danger">Unlink Flow</b-button
-            ><b-button variant="danger" @click="archiveTransactionToggle(row.item)"
-              >{{ row.item.archived ? "Unarchive" : "Archive" }}
-            </b-button>
+            <b-button
+              @click="unreconcile(row.item)"
+              variant="danger"
+              :disabled="!row.item.archived && !row.item.oneoff && !row.item.flow"
+              >Unreconcile</b-button
+            >
           </template></b-table
         ></b-card
       ></b-col
@@ -53,6 +55,7 @@ export default {
         { key: "notes", sortable: true },
         { key: "flow", sortable: true },
         { key: "archived", sortable: true },
+        { key: "oneoff", sortable: true },
         { key: "actions", sortable: true }
       ],
       transactionsFilter: "",
@@ -63,26 +66,22 @@ export default {
     formatDate(date) {
       return `${new Date(date).toLocaleDateString()} ${new Date(date).toLocaleTimeString()}`;
     },
-    async archiveTransactionToggle(transaction) {
-      await this.$axios.put(`/transactions/${transaction._id}`, { archived: !transaction.archived });
-      this.$refs.transactionsTable.refresh();
-    },
     async updateNotes(transaction) {
       let { notes } = transaction;
       await this.$axios.put(`/transactions/${transaction._id}`, { notes });
     },
-    async unlinkFlow(transaction) {
+    async unreconcile(transaction) {
       let result = await this.$swal.fire({
-        title: "Unlink Flow?",
+        title: "Unreconcile Transaction?",
         text: "Are you sure?",
         icon: "warning",
         showCancelButton: true
       });
       if (!result.isConfirmed) return;
-      await this.$axios.put(`/transactions/${transaction._id}`, { flow: null });
+      await this.$axios.put(`/transactions/${transaction._id}`, { flow: null, oneoff: false, archived: false });
       this.$refs.transactionsTable.refresh();
       this.$swal.fire({
-        title: "Flow Unlinked",
+        title: "Transaction Unreconciled",
         icon: "info"
       });
     },

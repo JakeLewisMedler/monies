@@ -41,7 +41,8 @@
             >
 
             <template #cell(actions)="row">
-              <b-button variant="primary" :disabled="!row.item.flow" @click="reconcile(row.item)">√</b-button>
+              <b-button variant="primary" :disabled="!row.item.flow" @click="reconcile(row.item)">Add to Flow</b-button>
+              <b-button variant="success" @click="oneOffTransaction(row.item)">One Off</b-button>
               <b-button variant="danger" @click="archiveTransaction(row.item)"
                 ><img class="icon" src="~/assets/icons/bin.svg" alt=""
               /></b-button> </template
@@ -79,8 +80,8 @@ export default {
         { key: "amount", sortable: true },
         { key: "description", sortable: true },
         { key: "notes", sortable: true },
-        { key: "flow", sortable: false, thStyle: "min-width:400px;" },
-        { key: "actions", sortable: true, thStyle: "min-width:150px;" }
+        { key: "flow", sortable: false, thStyle: "min-width:300px;" },
+        { key: "actions", sortable: true, thStyle: "min-width:300px;" }
       ],
       unallocatedTransactionsFilter: "",
       undoHistory: []
@@ -116,6 +117,15 @@ export default {
       let { action, transactionId } = historyItem;
       if (action == "reconcile") await this.$axios.put(`/transactions/${transactionId}`, { flow: null });
       if (action == "archive") await this.$axios.put(`/transactions/${transactionId}`, { archived: false });
+      if (action == "oneoff") await this.$axios.put(`/transactions/${transactionId}`, { oneoff: false });
+
+      this.$refs.unallocatedTransactionsTable.refresh();
+    },
+
+    async oneOffTransaction(transaction) {
+      await this.$axios.put(`/transactions/${transaction._id}`, { oneoff: true });
+      this.undoHistory.push({ action: "oneoff", transactionId: transaction._id });
+
       this.$refs.unallocatedTransactionsTable.refresh();
     },
     async archiveTransaction(transaction) {
@@ -142,7 +152,7 @@ export default {
       this.flows = flows;
     },
     async transactionsProvider(ctx, callback) {
-      let query = `?archived=false&filter=${ctx.filter}&sortBy=${ctx.sortBy}&sortDesc=${ctx.sortDesc}`;
+      let query = `?archived=false&oneoff=false&filter=${ctx.filter}&sortBy=${ctx.sortBy}&sortDesc=${ctx.sortDesc}`;
       let { data: transactions } = await this.$axios.get("/transactions/unallocated" + query);
       this.unallocatedTransactions = transactions;
       return transactions;

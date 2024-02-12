@@ -14,6 +14,7 @@ const TransactionSchema = new mongoose.Schema(
       ref: "Flow",
       default: null
     },
+    oneoff: { type: Boolean, default: false },
     archived: { type: Boolean, default: false }
   },
   {

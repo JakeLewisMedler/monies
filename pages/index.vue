@@ -10,27 +10,27 @@
         </b-row>
 
         <b-row class="table__container mt-3">
-          <table v-if="cashflow">
+          <table v-if="forecast">
             <tr class="header">
               <th class="sticky">Budget</th>
-              <th v-for="period in cashflow?.periods" :key="`date${period.date}`" colspan="2">
+              <th v-for="period in forecast?.periods" :key="`date${period.date}`" colspan="2">
                 {{ $dateFns.format(period.date, "MMM yy") }}
               </th>
             </tr>
             <tr class="subheader">
               <th class="sticky"></th>
-              <template v-for="period in cashflow?.periods">
+              <template v-for="period in forecast?.periods">
                 <th class="text-center w-50">Estimated</th>
                 <th class="text-center w-50">Actual</th></template
               >
             </tr>
             <tbody v-for="budgetCategory in budgetCategories" :key="budgetCategory._id">
               <tr class="break">
-                <td v-for="i in cashflow?.periods.length * 2 + 1" :key="i">&nbsp;</td>
+                <td v-for="i in forecast?.periods.length * 2 + 1" :key="i">&nbsp;</td>
               </tr>
               <tr class="budget__category">
                 <td class="budget__category__name sticky">{{ budgetCategory.name }}</td>
-                <template v-for="period in cashflow?.periods">
+                <template v-for="period in forecast?.periods">
                   <td class="budget__category__value">
                     {{ getPeriodBudgetCategoryTotals(period, budgetCategory).estimatedTotal }}
                   </td>
@@ -55,7 +55,7 @@
                 <td class="budget__name sticky">
                   {{ budget.name }}
                 </td>
-                <template v-for="period in cashflow?.periods">
+                <template v-for="period in forecast?.periods">
                   <td class="budget__value">
                     {{ getPeriodBudgetTotals(period, budget).estimatedTotal }}
                   </td>
@@ -72,20 +72,33 @@
                 >
               </tr>
             </tbody>
+            <tr class="break">
+              <td v-for="i in forecast?.periods.length * 2 + 1" :key="i">&nbsp;</td>
+            </tr>
+            <tr class="oneoffs">
+              <td class="oneoffs__name sticky">One Offs</td>
+              <template v-for="period in forecast?.periods">
+                <td class="oneoff__value"></td>
+                <td class="oneoff__value">
+                  {{ formatCurrency(period.oneoffs.actualTotal) }}
+                </td></template
+              >
+            </tr>
+
             <tbody class="totals">
               <tr class="break">
-                <td v-for="i in cashflow?.periods.length * 2 + 1" :key="i">&nbsp;</td>
+                <td v-for="i in forecast?.periods.length * 2 + 1" :key="i">&nbsp;</td>
               </tr>
               <tr class="total">
                 <td class="total__name sticky">Opening Balance</td>
-                <template v-for="period in cashflow?.periods">
+                <template v-for="period in forecast?.periods">
                   <td class="total__value">{{ formatCurrency(period.totals.openingBalance) }}</td>
                   <td class="total__value">{{ formatCurrency(period.totals.openingBalance) }}</td></template
                 >
               </tr>
               <tr class="total">
                 <td class="total__name sticky">Net cash in/out</td>
-                <template v-for="period in cashflow?.periods">
+                <template v-for="period in forecast?.periods">
                   <td class="total__value">{{ formatCurrency(period.totals.diffEstimated) }}</td>
                   <td class="total__value" :class="{ warning: period.totals.diffActual > period.totals.diffEstimated }">
                     {{ formatCurrency(period.totals.diffActual) }}
@@ -94,7 +107,7 @@
               </tr>
               <tr class="total">
                 <td class="total__name sticky">Closing Balance</td>
-                <template v-for="period in cashflow?.periods">
+                <template v-for="period in forecast?.periods">
                   <td class="total__value">{{ formatCurrency(period.totals.closingEstimated) }}</td>
                   <td
                     class="total__value"
@@ -106,7 +119,7 @@
               </tr>
             </tbody>
             <tr class="break">
-              <td v-for="i in cashflow?.periods.length * 2 + 1" :key="i">&nbsp;</td>
+              <td v-for="i in forecast?.periods.length * 2 + 1" :key="i">&nbsp;</td>
             </tr>
           </table>
         </b-row></b-col
@@ -121,7 +134,7 @@ export default {
     this.getData();
   },
   data() {
-    return { budgetCategories: [], budgets: [], cashflow: null, collapseBudgets: true };
+    return { budgetCategories: [], budgets: [], forecast: null, collapseBudgets: true };
   },
   methods: {
     collapseExpandBudgets() {
@@ -150,8 +163,8 @@ export default {
       this.budgetCategories = budgetCategories;
       let { data: budgets } = await this.$axios.get("/budgets");
       this.budgets = budgets;
-      let { data: cashflow } = await this.$axios.get("/cashflow");
-      this.cashflow = cashflow;
+      let { data: forecast } = await this.$axios.get("/forecast");
+      this.forecast = forecast;
     }
   }
 };
@@ -228,6 +241,20 @@ export default {
           }
         }
       }
+
+      .oneoffs {
+        .oneoffs__name {
+          padding-left: 20px;
+          border: 1px solid #aaa;
+        }
+        font-weight: bold;
+
+        .oneoff__value {
+          text-align: center;
+          border: 1px solid #aaa;
+        }
+      }
+
       .totals {
         .break {
           border-bottom: 3px solid #000;

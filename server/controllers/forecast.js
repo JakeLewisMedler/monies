@@ -5,7 +5,7 @@ const Transaction = require("../models/Transaction");
 
 const { startOfMonth, eachMonthOfInterval, addMonths, subMonths, subMinutes, endOfMonth } = require("date-fns");
 
-const generate_forecast = async (req, res) => {
+const generate_budget_category_forecast = async (req, res) => {
   try {
     let { budgetCategory } = req.query;
     if (!budgetCategory) throw "No Budget Category";
@@ -28,9 +28,13 @@ const generate_forecast = async (req, res) => {
         for (let budget of budgets) {
           let flowEstimateSum = 0;
           let flowActualSum = 0;
+          let actualTransactionIds = [];
+
           for (let flow of flows.filter((f) => String(f.budget) == String(budget._id))) {
             let transactions = await Transaction.find({
               flow: flow._id,
+              oneoff: false,
+              archived: false,
               date: {
                 $gte: new Date(date),
                 $lt: new Date(endOfMonth(date))
@@ -43,6 +47,7 @@ const generate_forecast = async (req, res) => {
               name: flow.name,
               _id: flow._id,
               actualTotal: actual,
+              actualTransactionIds: transactions.map((t) => t._id),
               estimate: false,
               estimatedTotal: 0
             };
@@ -50,9 +55,9 @@ const generate_forecast = async (req, res) => {
               periodFlow.estimate = true;
               periodFlow.estimatedTotal = flow.estimateAmount;
             }
-
             flowEstimateSum += periodFlow.estimatedTotal;
             flowActualSum += actual;
+            actualTransactionIds.push(...periodFlow.actualTransactionIds);
             period.flows.push(periodFlow);
           }
           let periodBudget = {
@@ -60,7 +65,8 @@ const generate_forecast = async (req, res) => {
             _id: budget._id,
             actualTotal: flowActualSum,
             estimate: false,
-            estimatedTotal: flowEstimateSum
+            estimatedTotal: flowEstimateSum,
+            actualTransactionIds
           };
           if (budget.estimate) {
             periodBudget.estimate = true;
@@ -78,7 +84,115 @@ const generate_forecast = async (req, res) => {
     res.status(500).send(error);
   }
 };
+const generate_forecast = async (req, res) => {
+  try {
+    let budgetCategories = await BudgetCategory.find({});
 
-module.exports = {
-  generate_forecast
+    let monthStart = subMonths(startOfMonth(new Date()), 3);
+    let numberOfPeriods = 15;
+    let dates = eachMonthOfInterval({
+      start: monthStart,
+      end: addMonths(monthStart, numberOfPeriods - 1)
+    }).map((d) => subMinutes(d, d.getTimezoneOffset()));
+
+    let periods = await Promise.all(
+      dates.map(async (date) => {
+        let period = { date, budgets: [], budgetCategories: [], oneoffs: { actualTotal: 0 }, totals: [] };
+
+        for (let budgetCategory of budgetCategories) {
+          let budgets = await Budget.find({ category: budgetCategory._id });
+
+          let budgetEstimateSum = 0;
+          let budgetActualSum = 0;
+
+          for (let budget of budgets) {
+            let flows = await Flow.find({ budget: budget._id });
+
+            let flowEstimateSum = 0;
+            let flowActualSum = 0;
+
+            for (let flow of flows) {
+              let transactions = await Transaction.find({
+                flow: flow._id,
+                oneoff: false,
+                archived: false,
+                date: {
+                  $gte: new Date(date),
+                  $lt: new Date(endOfMonth(date))
+                }
+              });
+              let sum = transactions.reduce((prev, curr) => prev + curr.amount, 0);
+              let actual = Math.round(sum * 100) / 100;
+
+              let periodFlow = {
+                name: flow.name,
+                _id: flow._id,
+                actualTotal: actual,
+                estimate: false,
+                estimatedTotal: 0
+              };
+              if (!budget.estimate) {
+                periodFlow.estimate = true;
+                periodFlow.estimatedTotal = flow.estimateAmount;
+              }
+              flowEstimateSum += periodFlow.estimatedTotal;
+              flowActualSum += actual;
+            }
+            let periodBudget = {
+              name: budget.name,
+              _id: budget._id,
+              actualTotal: flowActualSum,
+              estimate: false,
+              estimatedTotal: flowEstimateSum
+            };
+            if (budget.estimate) {
+              periodBudget.estimate = true;
+              periodBudget.estimatedTotal = budget.estimateAmount;
+            }
+            budgetEstimateSum += periodBudget.estimatedTotal;
+            budgetActualSum += periodBudget.actualTotal;
+            period.budgets.push(periodBudget);
+          }
+          let periodBudgetCategory = {
+            name: budgetCategory.name,
+            _id: budgetCategory._id,
+            actualTotal: budgetActualSum,
+            estimatedTotal: budgetEstimateSum
+          };
+          period.budgetCategories.push(periodBudgetCategory);
+        }
+
+        let oneoffTransactions = await Transaction.find({
+          oneoff: true,
+          archived: false,
+          date: {
+            $gte: new Date(date),
+            $lt: new Date(endOfMonth(date))
+          }
+        });
+        period.oneoffs.actualTotal =
+          Math.round(oneoffTransactions.reduce((prev, curr) => prev + curr.amount, 0) * 100) / 100;
+        console.log(period.date, period.oneoffs.actualTotal);
+        let openingBalance = 0;
+        let diffEstimated =
+          Math.round(period.budgetCategories.reduce((prev, curr) => prev + curr.estimatedTotal, 0) * 100) / 100;
+        let diffActual =
+          Math.round(
+            (period.oneoffs.actualTotal + period.budgetCategories.reduce((prev, curr) => prev + curr.actualTotal, 0)) *
+              100
+          ) / 100;
+        let closingEstimated = Math.round((openingBalance + diffEstimated) * 100) / 100;
+        let closingActual = Math.round((openingBalance + diffActual) * 100) / 100;
+
+        period.totals = { openingBalance, diffEstimated, diffActual, closingEstimated, closingActual };
+
+        return period;
+      })
+    );
+    return res.send({ periods });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(error);
+  }
 };
+module.exports = { generate_budget_category_forecast, generate_forecast };

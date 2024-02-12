@@ -95,14 +95,14 @@ const list_transactions = async (req, res) => {
 
 const list_unallocated_transactions = async (req, res) => {
   let query = { flow: null };
-  let { filter, sortBy, sortDesc, archived } = req.query;
+  let { filter, sortBy, sortDesc, archived, oneoff } = req.query;
   if (filter)
     isNaN(filter)
       ? (query.$or = [{ $text: { $search: `\"${filter}\"` } }])
       : (query.$or = [{ $text: { $search: `\"${filter}\"` } }, { amount: filter }]);
 
-  if (!!archived) query.archived = archived == "true" ? true : false;
-
+  if (archived != undefined) query.archived = archived == "true" ? true : false;
+  if (oneoff != undefined) query.oneoff = oneoff == "true" ? true : false;
   let sort = { name: 1 };
   if (sortBy) sort = { [sortBy]: sortDesc == "true" ? -1 : 1 };
   let transactions = await Transaction.find(query).sort(sort);
