@@ -87,19 +87,8 @@ export default {
   },
   methods: {
     async archiveTransaction(transaction) {
-      let result = await this.$swal.fire({
-        title: "Archive Transaction?",
-        text: "Are you sure?",
-        icon: "warning",
-        showCancelButton: true
-      });
-      if (!result.isConfirmed) return;
       await this.$axios.put(`/transactions/${transaction._id}`, { archived: true });
       this.$refs.unallocatedTransactionsTable.refresh();
-      this.$swal.fire({
-        title: "Transaction Archived",
-        icon: "info"
-      });
     },
     async getBudgets() {
       let { data: budgetCategories } = await this.$axios.get("/budget-categories");
