@@ -10,6 +10,7 @@
           <h2>Unallocated Transactions ({{ unallocatedTransactions.length }})</h2>
           <b-form-input v-model="unallocatedTransactionsFilter" placeholder="Search" debounce="200"></b-form-input>
           <b-table
+            v-if="flows"
             ref="unallocatedTransactionsTable"
             :items="transactionsProvider"
             :fields="transactionFields"
@@ -32,12 +33,13 @@
             </template>
 
             <template #cell(flow)="row">
-              <b-form-select v-model="row.item.flow" value-field="_id" text-field="name" :options="renamedFlows">
-                <b-form-select-option :value="null">Create New</b-form-select-option>
-              </b-form-select>
-            </template>
+              <b-button :variant="getFlowButtonData(row.item).variant" @click="flowButtonClicked(row.item)">{{
+                getFlowButtonData(row.item).label
+              }}</b-button></template
+            >
+
             <template #cell(actions)="row">
-              <b-button variant="primary" @click="reconcile(row.item)">√</b-button>
+              <b-button variant="primary" :disabled="!row.item.flow" @click="reconcile(row.item)">√</b-button>
               <b-button variant="danger" @click="archiveTransaction(row.item)"
                 ><img class="icon" src="~/assets/icons/bin.svg" alt=""
               /></b-button> </template
@@ -46,6 +48,13 @@
       </b-card>
     </b-col>
     <FlowModal ref="flowModal" @created="createFlow" />
+    <FlowSelectModal
+      ref="flowSelectModal"
+      :flows="flows"
+      :budgets="budgets"
+      :budgetCategories="budgetCategories"
+      @selected="flowSelected"
+    />
   </div>
 </template>
 
@@ -54,17 +63,6 @@ export default {
   computed: {
     relevantFlows() {
       return this.flows.filter((b) => this.unallocatedTransactions.find((t) => t.flow == b._id));
-    },
-    renamedFlows() {
-      let flows = this.flows;
-      for (let flow of flows) {
-        let budget = this.budgets.find((b) => b._id == flow.budget);
-        let budgetCategory = this.budgetCategories.find((b) => b._id == flow.category);
-        if (budget && budgetCategory) {
-          flow.name += ` (${budgetCategory.name} - ${budget.name})`;
-        }
-      }
-      return this.flows;
     }
   },
   data() {
@@ -78,7 +76,7 @@ export default {
         { key: "name", sortable: true },
         { key: "amount", sortable: true },
         { key: "description", sortable: true },
-        { key: "flow", sortable: false, thStyle: "min-width:300px;" },
+        { key: "flow", sortable: false, thStyle: "min-width:400px;" },
         { key: "actions", sortable: true, thStyle: "min-width:150px;" }
       ],
       unallocatedTransactionsFilter: "",
@@ -90,6 +88,25 @@ export default {
     await this.getFlows();
   },
   methods: {
+    flowSelected({ flowId, transaction }) {
+      if (!flowId) this.createFlowModal(transaction);
+      else transaction.flow = flowId;
+    },
+    flowButtonClicked(transaction) {
+      this.$refs.flowSelectModal.show({ title: "Flow Select", transaction });
+    },
+    getFlowButtonData(transaction) {
+      let variant, label;
+      if (transaction.flow) {
+        let flow = this.flows.find((f) => f._id == transaction.flow);
+        label = flow?.name;
+        variant = "secondary";
+      } else {
+        label = "Search";
+        variant = "primary";
+      }
+      return { variant, label };
+    },
     async undo() {
       if (this.undoHistory.length == 0) return;
       let historyItem = this.undoHistory.pop();
@@ -112,6 +129,13 @@ export default {
     },
     async getFlows() {
       let { data: flows } = await this.$axios.get("/flows");
+      for (let flow of flows) {
+        let budget = this.budgets.find((b) => b._id == flow.budget);
+        let budgetCategory = this.budgetCategories.find((b) => b._id == flow.category);
+        if (budget && budgetCategory) {
+          flow.name += ` (${budgetCategory.name} - ${budget.name})`;
+        }
+      }
       this.flows = flows;
     },
     async transactionsProvider(ctx, callback) {
@@ -122,20 +146,16 @@ export default {
     },
     async reconcile(transaction) {
       let { flow } = transaction;
-      if (flow) {
-        await this.$axios.put(`/transactions/${transaction._id}`, { flow });
-        this.undoHistory.push({ action: "reconcile", transactionId: transaction._id });
-        this.$refs.unallocatedTransactionsTable.refresh();
-        await this.getFlows();
-      } else {
-        await this.createFlowModal(transaction);
-      }
+      if (!flow) return;
+      await this.$axios.put(`/transactions/${transaction._id}`, { flow });
+      this.undoHistory.push({ action: "reconcile", transactionId: transaction._id });
+      this.$refs.unallocatedTransactionsTable.refresh();
+      await this.getFlows();
     },
     async createFlow(flow, transaction) {
       let { data } = await this.$axios.post("/flows", flow);
-      if (transaction) await this.$axios.put(`/transactions/${transaction._id}`, { flow: data._id });
-      this.$refs.unallocatedTransactionsTable.refresh();
       await this.getFlows();
+      transaction.flow = data._id;
     },
     async createFlowModal(transaction) {
       let { data: flow } = await this.$axios.post("/flows/create-temp", {
