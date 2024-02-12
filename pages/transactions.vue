@@ -28,7 +28,10 @@
               {{ row.item.flow?.name }}
             </template>
             <template #cell(actions)="row">
-              <b-button @click="unlinkFlow(row.item)" variant="danger">Unlink Flow</b-button>
+              <b-button @click="unlinkFlow(row.item)" variant="danger">Unlink Flow</b-button
+              ><b-button variant="danger" @click="archiveTransactionToggle(row.item)"
+                >{{ row.item.archived ? "Unarchive" : "Archive" }}
+              </b-button>
             </template></b-table
           ></b-card
         ></b-col
@@ -57,6 +60,10 @@ export default {
   methods: {
     formatDate(date) {
       return `${new Date(date).toLocaleDateString()} ${new Date(date).toLocaleTimeString()}`;
+    },
+    async archiveTransactionToggle(transaction) {
+      await this.$axios.put(`/transactions/${transaction._id}`, { archived: !transaction.archived });
+      this.$refs.transactionsTable.refresh();
     },
     async unlinkFlow(transaction) {
       let result = await this.$swal.fire({

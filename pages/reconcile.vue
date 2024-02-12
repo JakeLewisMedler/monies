@@ -1,7 +1,10 @@
 <template>
   <div class="reconcile">
     <b-col class="px-5 mt-3">
-      <h1>Reconcile</h1>
+      <b-row align-h="between">
+        <h1>Reconcile</h1>
+        <b-button variant="warning" :disabled="undoHistory.length == 0" @click="undo">Undo</b-button>
+      </b-row>
       <b-card class="mt-3">
         <b-col>
           <h2>Unallocated Transactions ({{ unallocatedTransactions.length }})</h2>
@@ -78,7 +81,8 @@ export default {
         { key: "flow", sortable: false, thStyle: "min-width:300px;" },
         { key: "actions", sortable: true, thStyle: "min-width:150px;" }
       ],
-      unallocatedTransactionsFilter: ""
+      unallocatedTransactionsFilter: "",
+      undoHistory: []
     };
   },
   async mounted() {
@@ -86,8 +90,18 @@ export default {
     await this.getFlows();
   },
   methods: {
+    async undo() {
+      if (this.undoHistory.length == 0) return;
+      let historyItem = this.undoHistory.pop();
+      let { action, transactionId } = historyItem;
+      if (action == "reconcile") await this.$axios.put(`/transactions/${transactionId}`, { flow: null });
+      if (action == "archive") await this.$axios.put(`/transactions/${transactionId}`, { archived: false });
+      this.$refs.unallocatedTransactionsTable.refresh();
+    },
     async archiveTransaction(transaction) {
       await this.$axios.put(`/transactions/${transaction._id}`, { archived: true });
+      this.undoHistory.push({ action: "archive", transactionId: transaction._id });
+
       this.$refs.unallocatedTransactionsTable.refresh();
     },
     async getBudgets() {
@@ -110,6 +124,7 @@ export default {
       let { flow } = transaction;
       if (flow) {
         await this.$axios.put(`/transactions/${transaction._id}`, { flow });
+        this.undoHistory.push({ action: "reconcile", transactionId: transaction._id });
         this.$refs.unallocatedTransactionsTable.refresh();
         await this.getFlows();
       } else {
