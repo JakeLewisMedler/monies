@@ -50,7 +50,7 @@
                             <b-form-input
                               type="number"
                               v-model="getPeriodBudget(period, budget).estimatedTotal"
-                              @change="setBudgetEstimate($event, budget)"
+                              @change="setBudgetEstimate($event, period, budget)"
                             ></b-form-input>
                           </b-input-group>
                         </td>
@@ -85,7 +85,7 @@
                             <b-form-input
                               type="number"
                               v-model="getPeriodFlow(period, flow).estimatedTotal"
-                              @change="setFlowEstimate($event, flow)"
+                              @change="setFlowEstimate($event, period, flow)"
                             ></b-form-input>
                           </b-input-group>
                         </td>
@@ -152,12 +152,16 @@ export default {
         currency: "GBP"
       }).format(amount);
     },
-    async setBudgetEstimate(amount, budget) {
-      await this.$axios.put(`/budgets/${budget._id}`, { estimateAmount: amount });
+    async setBudgetEstimate(amount, period, budget) {
+      if (amount == "")
+        await this.$axios.post(`/estimates/delete`, { type: "budget", budget: budget._id, date: period.date });
+      else await this.$axios.post(`/estimates`, { type: "budget", budget: budget._id, amount, date: period.date });
       await this.getForecast();
     },
-    async setFlowEstimate(amount, flow) {
-      await this.$axios.put(`/flows/${flow._id}`, { estimateAmount: amount });
+    async setFlowEstimate(amount, period, flow) {
+      if (amount == "")
+        await this.$axios.post(`/estimates/delete`, { type: "flow", flow: flow._id, date: period.date });
+      else await this.$axios.post(`/estimates`, { type: "flow", flow: flow._id, amount, date: period.date });
       await this.getForecast();
     },
     getPeriodBudget(period, budget) {

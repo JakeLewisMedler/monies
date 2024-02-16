@@ -27,6 +27,12 @@ const update_budget = async (req, res) => {
   return res.send(budget);
 };
 
+const update_budget_estimate = async (req, res) => {
+  let budget = req.body;
+  let { _id } = req.params;
+  budget = await Budget.findByIdAndUpdate(_id, budget);
+  return res.send(budget);
+};
 const delete_budgets = async (req, res) => {
   await Budget.deleteMany({});
   return res.send();
@@ -43,6 +49,7 @@ module.exports = {
   list_budgets,
   create_budget,
   update_budget,
+  update_budget_estimate,
   delete_budgets,
   delete_budget
 };

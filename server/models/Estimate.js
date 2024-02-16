@@ -1,11 +1,13 @@
 const mongoose = require("mongoose");
 
-const FlowSchema = new mongoose.Schema(
+const EstimateSchema = new mongoose.Schema(
   {
-    name: String,
-    category: {
+    type: String,
+    amount: Number,
+    date: Date,
+    flow: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "BudgetCategory"
+      ref: "Flow"
     },
     budget: {
       type: mongoose.Schema.Types.ObjectId,
@@ -16,5 +18,4 @@ const FlowSchema = new mongoose.Schema(
     timestamps: true
   }
 );
-FlowSchema.index({ "$**": "text" });
-module.exports = mongoose.model("Flow", FlowSchema);
+module.exports = mongoose.model("Estimate", EstimateSchema);

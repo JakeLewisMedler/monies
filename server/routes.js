@@ -3,6 +3,7 @@ const router = Router();
 
 let TransactionsController = require("./controllers/transaction");
 let FlowController = require("./controllers/flow");
+let EstimateController = require("./controllers/estimate");
 let BudgetCategoryController = require("./controllers/budgetCategory");
 let BudgetController = require("./controllers/budget");
 let ForecastController = require("./controllers/forecast");
@@ -20,9 +21,16 @@ router.put("/flows/:_id", FlowController.update_flow);
 router.delete("/flows", FlowController.delete_flows);
 router.delete("/flows/:_id", FlowController.delete_flow);
 
+router.get("/estimates", EstimateController.list_estimates);
+router.post("/estimates", EstimateController.create_estimate);
+router.post("/estimates/delete", EstimateController.delete_estimates);
+router.put("/estimates/:_id", EstimateController.update_estimate);
+router.delete("/estimates/:_id", EstimateController.delete_estimate);
+
 router.get("/budgets", BudgetController.list_budgets);
 router.post("/budgets", BudgetController.create_budget);
 router.put("/budgets/:_id", BudgetController.update_budget);
+
 router.delete("/budgets", BudgetController.delete_budgets);
 router.delete("/budgets/:_id", BudgetController.delete_budget);
 

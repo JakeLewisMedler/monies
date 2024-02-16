@@ -2,6 +2,7 @@ const Flow = require("../models/Flow");
 const Budget = require("../models/Budget");
 const BudgetCategory = require("../models/BudgetCategory");
 const Transaction = require("../models/Transaction");
+const Estimate = require("../models/Estimate");
 
 const { startOfMonth, eachMonthOfInterval, addMonths, subMonths, subMinutes, endOfMonth } = require("date-fns");
 
@@ -40,42 +41,51 @@ const generate_budget_category_forecast = async (req, res) => {
                 $lt: new Date(endOfMonth(date))
               }
             });
-            let sum = transactions.reduce((prev, curr) => prev + curr.amount, 0);
-            let actual = Math.round(sum * 100) / 100;
+            let estimate = await Estimate.findOne({
+              flow: flow._id,
+              type: "flow",
+              date: {
+                $gte: new Date(date),
+                $lt: new Date(endOfMonth(date))
+              }
+            });
+
+            let transactionsSum = transactions.reduce((prev, curr) => prev + curr.amount, 0);
+            let flowEstimate = estimate?.amount;
 
             let periodFlow = {
               name: flow.name,
               _id: flow._id,
-              actualTotal: actual,
+              actualTotal: transactionsSum,
               actualTransactionIds: transactions.map((t) => t._id),
-              estimate: false,
-              estimatedTotal: 0
+              estimate: !budget.estimate,
+              estimatedTotal: flowEstimate,
+              totalDiff: transactionsSum - flowEstimate
             };
-            if (!budget.estimate) {
-              periodFlow.estimate = true;
-              periodFlow.estimatedTotal = flow.estimateAmount;
-            }
 
-            periodFlow.totalDiff = periodFlow.actualTotal - periodFlow.estimatedTotal;
-
-            flowEstimateSum += periodFlow.estimatedTotal;
-            flowActualSum += actual;
+            flowActualSum += transactionsSum;
+            flowEstimateSum += flowEstimate;
             actualTransactionIds.push(...periodFlow.actualTransactionIds);
             period.flows.push(periodFlow);
           }
+          let estimate = await Estimate.findOne({
+            budget: budget._id,
+            type: "budget",
+            date: {
+              $gte: new Date(date),
+              $lt: new Date(endOfMonth(date))
+            }
+          });
+          let budgetEstimate = estimate?.amount;
           let periodBudget = {
             name: budget.name,
             _id: budget._id,
             actualTotal: flowActualSum,
-            estimate: false,
-            estimatedTotal: flowEstimateSum,
+            estimate: budget.estimate,
+            estimatedTotal: budgetEstimate,
+            totalDiff: flowActualSum - budgetEstimate,
             actualTransactionIds
           };
-          if (budget.estimate) {
-            periodBudget.estimate = true;
-            periodBudget.estimatedTotal = budget.estimateAmount;
-          }
-          periodBudget.totalDiff = periodBudget.actualTotal - periodBudget.estimatedTotal;
 
           period.budgets.push(periodBudget);
         }
