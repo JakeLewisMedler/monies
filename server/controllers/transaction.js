@@ -4,6 +4,7 @@ const { parse } = require("date-fns");
 const fs = require("fs");
 const csv = require("csv-parser");
 const path = require("path");
+const { endOfMonth } = require("date-fns");
 
 const createTransaction = async (data) => {
   let {
@@ -76,15 +77,19 @@ const upload_csv = async (req, res) => {
 
 const list_transactions = async (req, res) => {
   let query = {};
-  let { filter, sortBy, sortDesc, flow, archived, populate } = req.query;
+  let { filter, sortBy, sortDesc, flow, month, archived, populate } = req.query;
   if (filter)
     isNaN(filter)
       ? (query.$or = [{ $text: { $search: `\"${filter}\"` } }])
       : (query.$or = [{ $text: { $search: `\"${filter}\"` } }, { amount: filter }]);
-
-  if (flow) query.flow = flow;
+  if (!!flow && flow != "") query.flow = flow;
   if (!!archived) query.archived = archived == "true" ? true : false;
-
+  if (!!month) {
+    query.date = {
+      $gte: new Date(month),
+      $lt: endOfMonth(new Date(month))
+    };
+  }
   let sort = { name: 1 };
   if (sortBy) sort = { [sortBy]: sortDesc == "true" ? -1 : 1 };
 

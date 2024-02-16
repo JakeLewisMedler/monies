@@ -4,7 +4,19 @@ const BudgetCategory = require("../models/BudgetCategory");
 const Transaction = require("../models/Transaction");
 const Estimate = require("../models/Estimate");
 
-const { startOfMonth, eachMonthOfInterval, addMonths, subMonths, subMinutes, endOfMonth } = require("date-fns");
+const {
+  startOfMonth,
+  eachMonthOfInterval,
+  addMonths,
+  subMonths,
+  subMinutes,
+  endOfMonth,
+  isSameMonth
+} = require("date-fns");
+
+const round = (amount) => {
+  return Math.round(amount * 100) / 100;
+};
 
 const generate_budget_category_forecast = async (req, res) => {
   try {
@@ -45,17 +57,17 @@ const generate_budget_category_forecast = async (req, res) => {
               flow: flow._id,
               type: "flow",
               date: {
-                $gte: new Date(date),
                 $lt: new Date(endOfMonth(date))
               }
-            });
+            }).sort({ date: -1 });
 
-            let transactionsSum = transactions.reduce((prev, curr) => prev + curr.amount, 0);
-            let flowEstimate = estimate?.amount;
+            let transactionsSum = round(transactions.reduce((prev, curr) => prev + curr.amount, 0));
+            let flowEstimate = round(estimate?.amount || 0);
 
             let periodFlow = {
               name: flow.name,
               _id: flow._id,
+              automatedAmount: !isSameMonth(date, estimate?.date),
               actualTotal: transactionsSum,
               actualTransactionIds: transactions.map((t) => t._id),
               estimate: !budget.estimate,
@@ -72,18 +84,19 @@ const generate_budget_category_forecast = async (req, res) => {
             budget: budget._id,
             type: "budget",
             date: {
-              $gte: new Date(date),
               $lt: new Date(endOfMonth(date))
             }
-          });
-          let budgetEstimate = estimate?.amount;
+          }).sort({ date: -1 });
+          let budgetEstimate = round(budget.estimate ? estimate?.amount || 0 : flowEstimateSum);
+
           let periodBudget = {
             name: budget.name,
             _id: budget._id,
-            actualTotal: flowActualSum,
+            automatedAmount: !isSameMonth(date, estimate?.date),
+            actualTotal: round(flowActualSum),
             estimate: budget.estimate,
             estimatedTotal: budgetEstimate,
-            totalDiff: flowActualSum - budgetEstimate,
+            totalDiff: round(flowActualSum - budgetEstimate),
             actualTransactionIds
           };
 
@@ -135,8 +148,8 @@ const generate_forecast = async (req, res) => {
                   $lt: new Date(endOfMonth(date))
                 }
               });
-              let sum = transactions.reduce((prev, curr) => prev + curr.amount, 0);
-              let actual = Math.round(sum * 100) / 100;
+
+              let actual = Math.round(transactions.reduce((prev, curr) => prev + curr.amount, 0) * 100) / 100;
 
               let periodFlow = {
                 name: flow.name,

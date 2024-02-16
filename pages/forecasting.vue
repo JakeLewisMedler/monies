@@ -45,7 +45,11 @@
                         <td v-if="!getPeriodBudget(period, budget).estimate" class="budget__value">
                           {{ formatCurrency(getPeriodBudget(period, budget).estimatedTotal) }}
                         </td>
-                        <td v-else class="budget__value">
+                        <td
+                          v-else
+                          class="budget__value"
+                          :class="{ automated: getPeriodBudget(period, budget).automatedAmount }"
+                        >
                           <b-input-group size="sm" prepend="£">
                             <b-form-input
                               type="number"
@@ -60,18 +64,20 @@
                         >
                           -
                         </td>
+
                         <td
                           v-else
                           class="budget__value"
                           :class="{
                             warning:
+                              getPeriodBudget(period, budget).estimate &&
                               getPeriodBudget(period, budget).actualTotal <
-                              getPeriodBudget(period, budget).estimatedTotal
+                                getPeriodBudget(period, budget).estimatedTotal
                           }"
                         >
                           {{ formatCurrency(getPeriodBudget(period, budget).actualTotal) }}
-                        </td></template
-                      >
+                        </td>
+                      </template>
                     </tr>
 
                     <tr v-for="flow in flows.filter((f) => f.budget == budget._id)" :key="flow._id" class="flow">
@@ -80,7 +86,11 @@
                       </td>
                       <template v-for="period in forecast?.periods">
                         <td v-if="!getPeriodFlow(period, flow).estimate" class="flow__value"></td>
-                        <td v-else class="flow__value">
+                        <td
+                          v-else
+                          class="flow__value"
+                          :class="{ automated: getPeriodFlow(period, flow).automatedAmount }"
+                        >
                           <b-input-group size="sm" prepend="£">
                             <b-form-input
                               type="number"
@@ -97,10 +107,13 @@
                           class="flow__value"
                           :class="{
                             warning:
+                              getPeriodFlow(period, flow).estimate &&
                               getPeriodFlow(period, flow).actualTotal < getPeriodFlow(period, flow).estimatedTotal
                           }"
                         >
-                          {{ formatCurrency(getPeriodFlow(period, flow).actualTotal) }}
+                          <a :href="getTransactionsPath(period, flow)">
+                            {{ formatCurrency(getPeriodFlow(period, flow).actualTotal) }}</a
+                          >
                         </td></template
                       >
                     </tr>
@@ -129,6 +142,12 @@ export default {
     return { budgetCategories: [], budgets: [], flows: [], forecast: null, selectedBudgetCategory: null };
   },
   methods: {
+    gotoTransactions(period, flow) {
+      this.$router.push(`/transactions?flow=${flow._id}&month=${period.date}`);
+    },
+    getTransactionsPath(period, flow) {
+      return `/transactions?flow=${flow._id}&month=${period.date}`;
+    },
     async selectBudgetCategory(budgetCategoryId) {
       this.$router.push({ query: { budgetCategory: String(budgetCategoryId) } });
       this.forecast = null;
@@ -233,26 +252,46 @@ export default {
         .budget__name {
           padding-left: 20px;
           border: 1px solid #aaa;
+          padding-left: 20px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          max-width: 300px;
         }
         font-weight: bold;
 
         .budget__value {
           text-align: center;
           border: 1px solid #aaa;
+
           &.warning {
             color: #f00;
+          }
+          &.automated {
+            border: 2px solid #00f;
           }
         }
       }
       .flow {
         .flow__name {
           padding-left: 20px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          max-width: 300px;
         }
         .flow__value {
           text-align: center;
           border: 1px solid #aaa;
+          a {
+            color: inherit;
+          }
+          cursor: pointer;
           &.warning {
             color: #f00;
+          }
+          &.automated {
+            border: 2px solid #00f;
           }
         }
       }

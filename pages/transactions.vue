@@ -4,6 +4,22 @@
       <h1>Transactions ({{ transactions.length }})</h1>
       <b-form-input v-model="transactionsFilter" placeholder="Search" debounce="500" class="mt-3"></b-form-input>
 
+      <b-row class="my-2">
+        <b-col>
+          <b-form-select
+            v-model="flowFilter"
+            :options="flows"
+            value-field="_id"
+            text-field="name"
+            @change="flowFilterUpdated"
+          >
+            <template #first> <b-form-select-option :value="null">Flow Filter</b-form-select-option></template>
+          </b-form-select>
+        </b-col>
+        <b-col cols="1">
+          <b-button variant="primary" :disabled="!flowFilter" @click="flowFilter = null">Clear Filter</b-button>
+        </b-col>
+      </b-row>
       <b-card>
         <b-table
           ref="transactionsTable"
@@ -45,6 +61,11 @@
 
 <script>
 export default {
+  watch: {
+    flowFilter() {
+      if (this.flowFilter) this.$router.push({ query: { flow: this.flowFilter, month: this.monthFilter } });
+    }
+  },
   data() {
     return {
       transactionFields: [
@@ -59,10 +80,28 @@ export default {
         { key: "actions", sortable: true }
       ],
       transactionsFilter: "",
-      transactions: []
+      transactions: [],
+      flows: [],
+      flowFilter: null,
+      monthFilter: null
     };
   },
+  created() {
+    let { flow, month } = this.$route.query;
+    if (flow) this.flowFilter = flow;
+    if (month) this.monthFilter = month;
+  },
+  async mounted() {
+    await this.getFlows();
+  },
   methods: {
+    flowFilterUpdated() {
+      this.$refs.transactionsTable.refresh();
+    },
+    async getFlows() {
+      let { data } = await this.$axios.get("/flows");
+      this.flows = data;
+    },
     formatDate(date) {
       return `${new Date(date).toLocaleDateString()} ${new Date(date).toLocaleTimeString()}`;
     },
@@ -88,6 +127,8 @@ export default {
 
     async transactionsProvider(ctx, callback) {
       let query = `?populate=flow&filter=${ctx.filter}&sortBy=${ctx.sortBy}&sortDesc=${ctx.sortDesc}`;
+      if (this.flowFilter) query += `&flow=${this.flowFilter}`;
+      if (this.monthFilter) query += `&month=${this.monthFilter}`;
       let { data } = await this.$axios.get("/transactions" + query);
       this.transactions = data;
       return data;
