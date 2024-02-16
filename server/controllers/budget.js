@@ -23,7 +23,6 @@ const create_budget = async (req, res) => {
 const update_budget = async (req, res) => {
   let budget = req.body;
   let { _id } = req.params;
-  console.log("update_budget", budget, _id);
   budget = await Budget.findByIdAndUpdate(_id, budget);
   return res.send(budget);
 };

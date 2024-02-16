@@ -55,6 +55,9 @@ const generate_budget_category_forecast = async (req, res) => {
               periodFlow.estimate = true;
               periodFlow.estimatedTotal = flow.estimateAmount;
             }
+
+            periodFlow.totalDiff = periodFlow.actualTotal - periodFlow.estimatedTotal;
+
             flowEstimateSum += periodFlow.estimatedTotal;
             flowActualSum += actual;
             actualTransactionIds.push(...periodFlow.actualTransactionIds);
@@ -72,6 +75,7 @@ const generate_budget_category_forecast = async (req, res) => {
             periodBudget.estimate = true;
             periodBudget.estimatedTotal = budget.estimateAmount;
           }
+          periodBudget.totalDiff = periodBudget.actualTotal - periodBudget.estimatedTotal;
 
           period.budgets.push(periodBudget);
         }
@@ -135,6 +139,8 @@ const generate_forecast = async (req, res) => {
                 periodFlow.estimate = true;
                 periodFlow.estimatedTotal = flow.estimateAmount;
               }
+              periodFlow.totalDiff = periodFlow.actualTotal - periodFlow.estimatedTotal;
+
               flowEstimateSum += periodFlow.estimatedTotal;
               flowActualSum += actual;
             }
@@ -149,6 +155,8 @@ const generate_forecast = async (req, res) => {
               periodBudget.estimate = true;
               periodBudget.estimatedTotal = budget.estimateAmount;
             }
+            periodBudget.totalDiff = periodBudget.actualTotal - periodBudget.estimatedTotal;
+
             budgetEstimateSum += periodBudget.estimatedTotal;
             budgetActualSum += periodBudget.actualTotal;
             period.budgets.push(periodBudget);
@@ -159,6 +167,8 @@ const generate_forecast = async (req, res) => {
             actualTotal: budgetActualSum,
             estimatedTotal: budgetEstimateSum
           };
+          periodBudgetCategory.totalDiff = periodBudgetCategory.actualTotal - periodBudgetCategory.estimatedTotal;
+
           period.budgetCategories.push(periodBudgetCategory);
         }
 
@@ -172,7 +182,6 @@ const generate_forecast = async (req, res) => {
         });
         period.oneoffs.actualTotal =
           Math.round(oneoffTransactions.reduce((prev, curr) => prev + curr.amount, 0) * 100) / 100;
-        console.log(period.date, period.oneoffs.actualTotal);
         let openingBalance = 0;
         let diffEstimated =
           Math.round(period.budgetCategories.reduce((prev, curr) => prev + curr.estimatedTotal, 0) * 100) / 100;
@@ -184,7 +193,9 @@ const generate_forecast = async (req, res) => {
         let closingEstimated = Math.round((openingBalance + diffEstimated) * 100) / 100;
         let closingActual = Math.round((openingBalance + diffActual) * 100) / 100;
 
-        period.totals = { openingBalance, diffEstimated, diffActual, closingEstimated, closingActual };
+        let closingDiff = closingActual - closingEstimated;
+
+        period.totals = { openingBalance, diffEstimated, diffActual, closingEstimated, closingActual, closingDiff };
 
         return period;
       })
