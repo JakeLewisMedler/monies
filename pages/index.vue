@@ -13,36 +13,43 @@
           <table v-if="forecast">
             <tr class="header">
               <th class="sticky">Budget</th>
-              <th v-for="period in forecast?.periods" :key="`date${period.date}`" colspan="2">
+              <th class="thick__border" v-for="period in forecast?.periods" :key="`date${period.date}`" colspan="3">
                 {{ $dateFns.format(period.date, "MMM yy") }}
               </th>
             </tr>
             <tr class="subheader">
               <th class="sticky"></th>
               <template v-for="period in forecast?.periods">
-                <th class="text-center w-50">Estimated</th>
-                <th class="text-center w-50">Actual</th></template
+                <th class="thick__border text-center w-50">Estimated</th>
+                <th class="text-center w-50">Actual</th>
+                <th class="text-center w-50">Diff</th></template
               >
             </tr>
             <tbody v-for="budgetCategory in budgetCategories" :key="budgetCategory._id">
               <tr class="break">
-                <td v-for="i in forecast?.periods.length * 2 + 1" :key="i">&nbsp;</td>
+                <td class="sticky break">&nbsp;</td>
+                <template v-for="i in forecast?.periods.length">
+                  <td class="thick__border">&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </template>
               </tr>
               <tr class="budget__category">
                 <td class="budget__category__name sticky">{{ budgetCategory.name }}</td>
                 <template v-for="period in forecast?.periods">
+                  <td class="thick__border budget__category__value">
+                    {{ formatCurrency(getPeriodBudgetCategoryTotals(period, budgetCategory).estimatedTotal) }}
+                  </td>
                   <td class="budget__category__value">
-                    {{ getPeriodBudgetCategoryTotals(period, budgetCategory).estimatedTotal }}
+                    {{ formatCurrency(getPeriodBudgetCategoryTotals(period, budgetCategory).actualTotal) }}
                   </td>
                   <td
                     class="budget__category__value"
                     :class="{
-                      warning:
-                        getPeriodBudgetCategoryTotals(period, budgetCategory).actualTotal >
-                        getPeriodBudgetCategoryTotals(period, budgetCategory).estimatedTotal
+                      warning: getPeriodBudgetCategoryTotals(period, budgetCategory).totalDiff < 0
                     }"
                   >
-                    {{ getPeriodBudgetCategoryTotals(period, budgetCategory).actualTotal }}
+                    {{ formatCurrency(getPeriodBudgetCategoryTotals(period, budgetCategory).totalDiff) }}
                   </td></template
                 >
               </tr>
@@ -56,70 +63,98 @@
                   {{ budget.name }}
                 </td>
                 <template v-for="period in forecast?.periods">
+                  <td class="thick__border budget__value">
+                    {{ formatCurrency(getPeriodBudgetTotals(period, budget).estimatedTotal) }}
+                  </td>
                   <td class="budget__value">
-                    {{ getPeriodBudgetTotals(period, budget).estimatedTotal }}
+                    {{ formatCurrency(getPeriodBudgetTotals(period, budget).actualTotal) }}
                   </td>
                   <td
                     class="budget__value"
                     :class="{
-                      warning:
-                        getPeriodBudgetTotals(period, budget).actualTotal >
-                        getPeriodBudgetTotals(period, budget).estimatedTotal
+                      warning: getPeriodBudgetTotals(period, budget).totalDiff < 0
                     }"
                   >
-                    {{ getPeriodBudgetTotals(period, budget).actualTotal }}
+                    {{ formatCurrency(getPeriodBudgetTotals(period, budget).totalDiff) }}
                   </td></template
                 >
               </tr>
             </tbody>
             <tr class="break">
-              <td v-for="i in forecast?.periods.length * 2 + 1" :key="i">&nbsp;</td>
+              <td class="sticky break">&nbsp;</td>
+              <template v-for="i in forecast?.periods.length">
+                <td class="thick__border">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </template>
             </tr>
             <tr class="oneoffs">
               <td class="oneoffs__name sticky">One Offs</td>
               <template v-for="period in forecast?.periods">
-                <td class="oneoff__value"></td>
+                <td class="thick__border oneoff__value"></td>
                 <td class="oneoff__value">
                   {{ formatCurrency(period.oneoffs.actualTotal) }}
-                </td></template
-              >
+                </td>
+                <td class="oneoff__value"></td>
+              </template>
             </tr>
 
             <tbody class="totals">
               <tr class="break">
-                <td v-for="i in forecast?.periods.length * 2 + 1" :key="i">&nbsp;</td>
+                <td class="sticky break">&nbsp;</td>
+                <template v-for="i in forecast?.periods.length">
+                  <td class="thick__border">&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </template>
               </tr>
               <tr class="total">
                 <td class="total__name sticky">Opening Balance</td>
                 <template v-for="period in forecast?.periods">
-                  <td class="total__value">{{ formatCurrency(period.totals.openingBalance) }}</td>
-                  <td class="total__value">{{ formatCurrency(period.totals.openingBalance) }}</td></template
-                >
+                  <td colspan="2" class="thick__border total__value">
+                    {{ formatCurrency(period.totals.openingBalance) }}
+                  </td>
+                  <td></td>
+                </template>
               </tr>
               <tr class="total">
                 <td class="total__name sticky">Net cash in/out</td>
                 <template v-for="period in forecast?.periods">
-                  <td class="total__value">{{ formatCurrency(period.totals.diffEstimated) }}</td>
+                  <td class="thick__border total__value">{{ formatCurrency(period.totals.diffEstimated) }}</td>
                   <td class="total__value" :class="{ warning: period.totals.diffActual > period.totals.diffEstimated }">
                     {{ formatCurrency(period.totals.diffActual) }}
-                  </td></template
-                >
+                  </td>
+                  <td></td>
+                </template>
               </tr>
               <tr class="total">
                 <td class="total__name sticky">Closing Balance</td>
                 <template v-for="period in forecast?.periods">
-                  <td class="total__value">{{ formatCurrency(period.totals.closingEstimated) }}</td>
+                  <td class="thick__border total__value">{{ formatCurrency(period.totals.closingEstimated) }}</td>
                   <td
                     class="total__value"
                     :class="{ warning: period.totals.closingActual > period.totals.closingEstimated }"
                   >
                     {{ formatCurrency(period.totals.closingActual) }}
-                  </td></template
-                >
+                  </td>
+                  <td
+                    class="total__value"
+                    :class="{
+                      warning: period.totals.closingDiff < 0
+                    }"
+                  >
+                    {{ formatCurrency(period.totals.closingDiff) }}
+                  </td>
+                </template>
               </tr>
             </tbody>
             <tr class="break">
-              <td v-for="i in forecast?.periods.length * 2 + 1" :key="i">&nbsp;</td>
+              <td class="sticky break">&nbsp;</td>
+              <template v-for="i in forecast?.periods.length">
+                <td class="thick__border">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </template>
             </tr>
           </table>
         </b-row></b-col
@@ -142,21 +177,18 @@ export default {
     },
     getPeriodBudgetTotals(period, budget) {
       let periodBudget = period.budgets.find((b) => b._id == budget._id);
-      let estimatedTotal = this.formatCurrency(periodBudget.estimatedTotal);
-      let actualTotal = this.formatCurrency(periodBudget.actualTotal);
-      return { estimatedTotal, actualTotal };
+      return periodBudget;
+    },
+    getPeriodBudgetCategoryTotals(period, budgetCategory) {
+      let periodBudgetCategory = period.budgetCategories.find((b) => b._id == budgetCategory._id);
+      return periodBudgetCategory;
     },
     formatCurrency(amount) {
+      if (amount === undefined) return null;
       return new Intl.NumberFormat("en-GB", {
         style: "currency",
         currency: "GBP"
       }).format(amount);
-    },
-    getPeriodBudgetCategoryTotals(period, budgetCategory) {
-      let periodBudgetCategory = period.budgetCategories.find((b) => b._id == budgetCategory._id);
-      let estimatedTotal = this.formatCurrency(periodBudgetCategory.estimatedTotal);
-      let actualTotal = this.formatCurrency(periodBudgetCategory.actualTotal);
-      return { estimatedTotal, actualTotal };
     },
     async getData() {
       let { data: budgetCategories } = await this.$axios.get("/budget-categories");
@@ -180,6 +212,9 @@ export default {
     overflow: scroll;
     box-shadow: inset 0 0 2px #000;
 
+    .thick__border {
+      border-left: 2px solid black !important;
+    }
     table {
       position: relative;
       .sticky {
@@ -190,6 +225,9 @@ export default {
         z-index: 1;
       }
       .header {
+        .sticky {
+          z-index: 2;
+        }
         th {
           position: sticky;
           top: 0;
@@ -197,6 +235,9 @@ export default {
         }
       }
       .subheader {
+        .sticky {
+          z-index: 2;
+        }
         th {
           position: sticky;
           top: 26px;
