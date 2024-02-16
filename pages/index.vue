@@ -35,7 +35,9 @@
                 </template>
               </tr>
               <tr class="budget__category">
-                <td class="budget__category__name sticky">{{ budgetCategory.name }}</td>
+                <td class="budget__category__name sticky">
+                  <a :href="`/forecasting?budgetCategory=${budgetCategory._id}`"> {{ budgetCategory.name }}</a>
+                </td>
                 <template v-for="period in forecast?.periods">
                   <td class="thick__border budget__category__value">
                     {{ formatCurrency(getPeriodBudgetCategoryTotals(period, budgetCategory).estimatedTotal) }}
@@ -121,7 +123,7 @@
                 <td class="total__name sticky">Net cash in/out</td>
                 <template v-for="period in forecast?.periods">
                   <td class="thick__border total__value">{{ formatCurrency(period.totals.diffEstimated) }}</td>
-                  <td class="total__value" :class="{ warning: period.totals.diffActual > period.totals.diffEstimated }">
+                  <td class="total__value">
                     {{ formatCurrency(period.totals.diffActual) }}
                   </td>
                   <td></td>
@@ -131,10 +133,7 @@
                 <td class="total__name sticky">Closing Balance</td>
                 <template v-for="period in forecast?.periods">
                   <td class="thick__border total__value">{{ formatCurrency(period.totals.closingEstimated) }}</td>
-                  <td
-                    class="total__value"
-                    :class="{ warning: period.totals.closingActual > period.totals.closingEstimated }"
-                  >
+                  <td class="total__value">
                     {{ formatCurrency(period.totals.closingActual) }}
                   </td>
                   <td
@@ -207,6 +206,9 @@ export default {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  a {
+    color: #000;
+  }
   .table__container {
     max-height: calc(100vh - 300px);
     overflow: scroll;
