@@ -12,10 +12,7 @@ mongoose
     console.log("Mongoose Connected");
   });
 
-const port = process.env.PORT || 3005;
-
 app.use(fileUpload());
-
 app.use(express.json());
 
 const routes = require("./routes");
