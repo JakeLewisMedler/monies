@@ -205,7 +205,7 @@ export default {
   flex-grow: 1;
 
   .table__container {
-    max-height: calc(100vh - 300px);
+    max-height: calc(100vh - 246px);
     overflow: scroll;
     box-shadow: inset 0 0 2px #000;
 

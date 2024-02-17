@@ -213,7 +213,7 @@ export default {
     color: #000;
   }
   .table__container {
-    max-height: calc(100vh - 300px);
+    max-height: calc(100vh - 200px);
     overflow: scroll;
     box-shadow: inset 0 0 2px #000;
 
