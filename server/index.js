@@ -21,8 +21,5 @@ app.use(express.json());
 const routes = require("./routes");
 app.use(routes);
 
-const monzo = require("./monzo");
-app.use(monzo);
-
 // app.listen(port, () => console.log(`App listening on port ${port}!`));
 module.exports = app;

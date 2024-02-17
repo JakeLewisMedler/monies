@@ -48,7 +48,8 @@ const upload_csv = async (req, res) => {
             Description: description
           } = data;
           let dateTime = parse(`${date} ${time}`, "dd/MM/yyyy HH:mm:ss", new Date());
-          let entry = { id, date: dateTime };
+          let entry = { monzoId: id, date: dateTime, name, amount, description };
+          entries.push(entry);
         })
         .on("end", () => {
           r();

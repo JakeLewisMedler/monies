@@ -4,6 +4,9 @@
     <b-form-select v-model="account" :options="accounts" value-field="id" text-field="account_number"></b-form-select
     ><b-button @click="getTransactions">Get Transactions</b-button
     ><b-button @click="uploadTransactions">Upload Transactions</b-button>
+    <b-table :items="transactions">
+      <template #cell(upload)="row"> <b-form-checkbox v-model="row.item.upload" switch /> </template
+    ></b-table>
   </div>
 </template>
 <script>
@@ -36,19 +39,17 @@ export default {
     async getTransactions() {
       try {
         let { data: transactions } = await this.$axios.get(`/monzo/transactions?accountId=${this.account}`);
-        this.transactions = transactions;
+        this.transactions = transactions.map((t) => {
+          return { ...t, upload: true };
+        });
         console.log(transactions);
       } catch (error) {
         console.error(error);
       }
     },
     async uploadTransactions() {
-      let transactions = this.transactions.map((t) => {
-        let { id, settled: date, name, amount, description } = t;
-        return { ...t };
-      });
-      console.log(transactions);
-      // await this.$axios.post(`/transactions/upload-monzo`,this.tran);
+      let transactions = this.transactions.filter((t) => t.upload);
+      await this.$axios.post(`/transactions/upload-monzo`, transactions);
     }
   }
 };

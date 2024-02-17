@@ -3,8 +3,10 @@
     <b-container class="mt-3">
       <b-col>
         <b-button @click="clearTransactions" variant="danger">Clear Transactions</b-button>
-        <b-button @click="clearFlows" variant="danger">Clear Flows</b-button></b-col
-      >
+        <b-button @click="clearFlows" variant="danger">Clear Flows</b-button>
+        <b-button @click="backup" variant="danger">Store Backups</b-button>
+        <b-button @click="restore" variant="danger">Restore Backups</b-button>
+      </b-col>
     </b-container>
   </div>
 </template>
@@ -40,6 +42,34 @@ export default {
       await this.$axios.delete("/flows");
       this.$swal.fire({
         title: "Flows Cleared",
+        icon: "info"
+      });
+    },
+    async backup() {
+      let result = await this.$swal.fire({
+        title: "Backup DB?",
+        text: "Are you sure?",
+        icon: "warning",
+        showCancelButton: true
+      });
+      if (!result.isConfirmed) return;
+      await this.$axios.post("/backup");
+      this.$swal.fire({
+        title: "DB Backed up",
+        icon: "info"
+      });
+    },
+    async restore() {
+      let result = await this.$swal.fire({
+        title: "Restore DB?",
+        text: "Are you sure?",
+        icon: "warning",
+        showCancelButton: true
+      });
+      if (!result.isConfirmed) return;
+      await this.$axios.post("/restore");
+      this.$swal.fire({
+        title: "DB Restored",
         icon: "info"
       });
     }

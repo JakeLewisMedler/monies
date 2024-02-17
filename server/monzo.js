@@ -85,15 +85,17 @@ router.get("/monzo/transactions", async (req, res) => {
     let latestTransaction = await Transaction.findOne({}).sort({ date: -1 });
 
     let transactions = await getTransactions(accountId, latestTransaction?.monzoId);
-    transactions = transactions.map((t) => {
-      let { id, settled, merchant, scheme, amount, counterparty, description } = t;
-      let name = "";
-      if (counterparty?.name) name = counterparty.name;
-      else if (!!merchant) name = merchant.name;
-      else if (scheme.includes("pot")) name = "Savings Pot";
+    transactions = transactions
+      .filter((t) => !!t.settled)
+      .map((t) => {
+        let { id, settled, merchant, scheme, amount, counterparty, description } = t;
+        let name = "";
+        if (counterparty?.name) name = counterparty.name;
+        else if (!!merchant) name = merchant.name;
+        else if (scheme.includes("pot")) name = "Savings Pot";
 
-      return { id, date: settled, name, amount: amount / 100, description };
-    });
+        return { id, date: settled, name, amount: amount / 100, description };
+      });
     return res.send(transactions);
   } catch (error) {
     console.error(error);

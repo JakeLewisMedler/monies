@@ -44,4 +44,10 @@ router.delete("/budget-categories/:_id", BudgetCategoryController.delete_budget_
 router.get("/forecast", ForecastController.generate_forecast);
 router.get("/forecast/budget-category", ForecastController.generate_budget_category_forecast);
 
+const monzo = require("./monzo");
+router.use(monzo);
+
+const backup = require("./backup");
+router.use(backup);
+
 module.exports = router;
