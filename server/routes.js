@@ -11,6 +11,7 @@ let ForecastController = require("./controllers/forecast");
 router.get("/transactions", TransactionsController.list_transactions);
 router.get("/transactions/unallocated", TransactionsController.list_unallocated_transactions);
 router.post("/transactions/upload-csv", TransactionsController.upload_csv);
+router.post("/transactions/upload-monzo", TransactionsController.upload_monzo);
 router.put("/transactions/:_id", TransactionsController.update_transaction);
 router.delete("/transactions", TransactionsController.delete_transactions);
 

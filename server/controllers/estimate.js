@@ -1,19 +1,24 @@
 const Estimate = require("../models/Estimate");
 
 const list_estimates = async (req, res) => {
-  let query = {};
-  let { filter, sortBy, sortDesc, budgetCategory } = req.query;
-  if (filter) query.$text = { $search: `\"${filter}\"` };
-  let sort = { name: 1 };
-  if (sortBy) sort = { [sortBy]: sortDesc == "true" ? -1 : 1 };
+  try {
+    let query = {};
+    let { filter, sortBy, sortDesc, budgetCategory } = req.query;
+    if (filter) query.$text = { $search: `\"${filter}\"` };
+    let sort = { name: 1 };
+    if (sortBy) sort = { [sortBy]: sortDesc == "true" ? -1 : 1 };
 
-  if (budgetCategory) {
-    let budgets = await Budget.find({ category: budgetCategory });
-    query.budget = { $in: budgets.map((b) => b._id) };
+    if (budgetCategory) {
+      let budgets = await Budget.find({ category: budgetCategory });
+      query.budget = { $in: budgets.map((b) => b._id) };
+    }
+
+    let estimates = await Estimate.find(query).sort(sort);
+    return res.send(estimates);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(error);
   }
-
-  let estimates = await Estimate.find(query).sort(sort);
-  return res.send(estimates);
 };
 
 const create_estimate = async (req, res) => {
@@ -41,17 +46,26 @@ const create_estimate = async (req, res) => {
 };
 
 const update_estimate = async (req, res) => {
-  let estimate = req.body;
-  let { _id } = req.params;
-
-  estimate = await Estimate.findByIdAndUpdate(_id, estimate);
-  return res.send(estimate);
+  try {
+    let estimate = req.body;
+    let { _id } = req.params;
+    estimate = await Estimate.findByIdAndUpdate(_id, estimate);
+    return res.send(estimate);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(error);
+  }
 };
 
 const delete_estimate = async (req, res) => {
-  let { _id } = req.params;
-  let estimate = await Estimate.findByIdAndDelete(_id);
-  return res.send(estimate);
+  try {
+    let { _id } = req.params;
+    let estimate = await Estimate.findByIdAndDelete(_id);
+    return res.send(estimate);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(error);
+  }
 };
 
 const delete_estimates = async (req, res) => {

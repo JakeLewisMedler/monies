@@ -2,12 +2,11 @@ require("dotenv/config");
 const express = require("express");
 const app = express();
 const fileUpload = require("express-fileupload");
-
 const mongoose = require("mongoose");
 
 mongoose
   .connect(process.env.MONGO_URI, {
-    dbName: "db-monies",
+    dbName: "db-monies"
   })
   .then(() => {
     console.log("Mongoose Connected");
@@ -21,6 +20,9 @@ app.use(express.json());
 
 const routes = require("./routes");
 app.use(routes);
+
+const monzo = require("./monzo");
+app.use(monzo);
 
 // app.listen(port, () => console.log(`App listening on port ${port}!`));
 module.exports = app;

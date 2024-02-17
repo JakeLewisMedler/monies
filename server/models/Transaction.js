@@ -4,7 +4,6 @@ const TransactionSchema = new mongoose.Schema(
   {
     monzoId: String,
     date: Date,
-    type: String,
     name: String,
     amount: Number,
     notes: { type: String, default: "" },
