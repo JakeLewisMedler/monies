@@ -21,14 +21,14 @@ const generateStateToken = () => {
 
 const storeToken = () => {
   if (!store.accessToken) return;
-  fs.writeFileSync(path.resolve(__dirname, "../bankData/monzo.token"), JSON.stringify(store.accessToken), "utf8");
+  fs.writeFileSync(path.resolve(__dirname, "../bankData/monzo.store"), JSON.stringify(store), "utf8");
 };
 
 const getToken = () => {
   try {
-    let json = fs.readFileSync(path.resolve(__dirname, "../bankData/monzo.token"), "utf8");
-    let token = JSON.parse(json);
-    if (token) store.accessToken = token;
+    let json = fs.readFileSync(path.resolve(__dirname, "../bankData/monzo.store"), "utf8");
+    let _store = JSON.parse(json);
+    if (_store) store = _store;
   } catch (error) {
     console.error(error);
   }
@@ -62,12 +62,12 @@ router.post("/monzo/authenticate", async (req, res) => {
     };
     store.code = code;
 
-    let res = makeRequest("post", "oauth2/token", data);
-    if (res.access_token) {
-      store.accessToken = res.access_token;
+    let { access_token, refresh_token } = await makeRequest("post", "oauth2/token", data);
+    if (access_token) {
+      store.accessToken = access_token;
     }
-    if (res.refresh_token) {
-      store.refreshToken = res.refresh_token;
+    if (refresh_token) {
+      store.refreshToken = refresh_token;
     }
     storeToken();
     return res.send();
@@ -149,25 +149,34 @@ const makeRequest = async (type, endpoint, data) => {
       return res;
     }
   } catch (error) {
+    console.error(error);
     await refreshAccess();
     await makeRequest(type, endpoint, data);
   }
 };
 
 const refreshAccess = async () => {
-  if (!store.refreshToken) throw "No refresh token";
-  var data = {
-    grant_type: "refresh_token",
-    client_id: clientId,
-    client_secret: clientSecret,
-    refresh_token: store.refreshToken
-  };
-  let res = await makeRequest("post", "oauth2/token", data);
-  if (res.access_token) {
-    store.accessToken = res.access_token;
-  }
-  if (res.refresh_token) {
-    store.refreshToken = res.refresh_token;
+  try {
+    if (!store.refreshToken) throw "No refresh token";
+    var data = {
+      grant_type: "refresh_token",
+      client_id: clientId,
+      client_secret: clientSecret,
+      refresh_token: store.refreshToken
+    };
+    let { access_token, refresh_token } = await axios.post(API_URL + "oauth2/token", data, {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"
+      }
+    });
+    if (access_token) {
+      store.accessToken = access_token;
+    }
+    if (refresh_token) {
+      store.refreshToken = refresh_token;
+    }
+  } catch (error) {
+    console.error(error);
   }
 };
 
