@@ -168,7 +168,14 @@ const update_transaction = async (req, res) => {
 
 const delete_transactions = async (req, res) => {
   try {
-    await Transaction.deleteMany({});
+    let { unallocated } = req.query;
+    let query = {};
+    if (unallocated == "true") {
+      query.archived = false;
+      query.oneoff = false;
+      query.flow = null;
+    }
+    await Transaction.deleteMany(query);
     return res.send();
   } catch (error) {
     console.error(error);

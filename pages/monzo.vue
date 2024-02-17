@@ -32,6 +32,9 @@ export default {
       try {
         let { data: accounts } = await this.$axios.get("/monzo/accounts");
         this.accounts = accounts;
+        if (this.accounts.length > 0) {
+          this.account = this.accounts[0].id;
+        }
       } catch (error) {
         console.error(error);
       }
@@ -42,14 +45,30 @@ export default {
         this.transactions = transactions.map((t) => {
           return { ...t, upload: true };
         });
-        console.log(transactions);
+        if (this.transactions.length == 0)
+          this.$swal.fire({
+            title: "No new Transactions",
+            icon: "info"
+          });
       } catch (error) {
         console.error(error);
       }
     },
     async uploadTransactions() {
       let transactions = this.transactions.filter((t) => t.upload);
+      let result = await this.$swal.fire({
+        title: `Upload ${transactions.length} Transaction${transactions.length == 1 ? "" : "s"}?`,
+        text: "Are you sure?",
+        icon: "warning",
+        showCancelButton: true
+      });
+      if (!result.isConfirmed) return;
       await this.$axios.post(`/transactions/upload-monzo`, transactions);
+      this.$swal.fire({
+        title: "Transactions Uploaded",
+        icon: "info"
+      });
+      this.$router.push("/reconcile");
     }
   }
 };

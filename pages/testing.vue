@@ -3,7 +3,9 @@
     <b-container class="mt-3">
       <b-col>
         <b-button @click="clearTransactions" variant="danger">Clear Transactions</b-button>
+        <b-button @click="clearUnallocatedTransactions" variant="danger">Clear Unallocated Transactions</b-button>
         <b-button @click="clearFlows" variant="danger">Clear Flows</b-button>
+
         <b-button @click="backup" variant="danger">Store Backups</b-button>
         <b-button @click="restore" variant="danger">Restore Backups</b-button>
       </b-col>
@@ -28,6 +30,20 @@ export default {
       await this.$axios.delete("/transactions");
       this.$swal.fire({
         title: "Transactions Cleared",
+        icon: "info"
+      });
+    },
+    async clearUnallocatedTransactions() {
+      let result = await this.$swal.fire({
+        title: "Clear Unallocated Transactions?",
+        text: "Are you sure?",
+        icon: "warning",
+        showCancelButton: true
+      });
+      if (!result.isConfirmed) return;
+      await this.$axios.delete("/transactions?unallocated=true");
+      this.$swal.fire({
+        title: "Unallocated Transactions Cleared",
         icon: "info"
       });
     },
