@@ -11,15 +11,35 @@
             :options="flows"
             value-field="_id"
             text-field="name"
-            @change="flowFilterUpdated"
+            @change="filterUpdated"
           >
             <template #first> <b-form-select-option :value="null">Flow Filter</b-form-select-option></template>
           </b-form-select>
         </b-col>
         <b-col cols="1">
-          <b-button variant="primary" :disabled="!flowFilter" @click="flowFilter = null">Clear Filter</b-button>
+          <b-button variant="primary" :disabled="flowFilter == null" @click="flowFilter = null">Clear Filter</b-button>
         </b-col>
       </b-row>
+      <b-row class="my-2">
+        <b-col>
+          <b-form-select v-model="oneoffFilter" value-field="_id" text-field="name" @change="filterUpdated">
+            <template #first> <b-form-select-option :value="null">Oneoff Filter</b-form-select-option></template>
+            <b-form-select-option :value="true">Yes</b-form-select-option>
+            <b-form-select-option :value="false">No</b-form-select-option>
+          </b-form-select>
+        </b-col>
+        <b-col cols="1">
+          <b-button variant="primary" :disabled="oneoffFilter == null" @click="oneoffFilter = null"
+            >Clear Filter</b-button
+          >
+        </b-col>
+      </b-row>
+      <b-card class="my-2">
+        <b-row>
+          <b-col>Total: {{ formatCurrency(transactionsSum) }}</b-col></b-row
+        ></b-card
+      >
+
       <b-card>
         <b-table
           ref="transactionsTable"
@@ -63,7 +83,17 @@
 export default {
   watch: {
     flowFilter() {
-      if (this.flowFilter) this.$router.push({ query: { flow: this.flowFilter, month: this.monthFilter } });
+      if (this.flowFilter)
+        this.$router.push({ query: { flow: this.flowFilter, oneoff: this.oneoffFilter, month: this.monthFilter } });
+    },
+    oneoffFilter() {
+      if (this.oneoffFilter)
+        this.$router.push({ query: { flow: this.flowFilter, oneoff: this.oneoffFilter, month: this.monthFilter } });
+    }
+  },
+  computed: {
+    transactionsSum() {
+      return this.transactions.reduce((prev, curr) => prev + curr.amount, 0);
     }
   },
   data() {
@@ -83,19 +113,21 @@ export default {
       transactions: [],
       flows: [],
       flowFilter: null,
-      monthFilter: null
+      monthFilter: null,
+      oneoffFilter: null
     };
   },
   created() {
-    let { flow, month } = this.$route.query;
+    let { flow, month, oneoff } = this.$route.query;
     if (flow) this.flowFilter = flow;
     if (month) this.monthFilter = month;
+    if (oneoff) this.oneoffFilter = oneoff == "true";
   },
   async mounted() {
     await this.getFlows();
   },
   methods: {
-    flowFilterUpdated() {
+    filterUpdated() {
       this.$refs.transactionsTable.refresh();
     },
     async getFlows() {
@@ -104,6 +136,13 @@ export default {
     },
     formatDate(date) {
       return `${new Date(date).toLocaleDateString()} ${new Date(date).toLocaleTimeString()}`;
+    },
+    formatCurrency(amount) {
+      if (amount === undefined) return null;
+      return new Intl.NumberFormat("en-GB", {
+        style: "currency",
+        currency: "GBP"
+      }).format(amount);
     },
     async updateNotes(transaction) {
       let { notes } = transaction;
@@ -127,8 +166,10 @@ export default {
 
     async transactionsProvider(ctx, callback) {
       let query = `?populate=flow&filter=${ctx.filter}&sortBy=${ctx.sortBy}&sortDesc=${ctx.sortDesc}`;
-      if (this.flowFilter) query += `&flow=${this.flowFilter}`;
-      if (this.monthFilter) query += `&month=${this.monthFilter}`;
+      if (this.flowFilter != null) query += `&flow=${this.flowFilter}`;
+      if (this.monthFilter != null) query += `&month=${this.monthFilter}`;
+      if (this.oneoffFilter != null) query += `&oneoff=${this.oneoffFilter}`;
+
       let { data } = await this.$axios.get("/transactions" + query);
       this.transactions = data;
       return data;

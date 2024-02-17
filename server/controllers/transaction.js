@@ -77,12 +77,14 @@ const upload_csv = async (req, res) => {
 
 const list_transactions = async (req, res) => {
   let query = {};
-  let { filter, sortBy, sortDesc, flow, month, archived, populate } = req.query;
+  let { filter, sortBy, sortDesc, flow, oneoff, month, archived, populate } = req.query;
   if (filter)
     isNaN(filter)
       ? (query.$or = [{ $text: { $search: `\"${filter}\"` } }])
       : (query.$or = [{ $text: { $search: `\"${filter}\"` } }, { amount: filter }]);
   if (!!flow && flow != "") query.flow = flow;
+  if (!!oneoff && oneoff != "") query.oneoff = oneoff == "true";
+
   if (!!archived) query.archived = archived == "true" ? true : false;
   if (!!month) {
     query.date = {

@@ -95,7 +95,7 @@
               <template v-for="period in forecast?.periods">
                 <td class="thick__border oneoff__value"></td>
                 <td class="oneoff__value">
-                  {{ formatCurrency(period.oneoffs.actualTotal) }}
+                  <a :href="getTransactionsPath(period)"> {{ formatCurrency(period.oneoffs.actualTotal) }}</a>
                 </td>
                 <td class="oneoff__value"></td>
               </template>
@@ -171,6 +171,9 @@ export default {
     return { budgetCategories: [], budgets: [], forecast: null, collapseBudgets: true };
   },
   methods: {
+    getTransactionsPath(period) {
+      return `/transactions?oneoff=true&month=${period.date}`;
+    },
     collapseExpandBudgets() {
       this.collapseBudgets = !this.collapseBudgets;
     },
@@ -295,6 +298,9 @@ export default {
         .oneoff__value {
           text-align: center;
           border: 1px solid #aaa;
+          a {
+            color: inherit;
+          }
         }
       }
 

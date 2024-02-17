@@ -48,7 +48,7 @@
                         <td
                           v-else
                           class="budget__value"
-                          :class="{ automated: getPeriodBudget(period, budget).automatedAmount }"
+                          :class="{ fixed__value: !getPeriodBudget(period, budget).automatedAmount }"
                         >
                           <b-input-group size="sm" prepend="£">
                             <b-form-input
@@ -89,7 +89,7 @@
                         <td
                           v-else
                           class="flow__value"
-                          :class="{ automated: getPeriodFlow(period, flow).automatedAmount }"
+                          :class="{ fixed__value: !getPeriodFlow(period, flow).automatedAmount }"
                         >
                           <b-input-group size="sm" prepend="£">
                             <b-form-input
@@ -267,7 +267,7 @@ export default {
           &.warning {
             color: #f00;
           }
-          &.automated {
+          &.fixed__value {
             border: 2px solid #00f;
           }
         }
@@ -290,7 +290,7 @@ export default {
           &.warning {
             color: #f00;
           }
-          &.automated {
+          &.fixed__value {
             border: 2px solid #00f;
           }
         }

@@ -131,14 +131,14 @@ const generate_forecast = async (req, res) => {
 
           let budgetEstimateSum = 0;
           let budgetActualSum = 0;
-
           for (let budget of budgets) {
             let flows = await Flow.find({ budget: budget._id });
 
             let flowEstimateSum = 0;
             let flowActualSum = 0;
+            let actualTransactionIds = [];
 
-            for (let flow of flows) {
+            for (let flow of flows.filter((f) => String(f.budget) == String(budget._id))) {
               let transactions = await Transaction.find({
                 flow: flow._id,
                 oneoff: false,
@@ -148,42 +148,108 @@ const generate_forecast = async (req, res) => {
                   $lt: new Date(endOfMonth(date))
                 }
               });
+              let estimate = await Estimate.findOne({
+                flow: flow._id,
+                type: "flow",
+                date: {
+                  $lt: new Date(endOfMonth(date))
+                }
+              }).sort({ date: -1 });
 
-              let actual = Math.round(transactions.reduce((prev, curr) => prev + curr.amount, 0) * 100) / 100;
+              let transactionsSum = round(transactions.reduce((prev, curr) => prev + curr.amount, 0));
+              let flowEstimate = round(estimate?.amount || 0);
 
               let periodFlow = {
                 name: flow.name,
                 _id: flow._id,
-                actualTotal: actual,
-                estimate: false,
-                estimatedTotal: 0
+                automatedAmount: !isSameMonth(date, estimate?.date),
+                actualTotal: transactionsSum,
+                actualTransactionIds: transactions.map((t) => t._id),
+                estimate: !budget.estimate,
+                estimatedTotal: flowEstimate,
+                totalDiff: transactionsSum - flowEstimate
               };
-              if (!budget.estimate) {
-                periodFlow.estimate = true;
-                periodFlow.estimatedTotal = flow.estimateAmount;
-              }
-              periodFlow.totalDiff = periodFlow.actualTotal - periodFlow.estimatedTotal;
 
-              flowEstimateSum += periodFlow.estimatedTotal;
-              flowActualSum += actual;
+              flowActualSum += transactionsSum;
+              flowEstimateSum += flowEstimate;
+              actualTransactionIds.push(...periodFlow.actualTransactionIds);
             }
+            let estimate = await Estimate.findOne({
+              budget: budget._id,
+              type: "budget",
+              date: {
+                $lt: new Date(endOfMonth(date))
+              }
+            }).sort({ date: -1 });
+            let budgetEstimate = round(budget.estimate ? estimate?.amount || 0 : flowEstimateSum);
+
             let periodBudget = {
               name: budget.name,
               _id: budget._id,
-              actualTotal: flowActualSum,
-              estimate: false,
-              estimatedTotal: flowEstimateSum
+              automatedAmount: !isSameMonth(date, estimate?.date),
+              actualTotal: round(flowActualSum),
+              estimate: budget.estimate,
+              estimatedTotal: budgetEstimate,
+              totalDiff: round(flowActualSum - budgetEstimate),
+              actualTransactionIds
             };
-            if (budget.estimate) {
-              periodBudget.estimate = true;
-              periodBudget.estimatedTotal = budget.estimateAmount;
-            }
-            periodBudget.totalDiff = periodBudget.actualTotal - periodBudget.estimatedTotal;
 
             budgetEstimateSum += periodBudget.estimatedTotal;
             budgetActualSum += periodBudget.actualTotal;
             period.budgets.push(periodBudget);
           }
+          // for (let budget of budgets) {
+          //   let flows = await Flow.find({ budget: budget._id });
+
+          //   let flowEstimateSum = 0;
+          //   let flowActualSum = 0;
+
+          //   for (let flow of flows) {
+          //     let transactions = await Transaction.find({
+          //       flow: flow._id,
+          //       oneoff: false,
+          //       archived: false,
+          //       date: {
+          //         $gte: new Date(date),
+          //         $lt: new Date(endOfMonth(date))
+          //       }
+          //     });
+
+          //     let actual = Math.round(transactions.reduce((prev, curr) => prev + curr.amount, 0) * 100) / 100;
+
+          //     let periodFlow = {
+          //       name: flow.name,
+          //       _id: flow._id,
+          //       actualTotal: actual,
+          //       estimate: false,
+          //       estimatedTotal: 0
+          //     };
+          //     if (!budget.estimate) {
+          //       periodFlow.estimate = true;
+          //       periodFlow.estimatedTotal = flow.estimateAmount;
+          //     }
+          //     periodFlow.totalDiff = periodFlow.actualTotal - periodFlow.estimatedTotal;
+
+          //     flowEstimateSum += periodFlow.estimatedTotal;
+          //     flowActualSum += actual;
+          //   }
+          //   let periodBudget = {
+          //     name: budget.name,
+          //     _id: budget._id,
+          //     actualTotal: flowActualSum,
+          //     estimate: false,
+          //     estimatedTotal: flowEstimateSum
+          //   };
+          //   if (budget.estimate) {
+          //     periodBudget.estimate = true;
+          //     periodBudget.estimatedTotal = budget.estimateAmount;
+          //   }
+          //   periodBudget.totalDiff = periodBudget.actualTotal - periodBudget.estimatedTotal;
+
+          //   budgetEstimateSum += periodBudget.estimatedTotal;
+          //   budgetActualSum += periodBudget.actualTotal;
+          //   period.budgets.push(periodBudget);
+          // }
           let periodBudgetCategory = {
             name: budgetCategory.name,
             _id: budgetCategory._id,
