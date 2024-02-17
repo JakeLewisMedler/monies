@@ -61,11 +61,8 @@ router.post("/monzo/authenticate", async (req, res) => {
       code: code
     };
     store.code = code;
-    let { data: res } = await axios.post(`${API_URL}oauth2/token`, data, {
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"
-      }
-    });
+
+    let res = makeRequest("post", "oauth2/token", data);
     if (res.access_token) {
       store.accessToken = res.access_token;
     }
@@ -82,12 +79,7 @@ router.post("/monzo/authenticate", async (req, res) => {
 
 router.get("/monzo/accounts", async (req, res) => {
   try {
-    if (!store.accessToken) throw "No access token";
-    let {
-      data: { accounts }
-    } = await axios.get(`${API_URL}accounts`, {
-      headers: { Authorization: `Bearer ${store.accessToken}` }
-    });
+    let { accounts } = await makeRequest("get", "accounts");
     accounts = accounts.map((a) => {
       let typeDict = { uk_retail_joint: "Joint", uk_retail: "Personal" };
       let type = typeDict[a.type] || "Other";
@@ -106,11 +98,8 @@ const nextTransactionsPage = async (accountId, lastTransaction) => {
   let query = `?account_id=${accountId}&limit=${limit}&expand[]=merchant`;
   if (lastTransaction) query += `&since=${lastTransaction}`;
 
-  let {
-    data: { transactions }
-  } = await axios.get(`${API_URL}transactions${query}`, {
-    headers: { Authorization: `Bearer ${store.accessToken}` }
-  });
+  let { transactions } = await makeRequest("get", "transactions" + query);
+
   allTransactions.push(...transactions);
   if (transactions.length == limit) {
     let newTransactions = await nextTransactionsPage(accountId, transactions[transactions.length - 1].id);
@@ -121,7 +110,6 @@ const nextTransactionsPage = async (accountId, lastTransaction) => {
 
 router.get("/monzo/transactions", async (req, res) => {
   try {
-    if (!store.accessToken) throw "No access token";
     let { accountId } = req.query;
     let latestTransaction = await Transaction.findOne({}).sort({ date: -1 });
 
@@ -143,5 +131,44 @@ router.get("/monzo/transactions", async (req, res) => {
     res.status(500).send(error);
   }
 });
+
+const makeRequest = async (type, endpoint, data) => {
+  try {
+    if (type == "get") {
+      if (!store.accessToken) throw "No Access Token";
+      let { data: res } = await axios.get(API_URL + endpoint, {
+        headers: { Authorization: `Bearer ${store.accessToken}` }
+      });
+      return res;
+    } else if (type == "post") {
+      let { data: res } = await axios.post(API_URL + endpoint, data, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"
+        }
+      });
+      return res;
+    }
+  } catch (error) {
+    await refreshAccess();
+    await makeRequest(type, endpoint, data);
+  }
+};
+
+const refreshAccess = async () => {
+  if (!store.refreshToken) throw "No refresh token";
+  var data = {
+    grant_type: "refresh_token",
+    client_id: clientId,
+    client_secret: clientSecret,
+    refresh_token: store.refreshToken
+  };
+  let res = await makeRequest("post", "oauth2/token", data);
+  if (res.access_token) {
+    store.accessToken = res.access_token;
+  }
+  if (res.refresh_token) {
+    store.refreshToken = res.refresh_token;
+  }
+};
 
 module.exports = router;
