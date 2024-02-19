@@ -42,7 +42,6 @@ router.delete("/budget-categories", BudgetCategoryController.delete_budget_categ
 router.delete("/budget-categories/:_id", BudgetCategoryController.delete_budget_category);
 
 router.get("/forecast", ForecastController.generate_forecast);
-router.get("/forecast/budget-category", ForecastController.generate_budget_category_forecast);
 
 const monzo = require("./monzo");
 router.use(monzo);

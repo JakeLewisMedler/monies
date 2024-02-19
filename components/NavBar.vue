@@ -23,7 +23,6 @@ export default {
     return {
       items: [
         { type: "page", label: "Overview", link: "/" },
-        { type: "page", label: "Forecasting", link: "/forecasting" },
         {
           type: "submenu",
           label: "Setup",
