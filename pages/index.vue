@@ -36,19 +36,22 @@
                     </tr>
                     <tr class="budget__category">
                       <td class="budget__category__name sticky">
-                        <span> {{ budgetCategory.name }}</span>
-                        <img
-                          v-if="budgetCategory.show"
-                          class="hide"
-                          src="~/assets/icons/hide.svg"
-                          @click="show('budgetCategories', budgetCategory._id, false)"
-                        />
-                        <img
-                          v-else
-                          class="show"
-                          src="~/assets/icons/show.svg"
-                          @click="show('budgetCategories', budgetCategory._id, true)"
-                        />
+                        <span @click="show('budgetCategories', budgetCategory._id)">{{ budgetCategory.name }}</span>
+                        <div class="buttons">
+                          <img
+                            class="move"
+                            :class="{ disabled: budgetCategory.order <= 1 }"
+                            src="~/assets/icons/up.svg"
+                            style="margin-left: 20px"
+                            @click="move('budgetCategories', budgetCategory._id, -1)"
+                          />
+                          <img
+                            class="move"
+                            :class="{ disabled: budgetCategory.order >= forecast?.budgetCategories?.length }"
+                            src="~/assets/icons/down.svg"
+                            @click="move('budgetCategories', budgetCategory._id, 1)"
+                          />
+                        </div>
                       </td>
                       <template v-for="period in forecast?.periods">
                         <td class="thick__border budget__category__value">
@@ -78,20 +81,8 @@
                         </template>
                       </tr>
                       <tr class="budget">
-                        <td class="budget__name sticky">
+                        <td class="budget__name sticky" @click="show('budgets', budget._id)">
                           <span> {{ budget.name }}</span>
-                          <img
-                            v-if="budget.show"
-                            class="hide"
-                            src="~/assets/icons/hide.svg"
-                            @click="show('budgets', budget._id, false)"
-                          />
-                          <img
-                            v-else
-                            class="show"
-                            src="~/assets/icons/show.svg"
-                            @click="show('budgets', budget._id, true)"
-                          />
                         </td>
                         <template v-for="period in forecast?.periods">
                           <td v-if="!getPeriodBudget(period, budget).estimate" class="thick__border budget__value">
@@ -220,7 +211,7 @@
                       <template v-for="period in forecast?.periods">
                         <td class="thick__border total__value">{{ formatCurrency(period.totals.diffEstimated) }}</td>
                         <td class="total__value">
-                          {{ formatCurrency(period.totals.diffActual) }}
+                          {{ period.actualTransactionsCount > 0 ? formatCurrency(period.totals.diffActual) : "" }}
                         </td>
                         <td></td>
                       </template>
@@ -230,7 +221,7 @@
                       <template v-for="period in forecast?.periods">
                         <td class="thick__border total__value">{{ formatCurrency(period.totals.closingEstimated) }}</td>
                         <td class="total__value">
-                          {{ formatCurrency(period.totals.closingActual) }}
+                          {{ period.actualTransactionsCount > 0 ? formatCurrency(period.totals.closingActual) : "" }}
                         </td>
                         <td
                           class="total__value"
@@ -265,15 +256,50 @@
 export default {
   async mounted() {
     await this.getForecast();
+    this.loadView();
   },
   data() {
     return { forecast: null };
   },
   methods: {
-    show(type, id, show) {
+    async move(type, id, direction) {
+      if (type == "budgetCategories") await this.$axios.put(`/budget-categories/${id}/move`, { direction });
+      await this.getForecast();
+    },
+    show(type, id) {
       let item = this.forecast[type].find((i) => i._id == id);
-      if (item) this.$set(item, "show", show);
-      console.log(item);
+      if (item) this.$set(item, "show", !item.show);
+      this.saveView();
+    },
+    saveView() {
+      localStorage.setItem(
+        "view",
+        JSON.stringify({
+          budgetCategories: this.forecast?.budgetCategories.map((bc) => {
+            return { _id: bc._id, show: bc.show };
+          }),
+          budgets: this.forecast?.budgets.map((b) => {
+            return { _id: b._id, show: b.show };
+          })
+        })
+      );
+    },
+    loadView() {
+      let view = localStorage.getItem("view");
+      if (!view) return;
+      view = JSON.parse(view);
+      if (view.budgetCategories)
+        view.budgetCategories.forEach((bc) => {
+          let budgetCategory = this.forecast.budgetCategories.find((budgetCategory) => budgetCategory._id == bc._id);
+          if (!budgetCategory) return;
+          budgetCategory.show = bc.show;
+        });
+      if (view.budgets)
+        view.budgets.forEach((b) => {
+          let budget = this.forecast.budgets.find((budget) => budget._id == b._id);
+          if (!budget) return;
+          budget.show = b.show;
+        });
     },
     getBudgets(budgetCategory) {
       return this.forecast.budgets.filter((b) => b.category == budgetCategory._id);
@@ -297,6 +323,7 @@ export default {
         return { ...b, show: false };
       });
       this.forecast = forecast;
+      this.loadView();
     },
     formatCurrency(amount) {
       if (amount === undefined) return null;
@@ -355,14 +382,29 @@ export default {
         border-right: 1px solid #aaa;
         z-index: 1;
       }
+      .buttons {
+        display: flex;
+        gap: 5px;
 
-      .show {
-        width: 18px;
-        cursor: pointer;
-      }
-      .hide {
-        width: 18px;
-        cursor: pointer;
+        .move {
+          background: #000;
+          width: 18px;
+          height: 18px;
+          padding: 2px;
+          border-radius: 2px;
+          cursor: pointer;
+          &.disabled {
+            display: none;
+          }
+        }
+        .show {
+          width: 18px;
+          cursor: pointer;
+        }
+        .hide {
+          width: 18px;
+          cursor: pointer;
+        }
       }
       .header {
         position: relative;
@@ -403,6 +445,7 @@ export default {
           font-size: 22px;
           display: flex;
           justify-content: space-between;
+          align-items: center;
         }
         font-weight: bold;
 
@@ -416,14 +459,15 @@ export default {
       }
       .budget {
         .budget__name {
+          display: table-cell;
           padding: 0 20px 0 20px;
           border: 1px solid #aaa;
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
           max-width: 300px;
-          display: flex;
           justify-content: space-between;
+          align-items: center;
         }
         font-weight: bold;
 

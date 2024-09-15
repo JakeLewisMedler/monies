@@ -78,12 +78,12 @@ const handle_uploaded_transactions = async (entries) => {
   let createdCount = 0;
   let skippedCount = 0;
   for (let entry of entries) {
-    let transaction = await Transaction.findOne({ monzoId: entry.id });
+    let transaction = await Transaction.findOne({ monzoId: entry.monzoId });
     if (!transaction) {
       await createTransaction(entry);
       createdCount++;
     } else {
-      console.log(`Skipping transaction ${entry.id}`);
+      console.log(`Skipping transaction ${entry.monzoId}`);
       skippedCount++;
     }
   }

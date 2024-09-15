@@ -38,6 +38,22 @@ const update_budget_category = async (req, res) => {
   }
 };
 
+const move_budget_category = async (req, res) => {
+  try {
+    let { _id } = req.params;
+    let { direction } = req.body;
+    let budgetCategory = await BudgetCategory.findById(_id);
+    if (!budgetCategory) throw "Couldn't find Budget Category";
+    await BudgetCategory.updateMany({ order: budgetCategory.order + direction }, { order: budgetCategory.order });
+    budgetCategory.order += direction;
+    await budgetCategory.save();
+    return res.send();
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(error);
+  }
+};
+
 const delete_budget_categories = async (req, res) => {
   try {
     await BudgetCategory.deleteMany({});
@@ -63,6 +79,7 @@ module.exports = {
   list_budget_categories,
   create_budget_category,
   update_budget_category,
+  move_budget_category,
   delete_budget_categories,
   delete_budget_category
 };

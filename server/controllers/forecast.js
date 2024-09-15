@@ -3,6 +3,7 @@ const Budget = require("../models/Budget");
 const BudgetCategory = require("../models/BudgetCategory");
 const Transaction = require("../models/Transaction");
 const Estimate = require("../models/Estimate");
+const Settings = require("../models/Settings");
 
 const {
   startOfMonth,
@@ -21,8 +22,8 @@ const round = (amount) => {
 const generate_forecast = async (req, res) => {
   try {
     let allFlows = await Flow.find({});
-    let allBudgets = await Budget.find({});
-    let allBudgetCategories = await BudgetCategory.find({});
+    let allBudgets = await Budget.find({}).sort("order");
+    let allBudgetCategories = await BudgetCategory.find({}).sort("order");
 
     let monthStart = subMonths(startOfMonth(new Date()), 3);
     let numberOfPeriods = 15;
@@ -32,11 +33,19 @@ const generate_forecast = async (req, res) => {
     }).map((d) => subMinutes(d, d.getTimezoneOffset()));
 
     let periods = await Promise.all(
-      dates.map(async (date) => {
-        let period = { date, flows: [], budgets: [], budgetCategories: [], oneoffs: { actualTotal: 0 }, totals: [] };
+      dates.map(async (date, dateIndex, datesArray) => {
+        let period = {
+          date,
+          flows: [],
+          budgets: [],
+          budgetCategories: [],
+          actualTransactionsCount: 0,
+          oneoffs: { actualTotal: 0 },
+          totals: []
+        };
 
         for (let budgetCategory of allBudgetCategories) {
-          let budgets = allBudgets.filter((b) => String(b.category) == String(budgetCategory._id));
+          let budgets = allBudgets.filter((b) => String(budgetCategory._id) == String(b.category));
 
           let budgetEstimateSum = 0;
           let budgetActualSum = 0;
@@ -46,7 +55,7 @@ const generate_forecast = async (req, res) => {
             let flowActualSum = 0;
             let actualTransactionIds = [];
 
-            let flows = allFlows.filter((f) => budgets.find((b) => String(b._id) == String(f.budget)));
+            let flows = allFlows.filter((f) => String(budget._id) == String(f.budget));
             for (let flow of flows) {
               let transactions = await Transaction.find({
                 flow: flow._id,
@@ -65,6 +74,7 @@ const generate_forecast = async (req, res) => {
                 }
               }).sort({ date: -1 });
 
+              period.actualTransactionsCount += transactions.length;
               let transactionsSum = round(transactions.reduce((prev, curr) => prev + curr.amount, 0));
               let flowEstimate = round(estimate?.amount || 0);
 
@@ -127,7 +137,7 @@ const generate_forecast = async (req, res) => {
         });
         period.oneoffs.actualTotal =
           Math.round(oneoffTransactions.reduce((prev, curr) => prev + curr.amount, 0) * 100) / 100;
-        let openingBalance = 0;
+
         let diffEstimated =
           Math.round(period.budgetCategories.reduce((prev, curr) => prev + curr.estimatedTotal, 0) * 100) / 100;
         let diffActual =
@@ -135,15 +145,27 @@ const generate_forecast = async (req, res) => {
             (period.oneoffs.actualTotal + period.budgetCategories.reduce((prev, curr) => prev + curr.actualTotal, 0)) *
               100
           ) / 100;
-        let closingEstimated = Math.round((openingBalance + diffEstimated) * 100) / 100;
-        let closingActual = Math.round((openingBalance + diffActual) * 100) / 100;
 
-        let closingDiff = closingActual - closingEstimated;
-
-        period.totals = { openingBalance, diffEstimated, diffActual, closingEstimated, closingActual, closingDiff };
+        period.totals = { diffEstimated, diffActual };
         return period;
       })
     );
+
+    let openingBalance = (await Settings.findOne({})).openingBalance;
+    for (let i in periods) {
+      if (i == 0) periods[i].totals.openingBalance = openingBalance;
+      else
+        periods[i].totals.openingBalance =
+          periods[i - 1].actualTransactionsCount > 0
+            ? periods[i - 1].totals.closingActual
+            : periods[i - 1].totals.closingEstimated || 0;
+
+      periods[i].totals.closingEstimated =
+        periods[i].totals.openingBalance + Math.round(periods[i].totals.diffEstimated * 100) / 100;
+      periods[i].totals.closingActual =
+        periods[i].totals.openingBalance + Math.round(periods[i].totals.diffActual * 100) / 100;
+      periods[i].totals.closingDiff = periods[i].totals.closingActual - periods[i].totals.closingEstimated;
+    }
     return res.send({ periods, budgetCategories: allBudgetCategories, budgets: allBudgets, flows: allFlows });
   } catch (error) {
     console.error(error);

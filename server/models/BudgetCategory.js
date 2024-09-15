@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 
 const BudgetCategorySchema = new mongoose.Schema(
   {
-    name: String
+    name: String,
+    order: { type: Number, default: 1 }
   },
   {
     timestamps: true
