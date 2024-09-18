@@ -31,8 +31,9 @@ export default {
             { label: "Transactions", link: "/transactions" },
             { label: "Budget Categories", link: "/budget-categories" },
             { label: "Budgets", link: "/budgets" },
-            { type: "page", label: "Reconcile", link: "/reconcile" },
-            { type: "page", label: "Upload", link: "/upload" },
+            { label: "Accounts", link: "/accounts" },
+            { label: "Reconcile", link: "/reconcile" },
+            { label: "Upload", link: "/upload" },
             { label: "Monzo", link: "/monzo" },
             { label: "Testing", link: "/testing" }
           ]

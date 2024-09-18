@@ -10,6 +10,10 @@ const FlowSchema = new mongoose.Schema(
     budget: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Budget"
+    },
+    destination: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Account"
     }
   },
   {

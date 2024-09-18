@@ -1,5 +1,5 @@
 <template>
-  <div class="flow__categories">
+  <div class="budget__categories">
     <b-container class="mt-3">
       <b-col>
         <b-col>
@@ -74,6 +74,6 @@ export default {
 </script>
 
 <style lang="scss">
-.flow__categories {
+.budget__categories {
 }
 </style>

@@ -5,6 +5,13 @@
         <b-row align-h="between">
           <h1>Cashflow</h1>
         </b-row>
+        <b-row class="my-3">
+          <b-button-group>
+            <b-button v-for="v in views" :key="v" :variant="v == view ? 'primary' : ''" @click="changeView(v)">{{
+              v
+            }}</b-button>
+          </b-button-group></b-row
+        >
 
         <b-card no-body>
           <b-card-body class="p-0">
@@ -209,9 +216,9 @@
                     <tr class="total">
                       <td class="total__name sticky">Net cash in/out</td>
                       <template v-for="period in forecast?.periods">
-                        <td class="thick__border total__value">{{ formatCurrency(period.totals.diffEstimated) }}</td>
+                        <td class="thick__border total__value">{{ formatCurrency(period.totals.netEstimated) }}</td>
                         <td class="total__value">
-                          {{ period.actualTransactionsCount > 0 ? formatCurrency(period.totals.diffActual) : "" }}
+                          {{ period.actualTransactionsCount > 0 ? formatCurrency(period.totals.netActual) : "" }}
                         </td>
                         <td></td>
                       </template>
@@ -233,15 +240,42 @@
                         </td>
                       </template>
                     </tr>
+                    <tr class="break">
+                      <td class="sticky break">&nbsp;</td>
+                      <template v-for="i in forecast?.periods.length">
+                        <td class="thick__border">&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </template>
+                    </tr>
+                    <tr v-for="account in forecast.otherAccounts" class="total">
+                      <td class="total__name sticky">{{ account.name }} Balance</td>
+                      <template v-for="period in forecast?.periods">
+                        <td class="thick__border total__value">
+                          {{ formatCurrency(getPeriodOtherAccount(period, account)?.totals.closingEstimated) }}
+                        </td>
+                        <td class="thick__border total__value">
+                          {{ formatCurrency(getPeriodOtherAccount(period, account)?.totals.closingActual) }}
+                        </td>
+                        <td
+                          class="total__value"
+                          :class="{
+                            warning: getPeriodOtherAccount(period, account)?.totals.closingDiff < 0
+                          }"
+                        >
+                          {{ formatCurrency(getPeriodOtherAccount(period, account)?.totals.closingDiff) }}
+                        </td>
+                      </template>
+                    </tr>
+                    <tr class="break">
+                      <td class="sticky break">&nbsp;</td>
+                      <template v-for="i in forecast?.periods.length">
+                        <td class="thick__border">&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </template>
+                    </tr>
                   </tbody>
-                  <tr class="break">
-                    <td class="sticky break">&nbsp;</td>
-                    <template v-for="i in forecast?.periods.length">
-                      <td class="thick__border">&nbsp;</td>
-                      <td>&nbsp;</td>
-                      <td>&nbsp;</td>
-                    </template>
-                  </tr>
                 </table>
               </b-row></b-col
             >
@@ -256,12 +290,18 @@
 export default {
   async mounted() {
     await this.getForecast();
-    this.loadView();
   },
   data() {
-    return { forecast: null };
+    return { forecast: null, views: ["All", "Estimated", "Actual"], view: "All" };
   },
   methods: {
+    changeView(view) {
+      this.view = view;
+      // if(view!="All")
+    },
+    getPeriodOtherAccount(period, otherAccount) {
+      return period.otherAccounts.find((a) => String(a._id) == String(otherAccount._id));
+    },
     async move(type, id, direction) {
       if (type == "budgetCategories") await this.$axios.put(`/budget-categories/${id}/move`, { direction });
       await this.getForecast();
@@ -315,15 +355,25 @@ export default {
       else return `/transactions?oneoff=true&month=${period.date}`;
     },
     async getForecast() {
-      let { data: forecast } = await this.$axios.get(`/forecast`);
-      forecast.budgetCategories = forecast.budgetCategories.map((b) => {
-        return { ...b, show: false };
-      });
-      forecast.budgets = forecast.budgets.map((b) => {
-        return { ...b, show: false };
-      });
-      this.forecast = forecast;
-      this.loadView();
+      try {
+        let { data: forecast } = await this.$axios.get(`/forecast`);
+        forecast.budgetCategories = forecast.budgetCategories.map((b) => {
+          return { ...b, show: false };
+        });
+        forecast.budgets = forecast.budgets.map((b) => {
+          return { ...b, show: false };
+        });
+        console.log(forecast);
+        this.forecast = forecast;
+        this.loadView();
+      } catch (error) {
+        console.error(error);
+        this.$swal.fire({
+          title: "Error getting Cashflow",
+          type: "error",
+          text: error?.response?.data || error.message || error
+        });
+      }
     },
     formatCurrency(amount) {
       if (amount === undefined) return null;

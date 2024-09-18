@@ -32,6 +32,10 @@
           <b-form-select-option :value="null">Select a Budget</b-form-select-option>
         </b-form-select>
       </b-form-group>
+      <b-form-group label="Account:">
+        <b-form-select v-model="flow.destination" value-field="_id" text-field="name" :options="accounts">
+        </b-form-select>
+      </b-form-group>
     </template>
   </b-modal>
 </template>
@@ -51,16 +55,17 @@ export default {
       _id: null,
       title: "",
       flow: null,
+      account: null,
       frequencyStrings: ["Weeks", "Months", "Years", "Days"],
       showing: false,
       transaction: null,
       budgetCategories: [],
-      budgets: []
+      budgets: [],
+      accounts: []
     };
   },
   async mounted() {
     this.hide();
-    await this.getBudgetCategories();
     document.addEventListener("keyup", (e) => {
       if (e.code == "Enter" && this.showing) {
         this.submitFlow();
@@ -69,6 +74,14 @@ export default {
     });
   },
   methods: {
+    async getAccounts() {
+      try {
+        let { data: accounts } = await this.$axios.get("/accounts");
+        this.accounts = accounts;
+      } catch (error) {
+        console.error(error);
+      }
+    },
     async getBudgetCategories() {
       let { data: budgetCategories } = await this.$axios.get("/budget-categories");
       this.budgetCategories = budgetCategories;
@@ -79,17 +92,21 @@ export default {
       if (this.flow?._id) this.$emit("edited", this.flow);
       else this.$emit("created", this.flow, this.transaction);
     },
-    show({ title, flow, transaction, name }) {
+    async show({ title, flow, transaction, name }) {
       this.title = title;
+      await this.getAccounts();
+
       this.flow = {
         name: "",
         date: new Date(),
         category: null,
-        budget: null
+        budget: null,
+        destination: this.accounts.find((a) => a.main)?._id
       };
       if (flow) Object.assign(this.flow, flow);
       if (name) this.flow.name = name;
       if (transaction) this.transaction = transaction;
+      this.getBudgetCategories();
       this.$refs.modal.show();
       this.showing = true;
     },
