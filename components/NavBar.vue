@@ -34,7 +34,6 @@ export default {
             { label: "Accounts", link: "/accounts" },
             { label: "Reconcile", link: "/reconcile" },
             { label: "Upload", link: "/upload" },
-            { label: "Monzo", link: "/monzo" },
             { label: "Testing", link: "/testing" }
           ]
         }
