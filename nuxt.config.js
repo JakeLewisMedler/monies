@@ -23,40 +23,24 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
 
+  publicRuntimeConfig: {
+    API_URL: process.env.API_URL
+  },
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    { src: "~/plugins/global", ssr: false },
-    { src: "~/plugins/swal", ssr: false }
-
-    // { src: "~/plugins/firebase", ssr: false },
-  ],
+  plugins: ["~/plugins/global", "~/plugins/swal", "~/plugins/firebase", "~/plugins/axios"],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: ["@nuxtjs/date-fns"],
+  buildModules: [],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
-    "@nuxtjs/axios",
     "bootstrap-vue/nuxt"
   ],
 
-  publicRuntimeConfig: {
-    FIREBASE_APP_ID: process.env.FIREBASE_APP_ID,
-    FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
-    FIREBASE_AUTH_DOMAIN: process.env.FIREBASE_AUTH_DOMAIN,
-    FIREBASE_PROJECT_ID: process.env.FIREBASE_PROJECT_ID,
-    FIREBASE_STORAGE_BUCKET: process.env.FIREBASE_STORAGE_BUCKET,
-    FIREBASE_MEASUREMENT_ID: process.env.FIREBASE_MEASUREMENT_ID
-  },
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: "/api"
-  },
   serverMiddleware: [{ path: "/api", handler: "~/server/index.js" }],
   // Build Configuration: https://go.nuxtjs.dev/config-build
 

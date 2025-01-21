@@ -92,4 +92,3 @@ yarn.lock
 
 /dataBackups/*
 server/uploads/*
-/bankData/*

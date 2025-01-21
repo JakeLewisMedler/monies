@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const router = Router();
+let { verifyToken } = require("./middleware");
 
 let TransactionsController = require("./controllers/transaction");
 let FlowController = require("./controllers/flow");
@@ -9,44 +10,40 @@ let BudgetController = require("./controllers/budget");
 let ForecastController = require("./controllers/forecast");
 let SettingsController = require("./controllers/settings");
 
-router.get("/transactions", TransactionsController.list_transactions);
-router.get("/transactions/unallocated", TransactionsController.list_unallocated_transactions);
-router.post("/transactions/upload-csv", TransactionsController.upload_csv);
-router.post("/transactions/upload-monzo", TransactionsController.upload_monzo);
-router.put("/transactions/:_id", TransactionsController.update_transaction);
-router.delete("/transactions", TransactionsController.delete_transactions);
+router.get("/transactions", verifyToken, TransactionsController.list_transactions);
+router.get("/transactions/unallocated", verifyToken, TransactionsController.list_unallocated_transactions);
+router.post("/transactions/upload-csv", verifyToken, TransactionsController.upload_csv);
+router.put("/transactions/:_id", verifyToken, TransactionsController.update_transaction);
+router.delete("/transactions", verifyToken, TransactionsController.delete_transactions);
 
-router.get("/flows", FlowController.list_flows);
-router.post("/flows", FlowController.create_flow);
-router.post("/flows/create-temp", FlowController.create_flow_temp);
-router.put("/flows/:_id", FlowController.update_flow);
-router.delete("/flows", FlowController.delete_flows);
-router.delete("/flows/:_id", FlowController.delete_flow);
+router.get("/flows", verifyToken, FlowController.list_flows);
+router.post("/flows", verifyToken, FlowController.create_flow);
+router.post("/flows/create-temp", verifyToken, FlowController.create_flow_temp);
+router.put("/flows/:_id", verifyToken, FlowController.update_flow);
+router.delete("/flows", verifyToken, FlowController.delete_flows);
+router.delete("/flows/:_id", verifyToken, FlowController.delete_flow);
 
-router.get("/estimates", EstimateController.list_estimates);
-router.post("/estimates", EstimateController.create_estimate);
-router.post("/estimates/delete", EstimateController.delete_estimates);
-router.put("/estimates/:_id", EstimateController.update_estimate);
-router.delete("/estimates/:_id", EstimateController.delete_estimate);
+router.get("/estimates", verifyToken, EstimateController.list_estimates);
+router.post("/estimates", verifyToken, EstimateController.create_estimate);
+router.post("/estimates/delete", verifyToken, EstimateController.delete_estimates);
+router.put("/estimates/:_id", verifyToken, EstimateController.update_estimate);
+router.delete("/estimates/:_id", verifyToken, EstimateController.delete_estimate);
 
-router.get("/budgets", BudgetController.list_budgets);
-router.post("/budgets", BudgetController.create_budget);
-router.put("/budgets/:_id", BudgetController.update_budget);
+router.get("/budgets", verifyToken, BudgetController.list_budgets);
+router.post("/budgets", verifyToken, BudgetController.create_budget);
+router.put("/budgets/:_id", verifyToken, BudgetController.update_budget);
 
-router.delete("/budgets", BudgetController.delete_budgets);
-router.delete("/budgets/:_id", BudgetController.delete_budget);
+router.delete("/budgets", verifyToken, BudgetController.delete_budgets);
+router.delete("/budgets/:_id", verifyToken, BudgetController.delete_budget);
 
-router.get("/budget-categories", BudgetCategoryController.list_budget_categories);
-router.post("/budget-categories", BudgetCategoryController.create_budget_category);
-router.put("/budget-categories/:_id", BudgetCategoryController.update_budget_category);
-router.put("/budget-categories/:_id/move", BudgetCategoryController.move_budget_category);
-router.delete("/budget-categories", BudgetCategoryController.delete_budget_categories);
-router.delete("/budget-categories/:_id", BudgetCategoryController.delete_budget_category);
+router.get("/budget-categories", verifyToken, BudgetCategoryController.list_budget_categories);
+router.post("/budget-categories", verifyToken, BudgetCategoryController.create_budget_category);
+router.put("/budget-categories/:_id", verifyToken, BudgetCategoryController.update_budget_category);
+router.put("/budget-categories/:_id/move", verifyToken, BudgetCategoryController.move_budget_category);
+router.delete("/budget-categories", verifyToken, BudgetCategoryController.delete_budget_categories);
+router.delete("/budget-categories/:_id", verifyToken, BudgetCategoryController.delete_budget_category);
 
-router.get("/forecast", ForecastController.generate_forecast);
-
-const monzo = require("./monzo");
-router.use(monzo);
+router.get("/forecast", verifyToken, ForecastController.generate_forecast);
 
 const backup = require("./backup");
 router.use(backup);
