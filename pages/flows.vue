@@ -137,7 +137,7 @@ export default {
     },
     async showFlowTransactions(flow, row) {
       let query = `?flow=${flow._id}`;
-      let { data: transactions } = await this.$axios.get("/transactions" + query);
+      let transactions = await this.$axios.get("/transactions" + query);
       for (let transaction of transactions) {
         if (!this.transactions.find((t) => t._id == transaction._id)) this.transactions.push(transaction);
       }
@@ -146,9 +146,8 @@ export default {
 
     async flowsProvider(ctx, callback) {
       let query = `?filter=${ctx.filter}&sortBy=${ctx.sortBy}&sortDesc=${ctx.sortDesc}`;
-      let { data: flows } = await this.$axios.get("/flows" + query);
-      this.flows = flows;
-      return flows;
+      this.flows = await this.$axios.get("/flows" + query);
+      return this.flows;
     }
   }
 };

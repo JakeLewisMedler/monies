@@ -38,8 +38,7 @@ export default {
   },
   methods: {
     async getBudgetCategories() {
-      let { data } = await this.$axios.get("/budget-categories");
-      this.budgetCategories = data;
+      this.budgetCategories = await this.$axios.get("/budget-categories");
     },
     submitBudget() {
       if (this.budget?._id) this.$emit("edited", this.budget);

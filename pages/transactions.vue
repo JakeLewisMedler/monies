@@ -131,8 +131,7 @@ export default {
       this.$refs.transactionsTable.refresh();
     },
     async getFlows() {
-      let { data } = await this.$axios.get("/flows");
-      this.flows = data;
+      this.flows = await this.$axios.get("/flows");
     },
     formatDate(date) {
       return `${new Date(date).toLocaleDateString()} ${new Date(date).toLocaleTimeString()}`;
@@ -170,9 +169,8 @@ export default {
       if (this.monthFilter != null) query += `&month=${this.monthFilter}`;
       if (this.oneoffFilter != null) query += `&oneoff=${this.oneoffFilter}`;
 
-      let { data } = await this.$axios.get("/transactions" + query);
-      this.transactions = data;
-      return data;
+      this.transactions = await this.$axios.get("/transactions" + query);
+      return this.transactions;
     }
   }
 };

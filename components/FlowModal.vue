@@ -76,17 +76,14 @@ export default {
   methods: {
     async getAccounts() {
       try {
-        let { data: accounts } = await this.$axios.get("/accounts");
-        this.accounts = accounts;
+        this.accounts = await this.$axios.get("/accounts");
       } catch (error) {
         console.error(error);
       }
     },
     async getBudgetCategories() {
-      let { data: budgetCategories } = await this.$axios.get("/budget-categories");
-      this.budgetCategories = budgetCategories;
-      let { data: budgets } = await this.$axios.get("/budgets");
-      this.budgets = budgets;
+      this.budgetCategories = await this.$axios.get("/budget-categories");
+      this.budgets = await this.$axios.get("/budgets");
     },
     submitFlow() {
       if (this.flow?._id) this.$emit("edited", this.flow);

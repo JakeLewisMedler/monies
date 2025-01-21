@@ -135,13 +135,11 @@ export default {
       this.$refs.unallocatedTransactionsTable.refresh();
     },
     async getBudgets() {
-      let { data: budgetCategories } = await this.$axios.get("/budget-categories");
-      this.budgetCategories = budgetCategories;
-      let { data: budgets } = await this.$axios.get("/budgets");
-      this.budgets = budgets;
+      this.budgetCategories = await this.$axios.get("/budget-categories");
+      this.budgets = await this.$axios.get("/budgets");
     },
     async getFlows() {
-      let { data: flows } = await this.$axios.get("/flows");
+      let flows = await this.$axios.get("/flows");
       for (let flow of flows) {
         let budget = this.budgets.find((b) => b._id == flow.budget);
         let budgetCategory = this.budgetCategories.find((b) => b._id == flow.category);
@@ -153,9 +151,8 @@ export default {
     },
     async transactionsProvider(ctx, callback) {
       let query = `?archived=false&oneoff=false&filter=${ctx.filter}&sortBy=${ctx.sortBy}&sortDesc=${ctx.sortDesc}`;
-      let { data: transactions } = await this.$axios.get("/transactions/unallocated" + query);
-      this.unallocatedTransactions = transactions;
-      return transactions;
+      this.unallocatedTransactions = await this.$axios.get("/transactions/unallocated" + query);
+      return this.unallocatedTransactions;
     },
     async updateNotes(transaction) {
       let { notes } = transaction;
@@ -170,12 +167,12 @@ export default {
       await this.getFlows();
     },
     async createFlow(flow, transaction) {
-      let { data } = await this.$axios.post("/flows", flow);
+      flow = await this.$axios.post("/flows", flow);
       await this.getFlows();
-      transaction.flow = data._id;
+      transaction.flow = flow._id;
     },
     async createFlowModal({ transaction, name }) {
-      let { data: flow } = await this.$axios.post("/flows/create-temp", {
+      let flow = await this.$axios.post("/flows/create-temp", {
         transaction
       });
       this.$refs.flowModal.show({ title: "Create Flow", flow, transaction, name });

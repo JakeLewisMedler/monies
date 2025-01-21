@@ -33,19 +33,17 @@ export default {
   },
   methods: {
     async getAccounts() {
-      let { data: accounts } = await this.$axios.get("/accounts");
-      this.accounts = accounts;
+      this.accounts = await this.$axios.get("/accounts");
       this.account = this.accounts.find((a) => a.main)?._id;
     },
     async upload() {
       var formData = new FormData();
       formData.append("csv", this.file);
-      let { data } = await this.$axios.post("/transactions/upload-csv", formData, {
+      let { createdCount, skippedCount } = await this.$axios.post("/transactions/upload-csv", formData, {
         headers: {
           "Content-Type": "multipart/form-data"
         }
       });
-      let { createdCount, skippedCount } = data;
       await this.$swal.fire({
         title: "CSV Uploaded",
         icon: "info",

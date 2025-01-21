@@ -57,9 +57,8 @@ export default {
     },
     async budgetCategoriesProvider(ctx, callback) {
       let query = `?filter=${ctx.filter}&sortBy=${ctx.sortBy}&sortDesc=${ctx.sortDesc}`;
-      let { data } = await this.$axios.get("/budget-categories" + query);
-      this.budgetCategories = data;
-      return data;
+      this.budgetCategories = await this.$axios.get("/budget-categories" + query);
+      return this.budgetCategories;
     },
     async createBudgetCategory(budgetCategory) {
       await this.$axios.post("/budget-categories", budgetCategory);

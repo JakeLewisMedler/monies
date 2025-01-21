@@ -64,9 +64,8 @@ export default {
     },
     async accountsProvider(ctx, callback) {
       let query = `?filter=${ctx.filter}&sortBy=${ctx.sortBy}&sortDesc=${ctx.sortDesc}`;
-      let { data } = await this.$axios.get("/accounts" + query);
-      this.accounts = data;
-      return data;
+      this.accounts = await this.$axios.get("/accounts" + query);
+      return this.accounts;
     },
     async createAccount(account) {
       await this.$axios.post("/accounts", account);

@@ -21,7 +21,7 @@
                   <tr class="header">
                     <th class="sticky">&nbsp;</th>
                     <th v-for="period in forecast?.periods" :key="`date${period.date}`" colspan="3">
-                      {{ $dateFns.format(period.date, "MMM yy") }}
+                      {{ formatDate(period.date) }}
                     </th>
                   </tr>
                   <tr class="subheader">
@@ -287,6 +287,8 @@
 </template>
 
 <script>
+const { format } = require("date-fns");
+
 export default {
   async mounted() {
     await this.getForecast();
@@ -295,6 +297,9 @@ export default {
     return { forecast: null, views: ["All", "Estimated", "Actual"], view: "All" };
   },
   methods: {
+    formatDate(date) {
+      return format(new Date(date), "MMM yy");
+    },
     changeView(view) {
       this.view = view;
       // if(view!="All")
@@ -356,7 +361,7 @@ export default {
     },
     async getForecast() {
       try {
-        let { data: forecast } = await this.$axios.get(`/forecast`);
+        let forecast = await this.$axios.get(`/forecast`);
         forecast.budgetCategories = forecast.budgetCategories.map((b) => {
           return { ...b, show: false };
         });
