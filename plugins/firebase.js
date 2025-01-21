@@ -17,7 +17,6 @@ export default (ctx, inject) => {
   const auth = getAuth();
 
   const checkUser = async () => {
-    console.log("checkUser");
     return new Promise((resolve, reject) => {
       onAuthStateChanged(auth, async (authUser) => {
         try {
