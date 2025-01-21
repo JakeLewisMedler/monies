@@ -41,7 +41,6 @@ export default {
     "bootstrap-vue/nuxt"
   ],
 
-  serverMiddleware: [{ path: "/api", handler: "~/server/index.js" }],
   // Build Configuration: https://go.nuxtjs.dev/config-build
 
   build: {
