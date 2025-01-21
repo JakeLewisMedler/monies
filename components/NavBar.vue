@@ -14,6 +14,7 @@
           >{{ page.label }}</b-dropdown-item
         >
       </b-nav-item-dropdown>
+      <b-button v-else-if="item.type == 'action'" @click="triggerAction(item.action)">{{ item.label }}</b-button>
     </template>
   </b-nav>
 </template>
@@ -35,13 +36,20 @@ export default {
             { label: "Upload", link: "/upload" },
             { label: "Testing", link: "/testing" }
           ]
-        }
+        },
+        { type: "action", label: "Logout", action: "logout" }
       ]
     };
   },
   methods: {
     navigate(item) {
       this.$router.push(item.link);
+    },
+    async triggerAction(action) {
+      if (action == "logout") {
+        await this.$firebase.logout();
+        this.$router.push("/login");
+      }
     }
   }
 };

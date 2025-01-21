@@ -1,30 +1,13 @@
 <template>
   <div class="login">
-    <template v-if="!forgot">
-      <form @submit.prevent="login()">
-        <h1>Login</h1>
-        <div class="inputs">
-          <b-form-input v-model="user.email" placeholder="Email Address"></b-form-input>
-          <b-form-input type="password" v-model="user.password" placeholder="Password"></b-form-input>
-        </div>
-        <div class="buttons">
-          <button class="btn blue--background text--white">Login</button>
-          <b-button class="button--text" @click="forgot = true">Forgot Password</b-button>
-        </div>
-      </form>
-    </template>
-    <template v-else>
-      <form @submit.prevent="sendTempPass">
-        <h1>Forgot Password</h1>
-        <div class="inputs">
-          <b-form-input v-model="user.email" placeholder="Email Address"></b-form-input>
-          <div class="buttons">
-            <button class="btn text--white blue--background">Reset Password</button>
-            <b-button class="button--text" @click="forgot = false">Back to login page</b-button>
-          </div>
-        </div>
-      </form>
-    </template>
+    <h1>Login</h1>
+    <div class="inputs">
+      <b-form-input v-model="user.email" placeholder="Email Address"></b-form-input>
+      <b-form-input type="password" v-model="user.password" placeholder="Password"></b-form-input>
+    </div>
+    <div class="buttons">
+      <b-button variant="primary" @click="login">Login</b-button>
+    </div>
   </div>
 </template>
 
@@ -101,8 +84,12 @@ export default {
 </script>
 <style lang="scss">
 .login {
+  width: 100%;
+  height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 10px;
 }
 </style>
