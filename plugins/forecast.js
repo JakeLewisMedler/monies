@@ -10,14 +10,17 @@ export default (ctx, inject) => {
     console.log("Generate Forecast");
     console.time("Fetch data");
     let {
-      mainAccount,
+      accounts: allAccounts,
       flows: allFlows,
       transactions: allTransactions,
       estimates: allEstimates,
       budgets: allBudgets,
-      budgetCategories: allBudgetCategories,
-      otherAccounts
+      budgetCategories: allBudgetCategories
     } = await ctx.$axios.get("/forecast");
+
+    let mainAccount = allAccounts.find((a) => a.main);
+    let otherAccounts = allAccounts.filter((a) => !a.main);
+
     console.timeEnd("Fetch data");
     console.time("Process data");
     let monthStart = subMonths(startOfMonth(new Date()), 3);
