@@ -8,7 +8,7 @@ export default (ctx, inject) => {
   };
   const generate = async () => {
     console.log("Generate Forecast");
-    console.log("Fetching data...");
+    console.time("Fetch data");
     let {
       mainAccount,
       flows: allFlows,
@@ -18,8 +18,8 @@ export default (ctx, inject) => {
       budgetCategories: allBudgetCategories,
       otherAccounts
     } = await ctx.$axios.get("/forecast");
-    console.log("Got data");
-    console.log("Processing data...");
+    console.timeEnd("Fetch data");
+    console.time("Process data");
     let monthStart = subMonths(startOfMonth(new Date()), 3);
     let numberOfPeriods = 15;
     let dates = eachMonthOfInterval({
@@ -189,7 +189,7 @@ export default (ctx, inject) => {
         a.totals.closingDiff = round(a.totals.closingActual - a.totals.closingEstimated);
       });
     }
-    console.log("Processed data...");
+    console.timeEnd("Process data");
 
     return {
       periods,

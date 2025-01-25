@@ -370,7 +370,6 @@ export default {
         });
         this.forecast = forecast;
         this.loadView();
-        console.log("UI Updated");
       } catch (error) {
         console.error(error);
         this.$swal.fire({
