@@ -361,14 +361,13 @@ export default {
     },
     async getForecast() {
       try {
-        let forecast = await this.$axios.get(`/forecast`);
+        let forecast = await this.$forecast.generate();
         forecast.budgetCategories = forecast.budgetCategories.map((b) => {
           return { ...b, show: false };
         });
         forecast.budgets = forecast.budgets.map((b) => {
           return { ...b, show: false };
         });
-        console.log(forecast);
         this.forecast = forecast;
         this.loadView();
       } catch (error) {

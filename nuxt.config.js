@@ -27,7 +27,7 @@ export default {
     API_URL: process.env.API_URL
   },
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ["~/plugins/global", "~/plugins/swal", "~/plugins/firebase", "~/plugins/axios"],
+  plugins: ["~/plugins/global", "~/plugins/swal", "~/plugins/firebase", "~/plugins/axios", "~/plugins/forecast"],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
