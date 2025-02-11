@@ -126,8 +126,7 @@ export default {
       if (this.undoHistory.length == 0) return;
       let historyItem = this.undoHistory.pop();
       let { action, transactionId, transactionIds } = historyItem;
-      if (action == "reconcile") await this.$axios.put(`/transactions/${transactionId}`, { flow: null });
-      if (action == "reconcile-multi") {
+      if (action == "reconcile") {
         await Promise.all(
           transactionIds.map(async (id) => {
             await this.$axios.put(`/transactions/${id}`, { flow: null });
@@ -135,8 +134,7 @@ export default {
         );
       }
       if (action == "archive") await this.$axios.put(`/transactions/${transactionId}`, { archived: false });
-      if (action == "oneoff") await this.$axios.put(`/transactions/${transactionId}`, { oneoff: false });
-      if (action == "oneoff-multi") {
+      if (action == "oneoff") {
         await Promise.all(
           transactionIds.map(async (id) => {
             await this.$axios.put(`/transactions/${id}`, { oneoff: false });
@@ -147,21 +145,19 @@ export default {
     },
 
     async oneOffTransaction(transaction) {
-      if (this.selectedTransactions.length == 0) {
-        await this.$axios.put(`/transactions/${transaction._id}`, { oneoff: true });
-        this.undoHistory.push({ action: "oneoff", transactionId: transaction._id });
-      } else {
-        let transactionIds = [transaction._id, ...this.selectedTransactions.map((t) => t._id)];
-        await Promise.all(
-          transactionIds.map(async (id) => {
-            await this.$axios.put(`/transactions/${id}`, { oneoff: true });
-          })
-        );
-        this.undoHistory.push({
-          action: "oneoff-multi",
-          transactionIds
-        });
-      }
+      let transactionIds = [
+        transaction._id,
+        ...this.selectedTransactions.filter((t) => t._id != transaction._id).map((t) => t._id)
+      ];
+      await Promise.all(
+        transactionIds.map(async (id) => {
+          await this.$axios.put(`/transactions/${id}`, { oneoff: true });
+        })
+      );
+      this.undoHistory.push({
+        action: "oneoff",
+        transactionIds
+      });
 
       this.$refs.unallocatedTransactionsTable.refresh();
     },
@@ -199,21 +195,20 @@ export default {
       let { flow } = transaction;
       if (!flow) return;
 
-      if (this.selectedTransactions.length == 0) {
-        await this.$axios.put(`/transactions/${transaction._id}`, { flow });
-        this.undoHistory.push({ action: "reconcile", transactionId: transaction._id });
-      } else {
-        let transactionIds = [transaction._id, ...this.selectedTransactions.map((t) => t._id)];
-        await Promise.all(
-          transactionIds.map(async (id) => {
-            await this.$axios.put(`/transactions/${id}`, { flow });
-          })
-        );
-        this.undoHistory.push({
-          action: "reconcile-multi",
-          transactionIds
-        });
-      }
+      let transactionIds = [
+        transaction._id,
+        ...this.selectedTransactions.filter((t) => t._id != transaction._id).map((t) => t._id)
+      ];
+      await Promise.all(
+        transactionIds.map(async (id) => {
+          await this.$axios.put(`/transactions/${id}`, { flow });
+        })
+      );
+      this.undoHistory.push({
+        action: "reconcile",
+        transactionIds
+      });
+
       this.$refs.unallocatedTransactionsTable.refresh();
       await this.getFlows();
     },
