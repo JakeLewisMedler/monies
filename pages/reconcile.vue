@@ -136,13 +136,32 @@ export default {
       }
       if (action == "archive") await this.$axios.put(`/transactions/${transactionId}`, { archived: false });
       if (action == "oneoff") await this.$axios.put(`/transactions/${transactionId}`, { oneoff: false });
-
+      if (action == "oneoff-multi") {
+        await Promise.all(
+          transactionIds.map(async (id) => {
+            await this.$axios.put(`/transactions/${id}`, { oneoff: false });
+          })
+        );
+      }
       this.$refs.unallocatedTransactionsTable.refresh();
     },
 
     async oneOffTransaction(transaction) {
-      await this.$axios.put(`/transactions/${transaction._id}`, { oneoff: true });
-      this.undoHistory.push({ action: "oneoff", transactionId: transaction._id });
+      if (this.selectedTransactions.length == 0) {
+        await this.$axios.put(`/transactions/${transaction._id}`, { oneoff: true });
+        this.undoHistory.push({ action: "oneoff", transactionId: transaction._id });
+      } else {
+        let transactionIds = [transaction._id, ...this.selectedTransactions.map((t) => t._id)];
+        await Promise.all(
+          transactionIds.map(async (id) => {
+            await this.$axios.put(`/transactions/${id}`, { oneoff: true });
+          })
+        );
+        this.undoHistory.push({
+          action: "oneoff-multi",
+          transactionIds
+        });
+      }
 
       this.$refs.unallocatedTransactionsTable.refresh();
     },
