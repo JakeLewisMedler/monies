@@ -32,10 +32,6 @@
           <b-form-select-option :value="null">Select a Budget</b-form-select-option>
         </b-form-select>
       </b-form-group>
-      <b-form-group label="Account:">
-        <b-form-select v-model="flow.destination" value-field="_id" text-field="name" :options="accounts">
-        </b-form-select>
-      </b-form-group>
     </template>
   </b-modal>
 </template>
@@ -55,13 +51,11 @@ export default {
       _id: null,
       title: "",
       flow: null,
-      account: null,
       frequencyStrings: ["Weeks", "Months", "Years", "Days"],
       showing: false,
       transaction: null,
       budgetCategories: [],
-      budgets: [],
-      accounts: []
+      budgets: []
     };
   },
   async mounted() {
@@ -74,13 +68,6 @@ export default {
     });
   },
   methods: {
-    async getAccounts() {
-      try {
-        this.accounts = await this.$axios.get("/accounts");
-      } catch (error) {
-        console.error(error);
-      }
-    },
     async getBudgetCategories() {
       this.budgetCategories = await this.$axios.get("/budget-categories");
       this.budgets = await this.$axios.get("/budgets");
@@ -91,14 +78,11 @@ export default {
     },
     async show({ title, flow, transaction, name }) {
       this.title = title;
-      await this.getAccounts();
-
       this.flow = {
         name: "",
         date: new Date(),
         category: null,
-        budget: null,
-        destination: this.accounts.find((a) => a.main)?._id
+        budget: null
       };
       if (flow) Object.assign(this.flow, flow);
       if (name) this.flow.name = name;

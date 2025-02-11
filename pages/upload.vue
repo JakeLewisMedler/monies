@@ -4,8 +4,6 @@
       <b-col>
         <h1>Upload Transactions</h1>
         <b-card class="mt-3">
-          <!-- <b-form-select class="mb-3" v-model="account" :options="accounts" text-field="name" value-field="_id">
-          </b-form-select> -->
           <b-form-file
             v-model="file"
             :state="Boolean(file)"
@@ -23,19 +21,11 @@
 export default {
   data() {
     return {
-      file: null,
-      accounts: [],
-      account: null
+      file: null
     };
   },
-  mounted() {
-    this.getAccounts();
-  },
+  mounted() {},
   methods: {
-    async getAccounts() {
-      this.accounts = await this.$axios.get("/accounts");
-      this.account = this.accounts.find((a) => a.main)?._id;
-    },
     async upload() {
       var formData = new FormData();
       formData.append("csv", this.file);
