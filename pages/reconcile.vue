@@ -18,7 +18,13 @@
             :sort-by="'name'"
             :sort-desc="false"
             responsive
+            selectable
+            select-mode="multi"
+            @row-selected="updateSelected"
           >
+            <template #cell(select)="{ rowSelected }">
+              <span v-if="rowSelected">&check;</span>
+            </template>
             <template #cell(date)="row">
               {{ formatDate(row.item.date) }}
             </template>
@@ -70,11 +76,13 @@ export default {
   },
   data() {
     return {
+      selectedTransactions: [],
       flows: [],
       budgetCategories: [],
       budgets: [],
       unallocatedTransactions: [],
       transactionFields: [
+        { key: "select" },
         { key: "date", sortable: true },
         { key: "name", sortable: true },
         { key: "amount", sortable: true },
@@ -92,6 +100,9 @@ export default {
     await this.getFlows();
   },
   methods: {
+    updateSelected(selected = []) {
+      this.selectedTransactions = selected;
+    },
     flowSelected({ flowId, transaction, searchField }) {
       if (!flowId) this.createFlowModal({ transaction, name: searchField });
       else transaction.flow = flowId;
@@ -114,8 +125,15 @@ export default {
     async undo() {
       if (this.undoHistory.length == 0) return;
       let historyItem = this.undoHistory.pop();
-      let { action, transactionId } = historyItem;
+      let { action, transactionId, transactionIds } = historyItem;
       if (action == "reconcile") await this.$axios.put(`/transactions/${transactionId}`, { flow: null });
+      if (action == "reconcile-multi") {
+        await Promise.all(
+          transactionIds.map(async (id) => {
+            await this.$axios.put(`/transactions/${id}`, { flow: null });
+          })
+        );
+      }
       if (action == "archive") await this.$axios.put(`/transactions/${transactionId}`, { archived: false });
       if (action == "oneoff") await this.$axios.put(`/transactions/${transactionId}`, { oneoff: false });
 
@@ -161,8 +179,22 @@ export default {
     async reconcile(transaction) {
       let { flow } = transaction;
       if (!flow) return;
-      await this.$axios.put(`/transactions/${transaction._id}`, { flow });
-      this.undoHistory.push({ action: "reconcile", transactionId: transaction._id });
+
+      if (this.selectedTransactions.length == 0) {
+        await this.$axios.put(`/transactions/${transaction._id}`, { flow });
+        this.undoHistory.push({ action: "reconcile", transactionId: transaction._id });
+      } else {
+        let transactionIds = [transaction._id, ...this.selectedTransactions.map((t) => t._id)];
+        await Promise.all(
+          transactionIds.map(async (id) => {
+            await this.$axios.put(`/transactions/${id}`, { flow });
+          })
+        );
+        this.undoHistory.push({
+          action: "reconcile-multi",
+          transactionIds
+        });
+      }
       this.$refs.unallocatedTransactionsTable.refresh();
       await this.getFlows();
     },
