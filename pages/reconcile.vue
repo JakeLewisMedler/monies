@@ -25,6 +25,7 @@
             select-mode="range"
             sticky-header="700px"
             @row-selected="updateSelected"
+            @refreshed="scrollToTop"
           >
             <template #cell(select)="{ rowSelected }">
               <span v-if="rowSelected">&check;</span>
@@ -113,6 +114,9 @@ export default {
     await this.getFlows();
   },
   methods: {
+    scrollToTop() {
+      this.$refs.unallocatedTransactionsTable.$el.scrollTop = 0;
+    },
     handleKey(e) {
       if (e.shiftKey && e.code == "KeyR") {
         if (this.selectedTransactions.length == 0)
@@ -137,6 +141,9 @@ export default {
     },
     flowButtonClicked(transaction) {
       this.$refs.flowSelectModal.show({ title: "Flow Select", transaction });
+      this.$refs.unallocatedTransactionsTable.selectRow(
+        this.unallocatedTransactions.findIndex((t) => t._id == transaction._id)
+      );
     },
     getFlowButtonData(transaction) {
       let variant, label;
@@ -188,6 +195,7 @@ export default {
       });
 
       this.$refs.unallocatedTransactionsTable.refresh();
+      this.unallocatedTransactionsFilter = "";
     },
     async archiveTransaction(transaction) {
       await this.$axios.put(`/transactions/${transaction._id}`, { archived: true });
@@ -218,6 +226,9 @@ export default {
     async updateNotes(transaction) {
       let { notes } = transaction;
       await this.$axios.put(`/transactions/${transaction._id}`, { notes });
+      this.$refs.unallocatedTransactionsTable.selectRow(
+        this.unallocatedTransactions.findIndex((t) => t._id == transaction._id)
+      );
     },
     async reconcile(transaction) {
       let { flow } = transaction;
@@ -243,6 +254,7 @@ export default {
 
       this.$refs.unallocatedTransactionsTable.refresh();
       await this.getFlows();
+      this.unallocatedTransactionsFilter = "";
     },
     async createFlow(flow, transaction) {
       flow = await this.$axios.post("/flows", flow);
