@@ -501,6 +501,9 @@ export default {
           display: flex;
           justify-content: space-between;
           align-items: center;
+          span {
+            cursor: pointer;
+          }
         }
         font-weight: bold;
 
@@ -523,6 +526,9 @@ export default {
           max-width: 300px;
           justify-content: space-between;
           align-items: center;
+          span {
+            cursor: pointer;
+          }
         }
         font-weight: bold;
 
