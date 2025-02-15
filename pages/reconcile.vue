@@ -108,19 +108,20 @@ export default {
     await this.getBudgets();
     await this.getFlows();
 
-    document.addEventListener("keyup", (e) => {
-      if (e.shiftKey && e.key == "r") {
-        if (this.selectedTransactions.length > 0) {
-          this.reconcile(this.selectedTransactions[0]);
-        }
-      } else if (e.shiftKey && e.key == "o") {
-        if (this.selectedTransactions.length > 0) {
-          this.oneOffTransaction(this.selectedTransactions[0]);
-        }
-      }
-    });
+    document.addEventListener("keyup", this.handleKey);
   },
   methods: {
+    async handleKey(e) {
+      if (e.shiftKey && e.code == "KeyR") {
+        if (this.selectedTransactions.length == 0)
+          new this.$swal({ icon: "error", title: "No transactions selected to reconcile" });
+        else this.reconcile(this.selectedTransactions[0]);
+      } else if (e.shiftKey && e.code == "KeyO") {
+        if (this.selectedTransactions.length == 0)
+          new this.$swal({ icon: "error", title: "No transactions selected to one off" });
+        else this.oneOffTransaction(this.selectedTransactions[0]);
+      }
+    },
     updateSelected(selected = []) {
       this.selectedTransactions = selected;
     },
@@ -214,7 +215,11 @@ export default {
     },
     async reconcile(transaction) {
       let { flow } = transaction;
-      if (!flow) return;
+      if (!flow)
+        return this.$swal({
+          icon: "error",
+          title: "No flow selected on transaction to reconcile"
+        });
 
       let transactionIds = [
         transaction._id,
