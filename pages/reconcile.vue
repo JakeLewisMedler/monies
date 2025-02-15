@@ -195,7 +195,7 @@ export default {
       });
 
       this.$refs.unallocatedTransactionsTable.refresh();
-      this.unallocatedTransactionsFilter = "";
+      if (this.unallocatedTransactions.length == 0) this.unallocatedTransactionsFilter = "";
     },
     async archiveTransaction(transaction) {
       await this.$axios.put(`/transactions/${transaction._id}`, { archived: true });
@@ -254,7 +254,7 @@ export default {
 
       this.$refs.unallocatedTransactionsTable.refresh();
       await this.getFlows();
-      this.unallocatedTransactionsFilter = "";
+      if (this.unallocatedTransactions.length == 0) this.unallocatedTransactionsFilter = "";
     },
     async createFlow(flow, transaction) {
       flow = await this.$axios.post("/flows", flow);
