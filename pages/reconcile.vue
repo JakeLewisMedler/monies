@@ -7,7 +7,10 @@
       </b-row>
       <b-card class="mt-3">
         <b-col>
-          <h2>Unallocated Transactions ({{ unallocatedTransactions.length }})</h2>
+          <div class="header">
+            <h2>Unallocated Transactions ({{ unallocatedTransactions.length }})</h2>
+            <h2 v-if="!!selectedTransactions.length">Total: {{ selectedTransactionsSum }}</h2>
+          </div>
           <b-form-input v-model="unallocatedTransactionsFilter" placeholder="Search" debounce="200"></b-form-input>
           <b-table
             v-if="flows"
@@ -72,6 +75,11 @@ export default {
   computed: {
     relevantFlows() {
       return this.flows.filter((b) => this.unallocatedTransactions.find((t) => t.flow == b._id));
+    },
+    selectedTransactionsSum() {
+      return new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP" }).format(
+        this.selectedTransactions.reduce((sum, transaction) => (sum += transaction.amount || 0), 0)
+      );
     }
   },
   data() {
@@ -244,6 +252,10 @@ export default {
 
 <style lang="scss">
 .reconcile {
+  .header {
+    display: flex;
+    justify-content: space-between;
+  }
   .icon {
     width: 24px;
   }
