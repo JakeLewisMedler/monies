@@ -352,12 +352,9 @@ export default {
     getFlows(budget) {
       return this.forecast.flows.filter((f) => f.budget == budget._id);
     },
-    gotoTransactions(period, flow) {
-      this.$router.push(`/transactions?flow=${flow._id}&month=${period.date}`);
-    },
     getTransactionsPath(period, flow) {
-      if (flow) return `/transactions?flow=${flow._id}&month=${period.date}`;
-      else return `/transactions?oneoff=true&month=${period.date}`;
+      if (flow) return `/transactions?filterType=flow&filterValue=${flow._id}&month=${period.date}`;
+      else return `/transactions?filterType=oneoff&filterValue=true&month=${period.date}`;
     },
     async getForecast() {
       try {
