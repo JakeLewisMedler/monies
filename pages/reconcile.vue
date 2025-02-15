@@ -23,6 +23,7 @@
             responsive
             selectable
             select-mode="range"
+            sticky-header="700px"
             @row-selected="updateSelected"
           >
             <template #cell(select)="{ rowSelected }">
