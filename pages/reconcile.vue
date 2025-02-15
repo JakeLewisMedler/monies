@@ -111,7 +111,7 @@ export default {
     document.addEventListener("keyup", this.handleKey);
   },
   methods: {
-    async handleKey(e) {
+    handleKey(e) {
       if (e.shiftKey && e.code == "KeyR") {
         if (this.selectedTransactions.length == 0)
           new this.$swal({ icon: "error", title: "No transactions selected to reconcile" });
@@ -216,7 +216,7 @@ export default {
     async reconcile(transaction) {
       let { flow } = transaction;
       if (!flow)
-        return this.$swal({
+        return new this.$swal({
           icon: "error",
           title: "No flow selected on transaction to reconcile"
         });
