@@ -122,6 +122,10 @@ export default {
         if (this.selectedTransactions.length == 0)
           return new this.$swal({ icon: "error", title: "No transactions selected to one off" });
         this.oneOffTransaction(this.selectedTransactions[0]);
+      } else if (e.shiftKey && e.code == "KeyF") {
+        if (this.selectedTransactions.length == 0)
+          return new this.$swal({ icon: "error", title: "No transactions selected to set flow" });
+        this.flowButtonClicked(this.selectedTransactions[0]);
       }
     },
     updateSelected(selected = []) {
