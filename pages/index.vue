@@ -362,6 +362,7 @@ export default {
     async getForecast() {
       try {
         let forecast = await this.$forecast.generate();
+        console.log(forecast);
         forecast.budgetCategories = forecast.budgetCategories.map((b) => {
           return { ...b, show: false };
         });
