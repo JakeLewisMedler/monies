@@ -104,22 +104,24 @@ export default {
       undoHistory: []
     };
   },
+  beforeDestroy() {
+    document.removeEventListener("keyup", this.handleKey);
+  },
   async mounted() {
+    document.addEventListener("keyup", this.handleKey);
     await this.getBudgets();
     await this.getFlows();
-
-    document.addEventListener("keyup", this.handleKey);
   },
   methods: {
     handleKey(e) {
       if (e.shiftKey && e.code == "KeyR") {
         if (this.selectedTransactions.length == 0)
-          new this.$swal({ icon: "error", title: "No transactions selected to reconcile" });
-        else this.reconcile(this.selectedTransactions[0]);
+          return new this.$swal({ icon: "error", title: "No transactions selected to reconcile" });
+        this.reconcile(this.selectedTransactions[0]);
       } else if (e.shiftKey && e.code == "KeyO") {
         if (this.selectedTransactions.length == 0)
-          new this.$swal({ icon: "error", title: "No transactions selected to one off" });
-        else this.oneOffTransaction(this.selectedTransactions[0]);
+          return new this.$swal({ icon: "error", title: "No transactions selected to one off" });
+        this.oneOffTransaction(this.selectedTransactions[0]);
       }
     },
     updateSelected(selected = []) {
