@@ -47,7 +47,7 @@
             >
 
             <template #cell(actions)="row">
-              <b-button variant="primary" :disabled="!row.item.flow" @click="reconcile(row.item)">Add to Flow</b-button>
+              <b-button variant="primary" :disabled="!row.item.flow" @click="reconcile(row.item)">Reconcile</b-button>
               <b-button variant="success" @click="oneOffTransaction(row.item)">One Off</b-button>
               <b-button variant="danger" @click="archiveTransaction(row.item)"
                 ><img class="icon" src="~/assets/icons/bin.svg" alt=""
@@ -98,6 +98,14 @@ export default {
   async mounted() {
     await this.getBudgets();
     await this.getFlows();
+
+    document.addEventListener("keyup", (e) => {
+      if (e.key == "r") {
+        if (this.selectedTransactions.length > 0) {
+          this.reconcile(this.selectedTransactions[0]);
+        }
+      }
+    });
   },
   methods: {
     updateSelected(selected = []) {
