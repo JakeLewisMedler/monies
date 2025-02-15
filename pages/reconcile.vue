@@ -109,11 +109,11 @@ export default {
     await this.getFlows();
 
     document.addEventListener("keyup", (e) => {
-      if (e.key == "r") {
+      if (e.shiftKey && e.key == "r") {
         if (this.selectedTransactions.length > 0) {
           this.reconcile(this.selectedTransactions[0]);
         }
-      } else if (e.key == "o") {
+      } else if (e.shiftKey && e.key == "o") {
         if (this.selectedTransactions.length > 0) {
           this.oneOffTransaction(this.selectedTransactions[0]);
         }
