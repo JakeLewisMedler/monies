@@ -19,7 +19,7 @@
             :sort-desc="false"
             responsive
             selectable
-            select-mode="multi"
+            select-mode="range"
             @row-selected="updateSelected"
           >
             <template #cell(select)="{ rowSelected }">
