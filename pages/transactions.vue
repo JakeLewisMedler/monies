@@ -2,38 +2,63 @@
   <div class="transactions">
     <b-col class="px-5 mt-3">
       <h1>Transactions ({{ transactions.length }})</h1>
-      <b-form-input v-model="transactionsFilter" placeholder="Search" debounce="500" class="mt-3"></b-form-input>
-
-      <b-row class="my-2">
+      <b-button-group
+        ><b-button :variant="filterType == 'budget' ? 'primary' : null" @click="setFilterType('budget')"
+          >Budget</b-button
+        ><b-button :variant="filterType == 'flow' ? 'primary' : null" @click="setFilterType('flow')">Flow</b-button
+        ><b-button :variant="filterType == 'oneoff' ? 'primary' : null" @click="setFilterType('oneoff')"
+          >One Off</b-button
+        ></b-button-group
+      >
+      <b-row v-if="filterType == 'budget'" class="my-2">
         <b-col>
-          <b-form-select
-            v-model="flowFilter"
-            :options="flows"
-            value-field="_id"
-            text-field="name"
-            @change="filterUpdated"
+          <b-form-select v-model="filterValue" :options="budgets" value-field="_id" text-field="name">
+            <template #first> <b-form-select-option :value="null">Budget Filter</b-form-select-option></template>
+          </b-form-select>
+        </b-col>
+        <b-col cols="2">
+          <b-button variant="primary" :disabled="filterValue == null" @click="filterValue = null"
+            >Clear Filter</b-button
           >
+        </b-col>
+      </b-row>
+      <b-row v-if="filterType == 'flow'" class="my-2">
+        <b-col>
+          <b-form-select v-model="filterValue" :options="flows" value-field="_id" text-field="name">
             <template #first> <b-form-select-option :value="null">Flow Filter</b-form-select-option></template>
           </b-form-select>
         </b-col>
-        <b-col cols="1">
-          <b-button variant="primary" :disabled="flowFilter == null" @click="flowFilter = null">Clear Filter</b-button>
+        <b-col cols="2">
+          <b-button variant="primary" :disabled="filterValue == null" @click="filterValue = null"
+            >Clear Filter</b-button
+          >
         </b-col>
       </b-row>
-      <b-row class="my-2">
+      <b-row v-if="filterType == 'oneoff'" class="my-2">
         <b-col>
-          <b-form-select v-model="oneoffFilter" value-field="_id" text-field="name" @change="filterUpdated">
+          <b-form-select v-model="filterValue" value-field="_id" text-field="name">
             <template #first> <b-form-select-option :value="null">Oneoff Filter</b-form-select-option></template>
             <b-form-select-option :value="true">Yes</b-form-select-option>
             <b-form-select-option :value="false">No</b-form-select-option>
           </b-form-select>
         </b-col>
-        <b-col cols="1">
-          <b-button variant="primary" :disabled="oneoffFilter == null" @click="oneoffFilter = null"
+        <b-col cols="2">
+          <b-button variant="primary" :disabled="filterValue == null" @click="filterValue = null"
             >Clear Filter</b-button
           >
         </b-col>
       </b-row>
+      <b-row class="my-2">
+        <b-col>
+          <b-form-input v-model="searchFilter" placeholder="Search" debounce="500"></b-form-input>
+        </b-col>
+        <b-col cols="2">
+          <b-button variant="primary" :disabled="searchFilter == ''" @click="setFilter('search', '')"
+            >Clear Filter</b-button
+          ></b-col
+        ></b-row
+      >
+
       <b-card class="my-2">
         <b-row>
           <b-col>Total: {{ formatCurrency(transactionsSum) }}</b-col></b-row
@@ -45,7 +70,7 @@
           ref="transactionsTable"
           :items="transactionsProvider"
           :fields="transactionFields"
-          :filter="transactionsFilter"
+          :filter="{ filterValue, searchFilter }"
           responsive
         >
           <template #cell(date)="row">
@@ -82,13 +107,8 @@
 <script>
 export default {
   watch: {
-    flowFilter() {
-      if (this.flowFilter)
-        this.$router.push({ query: { flow: this.flowFilter, oneoff: this.oneoffFilter, month: this.monthFilter } });
-    },
-    oneoffFilter() {
-      if (this.oneoffFilter)
-        this.$router.push({ query: { flow: this.flowFilter, oneoff: this.oneoffFilter, month: this.monthFilter } });
+    filterValue() {
+      this.updateQuery();
     }
   },
   computed: {
@@ -109,26 +129,48 @@ export default {
         { key: "oneoff", sortable: true },
         { key: "actions", sortable: true }
       ],
-      transactionsFilter: "",
       transactions: [],
+      budgets: [],
       flows: [],
-      flowFilter: null,
-      monthFilter: null,
-      oneoffFilter: null
+      filterType: "budget",
+      filterValue: null,
+      searchFilter: "",
+      monthFilter: null
     };
   },
   created() {
-    let { flow, month, oneoff } = this.$route.query;
-    if (flow) this.flowFilter = flow;
+    let { filterType, filterValue, month, oneoff } = this.$route.query;
+    if (filterType) this.filterType = filterType;
+    if (filterValue) this.filterValue = filterValue;
     if (month) this.monthFilter = month;
     if (oneoff) this.oneoffFilter = oneoff == "true";
   },
   async mounted() {
+    await this.getBudgets();
     await this.getFlows();
   },
   methods: {
+    setFilterType(type) {
+      this.filterValue = null;
+      this.filterType = type;
+      this.updateQuery();
+    },
+    updateQuery() {
+      this.$router.push({
+        query: Object.fromEntries(
+          Object.entries({
+            filterValue: this.filterValue,
+            filterType: this.filterType,
+            month: this.monthFilter
+          }).filter(([_, v]) => v != null)
+        )
+      });
+    },
     filterUpdated() {
       this.$refs.transactionsTable.refresh();
+    },
+    async getBudgets() {
+      this.budgets = await this.$axios.get("/budgets");
     },
     async getFlows() {
       this.flows = await this.$axios.get("/flows");
@@ -164,10 +206,10 @@ export default {
     },
 
     async transactionsProvider(ctx, callback) {
-      let query = `?populate=flow&filter=${ctx.filter}&sortBy=${ctx.sortBy}&sortDesc=${ctx.sortDesc}`;
-      if (this.flowFilter != null) query += `&flow=${this.flowFilter}`;
+      let query = `?populate=flow&filter=${this.searchFilter}&sortBy=${ctx.sortBy}&sortDesc=${ctx.sortDesc}`;
+
+      if (this.filterValue != null) query += `&${this.filterType}=${this.filterValue}`;
       if (this.monthFilter != null) query += `&month=${this.monthFilter}`;
-      if (this.oneoffFilter != null) query += `&oneoff=${this.oneoffFilter}`;
 
       this.transactions = await this.$axios.get("/transactions" + query);
       return this.transactions;
