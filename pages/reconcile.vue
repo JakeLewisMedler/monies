@@ -104,6 +104,10 @@ export default {
         if (this.selectedTransactions.length > 0) {
           this.reconcile(this.selectedTransactions[0]);
         }
+      } else if (e.key == "o") {
+        if (this.selectedTransactions.length > 0) {
+          this.oneOffTransaction(this.selectedTransactions[0]);
+        }
       }
     });
   },
