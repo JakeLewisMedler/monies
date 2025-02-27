@@ -32,6 +32,7 @@ export default {
             { label: "Transactions", link: "/transactions" },
             { label: "Budget Categories", link: "/budget-categories" },
             { label: "Budgets", link: "/budgets" },
+            { label: "Periods", link: "/periods" },
             { label: "Reconcile", link: "/reconcile" },
             { label: "Upload", link: "/upload" },
             { label: "Testing", link: "/testing" }
