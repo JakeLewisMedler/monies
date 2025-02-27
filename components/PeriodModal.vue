@@ -3,6 +3,16 @@
     <template v-if="period">
       <label for="name">Date:</label>
       <b-form-datepicker v-model="period.date" name="estimate" switch class="mb-3"> </b-form-datepicker>
+      <label for="name">Opening Balance Offset:</label>
+
+      <b-input-group prepend="£" class="mb-3">
+        <b-form-input
+          v-model="period.openingBalanceOffset"
+          type="number"
+          number
+          placeholder="Opening Balance Offset"
+        ></b-form-input
+      ></b-input-group>
     </template>
   </b-modal>
 </template>
@@ -35,7 +45,8 @@ export default {
       this.title = title;
       this.period = {
         _id: null,
-        date: null
+        date: null,
+        openingBalanceOffset: 0
       };
       if (period) Object.assign(this.period, period);
       this.$refs.modal.show();

@@ -23,6 +23,14 @@
             <template #cell(date)="row">
               {{ formatDate(row.item.date) }}
             </template>
+            <template #cell(openingBalanceOffset)="row">
+              {{
+                new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP" }).format(
+                  row.item.openingBalanceOffset
+                )
+              }}
+            </template>
+
             <template #cell(actions)="row">
               <b-button @click="editPeriodModal(row.item)" variant="success">Edit</b-button>
               <b-button @click="deletePeriod(row.item)" variant="danger">Delete</b-button>
@@ -41,7 +49,7 @@ const { format } = require("date-fns");
 export default {
   data() {
     return {
-      periodFields: [{ key: "date", label: "Starting Date", sortable: true }, "actions"],
+      periodFields: [{ key: "date", label: "Starting Date", sortable: true }, "openingBalanceOffset", "actions"],
       periodsFilter: "",
       periods: []
     };
