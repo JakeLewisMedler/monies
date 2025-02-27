@@ -23,7 +23,7 @@ export default {
   data() {
     return {
       items: [
-        { type: "page", label: "Overview", link: "/" },
+        { type: "page", label: "Cashflow", link: "/" },
         {
           type: "submenu",
           label: "Setup",

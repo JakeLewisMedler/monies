@@ -3,19 +3,33 @@
     <b-container class="mt-3">
       <b-col>
         <b-col>
-          <b-row align-h="between">
+          <b-row class="my-2" align-h="between">
             <h1>Flows ({{ flows.length }})</h1>
             <b-button variant="primary" @click="addFlow">Add +</b-button>
           </b-row></b-col
         >
+
+        <b-row>
+          <b-col>
+            <b-form-select v-model="accountFilter" :options="accounts" value-field="_id" text-field="name">
+              <template #first> <b-form-select-option :value="null">Account Filter</b-form-select-option></template>
+            </b-form-select>
+          </b-col>
+          <b-col cols="2">
+            <b-button variant="primary" :disabled="accountFilter == null" @click="accountFilter = null"
+              >Clear Filter</b-button
+            >
+          </b-col>
+        </b-row>
+
         <b-form-input v-model="flowsFilter" placeholder="Search" debounce="500" class="mt-3"></b-form-input>
 
-        <b-card>
+        <b-card class="mt-2">
           <b-table
             ref="flowsTable"
             :items="flowsProvider"
             :fields="flowFields"
-            :filter="flowsFilter"
+            :filter="{ flowsFilter, accountFilter }"
             :sort-by="'name'"
             :sort-desc="false"
             responsive
@@ -79,12 +93,23 @@ export default {
       ],
       flowsFilter: "",
       flows: [],
-      transactions: []
+      transactions: [],
+      accountFilter: null
     };
   },
+  async mounted() {
+    await this.getAccounts();
+  },
   methods: {
+    async getAccounts() {
+      try {
+        this.accounts = await this.$axios.get("/accounts");
+      } catch (error) {
+        console.error(error);
+      }
+    },
     addFlow() {
-      this.$refs.flowModal.show({ title: "Create Flow" });
+      this.$refs.flowModal.show({ title: "Create Flow", flow: { account: this.accountFilter } });
     },
     editFlowModal(flow) {
       this.$refs.flowModal.show({ title: "Edit Flow", flow });
@@ -145,7 +170,8 @@ export default {
     },
 
     async flowsProvider(ctx, callback) {
-      let query = `?filter=${ctx.filter}&sortBy=${ctx.sortBy}&sortDesc=${ctx.sortDesc}`;
+      let query = `?filter=${this.flowsFilter}&sortBy=${ctx.sortBy}&sortDesc=${ctx.sortDesc}`;
+      if (this.accountFilter) query += `&account=${this.accountFilter}`;
       this.flows = await this.$axios.get("/flows" + query);
       return this.flows;
     }
