@@ -90,7 +90,6 @@ export default {
       flows: [],
       budgetCategories: [],
       budgets: [],
-      accounts: [],
       unallocatedTransactions: [],
       transactionFields: [
         { key: "select" },
@@ -112,17 +111,9 @@ export default {
   async mounted() {
     document.addEventListener("keyup", this.handleKey);
     await this.getBudgets();
-    await this.getAccounts();
     await this.getFlows();
   },
   methods: {
-    async getAccounts() {
-      try {
-        this.accounts = await this.$axios.get("/accounts");
-      } catch (error) {
-        console.error(error);
-      }
-    },
     scrollToTop() {
       this.$refs.unallocatedTransactionsTable.$el.scrollTop = 0;
     },
@@ -221,10 +212,6 @@ export default {
       for (let flow of flows) {
         let budget = this.budgets.find((b) => b._id == flow.budget);
         let budgetCategory = this.budgetCategories.find((b) => b._id == flow.category);
-        let account = this.accounts.find((a) => a._id == flow.account);
-        if (account && !account.main) {
-          flow.name = `${account.name} - ${flow.name}`;
-        }
         if (budget && budgetCategory) {
           flow.name += ` (${budgetCategory.name} - ${budget.name})`;
         }

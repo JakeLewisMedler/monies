@@ -57,9 +57,6 @@
         <div class="field center">{{ formatCurrency(period.totals.netEstimated) }}</div>
         <div class="field center">{{ formatCurrency(period.totals.closingEstimated) }}</div>
         <div class="field blank"></div>
-        <div v-for="account in period.otherAccounts" :key="account._id" class="field center">
-          {{ formatCurrency(account.totals.closingEstimated) }}
-        </div>
       </div>
       <div v-if="view == 'All' || view == 'Actual'" class="column">
         <div class="field bold center header">Actual</div>
@@ -97,9 +94,6 @@
           {{ period.actualTransactionsCount > 0 ? formatCurrency(period.totals.closingActual) : "" }}
         </div>
         <div class="field blank"></div>
-        <div v-for="account in period.otherAccounts" :key="account._id" class="field center">
-          {{ account.actualTransactionsCount > 0 ? formatCurrency(account.totals.closingActual) : "" }}
-        </div>
       </div>
       <div v-if="view == 'All'" class="column">
         <div class="field bold center header">Diff</div>
@@ -130,9 +124,6 @@
         <div class="field spacer"></div>
         <div class="field center">{{ formatCurrency(period.totals.closingDiff) }}</div>
         <div class="field blank"></div>
-        <div v-for="account in period.otherAccounts" :key="account._id" class="field center">
-          {{ formatCurrency(account.totals.closingDiff) }}
-        </div>
       </div>
     </div>
   </div>

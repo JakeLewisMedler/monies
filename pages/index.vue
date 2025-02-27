@@ -37,9 +37,6 @@ export default {
       this.view = view;
       // if(view!="All")
     },
-    getPeriodOtherAccount(period, otherAccount) {
-      return period.otherAccounts.find((a) => String(a._id) == String(otherAccount._id));
-    },
     async move(type, id, direction) {
       if (type == "budgetCategories") await this.$axios.put(`/budget-categories/${id}/move`, { direction });
       await this.getForecast();

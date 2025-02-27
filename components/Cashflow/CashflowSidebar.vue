@@ -27,9 +27,6 @@
     <div class="field bold">Net cash in/out</div>
     <div class="field bold">Closing Balance</div>
     <div class="field blank"></div>
-    <div v-for="account in $forecast.accounts.filter((a) => !a.main)" :key="account._id" class="field bold">
-      {{ account.name }} Balance
-    </div>
   </div>
 </template>
 <script>
