@@ -8,7 +8,7 @@
 </template>
 <script>
 export default {
-  // middleware: ["checkUser"]
+  middleware: ["checkUser"]
 };
 </script>
 <style lang="scss">
