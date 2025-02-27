@@ -25,7 +25,7 @@
             select-mode="range"
             sticky-header="700px"
             @row-selected="updateSelected"
-            @refreshed="scrollToTop"
+            @refreshed="refreshed"
           >
             <template #cell(select)="{ rowSelected }">
               <span v-if="rowSelected">&check;</span>
@@ -114,8 +114,11 @@ export default {
     await this.getFlows();
   },
   methods: {
-    scrollToTop() {
-      this.$refs.unallocatedTransactionsTable.$el.scrollTop = 0;
+    refreshed() {
+      this.$nextTick(() => {
+        this.$refs.unallocatedTransactionsTable.$el.scrollTop = 0;
+        this.$refs.unallocatedTransactionsTable.selectRow(0);
+      });
     },
     handleKey(e) {
       if (e.shiftKey && e.code == "KeyR") {
