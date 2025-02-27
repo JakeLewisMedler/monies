@@ -6,8 +6,9 @@
         <b-button @click="clearUnallocatedTransactions" variant="danger">Clear Unallocated Transactions</b-button>
         <b-button @click="clearFlows" variant="danger">Clear Flows</b-button>
 
-        <b-button @click="backup" variant="danger">Store Backups</b-button>
-        <b-button @click="restore" variant="danger">Restore Backups</b-button>
+        <b-button @click="backup" variant="danger">Store All</b-button>
+        <b-button @click="restore" variant="danger">Restore All</b-button>
+        <b-button @click="restore(['Transactions'])" variant="danger">Restore Transactions </b-button>
       </b-col>
     </b-container>
   </div>
@@ -75,15 +76,15 @@ export default {
         icon: "info"
       });
     },
-    async restore() {
+    async restore(models) {
       let result = await this.$swal.fire({
-        title: "Restore DB?",
+        title: models ? `Restore ${models.join(",")}?` : "Restore DB?",
         text: "Are you sure?",
         icon: "warning",
         showCancelButton: true
       });
       if (!result.isConfirmed) return;
-      await this.$axios.post("/restore");
+      await this.$axios.post("/restore", { models });
       this.$swal.fire({
         title: "DB Restored",
         icon: "info"
