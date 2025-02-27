@@ -123,14 +123,37 @@ export default {
   .card-body {
     display: flex;
     flex-direction: column;
+    position: relative;
+    padding: 0;
+    margin: 1.25rem;
   }
   .cashflow__container {
     position: relative;
     flex-grow: 1;
-    overflow: scroll;
-    .scroller {
-      position: absolute;
+    .card-body {
       display: flex;
+      flex-direction: column;
+      overflow: scroll;
+      position: relative;
+
+      .scroller {
+        position: absolute;
+        display: flex;
+      }
+    }
+  }
+  .header {
+    background: #ddd;
+    z-index: 2;
+  }
+
+  .sticky {
+    position: sticky;
+    left: 0;
+    top: 0;
+    &.subheader {
+      top: 32px;
+      border-bottom: 1px #333 solid;
     }
   }
   .field {

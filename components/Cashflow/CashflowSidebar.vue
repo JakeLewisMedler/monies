@@ -1,7 +1,7 @@
 <template>
-  <div class="cashflow__sidebar">
-    <div class="field empty"></div>
-    <div class="field empty"></div>
+  <div class="cashflow__sidebar sticky">
+    <div class="field empty header sticky"></div>
+    <div class="field empty header subheader sticky"></div>
     <div class="budget__categories">
       <div v-for="budgetCategory in $forecast.budgetCategories" :key="budgetCategory._id" class="budget__category">
         <div class="field blank"></div>
@@ -43,6 +43,7 @@ export default {
 </script>
 <style lang="scss">
 .cashflow__sidebar {
+  z-index: 2;
   width: 300px;
   background: #ddd;
   .budget {

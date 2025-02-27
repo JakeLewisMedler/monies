@@ -1,9 +1,9 @@
 <template>
   <div class="cashflow__period">
-    <div class="field bold center header">{{ formatDate(period.date) }}</div>
+    <div class="field bold center header sticky">{{ formatDate(period.date) }}</div>
     <div class="columns">
       <div v-if="view == 'All' || view == 'Estimated'" class="column">
-        <div class="field bold center header">Estimated</div>
+        <div class="field bold center header subheader sticky">Estimated</div>
         <div class="budget__categories">
           <div v-for="budgetCategory in period.budgetCategories" :key="budgetCategory._id" class="budget__category">
             <div class="field blank"></div>
@@ -59,7 +59,7 @@
         <div class="field blank"></div>
       </div>
       <div v-if="view == 'All' || view == 'Actual'" class="column">
-        <div class="field bold center header">Actual</div>
+        <div class="field bold center header subheader sticky">Actual</div>
         <div class="budget__categories">
           <div v-for="budgetCategory in period.budgetCategories" :key="budgetCategory._id" class="budget__category">
             <div class="field blank"></div>
@@ -96,7 +96,7 @@
         <div class="field blank"></div>
       </div>
       <div v-if="view == 'All'" class="column">
-        <div class="field bold center header">Diff</div>
+        <div class="field bold center header subheader sticky">Diff</div>
         <div class="budget__categories">
           <div v-for="budgetCategory in period.budgetCategories" :key="budgetCategory._id" class="budget__category">
             <div class="field blank"></div>
@@ -183,9 +183,7 @@ export default {
 .cashflow__period {
   background: #fff;
   border-left: 2px #333 solid;
-  .header {
-    background: #ddd;
-  }
+  z-index: 1;
   .columns {
     display: flex;
     .column {
@@ -206,7 +204,6 @@ export default {
     border-top: 2px solid #888;
   }
   .estimated {
-    outline: 1px solid #00f;
     z-index: 1;
     position: relative;
     input {
