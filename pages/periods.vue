@@ -20,8 +20,11 @@
             :sort-desc="false"
             responsive
           >
-            <template #cell(date)="row">
-              {{ formatDate(row.item.date) }}
+            <template #cell(starting)="row">
+              {{ formatDate(row.item.starting) }}
+            </template>
+            <template #cell(ending)="row">
+              {{ formatDate(row.item.ending) }}
             </template>
             <template #cell(openingBalanceOffset)="row">
               {{
@@ -30,7 +33,10 @@
                 )
               }}
             </template>
-
+            <template #cell(status)="row"
+              ><span v-if="row.item.status == 'incomplete'">Incomplete</span>
+              <span v-else-if="row.item.status == 'complete'">Complete</span>
+            </template>
             <template #cell(actions)="row">
               <b-button @click="editPeriodModal(row.item)" variant="success">Edit</b-button>
               <b-button @click="deletePeriod(row.item)" variant="danger">Delete</b-button>
@@ -49,7 +55,14 @@ const { format } = require("date-fns");
 export default {
   data() {
     return {
-      periodFields: [{ key: "date", label: "Starting Date", sortable: true }, "openingBalanceOffset", "actions"],
+      periodFields: [
+        "name",
+        { key: "starting", sortable: true },
+        { key: "ending", sortable: true },
+        "openingBalanceOffset",
+        "status",
+        "actions"
+      ],
       periodsFilter: "",
       periods: []
     };
@@ -64,6 +77,7 @@ export default {
     },
 
     formatDate(date) {
+      if (!date) return;
       return format(new Date(date), "do MMM yy");
     },
     async periodsProvider(ctx, callback) {

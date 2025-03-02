@@ -66,8 +66,8 @@ export default {
       return this.forecast.flows.filter((f) => f.budget == budget._id);
     },
     getTransactionsPath(period, flow) {
-      if (flow) return `/transactions?filterType=flow&filterValue=${flow._id}&month=${period.date}`;
-      else return `/transactions?filterType=oneoff&filterValue=true&month=${period.date}`;
+      if (flow) return `/transactions?filterType=flow&filterValue=${flow._id}&period=${period._id}`;
+      else return `/transactions?filterType=oneoff&filterValue=true&period=${period.date}`;
     },
     async getForecast() {
       try {

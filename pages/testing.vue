@@ -9,6 +9,7 @@
         <b-button @click="backup" variant="danger">Store All</b-button>
         <b-button @click="restore" variant="danger">Restore All</b-button>
         <b-button @click="restore(['Transactions'])" variant="danger">Restore Transactions </b-button>
+        <b-button @click="restore(['Estimates'])" variant="danger">Restore Estimates </b-button>
       </b-col>
     </b-container>
   </div>

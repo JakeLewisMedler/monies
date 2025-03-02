@@ -71,6 +71,8 @@
           :items="transactionsProvider"
           :fields="transactionFields"
           :filter="{ filterValue, searchFilter }"
+          sortBy="date"
+          sortDesc="false"
           responsive
         >
           <template #cell(date)="row">
@@ -135,14 +137,14 @@ export default {
       filterType: "budget",
       filterValue: null,
       searchFilter: "",
-      monthFilter: null
+      periodFilter: null
     };
   },
   created() {
-    let { filterType, filterValue, month, oneoff } = this.$route.query;
+    let { filterType, filterValue, period, oneoff } = this.$route.query;
     if (filterType) this.filterType = filterType;
     if (filterValue) this.filterValue = filterValue;
-    if (month) this.monthFilter = month;
+    if (period) this.periodFilter = period;
     if (oneoff) this.oneoffFilter = oneoff == "true";
   },
   async mounted() {
@@ -161,7 +163,7 @@ export default {
           Object.entries({
             filterValue: this.filterValue,
             filterType: this.filterType,
-            month: this.monthFilter
+            period: this.periodFilter
           }).filter(([_, v]) => v != null)
         )
       });
@@ -209,7 +211,7 @@ export default {
       let query = `?populate=flow&filter=${this.searchFilter}&sortBy=${ctx.sortBy}&sortDesc=${ctx.sortDesc}`;
 
       if (this.filterValue != null) query += `&${this.filterType}=${this.filterValue}`;
-      if (this.monthFilter != null) query += `&month=${this.monthFilter}`;
+      if (this.periodFilter != null) query += `&period=${this.periodFilter}`;
 
       this.transactions = await this.$axios.get("/transactions" + query);
       return this.transactions;

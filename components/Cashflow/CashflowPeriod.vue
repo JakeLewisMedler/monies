@@ -1,6 +1,6 @@
 <template>
   <div class="cashflow__period">
-    <div class="field bold center header sticky">{{ formatDate(period.date) }}</div>
+    <div class="field bold center header sticky">{{ period.name }}</div>
     <div class="columns">
       <div v-if="view == 'All' || view == 'Estimated'" class="column">
         <div class="field bold center header subheader sticky">Estimated</div>
@@ -11,17 +11,11 @@
               {{ formatCurrency(budgetCategory.estimatedTotal) }}
             </div>
             <div v-if="showBudgets(budgetCategory)" class="budgets">
-              <div
-                v-for="budget in getBudgets(budgetCategory)"
-                :key="budget._id"
-                class="budget"
-                :class="{ estimated: !!budget.estimateId }"
-              >
+              <div v-for="budget in getBudgets(budgetCategory)" :key="budget._id" class="budget">
                 <div v-if="!budget.estimate" class="field center bold">{{ formatCurrency(budget.estimatedTotal) }}</div>
-                <b-input-group v-else class="field center bold" prepend="£">
+                <b-input-group v-else class="field center bold" prepend="£" :class="{ estimated: !!budget.estimateId }">
                   <b-form-input
                     type="number"
-                    number
                     v-model="budget.estimatedTotal"
                     @change="setEstimate('budget', budget, $event)"
                   ></b-form-input>
@@ -31,13 +25,19 @@
                     v-for="flow in getFlows(budget)"
                     :key="flow._id"
                     class="flow"
-                    :class="{ estimated: !!flow.estimateId }"
+                    v-b-tooltip.hover
+                    :title="flow.estimateId"
+                    :disabled="!flow.estimateId"
                   >
                     <div v-if="!flow.estimate" class="field center">{{ formatCurrency(flow.estimatedTotal) }}</div>
-                    <b-input-group v-else class="field center bold" prepend="£">
+                    <b-input-group
+                      v-else
+                      class="field center bold"
+                      prepend="£"
+                      :class="{ estimated: !!flow.estimateId }"
+                    >
                       <b-form-input
                         type="number"
-                        number
                         v-model="flow.estimatedTotal"
                         @change="setEstimate('flow', flow, $event)"
                       ></b-form-input>
@@ -110,7 +110,9 @@
                 </div>
                 <div v-if="showFlows(budget)" class="flows">
                   <div v-for="flow in getFlows(budget)" :key="flow._id" class="flow">
-                    <div class="field center">{{ formatCurrency(flow.totalDiff) }}</div>
+                    <div class="field center" :class="{ warning: flow.totalDiff != 0 }">
+                      {{ formatCurrency(flow.totalDiff) }}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -140,11 +142,11 @@ export default {
       } else if (amount != "" && item.estimateId) {
         await this.$axios.put(`/estimates/${item.estimateId}`, { amount: Number(amount) });
       } else if (amount != "" && !item.estimateId) {
-        let estimate = await this.$axios.post(`/estimates`, {
+        await this.$axios.post(`/estimates`, {
           [type]: item._id,
           type,
           amount: Number(amount),
-          date: this.period.date
+          period: this.period._id
         });
       }
 
@@ -163,8 +165,8 @@ export default {
       return this.period.flows.filter((f) => f.budget == budget._id);
     },
     getTransactionsPath(flow) {
-      if (flow) return `/transactions?filterType=flow&filterValue=${flow._id}&month=${this.period.date}`;
-      else return `/transactions?filterType=oneoff&filterValue=true&month=${this.period.date}`;
+      if (flow) return `/transactions?filterType=flow&filterValue=${flow._id}&period=${this.period._id}`;
+      else return `/transactions?filterType=oneoff&filterValue=true&period=${this.period._id}`;
     },
     formatDate(date) {
       return format(new Date(date), "MMM yy");
