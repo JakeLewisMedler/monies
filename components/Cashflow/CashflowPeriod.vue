@@ -81,7 +81,9 @@
           </div>
         </div>
         <div class="field blank"></div>
-        <div class="field center bold">{{ formatCurrency(period.oneoffs.actualTotal) }}</div>
+        <div class="field center bold">
+          <a :href="getTransactionsPath()"> {{ formatCurrency(period.oneoffs.actualTotal) }}</a>
+        </div>
         <div class="field blank"></div>
         <div v-if="view == 'Actual'" class="field center">
           {{ formatCurrency(period.totals.openingBalance) }}
