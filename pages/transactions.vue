@@ -50,6 +50,18 @@
       </b-row>
       <b-row class="my-2">
         <b-col>
+          <b-form-select v-model="periodFilter" :options="periods" value-field="_id" text-field="name">
+            <template #first> <b-form-select-option :value="null">Period Filter</b-form-select-option></template>
+          </b-form-select>
+        </b-col>
+        <b-col cols="2">
+          <b-button variant="primary" :disabled="periodFilter == null" @click="periodFilter = null"
+            >Clear Filter</b-button
+          >
+        </b-col>
+      </b-row>
+      <b-row class="my-2">
+        <b-col>
           <b-form-input v-model="searchFilter" placeholder="Search" debounce="500"></b-form-input>
         </b-col>
         <b-col cols="2">
@@ -70,7 +82,7 @@
           ref="transactionsTable"
           :items="transactionsProvider"
           :fields="transactionFields"
-          :filter="{ filterValue, searchFilter }"
+          :filter="{ filterValue, searchFilter, periodFilter }"
           sortBy="date"
           sortDesc="false"
           responsive
@@ -134,6 +146,7 @@ export default {
       transactions: [],
       budgets: [],
       flows: [],
+      periods: [],
       filterType: "budget",
       filterValue: null,
       searchFilter: "",
@@ -150,6 +163,7 @@ export default {
   async mounted() {
     await this.getBudgets();
     await this.getFlows();
+    await this.getPeriods();
   },
   methods: {
     setFilterType(type) {
@@ -176,6 +190,9 @@ export default {
     },
     async getFlows() {
       this.flows = await this.$axios.get("/flows");
+    },
+    async getPeriods() {
+      this.periods = await this.$axios.get("/periods");
     },
     formatDate(date) {
       return `${new Date(date).toLocaleDateString()} ${new Date(date).toLocaleTimeString()}`;
