@@ -126,7 +126,7 @@
         <div class="field blank"></div>
         <div class="field spacer"></div>
         <div class="field spacer"></div>
-        <div class="field center">{{ formatCurrency(period.totals.closingDiff) }}</div>
+        <div class="field spacer"></div>
         <div class="field blank"></div>
       </div>
     </div>
